@@ -30,7 +30,10 @@
 <body>
 <header class="header">Internet-provider</header>
 <main class="main">
-    <form action="<%=request.getContextPath()%>/SingInServlet" method="post" class="form" >
+<%--    <%= request.getAttribute("signInError")%>--%>
+
+    <form action="<%= request.getContextPath()%>/SingInServlet" method="post" class="form" >
+        <p>${signInError}</p>
         <br>
         <br>
         <br>
