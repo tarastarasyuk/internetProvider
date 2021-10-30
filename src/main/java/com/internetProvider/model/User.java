@@ -10,55 +10,13 @@ public class User {
     private Status status;
     private BigDecimal account;
     private String email;
-    private Date dateOfLastChanges;
-    private Role role;
+    private Date creatTime;
     private int tariffId;
     private int roleId;
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
-    public int getTariffId() {
-        return tariffId;
-    }
-
-    public void setTariffId(int tariffId) {
-        this.tariffId = tariffId;
-    }
-
-    public int getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
-    }
+    private Role role;
+    private int cityId;
 
     public User() {
-    }
-
-    public User(String username, String password, Status status, String email, Role role) {
-        this.username = username;
-        this.password = password;
-        this.status = status;
-        this.email = email;
-        this.role = role;
-    }
-
-    public enum Status {
-        ACTIVE("active"), BLOCKED("blocked");
-
-        Status(String status) {
-        }
-    }
-
-    public enum Role {
-        ADMIN, CLIENT
     }
 
     public int getId() {
@@ -109,12 +67,64 @@ public class User {
         this.email = email;
     }
 
-    public Date getDateOfLastChanges() {
-        return dateOfLastChanges;
+    public Date getCreatTime() {
+        return creatTime;
     }
 
-    public void setDateOfLastChanges(Date dateOfLastChanges) {
-        this.dateOfLastChanges = dateOfLastChanges;
+    public void setCreatTime(Date creatTime) {
+        this.creatTime = creatTime;
     }
 
+    public int getTariffId() {
+        return tariffId;
+    }
+
+    public void setTariffId(int tariffId) {
+        this.tariffId = tariffId;
+    }
+
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public int getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(int cityId) {
+        this.cityId = cityId;
+    }
+
+    public enum Status {
+        ACTIVE, INACTIVE, BLOCKED
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", status=" + status +
+                ", account=" + account +
+                ", email='" + email + '\'' +
+                ", creatTime=" + creatTime +
+                ", tariffId=" + tariffId +
+                ", roleId=" + roleId +
+                ", role=" + role +
+                ", cityId=" + cityId +
+                '}';
+    }
 }

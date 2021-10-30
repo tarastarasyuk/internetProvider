@@ -29,8 +29,8 @@
 </head>
 <body>
 <header class="header">Internet-provider</header>
+
 <main class="main">
-<%--    <%= request.getAttribute("signInError")%>--%>
 
     <form action="<%= request.getContextPath()%>/SingInServlet" method="post" class="form" >
         <p>${signInError}</p>
@@ -55,10 +55,9 @@
         <br>
         <a href="">Don't have an account? Sign up now!</a>
     </form>
-
-
-
 </main>
-<footer></footer>
+
+
+<footer>Wow, footer</footer>
 </body>
 </html>
