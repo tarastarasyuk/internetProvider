@@ -6,11 +6,10 @@ import com.internetProvider.model.User;
 import java.sql.SQLException;
 
 public class UserService {
-    private ConnectionPoolImpl connectionPool;
     private UserDAOImpl userDAO;
 
     public UserService() {
-        this.connectionPool = ConnectionPoolImpl.getInstance();
+        ConnectionPoolImpl connectionPool = ConnectionPoolImpl.getInstance();
         try {
             userDAO = new UserDAOImpl(connectionPool.getConnection());
         } catch (SQLException e) {

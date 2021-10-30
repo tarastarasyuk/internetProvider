@@ -39,11 +39,12 @@ public class UserDAOImpl implements UserDAO{
         int k = 1;
         user.setId(resultSet.getInt(k++));
         user.setUsername(resultSet.getString(k++));
-        user.setStatus(User.Status.valueOf(resultSet.getString(k++)));
         user.setPassword(resultSet.getString(k++));
+        user.setStatus(User.Status.valueOf(resultSet.getString(k++)));
         user.setAccount(resultSet.getBigDecimal(k++));
         user.setEmail(resultSet.getString(k++));
         user.setCreatTime(resultSet.getDate(k++));
+        user.setTariffId(resultSet.getInt(k++));
         user.setRoleId(resultSet.getInt(k++));
         user.setRole(Role.getRole(user.getRoleId()));
         user.setCityId(resultSet.getInt(k));

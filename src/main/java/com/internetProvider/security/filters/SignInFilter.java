@@ -56,9 +56,9 @@ public class SignInFilter implements Filter {
 
     private void moveToMenu(HttpServletResponse res, HttpServletRequest req, Role role) throws ServletException, IOException {
 
-        if (role == Role.ADMIN) {
+        if (role.equals(Role.ADMIN)) {
             res.sendRedirect("/adminPanel");
-        } else if (role == Role.CLIENT) {
+        } else if (role.equals(Role.CLIENT)) {
             res.sendRedirect("/clientProfile");
         } else {
             res.sendRedirect("index.jsp");
