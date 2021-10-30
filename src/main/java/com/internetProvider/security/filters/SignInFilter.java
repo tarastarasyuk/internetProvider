@@ -1,6 +1,6 @@
 package com.internetProvider.security.filters;
 
-import com.internetProvider.dao.UserService;
+import com.internetProvider.aservice.UserService;
 import com.internetProvider.model.Role;
 import com.internetProvider.model.User;
 
@@ -30,6 +30,7 @@ public class SignInFilter implements Filter {
         String password = req.getParameter("password");
 
         UserService userService = new UserService();
+
         HttpSession session = req.getSession();
 
         if (nonNull(session) && nonNull(session.getAttribute("user"))) {

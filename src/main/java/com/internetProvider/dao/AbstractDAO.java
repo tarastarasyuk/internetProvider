@@ -6,6 +6,6 @@ public interface AbstractDAO<E> {
     List<E> getAll();
     boolean create(E entity);
     E read(int entityId);
-    boolean update(E entity, E newEntity);
-    boolean delete(E entity);
+    boolean update(int entityId, E newEntity);
+    boolean delete(int entityId);
 }

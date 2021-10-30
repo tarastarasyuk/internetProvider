@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAOImpl implements UserDAO{
@@ -66,30 +67,81 @@ public class UserDAOImpl implements UserDAO{
         return result;
     }
 
+
     @Override
-    public List getAll() {
-        return null;
+    public List<User> getAll() {
+        List<User> userList = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.SELECT_ALL_USERS)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                userList.add(fillUserWithExistingData(resultSet));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userList;
     }
 
     @Override
-    public boolean create(Object entity) {
-        return false;
+    public boolean create(User entity) {
+        boolean result = false;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.CREATE_USER)) {
+            // TODO Remove duplicates
+            preparedStatement.setString(1, entity.getUsername());
+            preparedStatement.setString(2, entity.getPassword());
+            preparedStatement.setString(3, entity.getEmail());
+            preparedStatement.setInt(4, entity.getCityId());
+            preparedStatement.executeUpdate();
+            result = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     @Override
-    public Object read(int entityId) {
-        return null;
+    public User read(int entityId) {
+        User user = new User();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.SELECT_USER_BY_ID)) {
+            preparedStatement.setInt(1, entityId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                user = fillUserWithExistingData(resultSet);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
     }
 
     @Override
-    public boolean update(Object entity, Object newEntity) {
-        return false;
+    public boolean update(int entityId, User newEntity) {
+        boolean result = false;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.UPDATE_USER_BY_ID)) {
+            preparedStatement.setString(1, newEntity.getUsername());
+            preparedStatement.setString(2, newEntity.getPassword());
+            preparedStatement.setString(3, newEntity.getEmail());
+            preparedStatement.setInt(4, newEntity.getCityId());
+            preparedStatement.setInt(5, entityId);
+            preparedStatement.executeUpdate();
+            result = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     @Override
-    public boolean delete(Object entity) {
-        return false;
+    public boolean delete(int entityId) {
+        boolean result = false;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.DELETE_USER_BY_ID)) {
+            preparedStatement.setInt(1, entityId);
+            preparedStatement.executeUpdate();
+            result = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
-
-
 }

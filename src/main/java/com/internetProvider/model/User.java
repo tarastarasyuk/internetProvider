@@ -124,7 +124,7 @@ public class User {
                 ", tariffId=" + tariffId +
                 ", roleId=" + roleId +
                 ", role=" + role +
-                ", cityId=" + cityId +
+                ", cityId=" + cityId + "\n" +
                 '}';
     }
 }

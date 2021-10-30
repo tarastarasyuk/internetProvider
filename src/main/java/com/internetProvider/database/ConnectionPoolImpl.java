@@ -5,6 +5,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionPoolImpl {
@@ -29,7 +30,16 @@ public class ConnectionPoolImpl {
     }
 
     public Connection getConnection() throws SQLException {
-        return ds.getConnection();
+        /**
+         * TODO: REMOVE LATER
+         */
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/internet_provider", "root", "root");
+//        return ds.getConnection();
     }
 }
 
