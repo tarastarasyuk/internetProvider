@@ -10,13 +10,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDAOImpl implements UserDAO{
-
-    private final Connection connection;
-
+public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
 
     public UserDAOImpl(Connection connection) {
-        this.connection = connection;
+        super(connection);
     }
 
     @Override

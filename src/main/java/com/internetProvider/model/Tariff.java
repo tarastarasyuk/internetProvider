@@ -6,14 +6,17 @@ public class Tariff {
     private int id;
     private String name;
     private String description;
-    private BigDecimal BigDecimal;
+    private BigDecimal price;
     private int dayDuration;
 
-    public Tariff(int id, String name, String description, java.math.BigDecimal bigDecimal, int dayDuration) {
+    public Tariff() {
+    }
+
+    public Tariff(int id, String name, String description, BigDecimal price, int dayDuration) {
         this.id = id;
         this.name = name;
         this.description = description;
-        BigDecimal = bigDecimal;
+        this.price = price;
         this.dayDuration = dayDuration;
     }
 
@@ -41,12 +44,12 @@ public class Tariff {
         this.description = description;
     }
 
-    public java.math.BigDecimal getBigDecimal() {
-        return BigDecimal;
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    public void setBigDecimal(java.math.BigDecimal bigDecimal) {
-        BigDecimal = bigDecimal;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     public int getDayDuration() {
