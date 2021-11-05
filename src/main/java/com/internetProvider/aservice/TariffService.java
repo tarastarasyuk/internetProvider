@@ -1,7 +1,6 @@
 package com.internetProvider.aservice;
 
-import com.internetProvider.dao.TariffDAOImpl;
-import com.internetProvider.dao.UserDAOImpl;
+import com.internetProvider.dao.impl.TariffDAOImpl;
 import com.internetProvider.database.ConnectionPoolImpl;
 import com.internetProvider.model.Tariff;
 

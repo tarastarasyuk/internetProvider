@@ -32,7 +32,7 @@ public class QueriesSQL {
 
     public static final String SELECT_ALL_TARIFFS = "SELECT * FROM " + tariffTable;
     public static final String CREATE_TARIFF = "INSERT INTO " + tariffTable + " (" + tariffName + ", " + tariffDescription + ", " + tariffPrice + ", " + tariffDaysDuration + ") VALUES (?, ?, ?, ?)";
-    public static final String SELECT_TARIFF_BY_ID = "SELECT FROM " + tariffTable + " WHERE " + tariffId + " = ?";
+    public static final String SELECT_TARIFF_BY_ID = "SELECT * FROM " + tariffTable + " WHERE " + tariffId + " = ?";
     public static final String DELETE_TARIFF_BY_ID = "DELETE FROM " + tariffTable + " WHERE " + tariffId + " = ?";
     public static final String UPDATE_TARIFF_BY_ID = "UPDATE " + tariffTable + " SET " + tariffName + " = ?, " + tariffDescription + " = ?, " + tariffPrice + " = ?,  " + tariffDaysDuration + " = ? WHERE " + tariffId + " = ?";
 
@@ -44,7 +44,7 @@ public class QueriesSQL {
 
     public static final String SELECT_ALL_SERVICE = "SELECT * FROM " + serviceTable;
     public static final String CREATE_SERVICE = "INSERT INTO " + serviceTable + "(" + serviceName + ", " + serviceDescription + ") VALUES (?, ?)";
-    public static final String SELECT_SERVICE_BY_ID = "SELECT FROM " + serviceTable + " WHERE " + serviceId + " = ?";
+    public static final String SELECT_SERVICE_BY_ID = "SELECT * FROM " + serviceTable + " WHERE " + serviceId + " = ?";
     public static final String DELETE_SERVICE_BY_ID = "DELETE FROM " + serviceTable + " WHERE " + serviceId + " = ?";
     public static final String UPDATE_SERVICE_BY_ID = "UPDATE " + serviceTable + " SET " + serviceName + " = ?, " + serviceDescription + " = ? WHERE " + serviceId + " = ?";
 
@@ -61,8 +61,8 @@ public class QueriesSQL {
     private static final String cityId = "id";
 
     public static final String SELECT_ALL_CITY = "SELECT * FROM " + cityTable;
-    public static final String CREATE_CITY = "INSERT INTO " + cityTable + "(" + cityName + ") VALUES ?";
-    public static final String SELECT_CITY_BY_ID = "SELECT FROM " + cityTable + " WHERE " + cityId + " = ?";
+    public static final String CREATE_CITY = "INSERT INTO " + cityTable + "(" + cityName + ") VALUES (?)";
+    public static final String SELECT_CITY_BY_ID = "SELECT * FROM " + cityTable + " WHERE " + cityId + " = ?";
     public static final String DELETE_CITY_BY_ID = "DELETE FROM " + cityTable + " WHERE " + cityId + " = ?";
     public static final String UPDATE_CITY_BY_ID = "UPDATE " + cityTable + " SET " + cityName + " =? WHERE " + serviceId + " =?";
 

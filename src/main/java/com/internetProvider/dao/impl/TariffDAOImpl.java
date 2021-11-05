@@ -1,5 +1,8 @@
-package com.internetProvider.dao;
+package com.internetProvider.dao.impl;
 
+import com.internetProvider.dao.ConnectionConstructor;
+import com.internetProvider.dao.QueriesSQL;
+import com.internetProvider.dao.TariffDAO;
 import com.internetProvider.model.Role;
 import com.internetProvider.model.Tariff;
 import com.internetProvider.model.User;
@@ -11,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO{
+public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
 
     public TariffDAOImpl(Connection connection) {
         super(connection);

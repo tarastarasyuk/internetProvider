@@ -1,0 +1,110 @@
+.user-icon {
+    margin-bottom: 20px;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.top-up-account {
+    font-weight: bold;
+    width: 120px;
+    height: 45px;
+    background: forestgreen;
+}
+
+.info-field {
+    background-color: #F2F3F5;
+    border-radius: 6px;
+    height: 70px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 23px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.user-info {
+    width: 75%;
+    margin-bottom: 20px;
+}
+
+.big {
+    height: 400px;
+}
+
+.info-field .status {
+    color: forestgreen;
+}
+
+.info {
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.user-info-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-user-btn {
+    width: 70%;
+    border: 1px solid #001737;
+    color: #001737;
+}
+
+.edit-user-btn:hover {
+    border-color: #0D6EFD;
+    color: #0D6EFD;
+}
+
+.logo {
+    background: #fff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 150px;
+    height: 180px;
+
+    border-radius: 6px;
+}
+
+.header-info {
+    font-family: Inter;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+
+.price-block {
+
+    width: 40%;
+    height: 20%;
+    border: 2px dotted black;
+    border-radius: 6px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    text-align: center;
+}
+
+.tariff-price {
+    color: forestgreen;
+}
+
+.service-list {
+    font-size: 18px;
+}
+
+.btn-change-tariff {
+    width: 44%;
+    height: 13%;
+}

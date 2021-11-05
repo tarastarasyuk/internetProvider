@@ -1,5 +1,8 @@
-package com.internetProvider.dao;
+package com.internetProvider.dao.impl;
 
+import com.internetProvider.dao.CityDAO;
+import com.internetProvider.dao.ConnectionConstructor;
+import com.internetProvider.dao.QueriesSQL;
 import com.internetProvider.model.City;
 import com.internetProvider.model.Service;
 
@@ -33,7 +36,8 @@ public class CityDAOImpl extends ConnectionConstructor implements CityDAO {
     private City fillCityWithExistingData(ResultSet resultSet) throws SQLException {
         City city = new City();
         int k = 1;
-        city.setCityName(resultSet.getString(1));
+        city.setId(resultSet.getInt(k++));
+        city.setCityName(resultSet.getString(k));
         return city;
     }
 

@@ -1,0 +1,85 @@
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+footer {
+    border-top: 1px solid #F2F3F5;
+    background: #fff;
+    margin-top: auto;
+    height: 4.5rem;
+    /* display: flex;
+    align-items: center; */
+
+}
+
+main {
+    margin-top: 60px;
+}
+
+* {
+    font-family: Inter;
+}
+
+.language-btn {
+    background: none;
+    border: none;
+    position: absolute;
+    right:  0;
+}
+
+.nav-link {
+    color: #42536B;
+    /* font-size: 18px; */
+}
+
+.nav-link:hover {
+    color: #001737;
+}
+
+.navbar {
+    border: 0.5px solid #F2F3F5;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background: #FFFFFF;
+}
+
+.login-btn {
+    border-color: #42536B;
+    color: #42536B;
+}
+
+.login-btn:hover {
+    background-color: #F7F8F9;
+    color: #42536B;
+}
+
+.login-btn:link {
+    border-color: inherit;
+}
+
+header {
+    position: fixed;
+}
+
+
+ul,
+li {
+    list-style-type: none;
+}
+
+.language-btn .dropdown-menu.show {
+    left: -60px;
+    text-align: left;
+    max-width: 160px;
+}
+
+.language-btn .dropdown-item {
+    display: flex;
+    justify-content: center;
+}

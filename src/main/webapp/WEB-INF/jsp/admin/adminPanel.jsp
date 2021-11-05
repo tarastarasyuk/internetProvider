@@ -27,36 +27,27 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="row g-3" method="get" action="${pageContext.request.contextPath}/addNewClient">
-                    <div class="col-md-4">
-                        <label for="validationDefault01" class="form-label">First name</label>
-                        <input type="text" class="form-control" id="validationDefault01" value="Mark" required>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="validationDefault02" class="form-label">Last name</label>
-                        <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
-                    </div>
-                    <div class="col-md-4"></div>
+                <form class="row g-3" method="post" action="${pageContext.request.contextPath}/addNewClient">
 
                     <div class="col-md-4">
-                        <label for="validationDefault02" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="validationDefault03" value="Otto" required>
+                        <label for="validationDefault03" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="validationDefault03" value="Otto" name="username" required>
                     </div>
                     <div class="col-md-4">
-                        <label for="validationDefault02" class="form-label">Password</label>
-                        <input type="text" class="form-control" id="validationDefault04" value="Otto" required>
+                        <label for="validationDefault04" class="form-label">Password</label>
+                        <input type="text" class="form-control" id="validationDefault04" value="Otto" name="password" required>
                     </div>
                     <div class="col-md-4"></div>
 
                     <div class="col-md-8">
-                        <label for="validationDefault02" class="form-label">Email</label>
-                        <input type="text" class="form-control" id="validationDefault05" value="Otto" required>
+                        <label for="validationDefault05" class="form-label">Email</label>
+                        <input type="text" class="form-control" id="validationDefault05" value="Otto" name="email" required>
                     </div>
                     <div class="col-md-4"></div>
 
                     <div class="col-md-3">
-                        <label for="validationCustom04" class="form-label">City</label>
-                        <select class="form-select" id="validationCustom04" required>
+                        <label for="validationCustom06" class="form-label">City</label>
+                        <select class="form-select" id="validationCustom06" name="country" required>
                             <option selected disabled value="">Choose...</option>
                             <option>Ukraine</option>
                             <option>France</option>

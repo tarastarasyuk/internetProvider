@@ -14,7 +14,7 @@ public class User {
     private int tariffId;
     private int roleId;
     private Role role;
-    private int cityId;
+    private Integer cityId;
 
     public User() {
     }
@@ -99,7 +99,7 @@ public class User {
         this.role = role;
     }
 
-    public int getCityId() {
+    public Integer getCityId() {
         return cityId;
     }
 

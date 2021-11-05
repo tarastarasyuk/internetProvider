@@ -5,11 +5,11 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "ClientProfileServlet", urlPatterns = {"/clientPanel"})
-public class ClientProfileServlet extends HttpServlet {
+@WebServlet(name = "TariffServlet", value = "/tariffs")
+public class TariffServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/jsp/client/client.jsp").forward(request, response);
+        request.getRequestDispatcher("tariff.jsp").forward(request, response);
     }
 
     @Override

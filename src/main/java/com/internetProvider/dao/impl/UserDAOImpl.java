@@ -1,5 +1,8 @@
-package com.internetProvider.dao;
+package com.internetProvider.dao.impl;
 
+import com.internetProvider.dao.ConnectionConstructor;
+import com.internetProvider.dao.QueriesSQL;
+import com.internetProvider.dao.UserDAO;
 import com.internetProvider.model.Role;
 import com.internetProvider.model.User;
 

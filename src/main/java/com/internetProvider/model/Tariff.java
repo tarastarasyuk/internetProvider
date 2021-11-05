@@ -59,5 +59,16 @@ public class Tariff {
     public void setDayDuration(int dayDuration) {
         this.dayDuration = dayDuration;
     }
+
+    @Override
+    public String toString() {
+        return "Tariff{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", dayDuration=" + dayDuration + "\n" +
+                '}';
+    }
 }
 

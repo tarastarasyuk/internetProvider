@@ -10,16 +10,16 @@ import java.sql.SQLException;
 
 public class ConnectionPoolImpl {
     private static ConnectionPoolImpl instance;
-    private final DataSource ds;
+//    private final DataSource ds;
 
     private ConnectionPoolImpl() {
-        try {
-            Context initContext = new InitialContext();
-            Context envContext = (Context) initContext.lookup("java:/comp/env");
-            ds = (DataSource) envContext.lookup("jdbc/internet_provider");
-        } catch (NamingException ex) {
-            throw new IllegalStateException("Cannot connect to the connection pool", ex);
-        }
+//        try {
+//            Context initContext = new InitialContext();
+//            Context envContext = (Context) initContext.lookup("java:/comp/env");
+//            ds = (DataSource) envContext.lookup("jdbc/internet_provider");
+//        } catch (NamingException ex) {
+//            throw new IllegalStateException("Cannot connect to the connection pool", ex);
+//        }
     }
 
     public static synchronized ConnectionPoolImpl getInstance() {

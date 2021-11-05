@@ -1,6 +1,6 @@
 package com.internetProvider.aservice;
 
-import com.internetProvider.dao.UserDAOImpl;
+import com.internetProvider.dao.impl.UserDAOImpl;
 import com.internetProvider.database.ConnectionPoolImpl;
 import com.internetProvider.model.User;
 
