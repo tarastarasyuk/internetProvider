@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
-@WebFilter(filterName = "SignInFilter", urlPatterns = {"/clientPanel"})
+@WebFilter(filterName = "LoginFilter", urlPatterns = {"/clientPanel"})
 public class SignInFilter implements Filter {
     public void init(FilterConfig config) throws ServletException {
         System.out.println("FILTER WORKS");
@@ -29,7 +29,7 @@ public class SignInFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        System.out.println(username);
+        UserService
         UserService userService = new UserService();
 
         HttpSession session = req.getSession();
