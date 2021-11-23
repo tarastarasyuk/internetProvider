@@ -20,6 +20,7 @@
                     <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
 
                     <p style="color: #DC3545; text-align: center; position: relative;"><br>${signInError}</p>
+                    <p style="color: #DC3545; text-align: center; position: relative;"><br>${session.getAttribute("signInError")}</p>
                 </form>
             </div>
         </div>

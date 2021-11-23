@@ -36,7 +36,11 @@ public class LoginFilter implements Filter {
         HttpSession session = req.getSession();
 
         if (nonNull(session) && nonNull(session.getAttribute("user"))) {
-            chain.doFilter(req, res);
+            User user = (User) session.getAttribute("user");
+            if (user.getRoleId() == 1) {
+                res.sendRedirect("error.jsp");
+            } else
+                chain.doFilter(req, res);
         } else if (nonNull(username) && nonNull(password)) {
 
             if (userService.checkUserExistenceByUsername(username)) {
@@ -53,17 +57,20 @@ public class LoginFilter implements Filter {
                     }
 
                 } else {
-                    req.setAttribute("signInError", "password is incorrect...");
-                    req.getRequestDispatcher("/login.jsp").forward(req, res);
+                    session.setAttribute("signInError", "password is incorrect...");
+                    res.sendRedirect("login");
                 }
+            } else if (username.equals("") && password.equals("")) {
+                session.setAttribute("signInError", "enter all the data...");
+                res.sendRedirect("login");
             } else {
-                req.setAttribute("signInError", "no such user...");
-                req.getRequestDispatcher("/login.jsp").forward(req, res);
+                session.setAttribute("signInError", "no such user...");
+                res.sendRedirect("login");
             }
 
         } else {
-            req.setAttribute("signInError", "enter all the data...");
-            req.getRequestDispatcher("/login.jsp").forward(req, res);
+            session.setAttribute("signInError", "LOWER:enter all the data...");
+            res.sendRedirect("login");
         }
 
 
