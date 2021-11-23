@@ -15,7 +15,7 @@ import java.io.IOException;
 
 
 @WebFilter(filterName = "LoginFilter", urlPatterns = {"/clientPanel"})
-public class SignInFilter implements Filter {
+public class LoginFilter implements Filter {
     public void init(FilterConfig config) throws ServletException {
         System.out.println("FILTER WORKS");
     }
@@ -29,40 +29,57 @@ public class SignInFilter implements Filter {
         HttpServletResponse res = (HttpServletResponse) response;
         String username = req.getParameter("username");
         String password = req.getParameter("password");
-        UserService
+
         UserService userService = new UserService();
 
         HttpSession session = req.getSession();
-        System.out.println("!!!!!!!!!!!!!!!!!!");
-        System.out.println(req.getContextPath());
-        System.out.println(req.getServletPath());
-        System.out.println(req.getPathInfo());
-        System.out.println(req.getQueryString());
-        System.out.println(req.getRequestURI());
-        System.out.println("!!!!!!!!!!!!!!!!!!");
 
-        if (nonNull(session) && nonNull(session.getAttribute("user"))) {
-            User sessionUser = (User) session.getAttribute("user");
-            req.setAttribute("user", sessionUser);
-            moveToMenu(res, req, sessionUser.getRole());
-            chain.doFilter(req, res);
-        } else {
-                if (userService.checkUserExistenceByUsername(username)) {
-                    User existingUser = userService.findUserByUsernameAndPassword(username, password);
-                    if (existingUser != null) {
-                        session.setAttribute("user", existingUser);
-                        System.out.println(existingUser);
-                        req.setAttribute("user", existingUser);
-                        moveToMenu(res, req, existingUser.getRole());
-                    } else {
-                        req.setAttribute("signInError", "The password is incorrect...");
-                        req.getRequestDispatcher("/login.jsp").forward(req, res);
-                    }
+        if (nonNull(username) && nonNull(password)) {
+
+            if (userService.checkUserExistenceByUsername(username)) {
+                User existingUser = userService.findUserByUsernameAndPassword(username, password);
+                if (existingUser != null) {
+                    session.setAttribute("user", existingUser);
+                    req.setAttribute("user", existingUser);
+                    chain.doFilter(req, res);
                 } else {
-                    req.setAttribute("signInError", "There is no such user...");
-                    req.getRequestDispatcher("/login.jsp").forward(req, res);
+                    response.getWriter().println("<h1>Hello</h1>");
+                    //password is incorrect
                 }
+            } else {
+                response.getWriter().println("<h1>Hello</h1>");
+                //no such user
+            }
+
+        } else {
+            response.getWriter().println("<h1>Hello</h1>");
+            // enter all the data
         }
+
+
+//
+//        if (nonNull(session) && nonNull(session.getAttribute("user"))) {
+//            User sessionUser = (User) session.getAttribute("user");
+//            req.setAttribute("user", sessionUser);
+//            moveToMenu(res, req, sessionUser.getRole());
+//            chain.doFilter(req, res);
+//        } else {
+//                if (userService.checkUserExistenceByUsername(username)) {
+//                    User existingUser = userService.findUserByUsernameAndPassword(username, password);
+//                    if (existingUser != null) {
+//                        session.setAttribute("user", existingUser);
+//                        System.out.println(existingUser);
+//                        req.setAttribute("user", existingUser);
+//                        moveToMenu(res, req, existingUser.getRole());
+//                    } else {
+//                        req.setAttribute("signInError", "The password is incorrect...");
+//                        req.getRequestDispatcher("/login.jsp").forward(req, res);
+//                    }
+//                } else {
+//                    req.setAttribute("signInError", "There is no such user...");
+//                    req.getRequestDispatcher("/login.jsp").forward(req, res);
+//                }
+//        }
     }
 
     private void moveToMenu(HttpServletResponse res, HttpServletRequest req, Role role) throws ServletException, IOException {
