@@ -12,7 +12,7 @@ import java.io.IOException;
 
 import static java.util.Objects.nonNull;
 
-@WebFilter(filterName = "AdminFilter", urlPatterns = "/admin_menu")
+@WebFilter(filterName = "AdminFilter", urlPatterns = {"/adminPanel"})
 public class AdminFilter implements Filter {
     public void init(FilterConfig config) throws ServletException {
     }
@@ -22,8 +22,6 @@ public class AdminFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
-
-
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession();
@@ -31,14 +29,15 @@ public class AdminFilter implements Filter {
         if (nonNull(session) && nonNull(session.getAttribute("user"))) {
             User user = (User) session.getAttribute("user");
             if (user.getRole().equals(Role.ADMIN)) {
-                chain.doFilter(request, response);
-//                req.getRequestDispatcher("/admin_menu.jsp");
+                req.getRequestDispatcher("WEB-INF/jsp/admin/adminPanel.jsp").forward(req, res);
             } else {
+                res.getWriter().println("<h1>You don't have an access to this page...</h1>");
+                res.getWriter().println("<a href=\"login.jsp\">Back home!</a>");
                 System.out.println("denied");
             }
         } else {
             System.out.println("non reg");
-            res.sendRedirect("/");
+            res.sendRedirect("login.jsp");
         }
 
     }

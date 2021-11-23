@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 
-@WebFilter(filterName = "SignInFilter", urlPatterns = {"/SingInServlet"})
+@WebFilter(filterName = "SignInFilter", urlPatterns = {"/clientPanel"})
 public class SignInFilter implements Filter {
     public void init(FilterConfig config) throws ServletException {
         System.out.println("FILTER WORKS");
@@ -45,11 +45,8 @@ public class SignInFilter implements Filter {
             User sessionUser = (User) session.getAttribute("user");
             req.setAttribute("user", sessionUser);
             moveToMenu(res, req, sessionUser.getRole());
+            chain.doFilter(req, res);
         } else {
-            if (!req.getContextPath().equals("/SignInServlet")) {
-                req.setAttribute("signInError", "You need to register first...");
-                res.sendRedirect("login.jsp");
-            } else {
                 if (userService.checkUserExistenceByUsername(username)) {
                     User existingUser = userService.findUserByUsernameAndPassword(username, password);
                     if (existingUser != null) {
@@ -65,16 +62,15 @@ public class SignInFilter implements Filter {
                     req.setAttribute("signInError", "There is no such user...");
                     req.getRequestDispatcher("/login.jsp").forward(req, res);
                 }
-            }
         }
     }
 
     private void moveToMenu(HttpServletResponse res, HttpServletRequest req, Role role) throws ServletException, IOException {
 
         if (role.equals(Role.ADMIN)) {
-            res.sendRedirect("/adminPanel");
+            res.sendRedirect("adminPanel");
         } else if (role.equals(Role.CLIENT)) {
-            res.sendRedirect("/clientPanel");
+            req.getRequestDispatcher("WEB-INF/jsp/client/client.jsp").forward(req, res);
         } else {
             res.sendRedirect("login.jsp");
         }

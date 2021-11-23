@@ -3,10 +3,16 @@
 
 <t:page title="Login" cssLink="../../assets/css/login.css">
     <main>
+
+
+
+
+
+
         <div class="container d-flex flex-column justify-content-center align-items-center " style="height: 80vh;">
             <div class="gg d-flex justify-content-center align-items-center"
                  style="width: 30%; height: 70%; background-color: #F2F3F5; border-radius: 6px;">
-                <form class="form" method="post" action="${pageContext.request.contextPath}/clientPanel">
+                <form class="form" method="post" action="${pageContext.request.contextPath || "oppsite"}/clientPanel">
                     <div class="d-flex justify-content-center user-icon">
                         <i class="far fa-user fa-9x"></i>
                     </div>
