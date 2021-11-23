@@ -36,7 +36,7 @@
             </div>
 
             <div>
-                <a href="login.jsp"><button class="btn login-btn" type="submit">Login</button></a>
+                <a href="${pageContext.request.contextPath}/login"><button class="btn login-btn" type="submit">Login</button></a>
                 <button class="btn btn-primary connect-btn" type="submit">Connect</button>
 
             </div>

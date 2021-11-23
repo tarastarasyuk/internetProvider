@@ -30,30 +30,40 @@ public class LoginFilter implements Filter {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
+
         UserService userService = new UserService();
 
         HttpSession session = req.getSession();
 
-        if (nonNull(username) && nonNull(password)) {
+        if (nonNull(session) && nonNull(session.getAttribute("user"))) {
+            chain.doFilter(req, res);
+        } else if (nonNull(username) && nonNull(password)) {
 
             if (userService.checkUserExistenceByUsername(username)) {
                 User existingUser = userService.findUserByUsernameAndPassword(username, password);
                 if (existingUser != null) {
                     session.setAttribute("user", existingUser);
                     req.setAttribute("user", existingUser);
-                    chain.doFilter(req, res);
+                    if (existingUser.getRoleId() == 2) {
+                        session.setAttribute("pattern", "clientPanel");
+                        res.sendRedirect("clientPanel");
+                    } else if (existingUser.getRoleId() == 1) {
+                        session.setAttribute("pattern", "adminPanel");
+                        res.sendRedirect("adminPanel");
+                    }
+
                 } else {
-                    response.getWriter().println("<h1>Hello</h1>");
-                    //password is incorrect
+                    req.setAttribute("signInError", "password is incorrect...");
+                    req.getRequestDispatcher("/login.jsp").forward(req, res);
                 }
             } else {
-                response.getWriter().println("<h1>Hello</h1>");
-                //no such user
+                req.setAttribute("signInError", "no such user...");
+                req.getRequestDispatcher("/login.jsp").forward(req, res);
             }
 
         } else {
-            response.getWriter().println("<h1>Hello</h1>");
-            // enter all the data
+            req.setAttribute("signInError", "enter all the data...");
+            req.getRequestDispatcher("/login.jsp").forward(req, res);
         }
 
 

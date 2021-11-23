@@ -5,11 +5,11 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "ClientPanelServlet", value = "/clientPanel")
-public class ClientPanelServlet extends HttpServlet {
+@WebServlet(name = "AdminPanelServlet", value = "/adminPanel")
+public class AdminPanelServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("WEB-INF/jsp/client/client.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/jsp/admin/admin.jsp").forward(request, response);
     }
 
     @Override

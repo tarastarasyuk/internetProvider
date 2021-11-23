@@ -9,7 +9,7 @@
         <div class="row" style="margin-top: 40px;">
             <div class="col-5">
                 <div class="info-field">
-                    <span>Account: ${user.getAccount()}$&nbsp;&nbsp;&nbsp;</span>
+                    <span>${doPost}Account: ${user.getAccount()}$&nbsp;&nbsp;&nbsp;</span>
                     <button class="btn btn-success top-up-account">Top up</button>
                 </div>
             </div>
