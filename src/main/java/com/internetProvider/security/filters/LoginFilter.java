@@ -40,8 +40,9 @@ public class LoginFilter implements Filter {
             if (user.getRoleId() == 1) {
                 res.sendRedirect("error.jsp");
             } else
-                chain.doFilter(req, res);
-        } else if (nonNull(username) && nonNull(password)) {
+            chain.doFilter(req, res);
+        } else
+            if (nonNull(username) && nonNull(password)) {
 
             if (userService.checkUserExistenceByUsername(username)) {
                 User existingUser = userService.findUserByUsernameAndPassword(username, password);
@@ -55,58 +56,16 @@ public class LoginFilter implements Filter {
                         session.setAttribute("pattern", "adminPanel");
                         res.sendRedirect("adminPanel");
                     }
-
                 } else {
                     session.setAttribute("signInError", "password is incorrect...");
                     res.sendRedirect("login");
                 }
-            } else if (username.equals("") && password.equals("")) {
-                session.setAttribute("signInError", "enter all the data...");
-                res.sendRedirect("login");
             } else {
                 session.setAttribute("signInError", "no such user...");
                 res.sendRedirect("login");
             }
 
-        } else {
-            session.setAttribute("signInError", "LOWER:enter all the data...");
-            res.sendRedirect("login");
         }
 
-
-//
-//        if (nonNull(session) && nonNull(session.getAttribute("user"))) {
-//            User sessionUser = (User) session.getAttribute("user");
-//            req.setAttribute("user", sessionUser);
-//            moveToMenu(res, req, sessionUser.getRole());
-//            chain.doFilter(req, res);
-//        } else {
-//                if (userService.checkUserExistenceByUsername(username)) {
-//                    User existingUser = userService.findUserByUsernameAndPassword(username, password);
-//                    if (existingUser != null) {
-//                        session.setAttribute("user", existingUser);
-//                        System.out.println(existingUser);
-//                        req.setAttribute("user", existingUser);
-//                        moveToMenu(res, req, existingUser.getRole());
-//                    } else {
-//                        req.setAttribute("signInError", "The password is incorrect...");
-//                        req.getRequestDispatcher("/login.jsp").forward(req, res);
-//                    }
-//                } else {
-//                    req.setAttribute("signInError", "There is no such user...");
-//                    req.getRequestDispatcher("/login.jsp").forward(req, res);
-//                }
-//        }
-    }
-
-    private void moveToMenu(HttpServletResponse res, HttpServletRequest req, Role role) throws ServletException, IOException {
-
-        if (role.equals(Role.ADMIN)) {
-            res.sendRedirect("adminPanel");
-        } else if (role.equals(Role.CLIENT)) {
-            req.getRequestDispatcher("WEB-INF/jsp/client/client.jsp").forward(req, res);
-        } else {
-            res.sendRedirect("login.jsp");
-        }
     }
 }
