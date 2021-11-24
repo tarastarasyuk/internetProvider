@@ -30,7 +30,7 @@ public class LoginFilter implements Filter {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
-
+        //:TODO  to make JavaScript validation for empty input
         UserService userService = new UserService();
 
         HttpSession session = req.getSession();
