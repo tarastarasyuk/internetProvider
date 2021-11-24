@@ -65,7 +65,8 @@ public class LoginFilter implements Filter {
                 res.sendRedirect("login");
             }
 
-        }
-
+        } else {
+                res.sendRedirect("login");
+            }
     }
 }
