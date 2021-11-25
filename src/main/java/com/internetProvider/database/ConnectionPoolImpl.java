@@ -31,7 +31,7 @@ public class ConnectionPoolImpl {
 
     public Connection getConnection() throws SQLException {
         /**
-         * TODO: REMOVE LATER
+         * TODO: REMOVE MAKE DB WITH ROLLBACK AND COMMITS()
          */
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
