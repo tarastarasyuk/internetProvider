@@ -4,6 +4,7 @@ import com.internetProvider.dao.impl.UserDAOImpl;
 import com.internetProvider.model.User;
 
 import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public class UserService extends AbstractService {
@@ -12,7 +13,7 @@ public class UserService extends AbstractService {
      */
     private final UserDAOImpl entityDAO;
 
-    public UserService(ServletRequest request) {
+    public UserService(HttpServletRequest request) {
         super(request);
         entityDAO = new UserDAOImpl(connection);
     }

@@ -4,12 +4,13 @@ import com.internetProvider.dao.impl.CityDAOImpl;
 import com.internetProvider.model.City;
 
 import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public class CityService extends AbstractService {
     private CityDAOImpl entityDAO;
 
-    public CityService(ServletRequest request) {
+    public CityService(HttpServletRequest request) {
         super(request);
         entityDAO = new CityDAOImpl(connection);
     }

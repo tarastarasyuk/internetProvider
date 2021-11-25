@@ -4,12 +4,13 @@ import com.internetProvider.dao.impl.TariffDAOImpl;
 import com.internetProvider.model.Tariff;
 
 import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public class TariffService extends AbstractService {
     private TariffDAOImpl entityDAO;
 
-    public TariffService(ServletRequest request) {
+    public TariffService(HttpServletRequest request) {
         super(request);
         entityDAO = new TariffDAOImpl(connection);
     }

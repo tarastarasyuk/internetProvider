@@ -1,4 +1,4 @@
-package com.internetProvider.security.listener;
+package com.internetProvider;
 
 import com.internetProvider.database.ConnectionPoolImpl;
 
@@ -20,7 +20,7 @@ public class ApplicationContextListener implements ServletContextListener{
         /* This method is called when the servlet context is initialized(when the Web application is deployed). */
         ServletContext context = sce.getServletContext();
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/internet_provider", "root", "root");
+            Connection connection = ConnectionPoolImpl.getInstance().getConnection();
             context.setAttribute("dbConnection", connection);
         } catch (SQLException e) {
             e.printStackTrace();

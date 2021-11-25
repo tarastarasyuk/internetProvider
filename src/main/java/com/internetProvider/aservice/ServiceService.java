@@ -7,13 +7,14 @@ import com.internetProvider.model.Service;
 import com.internetProvider.model.Tariff;
 
 import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 import java.util.List;
 
 public class ServiceService extends AbstractService {
     private final ServiceDAOImpl entityDAO;
 
-    public ServiceService(ServletRequest request) {
+    public ServiceService(HttpServletRequest request) {
         super(request);
         entityDAO = new ServiceDAOImpl(connection);
     }
