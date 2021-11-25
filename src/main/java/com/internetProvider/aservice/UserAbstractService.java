@@ -1,25 +1,20 @@
 package com.internetProvider.aservice;
 
 import com.internetProvider.dao.impl.UserDAOImpl;
-import com.internetProvider.database.ConnectionPoolImpl;
 import com.internetProvider.model.User;
 
-import java.sql.SQLException;
+import javax.servlet.ServletRequest;
 import java.util.List;
 
-public class UserService {
+public class UserAbstractService extends Service {
     /**
      * TODO: REMOVE entityDAO and make AbstractService with factory
      */
-    private UserDAOImpl entityDAO;
+    private final UserDAOImpl entityDAO;
 
-    public UserService() {
-        ConnectionPoolImpl connectionPool = ConnectionPoolImpl.getInstance();
-        try {
-            entityDAO = new UserDAOImpl(connectionPool.getConnection());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public UserAbstractService(ServletRequest request) {
+        super(request);
+        entityDAO = new UserDAOImpl(connection);
     }
 
     public boolean checkUserExistenceByUsername(String username) {

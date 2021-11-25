@@ -1,7 +1,6 @@
 package com.internetProvider.security.filters;
 
-import com.internetProvider.aservice.UserService;
-import com.internetProvider.model.Role;
+import com.internetProvider.aservice.UserAbstractService;
 import com.internetProvider.model.User;
 
 import static java.util.Objects.nonNull;
@@ -31,7 +30,7 @@ public class LoginFilter implements Filter {
         String password = req.getParameter("password");
 
         //:TODO  to make JavaScript validation for empty input
-        UserService userService = new UserService();
+        UserAbstractService userService = new UserAbstractService(req);
 
         HttpSession session = req.getSession();
 

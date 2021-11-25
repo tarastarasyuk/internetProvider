@@ -1,24 +1,17 @@
 package com.internetProvider.aservice;
 
 import com.internetProvider.dao.impl.CityDAOImpl;
-import com.internetProvider.dao.impl.ServiceDAOImpl;
-import com.internetProvider.database.ConnectionPoolImpl;
 import com.internetProvider.model.City;
-import com.internetProvider.model.Service;
 
-import java.sql.SQLException;
+import javax.servlet.ServletRequest;
 import java.util.List;
 
-public class CityService {
+public class CityAbstractService extends AbstractService {
     private CityDAOImpl entityDAO;
 
-    public CityService() {
-        ConnectionPoolImpl connectionPool = ConnectionPoolImpl.getInstance();
-        try {
-            entityDAO = new CityDAOImpl(connectionPool.getConnection());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public CityAbstractService(ServletRequest request) {
+        super(request);
+        entityDAO = new CityDAOImpl(connection);
     }
 
     public boolean createNewCity(City city) {

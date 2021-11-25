@@ -6,19 +6,16 @@ import com.internetProvider.database.ConnectionPoolImpl;
 import com.internetProvider.model.Service;
 import com.internetProvider.model.Tariff;
 
+import javax.servlet.ServletRequest;
 import java.sql.SQLException;
 import java.util.List;
 
-public class ServiceService {
-    private ServiceDAOImpl entityDAO;
+public class ServiceService extends AbstractService {
+    private final ServiceDAOImpl entityDAO;
 
-    public ServiceService() {
-        ConnectionPoolImpl connectionPool = ConnectionPoolImpl.getInstance();
-        try {
-            entityDAO = new ServiceDAOImpl(connectionPool.getConnection());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public ServiceService(ServletRequest request) {
+        super(request);
+        entityDAO = new ServiceDAOImpl(connection);
     }
 
     public boolean createNewService(Service service) {

@@ -1,22 +1,17 @@
 package com.internetProvider.aservice;
 
 import com.internetProvider.dao.impl.TariffDAOImpl;
-import com.internetProvider.database.ConnectionPoolImpl;
 import com.internetProvider.model.Tariff;
 
-import java.sql.SQLException;
+import javax.servlet.ServletRequest;
 import java.util.List;
 
-public class TariffService {
+public class TariffAbstractService extends AbstractService {
     private TariffDAOImpl entityDAO;
 
-    public TariffService() {
-        ConnectionPoolImpl connectionPool = ConnectionPoolImpl.getInstance();
-        try {
-            entityDAO = new TariffDAOImpl(connectionPool.getConnection());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public TariffAbstractService(ServletRequest request) {
+        super(request);
+        entityDAO = new TariffDAOImpl(connection);
     }
 
     public boolean createNewTariff(Tariff tariff) {
