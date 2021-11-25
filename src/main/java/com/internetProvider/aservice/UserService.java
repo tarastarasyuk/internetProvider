@@ -6,13 +6,13 @@ import com.internetProvider.model.User;
 import javax.servlet.ServletRequest;
 import java.util.List;
 
-public class UserAbstractService extends Service {
+public class UserService extends AbstractService {
     /**
      * TODO: REMOVE entityDAO and make AbstractService with factory
      */
     private final UserDAOImpl entityDAO;
 
-    public UserAbstractService(ServletRequest request) {
+    public UserService(ServletRequest request) {
         super(request);
         entityDAO = new UserDAOImpl(connection);
     }

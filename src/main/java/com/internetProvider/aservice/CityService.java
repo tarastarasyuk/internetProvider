@@ -6,10 +6,10 @@ import com.internetProvider.model.City;
 import javax.servlet.ServletRequest;
 import java.util.List;
 
-public class CityAbstractService extends AbstractService {
+public class CityService extends AbstractService {
     private CityDAOImpl entityDAO;
 
-    public CityAbstractService(ServletRequest request) {
+    public CityService(ServletRequest request) {
         super(request);
         entityDAO = new CityDAOImpl(connection);
     }

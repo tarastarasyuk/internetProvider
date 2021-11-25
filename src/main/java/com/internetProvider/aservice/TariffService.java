@@ -6,10 +6,10 @@ import com.internetProvider.model.Tariff;
 import javax.servlet.ServletRequest;
 import java.util.List;
 
-public class TariffAbstractService extends AbstractService {
+public class TariffService extends AbstractService {
     private TariffDAOImpl entityDAO;
 
-    public TariffAbstractService(ServletRequest request) {
+    public TariffService(ServletRequest request) {
         super(request);
         entityDAO = new TariffDAOImpl(connection);
     }

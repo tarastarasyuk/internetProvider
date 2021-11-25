@@ -1,6 +1,6 @@
 package com.internetProvider.controller;
 
-import com.internetProvider.aservice.UserAbstractService;
+import com.internetProvider.aservice.UserService;
 import com.internetProvider.model.User;
 
 import javax.servlet.*;
@@ -27,7 +27,7 @@ public class ClientServlet extends HttpServlet {
         user.setEmail(email);
         user.setCityId(2);
 
-        UserAbstractService userService = new UserAbstractService(request);
+        UserService userService = new UserService(request);
         userService.createNewUser(user);
         response.sendRedirect("/adminPanel");
     }
