@@ -4,14 +4,24 @@ public class Service {
     private int id;
     private String name;
     private String description;
+    private String logoLink;
 
     public Service() {
     }
 
-    public Service(int id, String name, String description) {
+    public Service(int id, String name, String description, String logoLink) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.logoLink = logoLink;
+    }
+
+    public String getLogoLink() {
+        return logoLink;
+    }
+
+    public void setLogoLink(String logoLink) {
+        this.logoLink = logoLink;
     }
 
     public int getId() {

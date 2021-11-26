@@ -38,7 +38,8 @@ public class ServiceDAOImpl extends ConnectionConstructor implements ServiceDAO 
         int k = 1;
         service.setId(resultSet.getInt(k++));
         service.setName(resultSet.getString(k++));
-        service.setDescription(resultSet.getString(k));
+        service.setDescription(resultSet.getString(k++));
+        service.setLogoLink(resultSet.getString(k));
         return service;
     }
 
@@ -48,6 +49,7 @@ public class ServiceDAOImpl extends ConnectionConstructor implements ServiceDAO 
         try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.CREATE_SERVICE)) {
             preparedStatement.setString(1,entity.getName());
             preparedStatement.setString(2, entity.getDescription());
+            preparedStatement.setString(3, entity.getLogoLink());
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
@@ -77,7 +79,8 @@ public class ServiceDAOImpl extends ConnectionConstructor implements ServiceDAO 
         try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.UPDATE_SERVICE_BY_ID)) {
             preparedStatement.setString(1, newEntity.getName());
             preparedStatement.setString(2, newEntity.getDescription());
-            preparedStatement.setInt(3, entityId);
+            preparedStatement.setString(3, newEntity.getLogoLink());
+            preparedStatement.setInt(4, entityId);
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {

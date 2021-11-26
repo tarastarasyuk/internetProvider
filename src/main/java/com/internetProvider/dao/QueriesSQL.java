@@ -40,13 +40,14 @@ public class QueriesSQL {
     private static final String serviceTable = "service";
     private static final String serviceName = "name";
     private static final String serviceDescription = "description";
+    private static final String serviceLogoLink = "logoLink";
     private static final String serviceId = "id";
 
     public static final String SELECT_ALL_SERVICE = "SELECT * FROM " + serviceTable;
-    public static final String CREATE_SERVICE = "INSERT INTO " + serviceTable + "(" + serviceName + ", " + serviceDescription + ") VALUES (?, ?)";
+    public static final String CREATE_SERVICE = "INSERT INTO " + serviceTable + "(" + serviceName + ", " + serviceDescription +", "+ serviceLogoLink+") VALUES (?, ?, ?)";
     public static final String SELECT_SERVICE_BY_ID = "SELECT * FROM " + serviceTable + " WHERE " + serviceId + " = ?";
     public static final String DELETE_SERVICE_BY_ID = "DELETE FROM " + serviceTable + " WHERE " + serviceId + " = ?";
-    public static final String UPDATE_SERVICE_BY_ID = "UPDATE " + serviceTable + " SET " + serviceName + " = ?, " + serviceDescription + " = ? WHERE " + serviceId + " = ?";
+    public static final String UPDATE_SERVICE_BY_ID = "UPDATE " + serviceTable + " SET " + serviceName + " = ?, " + serviceDescription + " = ?, " + serviceLogoLink + " = ?" + " WHERE " + serviceId + " = ?";
 
     private static final String tariffHasServiceTable = "tariff_has_service";
     private static final String tariffHasServiceTariffId = "tariff_id";
