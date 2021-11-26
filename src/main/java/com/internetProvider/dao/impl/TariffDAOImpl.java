@@ -7,11 +7,9 @@ import com.internetProvider.model.Role;
 import com.internetProvider.model.Tariff;
 import com.internetProvider.model.User;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
@@ -109,5 +107,38 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
             e.printStackTrace();
         }
         return result;
+    }
+
+    @Override
+    public List<Tariff> getTariffsByServices(Integer... serviceId) {
+        List<Tariff> tariffList = new ArrayList<>();
+        String servicesId = Arrays.toString(serviceId)
+                .replace("[","")
+                .replace("]","");
+        // $@# like ?
+        String statement = QueriesSQL.SELECT_TARIFFS_BY_SERVICES.replace("$@#", servicesId);
+        try (PreparedStatement preparedStatement = connection.prepareStatement(statement)) {
+//           TODO: connection.createArrayOf() doesn't work, fix it
+            preparedStatement.setInt(1, serviceId.length - 1);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                tariffList.add(fillTariffWithExistingData(resultSet));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return tariffList;
+    }
+
+    @Override
+    public List<Tariff> getTariffsSortedByPrice(String order) {
+        return null;
+    }
+
+    @Override
+    public List<Tariff> getTariffsSortedByABC(String order) {
+        return null;
     }
 }

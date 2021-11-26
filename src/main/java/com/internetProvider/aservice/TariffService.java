@@ -35,5 +35,8 @@ public class TariffService extends AbstractService {
         return entityDAO.getAll();
     }
 
+    public List<Tariff> getTariffsByServices(Integer... serviceId) {
+        return entityDAO.getTariffsByServices(serviceId);
+    }
 
 }

@@ -23,6 +23,9 @@ public class TariffServlet extends HttpServlet {
         List<Tariff> tariffList = tariffService.getAllTariffs();
         request.setAttribute("tariffList", tariffList);
 
+        List<Tariff> tariffList1 = tariffService.getTariffsByServices( 2);
+
+        request.setAttribute("tariffList", tariffList1);
         request.getRequestDispatcher("tariffs.jsp").forward(request, response);
     }
 
