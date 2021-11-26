@@ -39,4 +39,12 @@ public class TariffService extends AbstractService {
         return entityDAO.getTariffsByServices(serviceId);
     }
 
+    public List<Tariff> getTariffsSortedByPrice(String order) {
+        return entityDAO.getTariffsSortedByPrice(order);
+    }
+
+    public List<Tariff> getTariffsSortedByABC(String order) {
+        return entityDAO.getTariffsSortedByABC(order);
+    }
+
 }

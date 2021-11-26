@@ -20,17 +20,7 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
 
     @Override
     public List<Tariff> getAll() {
-        List<Tariff> tariffList = new ArrayList<>();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.SELECT_ALL_TARIFFS)) {
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            while (resultSet.next()) {
-                tariffList.add(fillTariffWithExistingData(resultSet));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return tariffList;
+        return getAllTariffs(QueriesSQL.SELECT_ALL_TARIFFS);
     }
 
     private Tariff fillTariffWithExistingData(ResultSet resultSet) throws SQLException {
@@ -113,10 +103,10 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
     public List<Tariff> getTariffsByServices(Integer... serviceId) {
         List<Tariff> tariffList = new ArrayList<>();
         String servicesId = Arrays.toString(serviceId)
-                .replace("[","")
-                .replace("]","");
-        // $@# like ?
-        String statement = QueriesSQL.SELECT_TARIFFS_BY_SERVICES.replace("$@#", servicesId);
+                .replace("[", "")
+                .replace("]", "");
+        // $ like ?
+        String statement = QueriesSQL.SELECT_TARIFFS_BY_SERVICES.replace("$", servicesId);
         try (PreparedStatement preparedStatement = connection.prepareStatement(statement)) {
 //           TODO: connection.createArrayOf() doesn't work, fix it
             preparedStatement.setInt(1, serviceId.length - 1);
@@ -134,11 +124,27 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
 
     @Override
     public List<Tariff> getTariffsSortedByPrice(String order) {
-        return null;
+        String statement = QueriesSQL.SELECT_ALL_TARIFFS_SORTED_BY_PRICE_DESC.replace("$", order);
+        return getAllTariffs(statement);
     }
 
     @Override
     public List<Tariff> getTariffsSortedByABC(String order) {
-        return null;
+        String statement = QueriesSQL.SELECT_ALL_TARIFFS_SORTED_BY_ABC_ASC.replace("$", order);
+        return getAllTariffs(statement);
+    }
+
+    private List<Tariff> getAllTariffs(String statement) {
+        List<Tariff> tariffList = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(statement)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                tariffList.add(fillTariffWithExistingData(resultSet));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return tariffList;
     }
 }

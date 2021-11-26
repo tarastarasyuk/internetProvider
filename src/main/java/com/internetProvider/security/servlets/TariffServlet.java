@@ -20,12 +20,10 @@ public class TariffServlet extends HttpServlet {
         request.setAttribute("serviceList", serviceList);
 
         TariffService tariffService = new TariffService(request);
-        List<Tariff> tariffList = tariffService.getAllTariffs();
+        List<Tariff> tariffList = tariffService.getTariffsSortedByABC("DESC");
         request.setAttribute("tariffList", tariffList);
 
-        List<Tariff> tariffList1 = tariffService.getTariffsByServices( 2);
 
-        request.setAttribute("tariffList", tariffList1);
         request.getRequestDispatcher("tariffs.jsp").forward(request, response);
     }
 
