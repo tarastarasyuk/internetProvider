@@ -42,7 +42,8 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
         tariff.setName(resultSet.getString(k++));
         tariff.setDescription(resultSet.getString(k++));
         tariff.setPrice(resultSet.getBigDecimal(k++));
-        tariff.setDayDuration(resultSet.getInt(k));
+        tariff.setDayDuration(resultSet.getInt(k++));
+        tariff.setFeatures(resultSet.getString(k));
         return tariff;
     }
 
@@ -55,6 +56,7 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
             preparedStatement.setString(2, entity.getDescription());
             preparedStatement.setBigDecimal(3, entity.getPrice());
             preparedStatement.setInt(4, entity.getDayDuration());
+            preparedStatement.setString(5, entity.getFeatures());
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
@@ -86,7 +88,8 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
             preparedStatement.setString(2, newEntity.getDescription());
             preparedStatement.setBigDecimal(3, newEntity.getPrice());
             preparedStatement.setInt(4, newEntity.getDayDuration());
-            preparedStatement.setInt(5, entityId);
+            preparedStatement.setString(5, newEntity.getFeatures());
+            preparedStatement.setInt(6, entityId);
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {

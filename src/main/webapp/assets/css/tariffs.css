@@ -17,19 +17,10 @@
     height: 100%;
 }
 
-
-
-.filter-choosing {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
 .filter-choosing form {
     display: flex;
     align-items: center;
-    padding: 0;
-    margin: 0;
+
     justify-content: flex-start;
 }
 
@@ -81,13 +72,15 @@
 
 /* Card */
 
-.tariffs .card, .tariffs .card li {
-    background-color: #F2F2F2;
-}
+
 
 .tariffs .card {
     margin-right: 40px;
     margin-bottom: 40px;
+}
+
+.tariffs .card, .tariffs .card li {
+    background-color: #F2F2F2;
 }
 
 .tariffs span {
@@ -96,6 +89,7 @@
 
 .tariff-content {
     text-align: center;
+
 }
 
 .tariff-title{
@@ -105,6 +99,10 @@
 .tariff-price {
     display: flex;
     justify-content: center;
+}
+
+.tariff-service-list {
+    margin-top: 20px;
 }
 
 .tariff-price-box {

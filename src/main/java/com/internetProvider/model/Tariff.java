@@ -1,6 +1,9 @@
 package com.internetProvider.model;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Tariff {
     private int id;
@@ -8,16 +11,26 @@ public class Tariff {
     private String description;
     private BigDecimal price;
     private int dayDuration;
+    private String features;
 
     public Tariff() {
     }
 
-    public Tariff(int id, String name, String description, BigDecimal price, int dayDuration) {
+    public Tariff(int id, String name, String description, BigDecimal price, int dayDuration, String features) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.dayDuration = dayDuration;
+        this.features = features;
+    }
+
+    public String getFeatures() {
+        return features;
+    }
+
+    public void setFeatures(String features) {
+        this.features = features;
     }
 
     public int getId() {
@@ -58,6 +71,10 @@ public class Tariff {
 
     public void setDayDuration(int dayDuration) {
         this.dayDuration = dayDuration;
+    }
+
+    public List<String> getFeaturesList() {
+        return Arrays.stream(features.split(";")).map(String::trim).collect(Collectors.toList());
     }
 
     @Override

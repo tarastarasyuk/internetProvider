@@ -28,13 +28,14 @@ public class QueriesSQL {
     private static final String tariffDescription = "description";
     private static final String tariffPrice = "price";
     private static final String tariffDaysDuration = "days_duration";
+    private static final String tariffFeatures = "features";
     private static final String tariffId = "id";
 
     public static final String SELECT_ALL_TARIFFS = "SELECT * FROM " + tariffTable;
-    public static final String CREATE_TARIFF = "INSERT INTO " + tariffTable + " (" + tariffName + ", " + tariffDescription + ", " + tariffPrice + ", " + tariffDaysDuration + ") VALUES (?, ?, ?, ?)";
+    public static final String CREATE_TARIFF = "INSERT INTO " + tariffTable + " (" + tariffName + ", " + tariffDescription + ", " + tariffPrice + ", " + tariffDaysDuration + ", " + tariffFeatures + ") VALUES (?, ?, ?, ?, ?)";
     public static final String SELECT_TARIFF_BY_ID = "SELECT * FROM " + tariffTable + " WHERE " + tariffId + " = ?";
     public static final String DELETE_TARIFF_BY_ID = "DELETE FROM " + tariffTable + " WHERE " + tariffId + " = ?";
-    public static final String UPDATE_TARIFF_BY_ID = "UPDATE " + tariffTable + " SET " + tariffName + " = ?, " + tariffDescription + " = ?, " + tariffPrice + " = ?,  " + tariffDaysDuration + " = ? WHERE " + tariffId + " = ?";
+    public static final String UPDATE_TARIFF_BY_ID = "UPDATE " + tariffTable + " SET " + tariffName + " = ?, " + tariffDescription + " = ?, " + tariffPrice + " = ?,  " + tariffDaysDuration + " = ?, " + tariffFeatures + " = ?" + "WHERE " + tariffId + " = ?";
 
 
     private static final String serviceTable = "service";
@@ -44,7 +45,7 @@ public class QueriesSQL {
     private static final String serviceId = "id";
 
     public static final String SELECT_ALL_SERVICE = "SELECT * FROM " + serviceTable;
-    public static final String CREATE_SERVICE = "INSERT INTO " + serviceTable + "(" + serviceName + ", " + serviceDescription +", "+ serviceLogoLink+") VALUES (?, ?, ?)";
+    public static final String CREATE_SERVICE = "INSERT INTO " + serviceTable + "(" + serviceName + ", " + serviceDescription + ", " + serviceLogoLink + ") VALUES (?, ?, ?)";
     public static final String SELECT_SERVICE_BY_ID = "SELECT * FROM " + serviceTable + " WHERE " + serviceId + " = ?";
     public static final String DELETE_SERVICE_BY_ID = "DELETE FROM " + serviceTable + " WHERE " + serviceId + " = ?";
     public static final String UPDATE_SERVICE_BY_ID = "UPDATE " + serviceTable + " SET " + serviceName + " = ?, " + serviceDescription + " = ?, " + serviceLogoLink + " = ?" + " WHERE " + serviceId + " = ?";

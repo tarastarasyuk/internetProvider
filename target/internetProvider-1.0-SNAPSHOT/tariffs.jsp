@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <t:page title="Login" cssLink="../../assets/css/tariffs.css">
     <main>
@@ -16,11 +17,13 @@
                     <div class="filter-choosing">
                         <form action="">
 
-                            <div class="filters-logo"><i class="fas fa-sliders-h fa-lg"></i></span><span></div>
+                            <div class="filters-logo"><i class="fas fa-sliders-h fa-lg"></i></div>
                             <div class="filters">
                                 <select class="form-select" name="Services" id="by-service">
                                     <option value="" selected disabled hidden>Services</option>
-                                    <option value="">All</option>
+                                    <c:forEach var="service" items="${serviceList}">
+                                        <option value="">${service.getName()}</option>
+                                    </c:forEach>
                                 </select>
                                 <select class="form-select" name="Price" id="by-price">
                                     <option value="" selected disabled hidden>Sort by</option>
@@ -32,8 +35,11 @@
                             </div>
 
                             <div class="filter-apply">
-                                <a href="#" method="GET"><button type="button"
-                                                                 class="btn btn-primary">Apply</button></a>
+                                <a href="#" method="GET">
+                                    <button type="button"
+                                            class="btn btn-primary">Apply
+                                    </button>
+                                </a>
                             </div>
 
                         </form>
@@ -41,8 +47,11 @@
                     </div>
 
                     <div class="filter-clear-btn">
-                        <a href="tariffs.html"><button type="button" class="btn btn-secondary clear-btn"
-                                                       onClick="window.location.reload();">Clear &#x2717</button></a>
+                        <a href="tariffs">
+                            <button type="button" class="btn btn-secondary clear-btn"
+                                    onClick="window.location.reload();">Clear &#x2717
+                            </button>
+                        </a>
                     </div>
 
                 </div>
@@ -52,167 +61,50 @@
 
             <section class="tariffs">
 
+                <c:forEach var="tariff" items="${tariffList}">
 
-                <div class="card tariff-card" style="width: 18rem;">
-                    <!-- <img src="LOGO.png" style="object-fit:contain; height: 80px;" class="card-img-top" alt="..."> -->
-                    <div class="card-body tariff-content">
-                        <h5 class="card-title tariff-title">"Silver Pro Max"</h5>
-                        <p class="card-text tariff-subtitle">Phone: Tariff plan for all family!</p>
+                    <div class="card tariff-card" style="width: 18rem;">
 
-                        <div class="tariff-price">
-                            <div class="tariff-price-box">
-                                <span>Price:</span>
-                                <span>50$/month</pan>
+                        <div class="card-body tariff-content">
+                            <h5 class="card-title tariff-title">"${tariff.getName()}"</h5>
+                            <p class="card-text tariff-subtitle">${tariff.getDescription()}</p>
+
+                            <div class="tariff-price">
+                                <div class="tariff-price-box">
+                                    <span>Price:</span>
+                                    <span>${tariff.getPrice()}$/${tariff.getDayDuration()}days</span>
+                                </div>
+                            </div>
+
+                            <div class="tariff-service-list">
+                                Service: Phone, IP-TV
                             </div>
                         </div>
-                    </div>
-                    <ul class="list-group list-group-flush list-of-features">
-                        <!-- TODO: MOVE INNER CSS IN  tariffs.css -->
-                        <li class="list-group-item">
 
-                            <span class="d-inline-block bg-primary rounded-circle"
+
+                        <ul class="list-group list-group-flush list-of-features">
+                            <!-- TODO: MOVE INNER CSS IN  tariffs.css -->
+
+
+                            <c:forEach var="feature" items="${tariff.getFeaturesList()}">
+                                <li class="list-group-item">
+                                    <span class="d-inline-block bg-primary rounded-circle"
                                   style="width: .5em; height: .5em;"></span>
-                            15GB of Intenet
-                        </li>
-                        <li class="list-group-item">
-                            <span class="d-inline-block bg-primary rounded-circle"
-                                  style="width: .5em; height: .5em;"></span>
-                            Unlimitted calls
-                        </li>
-                        <li class="list-group-item">
-                            <span class="d-inline-block bg-primary rounded-circle"
-                                  style="width: .5em; height: .5em;"></span>
-                            A third item
-                        </li>
-                        <li class="list-group-item">
-                            <span class="d-inline-block bg-primary rounded-circle"
-                                  style="width: .5em; height: .5em;"></span>
-                            A third item
-                        </li>
+                                    ${feature}
+                                </li>
+                            </c:forEach>
 
-                    </ul>
-                    <div class="card-body tariffs-connection">
-                        <a href="#" method="GET">
-                            <button type="button" class="btn btn-primary">Connect</button>
-                        </a>
-                    </div>
-                </div>
+                        </ul>
 
-
-                <div class="card tariff-card" style="width: 18rem;">
-                    <!-- <img src="LOGO.png" style="object-fit:contain; height: 80px;" class="card-img-top" alt="..."> -->
-                    <div class="card-body tariff-content">
-                        <h5 class="card-title tariff-title">"Silver Pro Max"</h5>
-                        <p class="card-text tariff-subtitle">Phone: Tariff plan for all family!</p>
-
-                        <div class="tariff-price">
-                            <div class="tariff-price-box">
-                                <span>Price:</span>
-                                <span>50$/month</span>
-                            </div>
+                        <div class="card-body tariffs-connection">
+                            <a href="#" method="GET">
+                                <button type="button" class="btn btn-primary">Connect</button>
+                            </a>
                         </div>
+
                     </div>
-                    <ul class="list-group list-group-flush list-of-features">
-                        <!-- TODO: MOVE INNER CSS IN  tariffs.css -->
-                        <li class="list-group-item">
 
-                            <span class="d-inline-block bg-primary rounded-circle"
-                                  style="width: .5em; height: .5em;"></span>
-                            15GB of Intenet
-                        </li>
-                        <li class="list-group-item">
-                            <span class="d-inline-block bg-primary rounded-circle"
-                                  style="width: .5em; height: .5em;"></span>
-                            Unlimitted calls
-                        </li>
-                        <li class="list-group-item">
-                            <span class="d-inline-block bg-primary rounded-circle"
-                                  style="width: .5em; height: .5em;"></span>
-                            A third item
-                        </li>
-                    </ul>
-                    <div class="card-body tariffs-connection">
-                        <a href="#" method="GET">
-                            <button type="button" class="btn btn-primary">Connect</button>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="card tariff-card" style="width: 18rem;">
-                    <!-- <img src="LOGO.png" style="object-fit:contain; height: 80px;" class="card-img-top" alt="..."> -->
-                    <div class="card-body tariff-content">
-                        <h5 class="card-title tariff-title">"Silver Pro Max"</h5>
-                        <p class="card-text tariff-subtitle">Phone: Tariff plan for all family!</p>
-
-                        <div class="tariff-price">
-                            <div class="tariff-price-box">
-                                <span>Price:</span>
-                                <span>50$/month</span>
-                            </div>
-                        </div>
-                    </div>
-                    <ul class="list-group list-group-flush list-of-features">
-                        <!-- TODO: MOVE INNER CSS IN  tariffs.css -->
-                        <li class="list-group-item">
-
-                            <span class="d-inline-block bg-primary rounded-circle"
-                                  style="width: .5em; height: .5em;"></span>
-                            15GB of Intenet
-                        </li>
-                        <li class="list-group-item">
-                            <span class="d-inline-block bg-primary rounded-circle"
-                                  style="width: .5em; height: .5em;"></span>
-                            Unlimitted calls
-                        </li>
-
-                    </ul>
-                    <div class="card-body tariffs-connection">
-                        <a href="#" method="GET">
-                            <button type="button" class="btn btn-primary">Connect</button>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="card tariff-card" style="width: 18rem;">
-                    <!-- <img src="LOGO.png" style="object-fit:contain; height: 80px;" class="card-img-top" alt="..."> -->
-                    <div class="card-body tariff-content">
-                        <h5 class="card-title tariff-title">"Silver Pro Max"</h5>
-                        <p class="card-text tariff-subtitle">Phone: Tariff plan for all family!</p>
-
-                        <div class="tariff-price">
-                            <div class="tariff-price-box">
-                                <span>Price:</span>
-                                <span>50$/month</span>
-                            </div>
-                        </div>
-                    </div>
-                    <ul class="list-group list-group-flush list-of-features">
-                        <!-- TODO: MOVE INNER CSS IN  tariffs.css -->
-                        <li class="list-group-item">
-
-                            <span class="d-inline-block bg-primary rounded-circle"
-                                  style="width: .5em; height: .5em;"></span>
-                            15GB of Intenet
-                        </li>
-                        <li class="list-group-item">
-                            <span class="d-inline-block bg-primary rounded-circle"
-                                  style="width: .5em; height: .5em;"></span>
-                            Unlimitted calls
-                        </li>
-                        <li class="list-group-item">
-                            <span class="d-inline-block bg-primary rounded-circle"
-                                  style="width: .5em; height: .5em;"></span>
-                            A third item
-                        </li>
-
-                    </ul>
-                    <div class="card-body tariffs-connection">
-                        <a href="#" method="GET">
-                            <button type="button" class="btn btn-primary">Connect</button>
-                        </a>
-                    </div>
-                </div>
-
+                </c:forEach>
 
             </section>
         </div>
