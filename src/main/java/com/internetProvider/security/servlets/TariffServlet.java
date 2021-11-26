@@ -9,7 +9,9 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "TariffServlet", value = "/tariffs")
 public class TariffServlet extends HttpServlet {
@@ -23,12 +25,33 @@ public class TariffServlet extends HttpServlet {
         List<Tariff> tariffList = tariffService.getTariffsSortedByABC("DESC");
         request.setAttribute("tariffList", tariffList);
 
+        if (!"".equals(request.getQueryString())) {
+            Map<String, String> query = getQueryMap(request.getQueryString());
+            for (Map.Entry attr: query.entrySet()) {
+                System.out.println(attr.getValue()+" = "+attr.getKey());
+            }
+        }
 
+
+        System.out.println(request.getQueryString());
         request.getRequestDispatcher("tariffs.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+    }
+
+    public Map<String, String> getQueryMap(String query)
+    {
+        String[] params = query.split("&");
+        Map<String, String> map = new HashMap<String, String>();
+        for (String param : params)
+        {
+            String name = param.split("=")[0];
+            String value = param.split("=")[1];
+            map.put(name, value);
+        }
+        return map;
     }
 }

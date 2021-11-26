@@ -15,28 +15,28 @@
                 <div class="filters-line">
 
                     <div class="filter-choosing">
-                        <form action="">
+                        <form  >
 
                             <div class="filters-logo"><i class="fas fa-sliders-h fa-lg"></i></div>
                             <div class="filters">
-                                <select class="form-select" name="Services" id="by-service">
+                                <select class="form-select" name="service" id="by-service">
                                     <option value="" selected disabled hidden>Services</option>
                                     <c:forEach var="service" items="${serviceList}">
-                                        <option value="">${service.getName()}</option>
+                                        <option value="${service.getId()}">${service.getName()}</option>
                                     </c:forEach>
                                 </select>
-                                <select class="form-select" name="Price" id="by-price">
+                                <select class="form-select" name="sortBy" id="by-price">
                                     <option value="" selected disabled hidden>Sort by</option>
-                                    <option value="">Price High To Low</option>
-                                    <option value="">Price Low To High</option>
-                                    <option value="">A-Z</option>
-                                    <option value="">Z-A</option>
+                                    <option value="priceDesc">Price High To Low</option>
+                                    <option value="priceAsc">Price Low To High</option>
+                                    <option value="abcDesc">A-Z</option>
+                                    <option value="abcAsc">Z-A</option>
                                 </select>
                             </div>
 
                             <div class="filter-apply">
-                                <a href="#" method="GET">
-                                    <button type="button"
+                                <a href="#" >
+                                    <button type="submit"
                                             class="btn btn-primary">Apply
                                     </button>
                                 </a>
