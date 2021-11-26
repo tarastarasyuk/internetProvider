@@ -1,0 +1,148 @@
+.tariffs-title {
+    margin-top: 35px;
+    font-weight: bold;
+}
+
+.filters-line{
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-top: 1px solid #F2F3F5;
+    border-bottom: 2px solid #F2F3F5;
+
+    justify-content: space-between;
+}
+
+.filters-line * {
+    height: 100%;
+}
+
+
+
+.filter-choosing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.filter-choosing form {
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    justify-content: flex-start;
+}
+
+
+.filters-logo {
+    margin-right: 20px;
+}
+
+.filters{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+
+.filters select {
+    margin-right: 20px;
+    width: 120px;
+}
+
+.filters select:last-child {
+    margin-right: 0px;
+}
+
+#by-price {
+    min-width: 190px;
+}
+
+.filter-apply {
+    height: 100%;
+}
+
+.clear-btn{
+    background-color: #fff;
+    color: #6C757D;
+}
+
+.filter {
+    margin-bottom: 40px;
+}
+
+/* Tariffs */
+
+.tariffs {
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Card */
+
+.tariffs .card, .tariffs .card li {
+    background-color: #F2F2F2;
+}
+
+.tariffs .card {
+    margin-right: 40px;
+    margin-bottom: 40px;
+}
+
+.tariffs span {
+    margin-right: 10px;
+}
+
+.tariff-content {
+    text-align: center;
+}
+
+.tariff-title{
+    font-weight: bold;
+}
+
+.tariff-price {
+    display: flex;
+    justify-content: center;
+}
+
+.tariff-price-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8px;
+    border: 2px dashed #6C757D;
+    border-radius: 6px;
+
+    text-align: center;
+    font-weight: 500;
+}
+
+.tariff-price-box span {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.list-of-features li{
+    display: flex;
+    align-items: center;
+}
+
+.tariffs-connection {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.tariffs-connection a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tariffs-connection button {
+    height: 50px;
+}

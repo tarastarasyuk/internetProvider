@@ -1,0 +1,20 @@
+.card {
+    margin-bottom: 40px;
+    background: #F7F8F9;
+    border: none;
+    border-radius: 6px;
+}
+
+.goto-tariffs {
+    border: 1px solid #001737;
+    color: #001737;
+}
+
+.goto-tariffs:hover {
+    border-color: #0D6EFD;
+    color: #0D6EFD;
+}
+
+.card i {
+    margin-bottom: 10px;
+}
