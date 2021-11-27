@@ -54,7 +54,7 @@ public class TariffServlet extends HttpServlet {
 //            Collections.shuffle(tariffList);
         }
 
-        Map<Tariff, List<String>> mapWithTariffsAndServices = new HashMap<>();
+        Map<Tariff, List<String>> mapWithTariffsAndServices = new LinkedHashMap<>();
 
         for (Tariff tariff: tariffList) {
             List<String> serviceNames = new ArrayList<>();

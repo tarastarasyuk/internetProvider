@@ -19,7 +19,7 @@
 
                             <div class="filters-logo"><i class="fas fa-sliders-h fa-lg"></i></div>
                             <div class="filters">
-                                <select class="form-select" name="service" id="by-service" multiple>
+                                <select class="form-select" name="service" id="by-service" >
                                     <option value="" ${selectedServices == null ? 'selected':''} disabled hidden >Services</option>
                                     <c:forEach var="service" items="${serviceList}">
                                         <option value="${service.getId()}" ${selectedServices.contains(service.getId().toString()) ? 'selected': ''}  >${service.getName()}
@@ -73,7 +73,7 @@
                             <div class="tariff-price">
                                 <div class="tariff-price-box">
                                     <span>Price:</span>
-                                    <span>${tariff.getPrice()}$/${entry.getKey().getDayDuration()}days</span>
+                                    <span>${entry.getKey().getPrice()}$/${entry.getKey().getDayDuration()}days</span>
                                 </div>
                             </div>
 
