@@ -145,7 +145,7 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
         List<Tariff> tariffList = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.prepareStatement(statement)) {
 //           TODO: connection.createArrayOf() doesn't work, fix it
-            preparedStatement.setInt(1, services.length - 1);
+            preparedStatement.setInt(1, services.length);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {

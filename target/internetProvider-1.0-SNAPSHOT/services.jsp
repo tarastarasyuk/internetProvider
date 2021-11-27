@@ -13,7 +13,7 @@
                         <div class="card-body text-center">
                             <i class="${service.getLogoLink()}" style="color: #001737;"></i>
                             <h4 class="card-title">${service.getName()}</h4>
-                            <a href="${pageContext.request.contextPath}tariffs/service=${service.getName()}" class="btn goto-tariffs">See avaible tariffs</a>
+                            <a href="${pageContext.request.contextPath}tariffs?service=${service.getId()}" class="btn goto-tariffs">See avaible tariffs</a>
                         </div>
                     </div>
                 </c:forEach>

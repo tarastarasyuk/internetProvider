@@ -10,6 +10,7 @@
 
                 <div class="tariffs-title">
                     <h1>Tariffs</h1>
+
                 </div>
 
                 <div class="filters-line">
@@ -19,7 +20,7 @@
 
                             <div class="filters-logo"><i class="fas fa-sliders-h fa-lg"></i></div>
                             <div class="filters">
-                                <select class="form-select" name="service" id="by-service" >
+                                <select class="form-select" name="service" id="by-service" multiple>
                                     <option value="" ${selectedServices == null ? 'selected':''} disabled hidden >Services</option>
                                     <c:forEach var="service" items="${serviceList}">
                                         <option value="${service.getId()}" ${selectedServices.contains(service.getId().toString()) ? 'selected': ''}  >${service.getName()}
@@ -61,7 +62,7 @@
 
 
             <section class="tariffs">
-
+                    ${noSuchTariffs}
                 <c:forEach var="entry" items="${mapWithTariffsAndServices.entrySet()}">
 
                     <div class="card tariff-card" style="width: 18rem;">

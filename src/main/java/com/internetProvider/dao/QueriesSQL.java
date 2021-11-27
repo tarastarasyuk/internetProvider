@@ -58,10 +58,8 @@ public class QueriesSQL {
     public static final String SELECT_SERVICE_ID_BY_TARIFF_ID = "SELECT "+tariffHasServiceServiceId+" FROM " + tariffHasServiceTable + " WHERE "+ tariffHasServiceTariffId + "= ?;";
 
     //    getTariffsByServices
-//    SELECT * FROM tariff WHERE id in (SELECT tariff_id FROM (SELECT tariff_id FROM tariff_has_service WHERE service_id in (1,2)) AS A GROUP BY tariff_id HAVING COUNT(tariff_id) > 1);
-    public static final String SELECT_TARIFFS_BY_SERVICES = "SELECT * FROM " + tariffTable + " WHERE id in (SELECT " + tariffHasServiceTariffId + " FROM ( SELECT " + tariffHasServiceTariffId + " FROM " + tariffHasServiceTable + " WHERE " + tariffHasServiceServiceId + " in ($)) AS A GROUP BY " + tariffHasServiceTariffId + " HAVING COUNT(" + tariffHasServiceTariffId + ") > (?));";
-    public static final String SELECT_TARIFFS_BY_SERVICES_ORDER_BY = "SELECT * FROM " + tariffTable + " WHERE id in (SELECT " + tariffHasServiceTariffId + " FROM ( SELECT " + tariffHasServiceTariffId + " FROM " + tariffHasServiceTable + " WHERE " + tariffHasServiceServiceId + " in ($)) AS A GROUP BY " + tariffHasServiceTariffId + " HAVING COUNT(" + tariffHasServiceTariffId + ") > (?)) ORDER BY 1 "+" 2;";
-
+    public static final String SELECT_TARIFFS_BY_SERVICES = "SELECT * FROM " + tariffTable + " WHERE id in (SELECT " + tariffHasServiceTariffId + " FROM ( SELECT * FROM " + tariffHasServiceTable + " AS A GROUP BY " +tariffHasServiceTariffId+ " HAVING COUNT("+ tariffHasServiceTariffId+") = ?) AS B WHERE " +tariffHasServiceServiceId+" IN ($))";
+    public static final String SELECT_TARIFFS_BY_SERVICES_ORDER_BY = SELECT_TARIFFS_BY_SERVICES + " ORDER BY 1 "+" 2;";
     /**
      * wht
      */

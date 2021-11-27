@@ -65,8 +65,12 @@ public class TariffServlet extends HttpServlet {
             mapWithTariffsAndServices.put(tariff, serviceNames);
         }
 
-        request.setAttribute("tariffList", tariffList);
-        request.setAttribute("mapWithTariffsAndServices", mapWithTariffsAndServices);
+        if (!tariffList.isEmpty()) {
+            request.setAttribute("tariffList", tariffList);
+            request.setAttribute("mapWithTariffsAndServices", mapWithTariffsAndServices);
+        } else {
+            request.setAttribute("noSuchTariffs", "Sorry, there are no such tariffs");
+        }
 
 
         request.getRequestDispatcher("tariffs.jsp").forward(request, response);
