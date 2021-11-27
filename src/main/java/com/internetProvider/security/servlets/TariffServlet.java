@@ -19,10 +19,13 @@ public class TariffServlet extends HttpServlet {
         ServiceService serviceService = new ServiceService(request);
         List<Service> serviceList = serviceService.getAllServices();
         request.setAttribute("serviceList", serviceList);
-        List<Tariff> tariffList = null;
-
-
         TariffService tariffService = new TariffService(request);
+
+
+        List<Tariff> tariffList;
+
+
+
         if (request.getQueryString() != null) {
             String service = request.getParameter("service");
             String sortBy = request.getParameter("sortBy");
@@ -30,20 +33,40 @@ public class TariffServlet extends HttpServlet {
                 String[] values = sortBy.split("_");
                 int [] services = getServicesId(request.getParameterValues("service"));
                 tariffList = tariffService.getTariffsByServicesSortedBy(services, values[0], values[1]);
+                request.setAttribute("selectedServices", Arrays.toString(services));
+                request.setAttribute("selectedSortBy", sortBy);
             } else if (service != null)  {
                 int[] services = getServicesId(request.getParameterValues("service"));
                 tariffList = tariffService.getTariffsByServices(services);
+                request.setAttribute("selectedServices", Arrays.toString(services));
             } else if (sortBy != null) {
                 String[] values = sortBy.split("_");
                 tariffList = tariffService.getTariffsSortedBy(values[0], values[1]);
+                request.setAttribute("selectedSortBy", sortBy);
+            } else {
+                tariffList = tariffService.getAllTariffs();
             }
 
         } else {
-            // for no to be in permanent order after refresh
+
             tariffList = tariffService.getAllTariffs();
-            Collections.shuffle(tariffList);
+//            // for not to be in permanent order after refresh
+//            Collections.shuffle(tariffList);
         }
+
+        Map<Tariff, List<String>> mapWithTariffsAndServices = new HashMap<>();
+
+        for (Tariff tariff: tariffList) {
+            List<String> serviceNames = new ArrayList<>();
+            for (Integer serviceId:tariff.getListOfServiceId()) {
+                Optional<Service> foundService =  serviceList.stream().filter(service -> service.getId() == serviceId).findFirst();
+                serviceNames.add(foundService.get().getName());
+            }
+            mapWithTariffsAndServices.put(tariff, serviceNames);
+        }
+
         request.setAttribute("tariffList", tariffList);
+        request.setAttribute("mapWithTariffsAndServices", mapWithTariffsAndServices);
 
 
         request.getRequestDispatcher("tariffs.jsp").forward(request, response);

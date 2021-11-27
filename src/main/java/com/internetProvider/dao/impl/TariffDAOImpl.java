@@ -33,7 +33,24 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
         tariff.setPrice(resultSet.getBigDecimal(k++));
         tariff.setDayDuration(resultSet.getInt(k++));
         tariff.setFeatures(resultSet.getString(k));
+        getListOfServiceIdOfCurrentTariff(tariff.getId());
+        tariff.setListOfServiceId(getListOfServiceIdOfCurrentTariff(tariff.getId()));
         return tariff;
+    }
+
+    private List<Integer> getListOfServiceIdOfCurrentTariff(int id) {
+        List<Integer> listOfServiceId = new ArrayList<>();
+        try( PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.SELECT_SERVICE_ID_BY_TARIFF_ID)) {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                listOfServiceId.add(resultSet.getInt(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listOfServiceId;
     }
 
     @Override
@@ -46,6 +63,7 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
             preparedStatement.setBigDecimal(3, entity.getPrice());
             preparedStatement.setInt(4, entity.getDayDuration());
             preparedStatement.setString(5, entity.getFeatures());
+            // TODO: create tariffHasService
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
@@ -79,6 +97,7 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
             preparedStatement.setInt(4, newEntity.getDayDuration());
             preparedStatement.setString(5, newEntity.getFeatures());
             preparedStatement.setInt(6, entityId);
+            // TODO: update tariffHasService
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {

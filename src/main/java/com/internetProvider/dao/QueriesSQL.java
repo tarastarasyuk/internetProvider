@@ -55,6 +55,7 @@ public class QueriesSQL {
     private static final String tariffHasServiceTable = "tariff_has_service";
     private static final String tariffHasServiceTariffId = "tariff_id";
     private static final String tariffHasServiceServiceId = "service_id";
+    public static final String SELECT_SERVICE_ID_BY_TARIFF_ID = "SELECT "+tariffHasServiceServiceId+" FROM " + tariffHasServiceTable + " WHERE "+ tariffHasServiceTariffId + "= ?;";
 
     //    getTariffsByServices
 //    SELECT * FROM tariff WHERE id in (SELECT tariff_id FROM (SELECT tariff_id FROM tariff_has_service WHERE service_id in (1,2)) AS A GROUP BY tariff_id HAVING COUNT(tariff_id) > 1);

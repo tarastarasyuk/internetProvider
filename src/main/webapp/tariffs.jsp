@@ -15,22 +15,23 @@
                 <div class="filters-line">
 
                     <div class="filter-choosing">
-                        <form  >
+                        <form method="GET", action="${pageContext.request.contextPath}/tariffs">
 
                             <div class="filters-logo"><i class="fas fa-sliders-h fa-lg"></i></div>
                             <div class="filters">
                                 <select class="form-select" name="service" id="by-service" multiple>
-                                    <option value="" selected disabled hidden>Services</option>
+                                    <option value="" ${selectedServices == null ? 'selected':''} disabled hidden >Services</option>
                                     <c:forEach var="service" items="${serviceList}">
-                                        <option value="${service.getId()}">${service.getName()}</option>
+                                        <option value="${service.getId()}" ${selectedServices.contains(service.getId().toString()) ? 'selected': ''}  >${service.getName()}
+                                        </option>
                                     </c:forEach>
                                 </select>
                                 <select class="form-select" name="sortBy" id="by-price">
-                                    <option value="" selected disabled hidden>Sort by</option>
-                                    <option value="price_desc">Price High To Low</option>
-                                    <option value="price_asc">Price Low To High</option>
-                                    <option value="name_asc">A-Z</option>
-                                    <option value="name_desc">Z-A</option>
+                                    <option value="" ${selectedSortBy == null ? 'selected':''} disabled hidden>Sort by</option>
+                                    <option value="price_desc" ${selectedSortBy.equals("price_desc")? 'selected': ''}>Price High To Low</option>
+                                    <option value="price_asc" ${selectedSortBy.equals("price_asc")? 'selected': ''}>Price Low To High</option>
+                                    <option value="name_asc" ${selectedSortBy.equals("name_asc")? 'selected': ''}>A-Z</option>
+                                    <option value="name_desc" ${selectedSortBy.equals("name_desc")? 'selected': ''}>Z-A</option>
                                 </select>
                             </div>
 
@@ -61,23 +62,24 @@
 
             <section class="tariffs">
 
-                <c:forEach var="tariff" items="${tariffList}">
+                <c:forEach var="entry" items="${mapWithTariffsAndServices.entrySet()}">
 
                     <div class="card tariff-card" style="width: 18rem;">
 
                         <div class="card-body tariff-content">
-                            <h5 class="card-title tariff-title">"${tariff.getName()}"</h5>
-                            <p class="card-text tariff-subtitle">${tariff.getDescription()}</p>
+                            <h5 class="card-title tariff-title">"${entry.getKey().getName()}"</h5>
+                            <p class="card-text tariff-subtitle">${entry.getKey().getDescription()}</p>
 
                             <div class="tariff-price">
                                 <div class="tariff-price-box">
                                     <span>Price:</span>
-                                    <span>${tariff.getPrice()}$/${tariff.getDayDuration()}days</span>
+                                    <span>${tariff.getPrice()}$/${entry.getKey().getDayDuration()}days</span>
                                 </div>
                             </div>
 
                             <div class="tariff-service-list">
-                                Service: Phone, IP-TV
+                                Services:
+                                <c:forEach var="service" items="${entry.getValue()}"><span><strong>*${service} </strong></span></c:forEach>
                             </div>
                         </div>
 
@@ -86,7 +88,7 @@
                             <!-- TODO: MOVE INNER CSS IN  tariffs.css -->
 
 
-                            <c:forEach var="feature" items="${tariff.getFeaturesList()}">
+                            <c:forEach var="feature" items="${entry.getKey().getFeaturesList()}">
                                 <li class="list-group-item">
                                     <span class="d-inline-block bg-primary rounded-circle"
                                   style="width: .5em; height: .5em;"></span>

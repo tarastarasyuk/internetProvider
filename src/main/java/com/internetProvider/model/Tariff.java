@@ -12,17 +12,27 @@ public class Tariff {
     private BigDecimal price;
     private int dayDuration;
     private String features;
+    private List<Integer> listOfServiceId;
 
     public Tariff() {
     }
 
-    public Tariff(int id, String name, String description, BigDecimal price, int dayDuration, String features) {
+    public Tariff(int id, String name, String description, BigDecimal price, int dayDuration, String features, List<Integer> listOfServiceId) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.dayDuration = dayDuration;
         this.features = features;
+        this.listOfServiceId = listOfServiceId;
+    }
+
+    public List<Integer> getListOfServiceId() {
+        return listOfServiceId;
+    }
+
+    public void setListOfServiceId(List<Integer> listOfServiceId) {
+        this.listOfServiceId = listOfServiceId;
     }
 
     public String getFeatures() {
