@@ -3,6 +3,7 @@ package com.internetProvider.dao.impl;
 import com.internetProvider.dao.ConnectionConstructor;
 import com.internetProvider.dao.QueriesSQL;
 import com.internetProvider.dao.TariffDAO;
+import com.internetProvider.database.QueriesConstants;
 import com.internetProvider.model.Role;
 import com.internetProvider.model.Tariff;
 import com.internetProvider.model.User;
@@ -100,16 +101,32 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
     }
 
     @Override
-    public List<Tariff> getTariffsByServices(Integer... serviceId) {
-        List<Tariff> tariffList = new ArrayList<>();
-        String servicesId = Arrays.toString(serviceId)
+    public List<Tariff> getTariffsByServices(int[] services) {
+        String statement = setArrayInPreparedStatement(services, QueriesSQL.SELECT_TARIFFS_BY_SERVICES);
+        return getAllTariffsByServices(services, statement);
+    }
+
+    @Override
+    public List<Tariff> getTariffsByServicesSortedBy(int[] services, String field, String order) {
+        String preparedStatement = QueriesSQL.SELECT_TARIFFS_BY_SERVICES_ORDER_BY.replace("1",field).replace("2", order);
+        String statement = setArrayInPreparedStatement(services, preparedStatement);
+        return getAllTariffsByServices(services, statement);
+    }
+
+    private String setArrayInPreparedStatement(int[] services, String preparedStatement) {
+        String servicesId = Arrays.toString(services)
                 .replace("[", "")
                 .replace("]", "");
-        // $ like ?
-        String statement = QueriesSQL.SELECT_TARIFFS_BY_SERVICES.replace("$", servicesId);
+        return preparedStatement.replace("$", servicesId);
+    }
+
+
+
+    private List<Tariff> getAllTariffsByServices(int[] services, String statement) {
+        List<Tariff> tariffList = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.prepareStatement(statement)) {
 //           TODO: connection.createArrayOf() doesn't work, fix it
-            preparedStatement.setInt(1, serviceId.length - 1);
+            preparedStatement.setInt(1, services.length - 1);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
@@ -122,15 +139,11 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
         return tariffList;
     }
 
-    @Override
-    public List<Tariff> getTariffsSortedByPrice(String order) {
-        String statement = QueriesSQL.SELECT_ALL_TARIFFS_SORTED_BY_PRICE_DESC.replace("$", order);
-        return getAllTariffs(statement);
-    }
+
 
     @Override
-    public List<Tariff> getTariffsSortedByABC(String order) {
-        String statement = QueriesSQL.SELECT_ALL_TARIFFS_SORTED_BY_ABC_ASC.replace("$", order);
+    public List<Tariff> getTariffsSortedBy(String field, String order) {
+        String statement = QueriesSQL.SELECT_ALL_TARIFFS_ORDER_BY.replace("1",field).replace("2", order);
         return getAllTariffs(statement);
     }
 

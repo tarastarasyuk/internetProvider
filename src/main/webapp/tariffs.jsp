@@ -19,7 +19,7 @@
 
                             <div class="filters-logo"><i class="fas fa-sliders-h fa-lg"></i></div>
                             <div class="filters">
-                                <select class="form-select" name="service" id="by-service">
+                                <select class="form-select" name="service" id="by-service" multiple>
                                     <option value="" selected disabled hidden>Services</option>
                                     <c:forEach var="service" items="${serviceList}">
                                         <option value="${service.getId()}">${service.getName()}</option>
@@ -27,10 +27,10 @@
                                 </select>
                                 <select class="form-select" name="sortBy" id="by-price">
                                     <option value="" selected disabled hidden>Sort by</option>
-                                    <option value="priceDesc">Price High To Low</option>
-                                    <option value="priceAsc">Price Low To High</option>
-                                    <option value="abcDesc">A-Z</option>
-                                    <option value="abcAsc">Z-A</option>
+                                    <option value="price_desc">Price High To Low</option>
+                                    <option value="price_asc">Price Low To High</option>
+                                    <option value="name_asc">A-Z</option>
+                                    <option value="name_desc">Z-A</option>
                                 </select>
                             </div>
 

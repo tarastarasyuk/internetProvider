@@ -9,9 +9,8 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @WebServlet(name = "TariffServlet", value = "/tariffs")
 public class TariffServlet extends HttpServlet {
@@ -20,20 +19,33 @@ public class TariffServlet extends HttpServlet {
         ServiceService serviceService = new ServiceService(request);
         List<Service> serviceList = serviceService.getAllServices();
         request.setAttribute("serviceList", serviceList);
+        List<Tariff> tariffList = null;
+
 
         TariffService tariffService = new TariffService(request);
-        List<Tariff> tariffList = tariffService.getTariffsSortedByABC("DESC");
+        if (request.getQueryString() != null) {
+            String service = request.getParameter("service");
+            String sortBy = request.getParameter("sortBy");
+            if (service != null && sortBy != null) {
+                String[] values = sortBy.split("_");
+                int [] services = getServicesId(request.getParameterValues("service"));
+                tariffList = tariffService.getTariffsByServicesSortedBy(services, values[0], values[1]);
+            } else if (service != null)  {
+                int[] services = getServicesId(request.getParameterValues("service"));
+                tariffList = tariffService.getTariffsByServices(services);
+            } else if (sortBy != null) {
+                String[] values = sortBy.split("_");
+                tariffList = tariffService.getTariffsSortedBy(values[0], values[1]);
+            }
+
+        } else {
+            // for no to be in permanent order after refresh
+            tariffList = tariffService.getAllTariffs();
+            Collections.shuffle(tariffList);
+        }
         request.setAttribute("tariffList", tariffList);
 
-        if (!"".equals(request.getQueryString())) {
-            Map<String, String> query = getQueryMap(request.getQueryString());
-            for (Map.Entry attr: query.entrySet()) {
-                System.out.println(attr.getValue()+" = "+attr.getKey());
-            }
-        }
 
-
-        System.out.println(request.getQueryString());
         request.getRequestDispatcher("tariffs.jsp").forward(request, response);
     }
 
@@ -42,16 +54,7 @@ public class TariffServlet extends HttpServlet {
 
     }
 
-    public Map<String, String> getQueryMap(String query)
-    {
-        String[] params = query.split("&");
-        Map<String, String> map = new HashMap<String, String>();
-        for (String param : params)
-        {
-            String name = param.split("=")[0];
-            String value = param.split("=")[1];
-            map.put(name, value);
-        }
-        return map;
+    private int[] getServicesId(String[] values) {
+        return Arrays.stream(values).mapToInt(Integer::parseInt).toArray();
     }
 }
