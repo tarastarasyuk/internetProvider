@@ -62,7 +62,7 @@ public class TariffServlet extends HttpServlet {
 
         if (!tariffList.isEmpty()) {
             request.setAttribute("tariffList", tariffList);
-            request.setAttribute("mapWithTariffsAndServices", mapWithTariffsAndServices);
+//            request.setAttribute("mapWithTariffsAndServices", mapWithTariffsAndServices);
         } else {
             request.setAttribute("noSuchTariffs", "Sorry, there are no such tariffs");
         }
