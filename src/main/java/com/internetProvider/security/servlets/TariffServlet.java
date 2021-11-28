@@ -57,12 +57,7 @@ public class TariffServlet extends HttpServlet {
         Map<Tariff, List<String>> mapWithTariffsAndServices = new LinkedHashMap<>();
 
         for (Tariff tariff: tariffList) {
-            List<String> serviceNames = new ArrayList<>();
-            for (Integer serviceId:tariff.getListOfServiceId()) {
-                Optional<Service> foundService =  serviceList.stream().filter(service -> service.getId() == serviceId).findFirst();
-                serviceNames.add(foundService.get().getName());
-            }
-            mapWithTariffsAndServices.put(tariff, serviceNames);
+            mapWithTariffsAndServices.put(tariff, tariff.getListOfServiceName());
         }
 
         if (!tariffList.isEmpty()) {

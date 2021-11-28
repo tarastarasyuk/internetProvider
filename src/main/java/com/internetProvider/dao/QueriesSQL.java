@@ -56,6 +56,8 @@ public class QueriesSQL {
     private static final String tariffHasServiceTariffId = "tariff_id";
     private static final String tariffHasServiceServiceId = "service_id";
     public static final String SELECT_SERVICE_ID_BY_TARIFF_ID = "SELECT "+tariffHasServiceServiceId+" FROM " + tariffHasServiceTable + " WHERE "+ tariffHasServiceTariffId + "= ?;";
+    public static final String SELECT_SERVICE_NAME_BY_TARIFF_ID = "SELECT "+tariffName+" FROM "+ serviceTable+" WHERE ID IN (SELECT "+ tariffHasServiceServiceId+" FROM "+ tariffHasServiceTable+" WHERE "+ tariffHasServiceTariffId+" = ?);";
+
 
     //    getTariffsByServices
     public static final String SELECT_TARIFFS_BY_SERVICES = "SELECT * FROM " + tariffTable + " WHERE id in (SELECT " + tariffHasServiceTariffId + " FROM ( SELECT * FROM " + tariffHasServiceTable + " AS A GROUP BY " +tariffHasServiceTariffId+ " HAVING COUNT("+ tariffHasServiceTariffId+") = ?) AS B WHERE " +tariffHasServiceServiceId+" IN ($))";

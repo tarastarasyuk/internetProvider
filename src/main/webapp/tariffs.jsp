@@ -62,8 +62,9 @@
 
 
             <section class="tariffs">
-                    ${noSuchTariffs}
+                ${noSuchTariffs}
                 <c:forEach var="entry" items="${mapWithTariffsAndServices.entrySet()}">
+
 
                     <div class="card tariff-card" style="width: 18rem;">
 
@@ -87,7 +88,6 @@
 
                         <ul class="list-group list-group-flush list-of-features">
                             <!-- TODO: MOVE INNER CSS IN  tariffs.css -->
-
 
                             <c:forEach var="feature" items="${entry.getKey().getFeaturesList()}">
                                 <li class="list-group-item">

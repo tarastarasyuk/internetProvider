@@ -35,7 +35,23 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
         tariff.setFeatures(resultSet.getString(k));
         getListOfServiceIdOfCurrentTariff(tariff.getId());
         tariff.setListOfServiceId(getListOfServiceIdOfCurrentTariff(tariff.getId()));
+        tariff.setListOfServiceName(getListOfServiceNameOfCurrentTariff(tariff.getId()));
         return tariff;
+    }
+
+    private List<String> getListOfServiceNameOfCurrentTariff(int id) {
+        List<String> listOfServiceId = new ArrayList<>();
+        try( PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.SELECT_SERVICE_NAME_BY_TARIFF_ID)) {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                listOfServiceId.add(resultSet.getString(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listOfServiceId;
     }
 
     private List<Integer> getListOfServiceIdOfCurrentTariff(int id) {

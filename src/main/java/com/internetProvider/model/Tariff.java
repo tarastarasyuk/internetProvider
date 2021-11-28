@@ -13,11 +13,12 @@ public class Tariff {
     private int dayDuration;
     private String features;
     private List<Integer> listOfServiceId;
+    private List<String> listOfServiceName;
 
     public Tariff() {
     }
 
-    public Tariff(int id, String name, String description, BigDecimal price, int dayDuration, String features, List<Integer> listOfServiceId) {
+    public Tariff(int id, String name, String description, BigDecimal price, int dayDuration, String features, List<Integer> listOfServiceId, List<String> listOfServiceName) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -25,6 +26,15 @@ public class Tariff {
         this.dayDuration = dayDuration;
         this.features = features;
         this.listOfServiceId = listOfServiceId;
+        this.listOfServiceName = listOfServiceName;
+    }
+
+    public List<String> getListOfServiceName() {
+        return listOfServiceName;
+    }
+
+    public void setListOfServiceName(List<String> listOfServiceName) {
+        this.listOfServiceName = listOfServiceName;
     }
 
     public List<Integer> getListOfServiceId() {
