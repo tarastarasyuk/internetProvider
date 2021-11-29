@@ -10,7 +10,6 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @WebServlet(name = "TariffServlet", value = "/tariffs")
 public class TariffServlet extends HttpServlet {
@@ -54,15 +53,9 @@ public class TariffServlet extends HttpServlet {
 //            Collections.shuffle(tariffList);
         }
 
-        Map<Tariff, List<String>> mapWithTariffsAndServices = new LinkedHashMap<>();
-
-        for (Tariff tariff: tariffList) {
-            mapWithTariffsAndServices.put(tariff, tariff.getListOfServiceName());
-        }
 
         if (!tariffList.isEmpty()) {
             request.setAttribute("tariffList", tariffList);
-//            request.setAttribute("mapWithTariffsAndServices", mapWithTariffsAndServices);
         } else {
             request.setAttribute("noSuchTariffs", "Sorry, there are no such tariffs");
         }
