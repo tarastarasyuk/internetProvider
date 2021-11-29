@@ -73,6 +73,7 @@ public class QueriesSQL {
     public static final String SELECT_ALL_CITY = "SELECT * FROM " + cityTable;
     public static final String CREATE_CITY = "INSERT INTO " + cityTable + "(" + cityName + ") VALUES (?)";
     public static final String SELECT_CITY_BY_ID = "SELECT * FROM " + cityTable + " WHERE " + cityId + " = ?";
+    public static final String SELECT_CITY_NAME_BY_ID = "SELECT "+ cityName+" FROM " + cityTable + " WHERE " + cityId + " = ?";
     public static final String DELETE_CITY_BY_ID = "DELETE FROM " + cityTable + " WHERE " + cityId + " = ?";
     public static final String UPDATE_CITY_BY_ID = "UPDATE " + cityTable + " SET " + cityName + " =? WHERE " + serviceId + " =?";
 

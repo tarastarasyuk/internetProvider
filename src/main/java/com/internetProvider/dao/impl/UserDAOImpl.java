@@ -49,7 +49,22 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
         user.setRoleId(resultSet.getInt(k++));
         user.setRole(Role.getRole(user.getRoleId()));
         user.setCityId(resultSet.getInt(k));
+        user.setCityName(getCityNameByCityId(user.getCityId()));
         return user;
+    }
+
+    private String getCityNameByCityId(Integer cityId) {
+        String result = new String();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.SELECT_CITY_NAME_BY_ID)) {
+            preparedStatement.setInt(1, cityId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                result = resultSet.getString(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     @Override

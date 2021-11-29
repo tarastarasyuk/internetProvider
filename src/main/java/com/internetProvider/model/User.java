@@ -15,8 +15,21 @@ public class User {
     private int roleId;
     private Role role;
     private Integer cityId;
+    private String cityName;
 
     public User() {
+    }
+
+    public void setCityId(Integer cityId) {
+        this.cityId = cityId;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
     }
 
     public int getId() {
