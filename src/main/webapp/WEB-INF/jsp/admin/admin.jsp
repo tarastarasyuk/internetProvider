@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: workt
@@ -46,14 +47,15 @@
                     <div class="col-md-4"></div>
 
                     <div class="col-md-3">
-                        <label for="validationCustom06" class="form-label">City</label>
-                        <select class="form-select" id="validationCustom06" name="country" required>
-                            <option selected disabled value="">Choose...</option>
-                            <option>Ukraine</option>
-                            <option>France</option>
-                            <option>Germany</option>
-                            <option>Latvia</option>
+                        <label for="cityId" class="form-label">City</label>
+                        <select class="form-select" id="cityId" name="cityId" required>
+                            <option selected disabled value="">Choose your city</option>
+                            <c:forEach var="city" items="${cityList}">
+                                <option value="${city.getId()}">${city.getCityName()}
+                                </option>
+                            </c:forEach>
                         </select>
+
                         <div class="invalid-feedback">
                             Please select a valid state.
                         </div>

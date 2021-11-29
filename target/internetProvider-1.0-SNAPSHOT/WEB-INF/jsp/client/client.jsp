@@ -43,7 +43,7 @@
                             <span>Username: ${user.getUsername()}</span>
                             <span>Password: ${user.getPassword()}</span>
                             <span>Email: ${user.getEmail()}</span>
-                            <span>Town: </span>
+                            <span>Town: ${user.getCityName()}</span>
                         </div>
 
                     </div>

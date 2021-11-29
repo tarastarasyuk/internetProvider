@@ -20,12 +20,12 @@ public class ClientServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
-        String city = request.getParameter("country");
+        Integer cityId = Integer.valueOf(request.getParameter("cityId"));
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
         user.setEmail(email);
-        user.setCityId(2);
+        user.setCityId(cityId);
 
         UserService userService = new UserService(request);
         userService.createNewUser(user);
