@@ -37,9 +37,12 @@
         </ul>
 
         <div class="card-body tariffs-connection">
-            <a href="#" method="GET">
-                <button type="button" class="btn btn-primary">Connect</button>
-            </a>
+            <form action="tariffConnection" method="POST">
+<%--                <a href="tariffConnection" method="POST">--%>
+                    <input value="${tariff.getId()}" name="tariffId">
+                    <button type="button" class="btn btn-primary">Connect</button>
+<%--                </a>--%>
+            </form>
         </div>
 
     </div>
