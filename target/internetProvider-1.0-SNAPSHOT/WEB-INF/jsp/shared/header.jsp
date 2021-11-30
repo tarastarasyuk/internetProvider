@@ -24,7 +24,7 @@
                             <li><a class="dropdown-item d-flex align-items-center gap-2 py-2"
                                    href="services"><span class="d-inline-block bg-primary rounded-circle"
                                                               style="width: .5em; height: .5em;"></span>Services</a></li>
-                            <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="#"><span
+                            <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="tariffs"><span
                                     class="d-inline-block bg-primary rounded-circle"
                                     style="width: .5em; height: .5em;"></span>Tariffs</a></li>
                         </ul>
