@@ -6,6 +6,7 @@ import com.internetProvider.dao.UserDAO;
 import com.internetProvider.model.Role;
 import com.internetProvider.model.User;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -76,6 +77,20 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
             if (resultSet.next()) {
                 result = true;
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @Override
+    public boolean changeUserAccountById(int id, BigDecimal newAccount) {
+        boolean result = false;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.UPDATE_USER_ACCOUNT_BY_ID)) {
+            preparedStatement.setInt(1, id);
+            preparedStatement.setBigDecimal(2, newAccount);
+            preparedStatement.executeUpdate();
+            result = true;
         } catch (SQLException e) {
             e.printStackTrace();
         }

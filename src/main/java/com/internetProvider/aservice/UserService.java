@@ -5,6 +5,7 @@ import com.internetProvider.model.User;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
 import java.util.List;
 
 public class UserService extends AbstractService {
@@ -45,4 +46,10 @@ public class UserService extends AbstractService {
     public List<User> getAllUsers() {
         return entityDAO.getAll();
     }
+
+    public boolean changeUserAccountById(int id, BigDecimal account) {
+        return entityDAO.changeUserAccountById(id, account);
+    }
+
+
 }

@@ -9,6 +9,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.List;
 
 @WebServlet(name = "ClientPanelServlet", value = "/clientPanel/*")
@@ -23,13 +24,15 @@ public class ClientPanelServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
         String action = request.getPathInfo();
         if (action != null) {
             switch (action) {
                 case "/editProfile":
-                    editClientProfile(request);
+                    editClientProfile(request, session);
                     break;
                 case "/topUpBalance":
+                    topUpBalance(request, session);
                     break;
                 default:
                     break;
@@ -38,7 +41,7 @@ public class ClientPanelServlet extends HttpServlet {
             doGet(request, response);
         }
 
-        HttpSession session = request.getSession();
+
         User user = (User) session.getAttribute("user");
         UserService userService = new UserService(request);
         User updatedUser = userService.getUserByID(user.getId());
@@ -53,8 +56,18 @@ public class ClientPanelServlet extends HttpServlet {
 //        response.sendRedirect("/clientPanel?username="+request.getParameter("username")+"&password="+request.getParameter("password"));
     }
 
-    private void editClientProfile(HttpServletRequest request) {
-        HttpSession session = request.getSession();
+    private void topUpBalance(HttpServletRequest request, HttpSession session) {
+//        User sessionUser = (User) session.getAttribute("user");
+//
+//        BigDecimal currentAccount= sessionUser.getAccount();
+//        BigDecimal addedAccount = new BigDecimal(request.getParameter("balance"));
+//        BigDecimal newAccount = currentAccount.subtract(addedAccount);
+//
+//        UserService userService = new UserService(request);
+//        userService.changeUserAccountById(sessionUser.getId(), newAccount);
+    }
+
+    private void editClientProfile(HttpServletRequest request, HttpSession session) {
         User sessionUser = (User) session.getAttribute("user");
 
         String username = request.getParameter("username");
