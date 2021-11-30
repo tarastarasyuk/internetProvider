@@ -47,9 +47,12 @@
                         </div>
 
                     </div>
-                    <button class="btn edit-user-btn">
-                        Edit profile
-                    </button>
+                    <a href="${pageContext.request.contextPath}/addNewClient">
+                        <button class="btn edit-user-btn">
+                            Edit profile
+                        </button>
+
+                    </a>
                     <br>
 <%--                    TODO: REMOVE LATER--%>
                     <a href="${pageContext.request.contextPath}/logout"><button class="btn btn-success">Logout</button></a>
