@@ -8,7 +8,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "ClientServlet", urlPatterns = "/addNewClient")
+@WebServlet(name = "ClientServlet", urlPatterns = "/adminPanel/addNewClient")
 public class ClientServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -17,15 +17,6 @@ public class ClientServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getServletPath();
-        switch (action) {
-            case "editProfile":
-                break;
-            case "topUpBalance":
-                break;
-            default:
-                break;
-        }
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
