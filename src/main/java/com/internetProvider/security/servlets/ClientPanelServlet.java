@@ -31,8 +31,8 @@ public class ClientPanelServlet extends HttpServlet {
                 case "/editProfile":
                     editClientProfile(request, session);
                     break;
-                case "/topUpBalance":
-                    topUpBalance(request, session);
+                case "/topUpAccount":
+                    topUpAccount(request, session);
                     break;
                 default:
                     break;
@@ -56,11 +56,11 @@ public class ClientPanelServlet extends HttpServlet {
 //        response.sendRedirect("/clientPanel?username="+request.getParameter("username")+"&password="+request.getParameter("password"));
     }
 
-    private void topUpBalance(HttpServletRequest request, HttpSession session) {
+    private void topUpAccount(HttpServletRequest request, HttpSession session) {
         User sessionUser = (User) session.getAttribute("user");
 
         BigDecimal currentAccount= sessionUser.getAccount();
-        BigDecimal addedAccount = new BigDecimal(request.getParameter("balance"));
+        BigDecimal addedAccount = new BigDecimal(request.getParameter("account"));
         BigDecimal newAccount = currentAccount.add(addedAccount);
 
         UserService userService = new UserService(request);
