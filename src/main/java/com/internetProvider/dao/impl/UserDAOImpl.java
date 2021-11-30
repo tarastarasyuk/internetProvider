@@ -87,8 +87,8 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
     public boolean changeUserAccountById(int id, BigDecimal newAccount) {
         boolean result = false;
         try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.UPDATE_USER_ACCOUNT_BY_ID)) {
-            preparedStatement.setInt(1, id);
-            preparedStatement.setBigDecimal(2, newAccount);
+            preparedStatement.setBigDecimal(1, newAccount);
+            preparedStatement.setInt(2, id);
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {

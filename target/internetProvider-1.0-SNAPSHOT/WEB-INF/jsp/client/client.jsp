@@ -10,7 +10,10 @@
             <div class="col-5">
                 <div class="info-field">
                     <span>${doPost}Account: ${user.getAccount()}$&nbsp;&nbsp;&nbsp;</span>
-                    <button class="btn btn-success top-up-account">Top up</button>
+                    <button type="button" class="btn btn-success top-up-account" data-bs-toggle="modal" data-bs-target="#editModalBalance">
+                        Top up
+                    </button>
+
                 </div>
             </div>
             <div class="col-3">
@@ -48,7 +51,7 @@
 
                     </div>
 
-                    <button type="button" class="btn edit-user-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button type="button" class="btn edit-user-btn" data-bs-toggle="modal" data-bs-target="#editModal">
                         Edit profile
                     </button>
 
@@ -87,7 +90,7 @@
     </div>
 
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -132,6 +135,33 @@
 
                             <div class="modal-footer">
                                     <button class="btn btn-primary" type="submit">Submit form</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="modal fade" id="editModalBalance" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabelBalance">Top up your <account></account>:</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="row g-3" method="post" action="${pageContext.request.contextPath}/clientPanel/topUpBalance">
+
+                            <div class="col-md-4">
+                                <label for="validationBalance" class="form-label">Balance</label>
+                                <input type="text" class="form-control" id="validationBalance" value="0" name="balance" required>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="submit">Submit form</button>
                             </div>
 
                         </form>

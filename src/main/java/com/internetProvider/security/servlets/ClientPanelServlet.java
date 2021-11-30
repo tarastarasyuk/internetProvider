@@ -57,14 +57,14 @@ public class ClientPanelServlet extends HttpServlet {
     }
 
     private void topUpBalance(HttpServletRequest request, HttpSession session) {
-//        User sessionUser = (User) session.getAttribute("user");
-//
-//        BigDecimal currentAccount= sessionUser.getAccount();
-//        BigDecimal addedAccount = new BigDecimal(request.getParameter("balance"));
-//        BigDecimal newAccount = currentAccount.subtract(addedAccount);
-//
-//        UserService userService = new UserService(request);
-//        userService.changeUserAccountById(sessionUser.getId(), newAccount);
+        User sessionUser = (User) session.getAttribute("user");
+
+        BigDecimal currentAccount= sessionUser.getAccount();
+        BigDecimal addedAccount = new BigDecimal(request.getParameter("balance"));
+        BigDecimal newAccount = currentAccount.add(addedAccount);
+
+        UserService userService = new UserService(request);
+        userService.changeUserAccountById(sessionUser.getId(), newAccount);
     }
 
     private void editClientProfile(HttpServletRequest request, HttpSession session) {

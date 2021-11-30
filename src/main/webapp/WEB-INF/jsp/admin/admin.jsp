@@ -17,7 +17,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="row g-3" method="post" action="${pageContext.request.contextPath}/addNewClient">
+                    <form class="row g-3" method="post" action="${pageContext.request.contextPath}/adminPanel/addNewClient">
 
                         <div class="col-md-4">
                             <label for="validationDefault03" class="form-label">Username</label>
