@@ -37,9 +37,9 @@
         </ul>
 
         <div class="card-body tariffs-connection">
-            <a href="#" method="GET">
-                <button type="button" class="btn btn-primary">Connect</button>
-            </a>
+            <form action="${pageContext.request.contextPath}/tariff/tariffConnection">
+                    <button type="submit" class="btn btn-primary" value="${tariff.getId()}" name="newTariffId">Connect</button>
+            </form>
         </div>
 
     </div>

@@ -73,6 +73,15 @@
 /* Card */
 
 
+.empty-tariff-card {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    color: #6C757D;
+}
 
 .tariffs .card {
     margin-right: 40px;
@@ -144,3 +153,61 @@
 .tariffs-connection button {
     height: 50px;
 }
+
+
+
+/* Tariff Connection -------------------------------------------------*/
+
+.tariff-connection-title {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+.tariff-payment {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 35px;
+    border-bottom: 2px solid #F2F3F5;
+}
+
+.tariff-payment-box {
+    width: 300px;
+    border: 2px dashed #0D6EFD;
+    border-radius: 6px;
+    padding: 20px;
+}
+
+.tariff-payment-box form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+
+.tariff-window {
+    padding: 40px 0;
+}
+
+.tariff-cards-info {
+    display: flex;
+    justify-content: space-around;
+    width: 750px;
+    margin: 0 auto;
+}
+
+.tariff-cards-info .current-tarrif, .tariff-cards-info .new-tarrif {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
