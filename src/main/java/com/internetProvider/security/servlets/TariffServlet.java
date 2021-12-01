@@ -4,12 +4,15 @@ import com.internetProvider.aservice.ServiceService;
 import com.internetProvider.aservice.TariffService;
 import com.internetProvider.model.Service;
 import com.internetProvider.model.Tariff;
+import com.internetProvider.model.User;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.*;
+
+import static java.util.Objects.nonNull;
 
 @WebServlet(name = "TariffServlet", value = "/tariffs")
 public class TariffServlet extends HttpServlet {
@@ -61,6 +64,11 @@ public class TariffServlet extends HttpServlet {
         }
 
 
+        HttpSession session = request.getSession();
+        if (nonNull(session)) {
+            User user = (User) session.getAttribute("user");
+            request.setAttribute("user", user);
+        }
         request.getRequestDispatcher("tariffs.jsp").forward(request, response);
     }
 

@@ -15,9 +15,10 @@ public class TariffConnectionServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         int newTariffId = Integer.parseInt(request.getParameter("newTariffId"));
+        System.out.println(newTariffId);
         TariffService tariffService = new TariffService(request);
         Tariff newTariff = tariffService.getTariffById(newTariffId);
-
+        System.out.println(newTariff);
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 

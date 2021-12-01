@@ -84,11 +84,6 @@
 
                                         </ul>
 
-                                        <div class="card-body tariffs-connection">
-                                            <form action="${pageContext.request.contextPath}/tariff/tariffConnection">
-                                                <button type="submit" class="btn btn-primary" value="${currentTariff.getId()}" name="newTariffId">Connect</button>
-                                            </form>
-                                        </div>
 
                                     </div>
 
@@ -134,11 +129,6 @@
 
                                 </ul>
 
-                                <div class="card-body tariffs-connection">
-                                    <form action="${pageContext.request.contextPath}/tariff/tariffConnection">
-                                        <button type="submit" class="btn btn-primary" value="${newTariff.getId()}" name="newTariffId">Connect</button>
-                                    </form>
-                                </div>
 
                             </div>
 
