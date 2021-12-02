@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <header class="site-header fixed-top py-0">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -36,8 +37,24 @@
             </div>
 
             <div>
-                <a href="${pageContext.request.contextPath}/login"><button class="btn login-btn" type="submit">Login</button></a>
-                <button class="btn btn-primary connect-btn" type="submit">Register</button>
+                <c:choose>
+                    <c:when test="${sessionScope.user == null}">
+                        <a href="${pageContext.request.contextPath}/login"><button class="btn login-btn" type="submit">Login</button></a>
+                        <button class="btn btn-primary connect-btn" type="submit">Register</button>
+                    </c:when>
+                    <c:when test="${sessionScope.user != null}">
+                        <c:choose>
+                            <c:when test="${sessionScope.user.roleId == 2}">
+                                <a href="${pageContext.request.contextPath}/login"><button class="btn login-btn" type="submit">Profile: <strong>${sessionScope.user.account}$</strong></button></a>
+                            </c:when>
+                            <c:when test="${sessionScope.user.roleId == 1}">
+                                <a href="${pageContext.request.contextPath}/login"><button class="btn login-btn" type="submit">Admin</button></a>
+                            </c:when>
+                        </c:choose>
+                        <a href="${pageContext.request.contextPath}/logout"><button class="btn btn-primary connect-btn" type="submit">Logout</button></a>
+                    </c:when>
+                </c:choose>
+
 
             </div>
 
