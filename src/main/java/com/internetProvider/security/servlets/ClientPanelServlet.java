@@ -1,8 +1,10 @@
 package com.internetProvider.security.servlets;
 
 import com.internetProvider.aservice.CityService;
+import com.internetProvider.aservice.TariffService;
 import com.internetProvider.aservice.UserService;
 import com.internetProvider.model.City;
+import com.internetProvider.model.Tariff;
 import com.internetProvider.model.User;
 
 import javax.servlet.*;
@@ -18,6 +20,13 @@ public class ClientPanelServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CityService cityService = new CityService(request);
         List<City> cityList = cityService.getAllCities();
+
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        TariffService tariffService = new TariffService(request);
+        Tariff tariff = tariffService.getTariffById(user.getTariffId());
+
+        request.setAttribute("tariff", tariff);
         request.setAttribute("cityList", cityList);
         request.getRequestDispatcher("WEB-INF/jsp/client/client.jsp").forward(request, response);
     }

@@ -29,20 +29,19 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-1"></div>
+        <div class="client-data-and-tariff">
 
-            <div class="col-6">
-                <div class="info-field big user-info-section">
+            <div class="client-data">
 
-                    <div class="user-info d-flex flex-row flex-wrap justify-content-around align-items-center">
 
-                        <div class="logo">
-                            <i class="far fa-user fa-5x"></i>
+                    <div class="user-info">
+
+                        <div class="user-logo">
+                            <i class="far fa-user fa-7x"></i>
                         </div>
 
-                        <div class="info d-flex flex-column">
-                            <span class="header-info">Your data:</span>
+                        <div class="info">
+                            <span class="info-title">Your data:</span>
                             <span>Username: ${user.getUsername()}</span>
                             <span>Password: ${user.getPassword()}</span>
                             <span>Email: ${user.getEmail()}</span>
@@ -55,37 +54,58 @@
                         Edit profile
                     </button>
 
-                    <br>
-<%--                    TODO: REMOVE LATER--%>
-                    <a href="${pageContext.request.contextPath}/logout"><button class="btn btn-success">Logout</button></a>
-                </div>
+
 
             </div>
 
-            <div class="col-4">
-                <div
-                        class="tariff-info info-field big d-flex flex-column align-items-center justify-content-around">
-                    <div class="tariff-name">"Internet Basic"</div>
-                    <div class="price-block d-flex flex-column"><span>Price: </span><span
-                            class="tariff-price">50$/month</span></div>
-                    <div class="service-list">
+            <div class="client-tariff-card">
+                <span class="clientPanel-header">Your tariff:</span>
+                <div class="card tariff-card" style="width: 18rem;">
+                    <div class="card-body tariff-content">
+                        <h5 class="card-title tariff-title">"${requestScope.tariff.name}"</h5>
+                        <p class="card-text tariff-subtitle">${requestScope.tariff.description}</p>
 
-                        <li> <i class="fas fa-circle fa-xs"
-                                style="position: relative; top: -1px; right: 4px; color: #005FFF;"></i>
-                            Internet
-                            40Mbps</li>
-
-                        <li> <i class="fas fa-circle fa-xs"
-                                style="position: relative; top: -1px; right: 4px; color: #005FFF;"></i>
-                            Phone
-                            10GB</li>
+                        <div class="tariff-price">
+                            <div class="tariff-price-box">
+                                <span>Price:</span>
+                                <span>${requestScope.tariff.price}$/${requestScope.tariff.dayDuration}days</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <button class="btn btn-primary btn-change-tariff">Change</button>
+                    <div class="tariff-service-list">
+                        Services:
+                        <c:forEach var="service"
+                                   items="${requestScope.tariff.listOfServiceName}"><span><strong>*${service} </strong></span></c:forEach>
+                    </div>
+
+                    <ul class="list-group list-group-flush list-of-features">
+                        <!-- TODO: MOVE INNER CSS IN  tariffs.css -->
+
+                        <c:forEach var="feature" items="${requestScope.tariff.featuresList}">
+                            <li class="list-group-item">
+                                    <span class="d-inline-block bg-primary rounded-circle"
+                                          style="width: .5em; height: .5em;"></span>
+                                    ${feature}
+                            </li>
+                        </c:forEach>
+
+                    </ul>
+
+                    <div class="card-body tariffs-connection">
+                        <a href="#" method=""><button type="button" class="btn btn-primary">Change</button></a>
+                        <div>
+                            <form action="${pageContext.request.contextPath}/clientPanel/deleteTariff" method="POST">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
+
+
             </div>
 
-            <div class="col-1"></div>
+
         </div>
     </div>
 
