@@ -7,14 +7,17 @@
     <main>
         <section class="tariff-connection">
             <div class="container">
-
+                <a href="../tariffs"><button class="back-to-tariffs btn btn-primary">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to tariffs
+                </button></a>
                 <div class="tariff-connection-title">
                     <h1>Tariff Connetion</h1>
                 </div>
 
                 <div class="tariff-payment">
                     <div class="tariff-payment-box">
-                        <form action="">
+                        <form action="${pageContext.request.contextPath}/tariff/tariffConnection/payAndConnect" method="POST">
                             <h4>Connection fee: ${newTariff.getPrice()}$</h4>
                             <input type="submit" class="btn btn-success" value="Pay and Connect">
                         </form>

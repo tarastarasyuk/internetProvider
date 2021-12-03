@@ -22,6 +22,7 @@ public class QueriesSQL {
     public static final String UPDATE_USER_BY_ID = "UPDATE " + userTable + " SET " + userUsername + "=?, " + userPassword + "=?, " + userEmail + "=?, " + userCityId + "=? WHERE " + userId + "=?";
     public static final String UPDATE_USER_ACCOUNT_BY_ID = "UPDATE " + userTable + " SET " + userAccount + "=? WHERE " + userId + "=?";
     public static final String CREATE_USER = "INSERT INTO " + userTable + " (" + userUsername + ", " + userPassword + ", " + userEmail + ", " + userRoleId + ", " + userCityId + ") VALUES (?, ?, ?, " + USER_ROLE_ID + ", ?)";
+    public static final String UPDATE_USER_TARIFF_ID_BY_ID = "UPDATE " + userTable + " SET " + userTariffId + "=? WHERE " + userId + "=?";
 
 
     private static final String tariffTable = "tariff";

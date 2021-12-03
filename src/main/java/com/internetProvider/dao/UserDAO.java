@@ -11,4 +11,6 @@ public interface UserDAO extends AbstractDAO<User> {
     boolean checkUserExistenceByUsername(String username);
 
     boolean changeUserAccountById(int id, BigDecimal newAccount);
+
+    boolean setUserTariffById(int userId, int newTariffId);
 }

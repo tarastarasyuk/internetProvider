@@ -51,5 +51,9 @@ public class UserService extends AbstractService {
         return entityDAO.changeUserAccountById(id, account);
     }
 
+    public boolean setUserTariffById(int userId, int newTariffId) {
+        return entityDAO.setUserTariffById(userId, newTariffId);
+    }
+
 
 }

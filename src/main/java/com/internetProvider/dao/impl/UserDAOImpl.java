@@ -97,6 +97,20 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
         return result;
     }
 
+    @Override
+    public boolean setUserTariffById(int userId, int newTariffId) {
+        boolean result = false;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.UPDATE_USER_TARIFF_ID_BY_ID)) {
+            preparedStatement.setInt(1, newTariffId);
+            preparedStatement.setInt(2, userId);
+            preparedStatement.executeUpdate();
+            result = false;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
 
     @Override
     public List<User> getAll() {

@@ -80,7 +80,8 @@
     justify-content: center;
     align-items: center;
     border: none;
-    color: #6C757D;
+    background-color: #F2F2F2;
+    color: gray;
 }
 
 .tariffs .card {
@@ -144,6 +145,11 @@
     /* align-items: center; */
 }
 
+.back-to-tariffs {
+    position: absolute;
+}
+
+
 .tariffs-connection a {
     display: flex;
     flex-direction: column;
@@ -178,7 +184,7 @@ h1 {
 
 .tariff-payment-box {
     width: 300px;
-    border: 2px dashed #0D6EFD;
+    border: 2px dashed #198754;
     border-radius: 6px;
     padding: 20px;
 }
@@ -210,4 +216,13 @@ h1 {
     justify-content: center;
     align-items: center;
 }
+
+.tariff-window .tariff-card {
+    height: 100%;
+}
+
+.tariff-card, .tariff-card .list-group-item {
+    background-color: #F2F2F2;
+}
+
 
