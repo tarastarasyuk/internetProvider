@@ -40,18 +40,20 @@ public class TariffConnectionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserService userService = new UserService(request);
+
         if (payAndConnect(request, userService)) {
             HttpSession session = request.getSession();
-            User user = (User) session.getAttribute("user");
-            User updatedUser = userService.getUserByID(user.getId());
+            User sessionUser = (User) session.getAttribute("user");
+            User updatedUser = userService.getUserByID(sessionUser.getId());
             session.removeAttribute("user");
             session.setAttribute("user", updatedUser);
             response.sendRedirect("../../clientPanel");
-        } else 
+        } else
+            // TODO:response to error page connected with servers issues
+            response.sendRedirect("../../");
 
-        // TODO:response to error page
-        response.sendRedirect("../../");
     }
+
 
     private boolean payAndConnect(HttpServletRequest request, UserService userService) {
         Tariff newTariff = (Tariff) request.getServletContext().getAttribute("newTariff");

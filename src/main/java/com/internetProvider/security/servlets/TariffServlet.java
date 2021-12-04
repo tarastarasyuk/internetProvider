@@ -65,16 +65,16 @@ public class TariffServlet extends HttpServlet {
 
 
         HttpSession session = request.getSession();
+        User user = new User();
         if (nonNull(session)) {
-            User user = (User) session.getAttribute("user");
-            request.setAttribute("user", user);
+            user = (User) session.getAttribute("user");
         }
+        request.setAttribute("user", user);
         request.getRequestDispatcher("tariffs.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 
     private int[] getServicesId(String[] values) {
