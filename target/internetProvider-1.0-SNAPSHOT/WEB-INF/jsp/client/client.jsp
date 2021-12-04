@@ -60,47 +60,75 @@
 
             <div class="client-tariff-card">
                 <span class="clientPanel-header">Your tariff:</span>
-                <div class="card tariff-card" style="width: 18rem;">
-                    <div class="card-body tariff-content">
-                        <h5 class="card-title tariff-title">"${requestScope.tariff.name}"</h5>
-                        <p class="card-text tariff-subtitle">${requestScope.tariff.description}</p>
+                <c:choose>
+                    <c:when test="${sessionScope.user.tariffId != 0}">
+                        <div class="card tariff-card" style="width: 18rem;">
+                            <div class="card-body tariff-content">
+                                <h5 class="card-title tariff-title">"${requestScope.tariff.name}"</h5>
+                                <p class="card-text tariff-subtitle">${requestScope.tariff.description}</p>
 
-                        <div class="tariff-price">
-                            <div class="tariff-price-box">
-                                <span>Price:</span>
-                                <span>${requestScope.tariff.price}$/${requestScope.tariff.dayDuration}days</span>
+                                <div class="tariff-price">
+                                    <div class="tariff-price-box">
+                                        <span>Price:</span>
+                                        <span>${requestScope.tariff.price}$/${requestScope.tariff.dayDuration}days</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="tariff-service-list">
-                        Services:
-                        <c:forEach var="service"
-                                   items="${requestScope.tariff.listOfServiceName}"><span><strong>*${service} </strong></span></c:forEach>
-                    </div>
+                            <div class="tariff-service-list">
+                                Services:
+                                <c:forEach var="service"
+                                           items="${requestScope.tariff.listOfServiceName}"><span><strong>*${service} </strong></span></c:forEach>
+                            </div>
 
-                    <ul class="list-group list-group-flush list-of-features">
-                        <!-- TODO: MOVE INNER CSS IN  tariffs.css -->
+                            <ul class="list-group list-group-flush list-of-features">
+                                <!-- TODO: MOVE INNER CSS IN  tariffs.css -->
 
-                        <c:forEach var="feature" items="${requestScope.tariff.featuresList}">
-                            <li class="list-group-item">
+                                <c:forEach var="feature" items="${requestScope.tariff.featuresList}">
+                                    <li class="list-group-item">
                                     <span class="d-inline-block bg-primary rounded-circle"
                                           style="width: .5em; height: .5em;"></span>
-                                    ${feature}
-                            </li>
-                        </c:forEach>
+                                            ${feature}
+                                    </li>
+                                </c:forEach>
 
-                    </ul>
+                            </ul>
 
-                    <div class="card-body tariffs-connection">
-                        <a href="#" method=""><button type="button" class="btn btn-primary">Change</button></a>
-                        <div>
-                            <form action="${pageContext.request.contextPath}/clientPanel/deleteTariff" method="POST">
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
+                            <div class="card-body tariffs-connection">
+                                <a href="${pageContext.request.contextPath}/tariffs"><button type="button" class="btn btn-primary">Change</button></a>
+                                <div>
+                                    <form action="${pageContext.request.contextPath}/clientPanel/deleteTariff" method="POST">
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    </c:when>
+                    <c:when test="${sessionScope.user.tariffId == 0 }">
+                        <div class="current-tarrif">
+
+                            <div class="card tariff-card" style="width: 18rem; height: 100%; background-color:#fff;">
+
+                                <div class="card-body tariff-content" >
+
+                                    <div class="card empty-tariff-card" style=" background-color:#fff;">
+                                            You don't have tariff
+                                    </div>
+
+
+                                </div>
+
+
+
+                            </div>
+                            <a href="${pageContext.request.contextPath}/tariffs"><button type="button" class="btn btn-primary choose-tariff-btn">Let's Choose</button></a>
+
+
+
+                        </div>
+                    </c:when>
+                </c:choose>
+
 
 
             </div>

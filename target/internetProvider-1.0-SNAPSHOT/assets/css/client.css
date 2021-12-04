@@ -26,12 +26,10 @@ a {
     font-size: 23px;
     font-weight: bold;
     margin-bottom: 30px;
+
+    padding: 20px;
 }
 
-.user-info {
-    width: 75%;
-    margin-bottom: 20px;
-}
 
 .big {
     height: 400px;
@@ -41,45 +39,19 @@ a {
     color: forestgreen;
 }
 
-.info {
-    font-size: 18px;
-    font-weight: normal;
-}
 
 .user-info-section {
     display: flex;
     flex-direction: column;
 }
 
-.edit-user-btn {
-    width: 70%;
-    border: 1px solid #001737;
-    color: #001737;
-}
+
 
 .edit-user-btn:hover {
     border-color: #0D6EFD;
     color: #0D6EFD;
 }
 
-.logo {
-    background: #fff;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 150px;
-    height: 180px;
-
-    border-radius: 6px;
-}
-
-.header-info {
-    font-family: Inter;
-    font-size: 23px;
-    font-weight: bold;
-}
 
 
 .price-block {
@@ -107,4 +79,173 @@ a {
 .btn-change-tariff {
     width: 44%;
     height: 13%;
+}
+
+/* TARIFF CARD AND DATA SECTION */
+.clientPanel-header {
+    font-size: 23px;
+    font-weight: bold;
+
+    margin-bottom: 20px;
+}
+
+.client-data-and-tariff {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.client-data {
+    min-width: 500px;
+    min-height: 400px;
+    margin-right: 30px;
+
+
+    background-color: #F2F3F5;
+    border-radius: 6px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0 30px;
+}
+
+.choose-tariff-btn {
+    margin-top: 20px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.user-info .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.info-title {
+    font-weight: bold;
+}
+
+.user-logo {
+    width: 150px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+
+    padding: 30px 0;
+
+    border-radius: 6px;
+
+    margin-right: 20px;
+}
+
+.edit-user-btn {
+    width: 100%;
+    border: 1px solid #001737;
+    color: #001737;
+}
+
+.client-tariff-card {
+    background-color: #F2F3F5;
+    border-radius: 6px;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+}
+
+
+/* TARIFF CARD */
+
+
+.empty-tariff-card {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: #F2F2F2;
+    color: gray;
+}
+
+
+.card .tariff-card {
+    height: 100%;
+}
+
+.card .rounded-circle {
+    margin-right: 10px;
+}
+
+.tariff-content {
+    text-align: center;
+
+}
+
+.tariff-title{
+    font-weight: bold;
+}
+
+.tariff-price {
+    display: flex;
+    justify-content: center;
+}
+
+.tariff-service-list {
+    margin-top: 20px;
+}
+
+.tariff-price-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8px;
+    border: 2px dashed #6C757D;
+    border-radius: 6px;
+
+    text-align: center;
+    font-weight: 500;
+}
+
+.tariff-price-box span {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.list-of-features li{
+    display: flex;
+    align-items: center;
+}
+
+.tariffs-connection {
+    display: flex;
+    justify-content: center;
+
+}
+
+.tariffs-connection a {
+    margin-right: 20px;
+}
+
+
+
+.tariffs-connection button {
+    height: 50px;
 }

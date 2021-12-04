@@ -55,5 +55,8 @@ public class UserService extends AbstractService {
         return entityDAO.setUserTariffById(userId, newTariffId);
     }
 
+    public boolean deleteUserTariffById(int userId) {
+        return entityDAO.deleteUserTariffById(userId);
+    }
 
 }

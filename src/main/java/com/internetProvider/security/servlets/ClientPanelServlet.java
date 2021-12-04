@@ -43,6 +43,9 @@ public class ClientPanelServlet extends HttpServlet {
                 case "/topUpAccount":
                     topUpAccount(request, session);
                     break;
+                case "/deleteTariff":
+                    deleteTariff(request, session);
+                    break;
                 default:
                     break;
             }
@@ -57,12 +60,12 @@ public class ClientPanelServlet extends HttpServlet {
         session.removeAttribute("user");
         session.setAttribute("user", updatedUser);
         response.sendRedirect("/clientPanel");
+    }
 
-//        HttpSession session = request.getSession();
-//        session.removeAttribute("user");
-//        request.setAttribute("username", request.getParameter("username"));
-//        request.setAttribute("password", request.getParameter("password"));
-//        response.sendRedirect("/clientPanel?username="+request.getParameter("username")+"&password="+request.getParameter("password"));
+    private void deleteTariff(HttpServletRequest request, HttpSession session) {
+        User sessionUser = (User) session.getAttribute("user");
+        UserService userService = new UserService(request);
+        userService.deleteUserTariffById(sessionUser.getId());
     }
 
     private void topUpAccount(HttpServletRequest request, HttpSession session) {

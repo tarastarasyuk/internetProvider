@@ -101,7 +101,11 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
     public boolean setUserTariffById(int userId, int newTariffId) {
         boolean result = false;
         try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.UPDATE_USER_TARIFF_ID_BY_ID)) {
-            preparedStatement.setInt(1, newTariffId);
+            if (newTariffId == 0) {
+                preparedStatement.setNull(1, 0);
+            } else {
+                preparedStatement.setInt(1, newTariffId);
+            }
             preparedStatement.setInt(2, userId);
             preparedStatement.executeUpdate();
             result = false;
@@ -109,6 +113,11 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
             e.printStackTrace();
         }
         return result;
+    }
+
+    @Override
+    public boolean deleteUserTariffById(int userId) {
+        return setUserTariffById(userId, 0);
     }
 
 
