@@ -1,5 +1,6 @@
 package com.internetProvider.controller;
 
+import com.internetProvider.aservice.OwnerService;
 import com.internetProvider.aservice.TariffService;
 import com.internetProvider.aservice.UserService;
 import com.internetProvider.model.Tariff;
@@ -38,33 +39,27 @@ public class TariffConnectionServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getPathInfo();
-        if (action != null) {
-            switch (action) {
-                case "/payAndConnect":
-                    payAndConnect(request);
-                    break;
-                default:
-                    break;
-            }
-        } else {
-            doGet(request, response);
-        }
-
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
         UserService userService = new UserService(request);
-        User updatedUser = userService.getUserByID(user.getId());
-        session.removeAttribute("user");
-        session.setAttribute("user", updatedUser);
+        if (payAndConnect(request, userService)) {
+            HttpSession session = request.getSession();
+            User user = (User) session.getAttribute("user");
+            User updatedUser = userService.getUserByID(user.getId());
+            session.removeAttribute("user");
+            session.setAttribute("user", updatedUser);
+            response.sendRedirect("../../clientPanel");
+        } else 
 
-        response.sendRedirect("../../clientPanel");
+        // TODO:response to error page
+        response.sendRedirect("../../");
     }
 
-    private boolean payAndConnect(HttpServletRequest request) {
-        UserService userService = new UserService(request);
+    private boolean payAndConnect(HttpServletRequest request, UserService userService) {
         Tariff newTariff = (Tariff) request.getServletContext().getAttribute("newTariff");
         User user = (User) request.getServletContext().getAttribute("user");
+
+        OwnerService ownerService = new OwnerService(request);
+        ownerService.getTariffPayment(user, newTariff);
+
         return userService.setUserTariffById(user.getId(), newTariff.getId());
     }
 }

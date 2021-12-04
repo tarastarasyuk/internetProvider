@@ -17,7 +17,7 @@
 
                 <div class="tariff-payment">
                     <div class="tariff-payment-box">
-                        <form action="${pageContext.request.contextPath}/tariff/tariffConnection/payAndConnect" method="POST">
+                        <form action="${pageContext.request.contextPath}/tariff/tariffConnection" method="POST">
                             <h4>Connection fee: ${newTariff.getPrice()}$</h4>
                             <input type="submit" class="btn btn-success" value="Pay and Connect">
                         </form>

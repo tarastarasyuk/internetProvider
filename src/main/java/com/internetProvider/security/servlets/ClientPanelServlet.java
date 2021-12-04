@@ -40,9 +40,6 @@ public class ClientPanelServlet extends HttpServlet {
                 case "/editProfile":
                     editClientProfile(request, session);
                     break;
-                case "/topUpAccount":
-                    topUpAccount(request, session);
-                    break;
                 case "/deleteTariff":
                     deleteTariff(request, session);
                     break;
@@ -68,16 +65,6 @@ public class ClientPanelServlet extends HttpServlet {
         userService.deleteUserTariffById(sessionUser.getId());
     }
 
-    private void topUpAccount(HttpServletRequest request, HttpSession session) {
-        User sessionUser = (User) session.getAttribute("user");
-
-        BigDecimal currentAccount= sessionUser.getAccount();
-        BigDecimal addedAccount = new BigDecimal(request.getParameter("account"));
-        BigDecimal newAccount = currentAccount.add(addedAccount);
-
-        UserService userService = new UserService(request);
-        userService.changeUserAccountById(sessionUser.getId(), newAccount);
-    }
 
     private void editClientProfile(HttpServletRequest request, HttpSession session) {
         User sessionUser = (User) session.getAttribute("user");

@@ -10,10 +10,10 @@
             <div class="col-5">
                 <div class="info-field">
                     <span>${doPost}Account: ${user.getAccount()}$&nbsp;&nbsp;&nbsp;</span>
-                    <button type="button" class="btn btn-success top-up-account" data-bs-toggle="modal" data-bs-target="#editModalBalance">
+                    <a href="/payment"><button type="button" class="btn btn-success top-up-account" >
                         Top up
                     </button>
-
+                    </a>
                 </div>
             </div>
             <div class="col-3">
@@ -193,29 +193,6 @@
 
 
 
-        <div class="modal fade" id="editModalBalance" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabelBalance">Top up your account:</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form class="row g-3" method="post" action="${pageContext.request.contextPath}/clientPanel/topUpAccount">
 
-                            <div class="col-md-4">
-                                <label for="validationBalance" class="form-label">Balance</label>
-                                <input type="text" class="form-control" id="validationBalance" value="0" name="account" required>
-                            </div>
-
-                            <div class="modal-footer">
-                                <button class="btn btn-primary" type="submit">Submit form</button>
-                            </div>
-
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
 </main>
 </t:page>

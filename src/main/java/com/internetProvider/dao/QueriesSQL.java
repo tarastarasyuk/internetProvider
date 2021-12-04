@@ -23,6 +23,7 @@ public class QueriesSQL {
     public static final String UPDATE_USER_ACCOUNT_BY_ID = "UPDATE " + userTable + " SET " + userAccount + "=? WHERE " + userId + "=?";
     public static final String CREATE_USER = "INSERT INTO " + userTable + " (" + userUsername + ", " + userPassword + ", " + userEmail + ", " + userRoleId + ", " + userCityId + ") VALUES (?, ?, ?, " + USER_ROLE_ID + ", ?)";
     public static final String UPDATE_USER_TARIFF_ID_BY_ID = "UPDATE " + userTable + " SET " + userTariffId + "=? WHERE " + userId + "=?";
+    public static final String SELECT_USER_OWNER = "SELECT * FROM " + userTable + " WHERE " + userRoleId + " = 3";
 
 
     private static final String tariffTable = "tariff";

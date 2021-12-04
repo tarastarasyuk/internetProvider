@@ -15,4 +15,6 @@ public interface UserDAO extends AbstractDAO<User> {
     boolean setUserTariffById(int userId, int newTariffId);
 
     boolean deleteUserTariffById(int userId);
+
+    User getUserOwner();
 }

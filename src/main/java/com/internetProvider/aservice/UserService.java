@@ -59,4 +59,8 @@ public class UserService extends AbstractService {
         return entityDAO.deleteUserTariffById(userId);
     }
 
+    public User getUserOwner() {
+        return entityDAO.getUserOwner();
+    }
+
 }

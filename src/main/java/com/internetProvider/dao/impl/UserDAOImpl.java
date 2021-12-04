@@ -108,7 +108,7 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
             }
             preparedStatement.setInt(2, userId);
             preparedStatement.executeUpdate();
-            result = false;
+            result = true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -118,6 +118,20 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
     @Override
     public boolean deleteUserTariffById(int userId) {
         return setUserTariffById(userId, 0);
+    }
+
+    @Override
+    public User getUserOwner() {
+        User userOwner = new User();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.SELECT_USER_OWNER)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                userOwner = fillUserWithExistingData(resultSet);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userOwner;
     }
 
 
