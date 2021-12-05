@@ -10,6 +10,7 @@ public class QueriesSQL {
     private static final String userEmail = "email";
     private static final String userCreateTime = "create_time";
     private static final String userTariffId = "tariff_id";
+    private static final String userTariffBuyData = "tariff_buy_data";
     private static final String userRoleId = "role_id";
     private static final String userCityId = "city_id";
     private static final String userId = "id";
@@ -22,9 +23,9 @@ public class QueriesSQL {
     public static final String UPDATE_USER_BY_ID = "UPDATE " + userTable + " SET " + userUsername + "=?, " + userPassword + "=?, " + userEmail + "=?, " + userCityId + "=? WHERE " + userId + "=?";
     public static final String UPDATE_USER_ACCOUNT_BY_ID = "UPDATE " + userTable + " SET " + userAccount + "=? WHERE " + userId + "=?";
     public static final String CREATE_USER = "INSERT INTO " + userTable + " (" + userUsername + ", " + userPassword + ", " + userEmail + ", " + userRoleId + ", " + userCityId + ") VALUES (?, ?, ?, " + USER_ROLE_ID + ", ?)";
-    public static final String UPDATE_USER_TARIFF_ID_BY_ID = "UPDATE " + userTable + " SET " + userTariffId + "=? WHERE " + userId + "=?";
+    public static final String UPDATE_USER_TARIFF_ID_BY_ID = "UPDATE " + userTable + " SET " + userTariffId + "=?, " +userTariffBuyData + "=? " +" WHERE " + userId + "=?";
     public static final String SELECT_USER_OWNER = "SELECT * FROM " + userTable + " WHERE " + userRoleId + " = 3";
-
+    public static final String UPDATE_USER_STATUS_BY_USER_ID = "UPDATE " + userTable + " SET " + userStatus + "=? WHERE " + userId + "=?";
 
     private static final String tariffTable = "tariff";
     private static final String tariffName = "name";

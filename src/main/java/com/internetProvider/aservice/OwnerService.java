@@ -12,11 +12,18 @@ public class OwnerService {
         this.userService = new UserService(request);
     }
 
-    public boolean getTariffPayment(User user, Tariff newTariff) {
-        BigDecimal userAccount = (user.getAccount()).subtract(newTariff.getPrice());
+    public boolean getTariffPayment(User user, Tariff tariff) {
+
+        BigDecimal userAccount = (user.getAccount()).subtract(tariff.getPrice());
+
         userService.changeUserAccountById(user.getId(), userAccount);
+
         User userOwner = userService.getUserOwner();
-        BigDecimal userOwnerAccount = (userOwner.getAccount()).add(newTariff.getPrice());
-        return userService.changeUserAccountById(userOwner.getId(), userOwnerAccount);
+
+        BigDecimal userOwnerAccount = (userOwner.getAccount()).add(tariff.getPrice());
+        userService.changeUserAccountById(userOwner.getId(), userOwnerAccount);
+
+        return userService.setUserTariffById(user.getId(), tariff.getId());
     }
+
 }

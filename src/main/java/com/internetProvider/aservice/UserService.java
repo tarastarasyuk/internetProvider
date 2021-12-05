@@ -63,4 +63,7 @@ public class UserService extends AbstractService {
         return entityDAO.getUserOwner();
     }
 
+    public boolean changeUserStatusByUserId(int userId, User.Status status) {
+        return entityDAO.changeUserStatusByUserId(userId, status);
+    }
 }

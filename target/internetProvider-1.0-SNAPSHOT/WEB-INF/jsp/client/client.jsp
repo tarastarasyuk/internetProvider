@@ -24,8 +24,29 @@
             </div>
             <div class="col-4">
                 <div class=" info-field">
-                    <span>Tariff expiration:</span>
-                    <span>&nbsp;28</span>
+                    <span>
+                        <c:choose>
+
+                                <c:when test="${user.getTariffId() != 0}">
+                                    <c:choose>
+                                        <c:when test="${user.getTariffExpiration() == 0}">
+                                            <span>Expiration:</span>
+                                            Expired
+                                        </c:when>
+                                        <c:when test="${user.getTariffExpiration() != 0}">
+                                            <span>Expiration:</span>
+                                            ${user.getTariffExpiration()} days left
+                                        </c:when>
+                                    </c:choose>
+
+                                </c:when>
+
+                                <c:otherwise>
+                                    <span>No tariff</span>
+                                </c:otherwise>
+
+                        </c:choose>
+                    </span>
                 </div>
             </div>
         </div>

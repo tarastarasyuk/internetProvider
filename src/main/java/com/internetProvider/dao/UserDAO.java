@@ -17,4 +17,6 @@ public interface UserDAO extends AbstractDAO<User> {
     boolean deleteUserTariffById(int userId);
 
     User getUserOwner();
+
+    boolean changeUserStatusByUserId(int userId, User.Status status);
 }

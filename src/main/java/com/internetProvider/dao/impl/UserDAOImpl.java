@@ -7,10 +7,9 @@ import com.internetProvider.model.Role;
 import com.internetProvider.model.User;
 
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +46,8 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
         user.setEmail(resultSet.getString(k++));
         user.setCreatTime(resultSet.getDate(k++));
         user.setTariffId(resultSet.getInt(k++));
+        Timestamp timestamp = resultSet.getTimestamp(k++);
+        user.setTariffBuyDate(timestamp != null ? timestamp.toLocalDateTime() : null);
         user.setRoleId(resultSet.getInt(k++));
         user.setRole(Role.getRole(user.getRoleId()));
         user.setCityId(resultSet.getInt(k));
@@ -103,10 +104,14 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
         try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.UPDATE_USER_TARIFF_ID_BY_ID)) {
             if (newTariffId == 0) {
                 preparedStatement.setNull(1, 0);
+                preparedStatement.setNull(2, 0);
+                changeUserStatusByUserId(userId, User.Status.INACTIVE);
             } else {
                 preparedStatement.setInt(1, newTariffId);
+                preparedStatement.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
+                changeUserStatusByUserId(userId, User.Status.ACTIVE);
             }
-            preparedStatement.setInt(2, userId);
+            preparedStatement.setInt(3, userId);
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
@@ -132,6 +137,20 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
             e.printStackTrace();
         }
         return userOwner;
+    }
+
+    @Override
+    public boolean changeUserStatusByUserId(int userId, User.Status status) {
+        boolean result = false;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.UPDATE_USER_STATUS_BY_USER_ID)) {
+            preparedStatement.setString(1, status.toString());
+            preparedStatement.setInt(2, userId);
+            preparedStatement.executeUpdate();
+            result = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
 

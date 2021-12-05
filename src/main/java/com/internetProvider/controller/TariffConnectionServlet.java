@@ -60,8 +60,6 @@ public class TariffConnectionServlet extends HttpServlet {
         User user = (User) request.getServletContext().getAttribute("user");
 
         OwnerService ownerService = new OwnerService(request);
-        ownerService.getTariffPayment(user, newTariff);
-
-        return userService.setUserTariffById(user.getId(), newTariff.getId());
+        return ownerService.getTariffPayment(user, newTariff);
     }
 }

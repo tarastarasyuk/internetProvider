@@ -1,6 +1,11 @@
 package com.internetProvider.dao;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.Arrays;
+import java.util.Date;
 
 /**
  * USER CRUD - PERFECTO
@@ -10,7 +15,10 @@ import java.util.Arrays;
  */
 
 public class Main {
-    public static void main(String[] args) {
-        System.out.println(Arrays.toString(new int[]{1,2,3}).replace("[", ""));
+    public static void main(String[] args) throws InterruptedException {
+        LocalDateTime l = LocalDateTime.of(2021, Month.DECEMBER, 5, 2, 4, 40);
+
+        Duration d = Duration.between(l, LocalDateTime.now());
+        System.out.println(d.getSeconds());
     }
 }

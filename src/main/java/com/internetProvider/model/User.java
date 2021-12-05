@@ -1,6 +1,8 @@
 package com.internetProvider.model;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class User {
@@ -12,12 +14,30 @@ public class User {
     private String email;
     private Date creatTime;
     private int tariffId;
+    private LocalDateTime tariffBuyDate;
+    private int tariffExpiration;
     private int roleId;
     private Role role;
     private Integer cityId;
     private String cityName;
 
     public User() {
+    }
+
+    public int getTariffExpiration() {
+        return tariffExpiration;
+    }
+
+    public void setTariffExpiration(int tariffExpiration) {
+        this.tariffExpiration = tariffExpiration;
+    }
+
+    public LocalDateTime getTariffBuyDate() {
+        return tariffBuyDate;
+    }
+
+    public void setTariffBuyDate(LocalDateTime tariffBuyDate) {
+        this.tariffBuyDate = tariffBuyDate;
     }
 
     public void setCityId(Integer cityId) {
