@@ -25,10 +25,15 @@ public class ClientPanelServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
+
         TariffService tariffService = new TariffService(request);
+
         Tariff tariff = tariffService.getTariffById(user.getTariffId());
+
         UserService userService = new UserService(request);
+
         OwnerService ownerService = new OwnerService(request);
+
         if (tariff.getId() != 0) {
             user = defineUserStatusAndTariffExpiration(user, tariff, userService, ownerService);
         }
