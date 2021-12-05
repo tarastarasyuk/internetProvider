@@ -1,6 +1,7 @@
 package com.internetProvider.aservice;
 
 import com.internetProvider.dao.impl.UserDAOImpl;
+import com.internetProvider.model.Tariff;
 import com.internetProvider.model.User;
 
 import javax.servlet.ServletRequest;
@@ -51,8 +52,8 @@ public class UserService extends AbstractService {
         return entityDAO.changeUserAccountById(id, account);
     }
 
-    public boolean setUserTariffById(int userId, int newTariffId) {
-        return entityDAO.setUserTariffById(userId, newTariffId);
+    public boolean setUserTariffById(int userId, Tariff newTariff) {
+        return entityDAO.setUserTariffById(userId, newTariff);
     }
 
     public boolean deleteUserTariffById(int userId) {

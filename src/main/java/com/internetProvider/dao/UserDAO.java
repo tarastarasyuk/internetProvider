@@ -1,5 +1,6 @@
 package com.internetProvider.dao;
 
+import com.internetProvider.model.Tariff;
 import com.internetProvider.model.User;
 
 import java.math.BigDecimal;
@@ -12,7 +13,7 @@ public interface UserDAO extends AbstractDAO<User> {
 
     boolean changeUserAccountById(int id, BigDecimal newAccount);
 
-    boolean setUserTariffById(int userId, int newTariffId);
+    boolean setUserTariffById(int userId, Tariff tariff);
 
     boolean deleteUserTariffById(int userId);
 

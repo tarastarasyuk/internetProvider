@@ -23,58 +23,49 @@ import static java.util.Objects.nonNull;
 public class ClientPanelServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        refreshSessionUser(request);
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-
-        TariffService tariffService = new TariffService(request);
-
-        Tariff tariff = tariffService.getTariffById(user.getTariffId());
-
-        UserService userService = new UserService(request);
-
-        OwnerService ownerService = new OwnerService(request);
-
-        if (tariff.getId() != 0) {
-            user = defineUserStatusAndTariffExpiration(user, tariff, userService, ownerService);
-        }
-
-        session.removeAttribute("user");
-        session.setAttribute("user", user);
-
-
-
         CityService cityService = new CityService(request);
         List<City> cityList = cityService.getAllCities();
-
-
-
+        TariffService tariffService = new TariffService(request);
+        Tariff tariff = tariffService.getTariffById(user.getTariffId());
         request.setAttribute("tariff", tariff);
         request.setAttribute("cityList", cityList);
         request.getRequestDispatcher("WEB-INF/jsp/client/client.jsp").forward(request, response);
     }
 
-    private void refreshSessionUser(HttpSession session, HttpServletRequest request) {
-        User userSession = (User) session.getAttribute("user");
+    private void refreshSessionUser(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
         UserService userService = new UserService(request);
-        User refreshedUser = userService.getUserByID(userSession.getId());
+        user = userService.getUserByID(user.getId());
+        TariffService tariffService = new TariffService(request);
+        Tariff tariff = tariffService.getTariffById(user.getTariffId());
+
+        OwnerService ownerService = new OwnerService(request);
+        if (tariff.getId() != 0) {
+            user = defineUserStatusAndTariffExpiration(user, tariff, userService, ownerService);
+        }
         session.removeAttribute("user");
-        session.setAttribute("user", refreshedUser);
+        session.setAttribute("user", user);
     }
 
     private User defineUserStatusAndTariffExpiration(User user, Tariff tariff, UserService userService, OwnerService ownerService) {
-        Duration difference = Duration.between(user.getTariffBuyDate(), LocalDateTime.now());
+        Duration difference = Duration.between(LocalDateTime.now(), user.getTariffBuyDate());
         int duration = (int) difference.getSeconds();
-        if (duration <= tariff.getDayDuration()) {
+        if (duration > 0) {
             user.setTariffExpiration(duration);
         } else {
             // enough money
             if (user.getAccount().compareTo(tariff.getPrice()) >= 0) {
                 ownerService.getTariffPayment(user, tariff);
                 user.setStatus(User.Status.ACTIVE);
+                user.setAccount(user.getAccount().subtract(tariff.getPrice()));
                 user.setTariffExpiration(tariff.getDayDuration());
             } else {
-                user.setStatus(User.Status.BLOCKED);
                 userService.changeUserStatusByUserId(user.getId(), User.Status.BLOCKED);
+                user.setStatus(User.Status.BLOCKED);
                 user.setTariffExpiration(0);
             }
         }
@@ -83,6 +74,7 @@ public class ClientPanelServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        refreshSessionUser(request);
         HttpSession session = request.getSession();
         String action = request.getPathInfo();
         if (action != null) {

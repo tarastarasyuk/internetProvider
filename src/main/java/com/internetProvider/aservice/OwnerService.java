@@ -23,7 +23,7 @@ public class OwnerService {
         BigDecimal userOwnerAccount = (userOwner.getAccount()).add(tariff.getPrice());
         userService.changeUserAccountById(userOwner.getId(), userOwnerAccount);
 
-        return userService.setUserTariffById(user.getId(), tariff.getId());
+        return userService.setUserTariffById(user.getId(), tariff);
     }
 
 }

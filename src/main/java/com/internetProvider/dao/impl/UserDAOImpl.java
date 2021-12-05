@@ -4,6 +4,7 @@ import com.internetProvider.dao.ConnectionConstructor;
 import com.internetProvider.dao.QueriesSQL;
 import com.internetProvider.dao.UserDAO;
 import com.internetProvider.model.Role;
+import com.internetProvider.model.Tariff;
 import com.internetProvider.model.User;
 
 import java.math.BigDecimal;
@@ -99,16 +100,16 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
     }
 
     @Override
-    public boolean setUserTariffById(int userId, int newTariffId) {
+    public boolean setUserTariffById(int userId, Tariff newTariff) {
         boolean result = false;
         try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.UPDATE_USER_TARIFF_ID_BY_ID)) {
-            if (newTariffId == 0) {
+            if (newTariff.getId() == 0) {
                 preparedStatement.setNull(1, 0);
                 preparedStatement.setNull(2, 0);
                 changeUserStatusByUserId(userId, User.Status.INACTIVE);
             } else {
-                preparedStatement.setInt(1, newTariffId);
-                preparedStatement.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
+                preparedStatement.setInt(1, newTariff.getId());
+                preparedStatement.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now().plusSeconds(newTariff.getDayDuration())));
                 changeUserStatusByUserId(userId, User.Status.ACTIVE);
             }
             preparedStatement.setInt(3, userId);
@@ -122,7 +123,7 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
 
     @Override
     public boolean deleteUserTariffById(int userId) {
-        return setUserTariffById(userId, 0);
+        return setUserTariffById(userId, new Tariff());
     }
 
     @Override

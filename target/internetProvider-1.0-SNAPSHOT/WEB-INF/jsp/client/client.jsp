@@ -39,6 +39,10 @@
                                         </c:when>
                                     </c:choose>
 
+
+<%--                                    <span>Expiration:</span>--%>
+<%--                                    ${user.getTariffExpiration()} days left--%>
+
                                 </c:when>
 
                                 <c:otherwise>
