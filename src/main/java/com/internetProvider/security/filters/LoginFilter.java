@@ -2,19 +2,22 @@ package com.internetProvider.security.filters;
 
 import com.internetProvider.aservice.UserService;
 import com.internetProvider.model.User;
-
-import static java.util.Objects.nonNull;
+import org.apache.log4j.Logger;
 
 import javax.servlet.*;
-import javax.servlet.annotation.*;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+import static java.util.Objects.nonNull;
+
 
 @WebFilter(filterName = "LoginFilter", urlPatterns = {"/clientPanel"})
 public class LoginFilter implements Filter {
+    private final static Logger logger = Logger.getLogger(LoginFilter.class);
+
     public void init(FilterConfig config) throws ServletException {
         System.out.println("FILTER WORKS");
     }
@@ -49,13 +52,16 @@ public class LoginFilter implements Filter {
                     session.setAttribute("user", existingUser);
                     req.setAttribute("user", existingUser);
                     if (existingUser.getRoleId() == 2) {
+                        logger.info("CLIENT WAS LOGGED IN");
                         session.setAttribute("pattern", "clientPanel");
                         res.sendRedirect("clientPanel");
                     } else if (existingUser.getRoleId() == 1) {
+                        logger.info("ADMIN WAS LOGGED IN");
                         session.setAttribute("pattern", "adminPanel");
                         res.sendRedirect("adminPanel");
                     }
                 } else {
+                    logger.info("PASSWORD IS INCORRECT");
                     session.setAttribute("signInError", "password is incorrect...");
                     res.sendRedirect("login");
                 }
