@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.internetProvider.database.DBUtils.rollback;
+
 public class ServiceDAOImpl extends ConnectionConstructor implements ServiceDAO {
 
     public ServiceDAOImpl(Connection connection) {
@@ -29,6 +31,7 @@ public class ServiceDAOImpl extends ConnectionConstructor implements ServiceDAO 
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            rollback(connection);
         }
         return serviceList;
     }
@@ -54,6 +57,7 @@ public class ServiceDAOImpl extends ConnectionConstructor implements ServiceDAO 
             result = true;
         } catch (SQLException e) {
             e.printStackTrace();
+            rollback(connection);
         }
         return result;
     }
@@ -69,6 +73,7 @@ public class ServiceDAOImpl extends ConnectionConstructor implements ServiceDAO 
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            rollback(connection);
         }
         return service;
     }
@@ -85,6 +90,7 @@ public class ServiceDAOImpl extends ConnectionConstructor implements ServiceDAO 
             result = true;
         } catch (SQLException e) {
             e.printStackTrace();
+            rollback(connection);
         }
         return result;
     }
@@ -98,6 +104,7 @@ public class ServiceDAOImpl extends ConnectionConstructor implements ServiceDAO 
             result = true;
         } catch (SQLException e) {
             e.printStackTrace();
+            rollback(connection);
         }
         return result;
     }

@@ -1,6 +1,7 @@
 package com.internetProvider.aservice;
 
 import com.internetProvider.dao.impl.UserDAOImpl;
+import com.internetProvider.database.DBUtils;
 import com.internetProvider.model.Tariff;
 import com.internetProvider.model.User;
 
@@ -25,11 +26,15 @@ public class UserService extends AbstractService {
     }
 
     public User findUserByUsernameAndPassword(String username, String password) {
-        return entityDAO.findUserByUsernameAndPassword(username, password);
+        User user = entityDAO.findUserByUsernameAndPassword(username, password);
+        DBUtils.commit(connection);
+        return user;
     }
 
     public boolean createNewUser(User user) {
-        return entityDAO.create(user);
+        boolean result = entityDAO.create(user);
+        DBUtils.commit(connection);
+        return result;
     }
 
     public User getUserByID(int id) {
@@ -37,11 +42,15 @@ public class UserService extends AbstractService {
     }
 
     public boolean updateUser(int id, User newUser) {
-        return entityDAO.update(id, newUser);
+        boolean result = entityDAO.update(id, newUser);
+        DBUtils.commit(connection);
+        return result;
     }
 
     public boolean deleteUser(int id) {
-        return entityDAO.delete(id);
+        boolean result = entityDAO.delete(id);
+        DBUtils.commit(connection);
+        return result;
     }
 
     public List<User> getAllUsers() {
@@ -49,15 +58,21 @@ public class UserService extends AbstractService {
     }
 
     public boolean changeUserAccountById(int id, BigDecimal account) {
-        return entityDAO.changeUserAccountById(id, account);
+        boolean result = entityDAO.changeUserAccountById(id, account);
+        DBUtils.commit(connection);
+        return result;
     }
 
     public boolean setUserTariffById(int userId, Tariff newTariff) {
-        return entityDAO.setUserTariffById(userId, newTariff);
+        boolean result = entityDAO.setUserTariffById(userId, newTariff);
+        DBUtils.commit(connection);
+        return result;
     }
 
     public boolean deleteUserTariffById(int userId) {
-        return entityDAO.deleteUserTariffById(userId);
+        boolean result = entityDAO.deleteUserTariffById(userId);
+        DBUtils.commit(connection);
+        return result;
     }
 
     public User getUserOwner() {
@@ -65,6 +80,29 @@ public class UserService extends AbstractService {
     }
 
     public boolean changeUserStatusByUserId(int userId, User.Status status) {
-        return entityDAO.changeUserStatusByUserId(userId, status);
+        boolean result = entityDAO.changeUserStatusByUserId(userId, status);
+        DBUtils.commit(connection);
+        return result;
+    }
+
+    public boolean connectTariff(User user, Tariff tariff) {
+        boolean resultMinusTariffPrice = false;
+        boolean resultPLusTariffPrice = false;
+        boolean resultSettingTariff = false;
+        BigDecimal userAccount = (user.getAccount()).subtract(tariff.getPrice());
+
+        resultMinusTariffPrice = entityDAO.changeUserAccountById(user.getId(), userAccount);
+        User userOwner = getUserOwner();
+
+        BigDecimal userOwnerAccount = (userOwner.getAccount()).add(tariff.getPrice());
+
+        resultPLusTariffPrice = changeUserAccountById(userOwner.getId(), userOwnerAccount);
+
+        resultSettingTariff = entityDAO.setUserTariffById(user.getId(), tariff);
+        if (resultMinusTariffPrice && resultPLusTariffPrice && resultSettingTariff) {
+            DBUtils.commit(connection);
+            return true;
+        }
+        return false;
     }
 }

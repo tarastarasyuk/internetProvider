@@ -43,15 +43,14 @@ public class ClientPanelServlet extends HttpServlet {
         TariffService tariffService = new TariffService(request);
         Tariff tariff = tariffService.getTariffById(user.getTariffId());
 
-        OwnerService ownerService = new OwnerService(request);
         if (tariff.getId() != 0) {
-            user = defineUserStatusAndTariffExpiration(user, tariff, userService, ownerService);
+            user = defineUserStatusAndTariffExpiration(user, tariff, userService);
         }
         session.removeAttribute("user");
         session.setAttribute("user", user);
     }
 
-    private User defineUserStatusAndTariffExpiration(User user, Tariff tariff, UserService userService, OwnerService ownerService) {
+    private User defineUserStatusAndTariffExpiration(User user, Tariff tariff, UserService userService) {
         Duration difference = Duration.between(LocalDateTime.now(), user.getTariffBuyDate());
         int duration = (int) difference.getSeconds();
         if (duration > 0) {
@@ -59,7 +58,7 @@ public class ClientPanelServlet extends HttpServlet {
         } else {
             // enough money
             if (user.getAccount().compareTo(tariff.getPrice()) >= 0) {
-                ownerService.getTariffPayment(user, tariff);
+                userService.connectTariff(user, tariff);
                 user.setStatus(User.Status.ACTIVE);
                 user.setAccount(user.getAccount().subtract(tariff.getPrice()));
                 user.setTariffExpiration(tariff.getDayDuration());

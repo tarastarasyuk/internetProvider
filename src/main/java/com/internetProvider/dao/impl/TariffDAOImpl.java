@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.internetProvider.database.DBUtils.rollback;
+
 public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
 
     public TariffDAOImpl(Connection connection) {
@@ -50,6 +52,7 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            rollback(connection);
         }
         return listOfServiceId;
     }
@@ -65,6 +68,7 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            rollback(connection);
         }
         return listOfServiceId;
     }
@@ -84,6 +88,7 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
             result = true;
         } catch (SQLException e) {
             e.printStackTrace();
+            rollback(connection);
         }
         return result;
     }
@@ -99,6 +104,7 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            rollback(connection);
         }
         return tariff;
     }
@@ -118,6 +124,7 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
             result = true;
         } catch (SQLException e) {
             e.printStackTrace();
+            rollback(connection);
         }
         return result;
     }
@@ -131,6 +138,7 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
             result = true;
         } catch (SQLException e) {
             e.printStackTrace();
+            rollback(connection);
         }
         return result;
     }
@@ -170,6 +178,7 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
 
         } catch (SQLException e) {
             e.printStackTrace();
+            rollback(connection);
         }
         return tariffList;
     }
@@ -192,6 +201,7 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            rollback(connection);
         }
         return tariffList;
     }

@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.internetProvider.database.DBUtils.rollback;
+
 public class CityDAOImpl extends ConnectionConstructor implements CityDAO {
 
     public CityDAOImpl(Connection connection) {
@@ -29,6 +31,7 @@ public class CityDAOImpl extends ConnectionConstructor implements CityDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            rollback(connection);
         }
         return cityList;
     }
@@ -50,6 +53,7 @@ public class CityDAOImpl extends ConnectionConstructor implements CityDAO {
             result = true;
         } catch (SQLException e) {
             e.printStackTrace();
+            rollback(connection);
         }
         return result;
     }
@@ -65,6 +69,7 @@ public class CityDAOImpl extends ConnectionConstructor implements CityDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            rollback(connection);
         }
         return city;
     }
@@ -79,6 +84,7 @@ public class CityDAOImpl extends ConnectionConstructor implements CityDAO {
             result = true;
         } catch (SQLException e) {
             e.printStackTrace();
+            rollback(connection);
         }
         return result;
     }
@@ -92,6 +98,7 @@ public class CityDAOImpl extends ConnectionConstructor implements CityDAO {
             result = true;
         } catch (SQLException e) {
             e.printStackTrace();
+            rollback(connection);
         }
         return result;
     }
