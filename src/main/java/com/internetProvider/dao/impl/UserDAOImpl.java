@@ -6,6 +6,8 @@ import com.internetProvider.dao.UserDAO;
 import com.internetProvider.model.Role;
 import com.internetProvider.model.Tariff;
 import com.internetProvider.model.User;
+import com.internetProvider.security.filters.LoginFilter;
+import org.apache.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.sql.*;
@@ -17,6 +19,7 @@ import java.util.List;
 import static com.internetProvider.database.DBUtils.rollback;
 
 public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
+    private final static Logger logger = Logger.getLogger(UserDAOImpl.class);
 
     public UserDAOImpl(Connection connection) {
         super(connection);
@@ -33,7 +36,7 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
                 user = fillUserWithExistingData(resultSet);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return user;
@@ -68,7 +71,7 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
                 result = resultSet.getString(1);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return result;
@@ -84,7 +87,7 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
                 result = true;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return result;
@@ -99,7 +102,7 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return result;
@@ -122,7 +125,7 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return result;
@@ -142,7 +145,7 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
                 userOwner = fillUserWithExistingData(resultSet);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return userOwner;
@@ -157,7 +160,7 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return result;
@@ -174,7 +177,7 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
                 userList.add(fillUserWithExistingData(resultSet));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return userList;
@@ -192,7 +195,7 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return result;
@@ -208,7 +211,7 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
                 user = fillUserWithExistingData(resultSet);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return user;
@@ -226,7 +229,7 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return result;
@@ -240,7 +243,7 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return result;

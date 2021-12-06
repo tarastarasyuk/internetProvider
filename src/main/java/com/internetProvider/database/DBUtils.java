@@ -1,9 +1,14 @@
 package com.internetProvider.database;
 
+import com.internetProvider.dao.impl.CityDAOImpl;
+import org.apache.log4j.Logger;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 
 public class DBUtils {
+    private final static Logger logger = Logger.getLogger(DBUtils.class);
+
     private DBUtils() {}
 
     public static void commit(Connection con) {
@@ -11,7 +16,7 @@ public class DBUtils {
             try {
                 con.commit();
             } catch (SQLException e) {
-                e.printStackTrace(); // <-- log
+                logger.error(e.getMessage());
             }
         }
     }
@@ -21,7 +26,7 @@ public class DBUtils {
             try {
                 con.rollback();
             } catch (SQLException e) {
-                e.printStackTrace(); // <-- log
+                logger.error(e.getMessage());
             }
         }
     }
@@ -31,7 +36,7 @@ public class DBUtils {
             try {
                 ac.close();
             } catch (Exception e) {
-                e.printStackTrace(); // <-- log
+                logger.error(e.getMessage());
             }
         }
     }

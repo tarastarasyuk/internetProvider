@@ -2,6 +2,7 @@ package com.internetProvider.controller;
 
 import com.internetProvider.aservice.UserService;
 import com.internetProvider.model.User;
+import org.apache.log4j.Logger;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -11,6 +12,8 @@ import java.math.BigDecimal;
 
 @WebServlet(name = "PaymentServlet", value = "/payment")
 public class PaymentServlet extends HttpServlet {
+    private final static Logger logger = Logger.getLogger(PaymentServlet.class);
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("payment.jsp").forward(request, response);
@@ -36,5 +39,6 @@ public class PaymentServlet extends HttpServlet {
 
         UserService userService = new UserService(request);
         userService.changeUserAccountById(sessionUser.getId(), newAccount);
+        logger.info(sessionUser.getRole() + " topped up the balance by "+ addedAccount);
     }
 }

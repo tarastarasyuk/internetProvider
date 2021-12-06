@@ -58,7 +58,6 @@ public class TariffConnectionServlet extends HttpServlet {
     private boolean payAndConnect(HttpServletRequest request, UserService userService) {
         Tariff newTariff = (Tariff) request.getServletContext().getAttribute("newTariff");
         User user = (User) request.getServletContext().getAttribute("user");
-
         return userService.connectTariff(user, newTariff);
     }
 }

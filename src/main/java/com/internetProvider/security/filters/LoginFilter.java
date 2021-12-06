@@ -32,7 +32,6 @@ public class LoginFilter implements Filter {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
-        //:TODO  to make JavaScript validation for empty input
         UserService userService = new UserService(req);
 
         HttpSession session = req.getSession();
@@ -40,11 +39,11 @@ public class LoginFilter implements Filter {
         if (nonNull(session) && nonNull(session.getAttribute("user"))) {
             User user = (User) session.getAttribute("user");
             if (user.getRoleId() == 1) {
+                logger.info("Denied access: only CLIENT can get client panel");
                 res.sendRedirect("error.jsp");
             } else
-            chain.doFilter(req, res);
-        } else
-            if (nonNull(username) && nonNull(password)) {
+                chain.doFilter(req, res);
+        } else if (nonNull(username) && nonNull(password)) {
 
             if (userService.checkUserExistenceByUsername(username)) {
                 User existingUser = userService.findUserByUsernameAndPassword(username, password);
@@ -52,26 +51,26 @@ public class LoginFilter implements Filter {
                     session.setAttribute("user", existingUser);
                     req.setAttribute("user", existingUser);
                     if (existingUser.getRoleId() == 2) {
-                        logger.info("CLIENT WAS LOGGED IN");
+                        logger.info(existingUser.getRoleId() + " logged in");
                         session.setAttribute("pattern", "clientPanel");
                         res.sendRedirect("clientPanel");
                     } else if (existingUser.getRoleId() == 1) {
-                        logger.info("ADMIN WAS LOGGED IN");
                         session.setAttribute("pattern", "adminPanel");
                         res.sendRedirect("adminPanel");
                     }
                 } else {
-                    logger.info("PASSWORD IS INCORRECT");
+                    logger.info("Incorrect data: password is incorrect");
                     session.setAttribute("signInError", "password is incorrect...");
                     res.sendRedirect("login");
                 }
             } else {
+                logger.info("Incorrect data: no such user");
                 session.setAttribute("signInError", "no such user...");
                 res.sendRedirect("login");
             }
 
         } else {
-                res.sendRedirect("login");
-            }
+            res.sendRedirect("login");
+        }
     }
 }

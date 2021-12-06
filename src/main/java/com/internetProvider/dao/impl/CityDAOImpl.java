@@ -5,6 +5,7 @@ import com.internetProvider.dao.ConnectionConstructor;
 import com.internetProvider.dao.QueriesSQL;
 import com.internetProvider.model.City;
 import com.internetProvider.model.Service;
+import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,6 +17,7 @@ import java.util.List;
 import static com.internetProvider.database.DBUtils.rollback;
 
 public class CityDAOImpl extends ConnectionConstructor implements CityDAO {
+    private final static Logger logger = Logger.getLogger(CityDAOImpl.class);
 
     public CityDAOImpl(Connection connection) {
         super(connection);
@@ -30,7 +32,7 @@ public class CityDAOImpl extends ConnectionConstructor implements CityDAO {
                 cityList.add(fillCityWithExistingData(resultSet));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return cityList;
@@ -52,7 +54,7 @@ public class CityDAOImpl extends ConnectionConstructor implements CityDAO {
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return result;
@@ -68,7 +70,7 @@ public class CityDAOImpl extends ConnectionConstructor implements CityDAO {
                 city = fillCityWithExistingData(resultSet);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return city;
@@ -83,7 +85,7 @@ public class CityDAOImpl extends ConnectionConstructor implements CityDAO {
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return result;
@@ -97,7 +99,7 @@ public class CityDAOImpl extends ConnectionConstructor implements CityDAO {
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return result;

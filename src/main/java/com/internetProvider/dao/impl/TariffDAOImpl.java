@@ -7,6 +7,7 @@ import com.internetProvider.database.QueriesConstants;
 import com.internetProvider.model.Role;
 import com.internetProvider.model.Tariff;
 import com.internetProvider.model.User;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import java.util.List;
 import static com.internetProvider.database.DBUtils.rollback;
 
 public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
+    private final static Logger logger = Logger.getLogger(TariffDAOImpl.class);
 
     public TariffDAOImpl(Connection connection) {
         super(connection);
@@ -51,7 +53,7 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
                 listOfServiceId.add(resultSet.getString(1));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return listOfServiceId;
@@ -67,7 +69,7 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
                 listOfServiceId.add(resultSet.getInt(1));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return listOfServiceId;
@@ -87,7 +89,7 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return result;
@@ -103,7 +105,7 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
                 tariff = fillTariffWithExistingData(resultSet);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return tariff;
@@ -123,7 +125,7 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return result;
@@ -137,7 +139,7 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return result;
@@ -177,7 +179,7 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return tariffList;
@@ -200,7 +202,7 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
                 tariffList.add(fillTariffWithExistingData(resultSet));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return tariffList;
