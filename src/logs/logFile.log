@@ -808,3 +808,20 @@
 2021-12-07 16:41:10 INFO  UserService:40 - New USER was added to database
 2021-12-07 16:42:21 INFO  LoginFilter:61 - ADMIN logged in
 2021-12-07 16:42:48 INFO  UserService:40 - New USER was added to database
+2021-12-07 16:51:13 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 16:51:49 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 16:53:17 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 16:54:10 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 16:54:52 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 16:56:46 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 17:00:35 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 17:01:49 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 17:46:26 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 18:09:23 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 18:11:36 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 18:14:07 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 18:14:35 INFO  UserService:40 - New USER was added to database
+2021-12-07 18:18:12 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 18:18:30 INFO  UserService:40 - New USER was added to database
+2021-12-07 18:19:50 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-07 18:19:53 INFO  LoginFilter:61 - ADMIN logged in

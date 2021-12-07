@@ -50,7 +50,8 @@ a {
 }
 
 .block-btn:hover {
-    text-decoration: underline;;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .unblock-btn {
