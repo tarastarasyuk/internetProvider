@@ -12,7 +12,7 @@ import java.io.IOException;
 
 import static java.util.Objects.nonNull;
 
-@WebFilter(filterName = "AdminFilter", urlPatterns = {"/adminPanel"})
+@WebFilter(filterName = "AdminFilter", urlPatterns = {"/adminPanel/*"})
 public class AdminFilter implements Filter {
     private final static Logger logger = Logger.getLogger(AdminFilter.class);
 
@@ -30,11 +30,10 @@ public class AdminFilter implements Filter {
         HttpSession session = req.getSession();
         if (!nonNull(session.getAttribute("user"))) {
             logger.info("No user in session: redirecting to login.jsp");
-            res.sendRedirect("login");
+            res.sendRedirect("/login");
         } else {
             User userAdmin = (User) session.getAttribute("user");
             if (userAdmin.getRoleId() == 1) {
-                logger.info(userAdmin.getRole() + " logged in");
                 chain.doFilter(request, response);
             } else {
                 logger.info("Denied access: only ADMIN can get admin panel");

@@ -29,6 +29,6 @@ public class ClientServlet extends HttpServlet {
 
         UserService userService = new UserService(request);
         userService.createNewUser(user);
-        response.sendRedirect("/adminPanel");
+        response.sendRedirect("/adminPanel/manageClients");
     }
 }

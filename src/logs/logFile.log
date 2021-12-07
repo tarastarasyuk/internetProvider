@@ -54,3 +54,757 @@
 2021-12-06 14:51:30 INFO  PaymentServlet:42 - petro topped up the balance by 555
 2021-12-06 14:51:33 INFO  UserService:109 - CLIENT paid the price and connected the tariff
 2021-12-06 14:52:03 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-06 15:02:21 INFO  LogoutServlet:22 - CLIENT logged out
+2021-12-06 15:08:53 INFO  LoginFilter:54 - 2 logged in
+2021-12-06 15:08:55 INFO  LogoutServlet:22 - CLIENT logged out
+2021-12-06 15:23:09 INFO  LoginFilter:54 - 2 logged in
+2021-12-06 15:23:09 INFO  LoginFilter:54 - 2 logged in
+2021-12-06 17:04:23 INFO  AdminFilter:37 - ADMIN logged in
+2021-12-06 17:04:53 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-06 17:04:54 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 17:05:06 INFO  LoginFilter:54 - 2 logged in
+2021-12-06 17:05:51 INFO  LogoutServlet:22 - CLIENT logged out
+2021-12-06 17:05:59 INFO  AdminFilter:37 - ADMIN logged in
+2021-12-06 17:06:06 INFO  AdminFilter:37 - ADMIN logged in
+2021-12-06 17:06:08 INFO  AdminFilter:37 - ADMIN logged in
+2021-12-06 17:06:10 INFO  AdminFilter:37 - ADMIN logged in
+2021-12-06 17:11:06 INFO  AdminFilter:37 - ADMIN logged in
+2021-12-06 17:12:22 INFO  AdminFilter:37 - ADMIN logged in
+2021-12-06 17:12:23 INFO  AdminFilter:37 - ADMIN logged in
+2021-12-06 17:13:29 INFO  AdminFilter:37 - ADMIN logged in
+2021-12-06 17:13:30 INFO  AdminFilter:37 - ADMIN logged in
+2021-12-06 17:15:53 INFO  AdminFilter:37 - ADMIN logged in
+2021-12-06 17:16:04 INFO  AdminFilter:37 - ADMIN logged in
+2021-12-06 17:17:25 INFO  AdminFilter:37 - ADMIN logged in
+2021-12-06 17:17:30 INFO  AdminFilter:37 - ADMIN logged in
+2021-12-06 17:33:39 INFO  LoginFilter:60 - 1 logged in
+2021-12-06 17:33:39 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 17:44:02 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 17:44:05 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 17:48:09 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 17:48:53 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 17:51:48 INFO  LoginFilter:60 - ADMIN logged in
+2021-12-06 17:51:48 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 17:56:40 INFO  LoginFilter:60 - ADMIN logged in
+2021-12-06 17:56:40 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 17:58:04 INFO  LoginFilter:60 - ADMIN logged in
+2021-12-06 17:58:04 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 17:58:56 INFO  LoginFilter:60 - ADMIN logged in
+2021-12-06 17:58:56 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 17:59:48 INFO  LoginFilter:60 - ADMIN logged in
+2021-12-06 17:59:48 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:01:32 INFO  LoginFilter:60 - ADMIN logged in
+2021-12-06 18:01:32 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:06:27 INFO  LoginFilter:60 - ADMIN logged in
+2021-12-06 18:06:27 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:07:29 INFO  LoginFilter:60 - ADMIN logged in
+2021-12-06 18:07:29 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:08:39 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:08:43 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:08:46 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:17 INFO  LoginFilter:60 - ADMIN logged in
+2021-12-06 18:10:17 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:10:19 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:10:22 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:10:25 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-06 18:10:30 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:30 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:30 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:30 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:30 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:30 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:30 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:30 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:30 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:30 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:30 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:30 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:30 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:30 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:30 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:30 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:30 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:30 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:30 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:30 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:31 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:31 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:31 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:31 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:31 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:31 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:31 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:31 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:31 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:31 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:31 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:31 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:31 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:31 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:31 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:31 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:31 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:31 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:31 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:31 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:36 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:36 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:36 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:36 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:36 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:36 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:36 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:36 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:36 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:36 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:36 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:36 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:36 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:36 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:36 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:36 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:36 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:36 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:36 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:10:36 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:11:06 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:11:06 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:11:06 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:11:06 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:11:06 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:11:06 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:11:06 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:11:06 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:11:06 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:11:06 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:11:06 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:11:06 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:11:06 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:11:06 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:11:06 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:11:07 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:11:07 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:11:07 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:11:07 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:11:07 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:12:07 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:12:07 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:12:07 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:12:07 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:12:07 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:12:07 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:12:07 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:12:07 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:12:07 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:12:07 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:12:07 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:12:07 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:12:07 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:12:07 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:12:07 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:12:07 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:12:07 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:12:07 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:12:07 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:12:07 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:12:39 INFO  LoginFilter:60 - ADMIN logged in
+2021-12-06 18:12:39 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:12:42 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:12:46 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:12:47 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:12:48 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:12:52 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:13:01 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:13:01 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-06 18:13:32 INFO  LoginFilter:60 - ADMIN logged in
+2021-12-06 18:13:33 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:13:37 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-06 18:13:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:46 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:46 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:46 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:46 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:46 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:46 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:46 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:46 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:46 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:46 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:46 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:46 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:46 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:46 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:46 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:46 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:46 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:46 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:46 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:46 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:51 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:51 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:51 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:51 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:51 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:51 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:51 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:51 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:51 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:51 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:51 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:51 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:51 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:51 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:51 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:51 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:51 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:51 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:51 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:51 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:59 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:59 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:59 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:59 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:59 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:59 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:59 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:59 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:59 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:59 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:59 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:59 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:59 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:59 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:59 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:59 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:59 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:59 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:59 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:13:59 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:38 INFO  LoginFilter:60 - ADMIN logged in
+2021-12-06 18:14:38 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:14:41 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:14:43 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-06 18:14:47 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:47 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:47 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:47 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:47 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:47 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:47 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:47 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:47 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:47 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:47 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:47 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:47 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:47 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:47 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:47 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:47 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:47 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:47 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:47 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:48 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:48 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:48 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:48 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:48 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:48 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:48 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:48 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:48 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:48 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:48 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:48 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:48 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:48 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:48 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:48 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:48 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:48 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:48 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:48 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:53 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:53 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:53 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:53 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:53 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:53 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:54 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:54 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:54 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:54 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:54 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:54 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:54 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:54 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:54 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:54 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:54 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:54 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:54 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:14:54 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:15:24 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:15:24 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:15:24 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:15:24 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:15:24 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:15:24 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:15:24 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:15:24 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:15:24 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:15:24 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:15:24 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:15:24 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:15:24 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:15:24 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:15:24 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:15:24 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:15:24 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:15:24 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:15:24 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:15:24 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:03 INFO  LoginFilter:60 - ADMIN logged in
+2021-12-06 18:17:03 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:17:07 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-06 18:17:13 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:14 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:14 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:14 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:14 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:14 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:14 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:14 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:14 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:14 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:14 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:14 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:14 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:14 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:14 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:14 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:14 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:14 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:14 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:14 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:14 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:17:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:39 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:39 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:39 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:39 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:39 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:39 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:39 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:39 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:39 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:39 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:39 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:39 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:39 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:39 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:39 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:39 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:39 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:39 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:39 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:39 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:40 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:40 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:40 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:40 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:40 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:40 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:40 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:40 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:40 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:40 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:40 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:40 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:40 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:40 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:40 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:40 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:40 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:40 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:40 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:40 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:30:45 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:31:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:31:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:31:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:31:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:31:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:31:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:31:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:31:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:31:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:31:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:31:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:31:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:31:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:31:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:31:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:31:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:31:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:31:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:31:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:31:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:04 INFO  LoginFilter:60 - ADMIN logged in
+2021-12-06 18:32:04 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:32:06 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:32:10 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:32:11 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-06 18:32:16 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:16 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:16 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:16 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:16 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:16 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:16 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:16 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:16 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:16 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:16 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:16 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:16 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:16 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:16 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:16 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:16 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:16 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:16 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:16 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:17 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:17 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:17 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:17 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:17 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:17 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:17 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:17 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:17 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:17 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:17 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:17 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:17 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:17 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:17 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:17 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:17 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:17 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:17 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:17 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:52 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:52 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:52 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:52 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:52 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:52 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:52 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:52 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:52 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:52 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:52 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:52 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:52 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:52 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:52 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:52 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:52 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:52 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:52 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:32:52 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:33:21 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:33:21 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:33:21 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:33:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:33:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:33:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:33:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:33:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:33:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:33:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:33:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:33:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:33:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:33:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:33:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:33:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:33:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:33:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:33:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:33:22 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 18:34:12 INFO  LoginFilter:60 - ADMIN logged in
+2021-12-06 18:34:12 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:34:15 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:34:57 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:35:00 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:35:03 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:35:06 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:35:09 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:35:10 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:35:13 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-06 18:36:50 INFO  LoginFilter:60 - ADMIN logged in
+2021-12-06 18:36:50 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:37:19 INFO  LoginFilter:42 - Denied access: only CLIENT can get client panel
+2021-12-06 18:37:23 INFO  LoginFilter:42 - Denied access: only CLIENT can get client panel
+2021-12-06 18:37:26 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:37:27 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:37:42 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:37:42 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:37:44 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:37:45 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-06 18:37:46 INFO  LoginFilter:60 - ADMIN logged in
+2021-12-06 18:37:50 INFO  LoginFilter:42 - Denied access: only CLIENT can get client panel
+2021-12-06 18:40:05 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-06 18:40:05 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:40:09 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:40:23 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:40:31 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 18:40:34 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:19 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:04:20 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:10:20 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-06 20:10:20 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 20:10:23 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 20:33:23 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:33:35 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:33:35 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:33:35 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:33:35 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:33:35 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:33:35 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:33:35 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:33:35 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:33:35 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:33:36 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:33:37 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:33:37 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:33:37 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:33:37 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:33:37 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:33:37 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:33:37 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:33:37 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 20:33:37 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 21:01:52 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 21:02:18 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-06 21:02:18 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 21:02:22 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 21:02:23 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-06 21:02:26 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 21:02:33 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 21:02:49 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-06 21:02:49 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 21:02:51 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-06 21:02:55 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 21:03:01 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-06 21:03:03 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-06 21:03:03 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 21:03:06 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 21:03:07 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 21:03:09 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 21:03:11 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-06 21:04:19 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-06 21:04:19 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 21:04:22 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 21:04:25 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 21:04:26 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 22:39:11 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-06 22:39:11 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 22:40:18 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 22:40:20 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 22:40:23 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-06 23:21:40 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-07 00:25:36 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-07 14:05:47 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 14:05:47 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-07 14:05:50 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-07 14:05:52 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-07 14:05:52 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-07 14:05:52 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-07 14:05:54 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-07 14:05:56 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-07 14:05:58 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-07 14:06:02 INFO  AdminFilter:37 - ADMIN session updated - still works
+2021-12-07 14:07:09 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 15:41:45 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 15:59:46 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 16:03:54 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 16:04:45 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 16:07:59 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 16:08:53 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 16:10:16 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-07 16:10:19 INFO  LoginFilter:61 - CLIENT logged in
+2021-12-07 16:10:30 INFO  PaymentServlet:42 - CLIENT topped up the balance by 1312
+2021-12-07 16:10:30 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-07 16:10:32 INFO  LogoutServlet:22 - CLIENT logged out
+2021-12-07 16:10:34 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 16:29:19 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 16:29:19 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 16:31:17 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 16:33:09 INFO  UserService:40 - New null was added to database
+2021-12-07 16:34:09 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 16:34:29 INFO  UserService:40 - New null was added to database
+2021-12-07 16:35:27 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 16:36:52 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 16:37:09 INFO  UserService:40 - New USER was added to database
+2021-12-07 16:40:37 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 16:41:10 INFO  UserService:40 - New USER was added to database
+2021-12-07 16:42:21 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 16:42:48 INFO  UserService:40 - New USER was added to database

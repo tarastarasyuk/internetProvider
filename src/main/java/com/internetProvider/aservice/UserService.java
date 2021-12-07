@@ -37,7 +37,7 @@ public class UserService extends AbstractService {
     public boolean createNewUser(User user) {
         boolean result = entityDAO.create(user);
         DBUtils.commit(connection);
-        logger.info("New "+user.getRole() +" was added to database");
+        logger.info("New USER was added to database");
         return result;
     }
 

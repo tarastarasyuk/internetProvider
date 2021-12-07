@@ -1,5 +1,7 @@
 package com.internetProvider.dao;
 
+import com.internetProvider.model.User;
+
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -20,5 +22,7 @@ public class Main {
 
         Duration d = Duration.between(l, LocalDateTime.now());
         System.out.println(d.getSeconds());
+        User.Status s = User.Status.BLOCKED;
+        System.out.println(User.Status.BLOCKED == s);
     }
 }

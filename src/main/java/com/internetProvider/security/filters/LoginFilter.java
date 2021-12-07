@@ -39,8 +39,9 @@ public class LoginFilter implements Filter {
         if (nonNull(session) && nonNull(session.getAttribute("user"))) {
             User user = (User) session.getAttribute("user");
             if (user.getRoleId() == 1) {
-                logger.info("Denied access: only CLIENT can get client panel");
-                res.sendRedirect("error.jsp");
+                res.sendRedirect("adminPanel");
+//                logger.info("Denied access: only CLIENT can get client panel");
+//                res.sendRedirect("error.jsp");
             } else
                 chain.doFilter(req, res);
         } else if (nonNull(username) && nonNull(password)) {
@@ -51,13 +52,13 @@ public class LoginFilter implements Filter {
                     session.setAttribute("user", existingUser);
                     req.setAttribute("user", existingUser);
                     if (existingUser.getRoleId() == 2) {
-                        logger.info(existingUser.getRoleId() + " logged in");
                         session.setAttribute("pattern", "clientPanel");
                         res.sendRedirect("clientPanel");
                     } else if (existingUser.getRoleId() == 1) {
                         session.setAttribute("pattern", "adminPanel");
                         res.sendRedirect("adminPanel");
                     }
+                    logger.info(existingUser.getRole() + " logged in");
                 } else {
                     logger.info("Incorrect data: password is incorrect");
                     session.setAttribute("signInError", "password is incorrect...");
