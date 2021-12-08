@@ -109,6 +109,21 @@ td {
     margin-top: 10px;
 }
 
+/* FIX MODAL EDIT*/
+
 .feature-buttons:not:first-child {
     margin-top: 20px;
+}
+
+.edit-modal-body label{
+    margin-top: 16px;
+}
+
+.feature-buttons {
+    padding-top: 16px;
+    padding-bottom: 8px;
+}
+
+.form-control {
+    margin-top: 10px;
 }

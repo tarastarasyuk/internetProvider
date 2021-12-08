@@ -53,7 +53,7 @@
                             <td class="td-action">
                                 <div>
                                     <button type="button" class="btn btn-primary connect-btn" data-bs-toggle="modal"
-                                            data-bs-target="#editTariff">
+                                            data-bs-target="#modal-${tariff.getId()}">
                                         Edit
                                     </button>
 
@@ -67,92 +67,170 @@
                         </tr>
 
 
+                        <!-- Modal Tariff Editing -->
+                        <div class="modal fade" id="modal-${tariff.getId()}" tabindex="-1" aria-labelledby="exampleModalEdit" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="editTariffLabel">Edit current tariff:</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body edit-modal-body">
+                                        <form class="row g-3" method="post" action="manageTariffs/addNewTariff">
+
+                                            <div class="col-md-6">
+                                                <label for="validationDefault023" class="form-label">Name</label>
+                                                <input type="text" class="form-control" id="validationDefault023" placeholder="Name" value="${tariff.getName()}"
+                                                       name="name" required>
+                                            </div>
+                                            <div class="col-md-6"></div>
+                                            <div class="col-md-12">
+                                                <label for="1validationDefault04" class="form-label">Short Description</label>
+                                                <input type="text" class="form-control" id="1validationDefault04"
+                                                       placeholder="Short Description" name="description" value="${tariff.getDescription()}" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="2validationDefault052" class="form-label">Price</label>
+                                                <input type="text" class="form-control" id="2validationDefault052" placeholder="Price"
+                                                       name="price" value="${tariff.getPrice()}" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="3validationDefault053" class="form-label">Days Duration</label>
+                                                <input type="text" class="form-control" id="3validationDefault053" placeholder="Days Duration"
+                                                       name="dayDuration" value="${tariff.getDayDuration()}" required>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label for="serviceId" class="form-label">Services</label>
+                                                <select class="form-select"  name="service" multiple required>
+                                                    <c:forEach var="service" items="${serviceList}">
+                                                        <option value="${service.getId()}" ${tariff.getListOfServiceName().contains(service.getName()) ? 'selected': ''}>${service.getName()}
+                                                        </option>
+                                                    </c:forEach>
+                                                </select>
+
+                                                <div class="invalid-feedback">
+                                                    Please select a valid state.
+                                                </div>
+                                            </div>
+
+
+                                            <label class="form-label">Features</label>
+                                            <div class="newFeatures_${tariff.getId()}">
+                                                <c:forEach var="feature" items="${tariff.getFeaturesList()}">
+                                                    <div class="col-md-12 feature-input_${tariff.getId()}"><input type="text" class="form-control" placeholder="Feature" name="feature" value="${feature}" required></div>
+                                                </c:forEach>
+                                            </div>
+                                            <div class="col-md-12 feature-buttons">
+                                                <a class="btn btn-success" onclick="addInput('newFeatures_${tariff.getId()}', 'feature-input_${tariff.getId()}')">+ add
+                                                    feature</a>
+
+                                                <a class="btn btn-danger" onclick="removeInput('feature-input_${tariff.getId()}')">- remove
+                                                    feature</a>
+                                            </div>
+
+
+
+                                    <div class="col-md-4"></div>
+
+
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <button class="btn btn-primary" type="submit">Add tariff</button>
+                                    </div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+
+
                     </c:forEach>
 
                     </tbody>
                 </table>
             </section>
+
+
+            <!-- Modal Tariff Creating -->
+            <div class="modal fade" id="createTariff" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="createTariffLabel">Create a new tariff:</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="row g-3" method="post" action="manageTariffs/addNewTariff">
+
+                                <div class="col-md-6">
+                                    <label for="validationDefault03" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="validationDefault03" placeholder="Name"
+                                           name="name" required>
+                                </div>
+                                <div class="col-md-6"></div>
+                                <div class="col-md-12">
+                                    <label for="validationDefault04" class="form-label">Short Description</label>
+                                    <input type="text" class="form-control" id="validationDefault04"
+                                           placeholder="Short Description" name="description" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="validationDefault052" class="form-label">Price</label>
+                                    <input type="text" class="form-control" id="validationDefault052" placeholder="Price"
+                                           name="price" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="validationDefault053" class="form-label">Days Duration</label>
+                                    <input type="text" class="form-control" id="validationDefault053" placeholder="Days Duration"
+                                           name="dayDuration" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="serviceId" class="form-label">Services</label>
+                                    <select class="form-select" id="serviceId" name="service" multiple required>
+                                        <c:forEach var="service" items="${serviceList}">
+                                            <option value="${service.getId()}">${service.getName()}
+                                            </option>
+                                        </c:forEach>
+                                    </select>
+
+                                    <div class="invalid-feedback">
+                                        Please select a valid state.
+                                    </div>
+                                </div>
+
+
+                                <label class="form-label">Features</label>
+                                <div class="newFeaturesCreate">
+                                    <div class="col-md-12 feature-input-create"><input type="text" class="form-control" placeholder="Feature" name="feature" required></div>
+                                </div>
+                                <div class="col-md-12 feature-buttons">
+                                    <a class="btn btn-success" onclick="addInput('newFeaturesCreate', 'feature-input-create')">+ add
+                                        feature</a>
+
+                                    <a class="btn btn-danger" onclick="removeInput('feature-input-create')">- remove
+                                        feature</a>
+                                </div>
+
+
+
+
+                                <div class="col-md-4"></div>
+
+
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <button class="btn btn-primary" type="submit">Add tariff</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
         </div>
     </main>
 
-    <!-- Modal Tariff Creating -->
-    <div class="modal fade" id="createTariff" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="createTariffLabel">Create a new tariff:</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form class="row g-3" method="post" action="manageTariffs/addNewTariff">
 
-                        <div class="col-md-6">
-                            <label for="validationDefault03" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="validationDefault03" placeholder="Name"
-                                   name="name" required>
-                        </div>
-                        <div class="col-md-6"></div>
-                        <div class="col-md-12">
-                            <label for="validationDefault04" class="form-label">Short Description</label>
-                            <input type="text" class="form-control" id="validationDefault04"
-                                   placeholder="Short Description" name="description" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="validationDefault052" class="form-label">Price</label>
-                            <input type="text" class="form-control" id="validationDefault052" placeholder="Price"
-                                   name="price" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="validationDefault053" class="form-label">Days Duration</label>
-                            <input type="text" class="form-control" id="validationDefault053" placeholder="Days Duration"
-                                   name="dayDuration" required>
-                        </div>
-                        <div class="col-md-12">
-                            <label for="serviceId" class="form-label">Services</label>
-                            <select class="form-select" id="serviceId" name="service" multiple required>
-                                <c:forEach var="service" items="${serviceList}">
-                                    <option value="${service.getId()}">${service.getName()}
-                                    </option>
-                                </c:forEach>
-                            </select>
-
-                            <div class="invalid-feedback">
-                                Please select a valid state.
-                            </div>
-                        </div>
-
-
-                        <label class="form-label">Features</label>
-                        <div class="newFeatures">
-                            <div class="col-md-12 feature-input"><input type="text" class="form-control" placeholder="Feature" name="feature" required></div>
-                            <div class="col-md-12 feature-input"><input type="text" class="form-control" placeholder="Feature" name="feature" required></div>
-                        </div>
-                        <div class="col-md-12 feature-buttons">
-                            <a class="btn btn-success" onclick="addInput()">+ add
-                                feature</a>
-
-                            <a class="btn btn-danger" onclick="removeInput()">- remove
-                                feature</a>
-                        </div>
-
-
-                        <input type="hidden" value="1" id="total_chq">
-                </div>
-
-
-                <div class="col-md-4"></div>
-
-
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button class="btn btn-primary" type="submit">Add tariff</button>
-                </div>
-                </form>
-            </div>
-
-        </div>
-    </div>
 
     <script>
         function myFunction() {
@@ -177,15 +255,15 @@
         }
 
 
-        function addInput() {
-            var new_input = '<div class="col-md-12 feature-input"><input type="text" class="form-control" placeholder="Feature" name="email" required></div>';
-            $('.newFeatures').append(new_input);
+        function addInput(newFeatures, featureInput) {
+            var new_input = '<div class="col-md-12 '+featureInput+'"><input type="text" class="form-control" placeholder="Feature" name="feature" required></div>';
+            $('.'+newFeatures).append(new_input);
         }
-        function removeInput() {
-            const last_chq_no = $(".feature-input").length
+        function removeInput(featureInput) {
+            const last_chq_no = $("."+featureInput).length
             console.log(last_chq_no)
             if (last_chq_no > 1) {
-                $(".feature-input")[last_chq_no - 1].parentNode.removeChild($(".feature-input")[last_chq_no - 1]);
+                $("."+featureInput)[last_chq_no - 1].parentNode.removeChild($("."+featureInput)[last_chq_no - 1]);
             }
         }
 

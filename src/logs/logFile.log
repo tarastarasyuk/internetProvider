@@ -878,3 +878,9 @@
 2021-12-08 03:42:18 INFO  LoginFilter:61 - ADMIN logged in
 2021-12-08 03:43:27 INFO  LoginFilter:61 - ADMIN logged in
 2021-12-08 03:46:23 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 13:08:39 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 13:19:19 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 14:02:46 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-08 14:02:50 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 14:13:49 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 14:57:04 INFO  LoginFilter:61 - ADMIN logged in
