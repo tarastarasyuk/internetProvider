@@ -1,16 +1,194 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: workt
-  Date: 06.12.2021
-  Time: 17:42
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-Manage tariffs
-</body>
-</html>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<t:page title="Login" cssLink="../../assets/css/manageTariffs.css">
+    <main>
+
+        <div class="container container-table">
+            <section class="users-table">
+                <h1 class="users-table-title">Tariffs Managment</h1>
+
+                <div class="user-table-subtitle">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-success connect-btn" data-bs-toggle="modal"
+                            data-bs-target="#createTariff">
+                        Add a new Tariff
+                    </button>
+                    <div class="search-filter">
+                        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by names.."
+                               title="Type in a name">
+                    </div>
+                </div>
+
+                <table class="table table-bordered" id="myTable">
+                    <thead>
+                    <tr>
+                        <th class="td-name">Name</th>
+                        <th class="td-description">Description</th>
+                        <th class="td-price">Price</th>
+                        <th class="td-daysDuration">Duration</th>
+                        <th class="td-features">Features</th>
+                        <th class="td-services">Services</th>
+                        <th class="td-action">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="tariff" items="${tariffList}">
+                        <tr>
+                            <td class="td-name">${tariff.getName()}</td>
+                            <td class="td-description">${tariff.getDescription()}</td>
+                            <td class="td-price">${tariff.getPrice()}</td>
+                            <td class="td-daysDuration">${tariff.getDayDuration()}</td>
+                            <td class="td-features">
+                                <c:forEach var="feature" items="${tariff.getFeaturesList()}">
+                                    <span>${feature}</span><br>
+                                </c:forEach>
+                            </td>
+                            <td class="td-services">
+                                <c:forEach var="service" items="${tariff.getListOfServiceName()}">
+                                    <span>${service}</span><br>
+                                </c:forEach>
+                            </td>
+                            <td class="td-action">
+                                <div>
+                                    <button type="button" class="btn btn-primary connect-btn" data-bs-toggle="modal"
+                                            data-bs-target="#editTariff">
+                                        Edit
+                                    </button>
+
+                                </div>
+                                <div>
+                                    <form action="manageTariffs/deleteTariff" method="POST">
+                                        <button class="btn btn-danger connect-btn" type="submit">Delete</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+
+
+                    </c:forEach>
+
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal Tariff Creating -->
+    <div class="modal fade" id="createTariff" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createTariffLabel">Create a new tariff:</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="row g-3" method="post" action="manageTariffs/addNewTariff">
+
+                        <div class="col-md-6">
+                            <label for="validationDefault03" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="validationDefault03" placeholder="Name"
+                                   name="name" required>
+                        </div>
+                        <div class="col-md-6"></div>
+                        <div class="col-md-12">
+                            <label for="validationDefault04" class="form-label">Short Description</label>
+                            <input type="text" class="form-control" id="validationDefault04"
+                                   placeholder="Short Description" name="description" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationDefault052" class="form-label">Price</label>
+                            <input type="text" class="form-control" id="validationDefault052" placeholder="Price"
+                                   name="price" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="validationDefault053" class="form-label">Days Duration</label>
+                            <input type="text" class="form-control" id="validationDefault053" placeholder="Days Duration"
+                                   name="dayDuration" required>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="serviceId" class="form-label">Services</label>
+                            <select class="form-select" id="serviceId" name="service" multiple required>
+                                <c:forEach var="service" items="${serviceList}">
+                                    <option value="${service.getId()}">${service.getName()}
+                                    </option>
+                                </c:forEach>
+                            </select>
+
+                            <div class="invalid-feedback">
+                                Please select a valid state.
+                            </div>
+                        </div>
+
+
+                        <label class="form-label">Features</label>
+                        <div class="newFeatures">
+                            <div class="col-md-12 feature-input"><input type="text" class="form-control" placeholder="Feature" name="feature" required></div>
+                            <div class="col-md-12 feature-input"><input type="text" class="form-control" placeholder="Feature" name="feature" required></div>
+                        </div>
+                        <div class="col-md-12 feature-buttons">
+                            <a class="btn btn-success" onclick="addInput()">+ add
+                                feature</a>
+
+                            <a class="btn btn-danger" onclick="removeInput()">- remove
+                                feature</a>
+                        </div>
+
+
+                        <input type="hidden" value="1" id="total_chq">
+                </div>
+
+
+                <div class="col-md-4"></div>
+
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary" type="submit">Add tariff</button>
+                </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function myFunction() {
+            const d = document.getElementsByClassName("feature-input").length
+            console.log(d)
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+
+        function addInput() {
+            var new_input = '<div class="col-md-12 feature-input"><input type="text" class="form-control" placeholder="Feature" name="email" required></div>';
+            $('.newFeatures').append(new_input);
+        }
+        function removeInput() {
+            const last_chq_no = $(".feature-input").length
+            console.log(last_chq_no)
+            if (last_chq_no > 1) {
+                $(".feature-input")[last_chq_no - 1].parentNode.removeChild($(".feature-input")[last_chq_no - 1]);
+            }
+        }
+
+    </script>
+
+</t:page>

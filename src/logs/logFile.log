@@ -841,3 +841,40 @@
 2021-12-07 18:24:57 INFO  LogoutServlet:22 - CLIENT logged out
 2021-12-07 18:25:02 INFO  LoginFilter:61 - ADMIN logged in
 2021-12-07 18:37:10 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 22:04:47 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 22:08:25 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-07 22:08:32 INFO  LoginFilter:61 - CLIENT logged in
+2021-12-07 22:08:42 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-07 22:09:01 INFO  PaymentServlet:42 - CLIENT topped up the balance by 150
+2021-12-07 22:11:55 INFO  LogoutServlet:22 - CLIENT logged out
+2021-12-07 22:11:59 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 22:12:12 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-07 22:12:16 INFO  LoginFilter:61 - CLIENT logged in
+2021-12-07 22:12:16 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-07 22:12:18 INFO  LogoutServlet:22 - CLIENT logged out
+2021-12-07 22:12:21 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-07 22:16:44 INFO  UserService:40 - New USER was added to database
+2021-12-08 00:35:25 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 00:42:09 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 00:47:10 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 00:47:47 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 00:56:02 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 00:58:09 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 01:03:31 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 01:06:56 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 02:08:50 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-08 02:08:52 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 02:10:05 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 02:13:04 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 02:23:25 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 02:26:24 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-08 02:26:26 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 02:28:00 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 03:29:15 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 03:30:34 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 03:33:49 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 03:34:58 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 03:38:03 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 03:42:18 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 03:43:27 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 03:46:23 INFO  LoginFilter:61 - ADMIN logged in
