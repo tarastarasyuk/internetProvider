@@ -27,15 +27,16 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
     }
 
     private Tariff fillTariffWithExistingData(ResultSet resultSet) throws SQLException {
-        Tariff tariff = new Tariff();
+        int idK = 1;
         int k = 1;
-        tariff.setId(resultSet.getInt(k++));
-        tariff.setName(resultSet.getString(k++));
-        tariff.setDescription(resultSet.getString(k++));
-        tariff.setPrice(resultSet.getBigDecimal(k++));
-        tariff.setDayDuration(resultSet.getInt(k++));
-        tariff.setFeatures(resultSet.getString(k));
-        tariff.setServiceList(getListOfServicesOfCurrentTariff(tariff.getId()));
+        Tariff tariff = new Tariff.Builder().withId(resultSet.getInt(k++))
+                .withName(resultSet.getString(k++))
+                .withDescription(resultSet.getString(k++))
+                .withPrice(resultSet.getBigDecimal(k++))
+                .withDayDuration(resultSet.getInt(k++))
+                .withFeatures(resultSet.getString(k))
+                .withServiceList(getListOfServicesOfCurrentTariff(resultSet.getInt(idK)))
+                .buildTariff();
         return tariff;
     }
 

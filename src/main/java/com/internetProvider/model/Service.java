@@ -48,7 +48,7 @@ public class Service {
         this.description = description;
     }
 
-    public class Builder {
+    public static class Builder {
         private final Service service;
 
         public Builder() {

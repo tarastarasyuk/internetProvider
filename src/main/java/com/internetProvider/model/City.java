@@ -28,7 +28,7 @@ public class City {
         this.cityName = cityName;
     }
 
-    public class Builder {
+    public static class Builder {
         private final City city;
 
         public Builder() {

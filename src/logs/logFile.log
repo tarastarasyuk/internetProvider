@@ -1420,3 +1420,23 @@ The last packet successfully received from the server was 857 527 milliseconds a
 2021-12-09 23:17:10 INFO  LoginFilter:62 - ADMIN logged in
 2021-12-10 00:33:36 INFO  LoginFilter:62 - ADMIN logged in
 2021-12-10 00:33:36 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-10 01:16:25 INFO  LoginFilter:62 - ADMIN logged in
+2021-12-10 01:16:29 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-10 01:16:31 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-10 01:16:34 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-10 01:16:37 INFO  LoginFilter:62 - ADMIN logged in
+2021-12-10 01:16:40 INFO  UserService:82 - CLIENT deleted his tariff
+2021-12-10 01:17:50 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-10 01:20:46 INFO  LoginFilter:62 - ADMIN logged in
+2021-12-10 01:20:51 INFO  UserService:82 - CLIENT deleted his tariff
+2021-12-10 01:20:52 INFO  UserService:82 - CLIENT deleted his tariff
+2021-12-10 01:20:53 INFO  UserService:82 - CLIENT deleted his tariff
+2021-12-10 01:20:54 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-10 01:20:57 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-10 01:22:25 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-10 01:22:27 INFO  LoginFilter:62 - ADMIN logged in
+2021-12-10 01:23:58 INFO  LoginFilter:62 - ADMIN logged in
+2021-12-10 01:46:20 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-10 01:46:23 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-10 01:46:25 INFO  LoginFilter:62 - ADMIN logged in
+2021-12-10 01:48:05 ERROR TariffServlet:136 - C:\Programs\Java\internetProvider\src\webapp\tariff.txt (The system cannot find the path specified)

@@ -41,23 +41,27 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
     }
 
     private User fillUserWithExistingData(ResultSet resultSet) throws SQLException {
-        User user = new User();
+
         int k = 1;
-        user.setId(resultSet.getInt(k++));
-        user.setUsername(resultSet.getString(k++));
-        user.setPassword(resultSet.getString(k++));
-        user.setStatus(User.Status.valueOf(resultSet.getString(k++)));
-        user.setAccount(resultSet.getBigDecimal(k++));
-        user.setEmail(resultSet.getString(k++));
-        user.setCreatTime(resultSet.getDate(k++));
-        user.setTariffId(resultSet.getInt(k++));
-        Timestamp timestamp = resultSet.getTimestamp(k++);
-        user.setTariffBuyDate(timestamp != null ? timestamp.toLocalDateTime() : null);
-        user.setRoleId(resultSet.getInt(k++));
-        user.setRole(Role.getRole(user.getRoleId()));
-        user.setCityId(resultSet.getInt(k));
-        user.setCityName(getCityNameByCityId(user.getCityId()));
+        User user = new User.Builder().withId(resultSet.getInt(k++))
+                .withUsername(resultSet.getString(k++))
+                .withPassword(resultSet.getString(k++))
+                .withStatus(User.Status.valueOf(resultSet.getString(k++)))
+                .withAccount(resultSet.getBigDecimal(k++))
+                .withEmail(resultSet.getString(k++))
+                .withCreateTime(resultSet.getDate(k++))
+                .withTariffId(resultSet.getInt(k++))
+                .withTariffBuyDate(resultSet.getTimestamp(k) != null ? resultSet.getTimestamp(k++).toLocalDateTime() : increaseKreturnNull(k++) )
+                .withRoleId(resultSet.getInt(k))
+                .withRole(Role.getRole(resultSet.getInt(k++)))
+                .withCityId(resultSet.getInt(k))
+                .withCityName(getCityNameByCityId(resultSet.getInt(k)))
+                .buildUser();
         return user;
+    }
+
+    private LocalDateTime increaseKreturnNull(int k) {
+        return null;
     }
 
     private String getCityNameByCityId(Integer cityId) {

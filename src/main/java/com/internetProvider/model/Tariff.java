@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static java.util.Objects.nonNull;
+
 public class Tariff {
     private int id;
     private String name;
@@ -37,7 +39,14 @@ public class Tariff {
     }
 
     public List<Integer> getListOfServiceId() {
+        if (nonNull(listOfServiceId)) {
+            return listOfServiceId;
+        }
         return serviceList.stream().map(Service::getId).collect(Collectors.toList());
+    }
+
+    public List<String> getListOfServiceName() {
+        return serviceList.stream().map(Service::getName).collect(Collectors.toList());
     }
 
     public void setListOfServiceId(List<Integer> listOfServiceId) {
@@ -96,7 +105,7 @@ public class Tariff {
         return Arrays.stream(features.split(";")).map(String::trim).collect(Collectors.toList());
     }
 
-    public class Builder {
+    public static class Builder {
         private final Tariff tariff;
 
         public Builder() {

@@ -146,7 +146,7 @@ public class User {
 
 
     // Builder pattern
-    public class Builder {
+    public static class Builder {
         private final User user;
 
         public Builder() {
@@ -165,6 +165,11 @@ public class User {
 
         public Builder withPassword(String password) {
             user.password = password;
+            return this;
+        }
+
+        public Builder withStatus(Status status) {
+            user.status = status;
             return this;
         }
 
