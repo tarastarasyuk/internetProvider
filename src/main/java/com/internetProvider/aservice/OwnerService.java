@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 public class OwnerService {
     private final UserService userService;
     public OwnerService(HttpServletRequest request) {
-        this.userService = new UserService(request);
+        this.userService = UserService.getInstance(request);
     }
 
     public boolean getTariffPayment(User user, Tariff tariff) {

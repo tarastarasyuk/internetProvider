@@ -25,7 +25,7 @@ public class PaymentServlet extends HttpServlet {
         User user = (User) session.getAttribute("user");
         topUpAccount(request, user);
 
-        UserService userService = new UserService(request);
+        UserService userService = UserService.getInstance(request);
         User updatedUser = userService.getUserByID(user.getId());
         session.removeAttribute("user");
         session.setAttribute("user", updatedUser);
@@ -37,7 +37,7 @@ public class PaymentServlet extends HttpServlet {
         BigDecimal addedAccount = new BigDecimal(request.getParameter("sum"));
         BigDecimal newAccount = currentAccount.add(addedAccount);
 
-        UserService userService = new UserService(request);
+        UserService userService = UserService.getInstance(request);
         userService.changeUserAccountById(sessionUser.getId(), newAccount);
         logger.info(sessionUser.getRole() + " topped up the balance by "+ addedAccount);
     }

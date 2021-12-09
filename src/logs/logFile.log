@@ -1357,3 +1357,59 @@ The last packet successfully received from the server was 857 527 milliseconds a
 2021-12-09 17:58:24 ERROR TariffServlet:137 - C:\Programs\Java\internetProvider\src\webapp\tariff.txt (The system cannot find the path specified)
 2021-12-09 17:58:44 ERROR TariffServlet:137 - C:\Programs\Java\internetProvider\src\webapp\tariff.txt (The system cannot find the path specified)
 2021-12-09 17:59:04 ERROR TariffServlet:137 - C:\Programs\Java\internetProvider\src\webapp\tariff.txt (The system cannot find the path specified)
+2021-12-09 18:06:50 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 18:06:52 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 18:07:00 INFO  LoginFilter:64 - Incorrect data: password is incorrect
+2021-12-09 18:07:16 INFO  LoginFilter:69 - Incorrect data: no such user
+2021-12-09 18:07:22 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 18:07:26 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 18:07:30 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 18:07:43 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 18:09:14 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 18:09:19 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 18:09:55 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 18:10:05 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 18:10:05 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 18:10:21 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 18:11:10 INFO  PaymentServlet:42 - CLIENT topped up the balance by 900
+2021-12-09 18:12:22 INFO  UserService:117 - CLIENT paid the price and connected the tariff
+2021-12-09 18:12:52 INFO  UserService:117 - CLIENT paid the price and connected the tariff
+2021-12-09 18:13:53 INFO  PaymentServlet:42 - CLIENT topped up the balance by 600
+2021-12-09 18:13:53 INFO  UserService:117 - CLIENT paid the price and connected the tariff
+2021-12-09 18:14:45 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 18:14:49 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 18:15:05 INFO  UserService:86 - CLIENT deleted his tariff
+2021-12-09 18:15:16 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 18:15:28 INFO  LoginFilter:62 - ADMIN logged in
+2021-12-09 18:15:30 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-09 18:15:31 INFO  LoginFilter:62 - ADMIN logged in
+2021-12-09 18:19:58 ERROR TariffDAOImpl:152 - Data truncation: Out of range value for column 'price' at row 1
+2021-12-09 18:20:46 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-09 18:21:06 INFO  LoginFilter:62 - ADMIN logged in
+2021-12-09 18:21:50 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 18:22:00 INFO  UserService:117 - CLIENT paid the price and connected the tariff
+2021-12-09 18:22:11 INFO  UserService:86 - CLIENT deleted his tariff
+2021-12-09 18:22:51 INFO  UserService:48 - New USER was added to database
+2021-12-09 18:22:56 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-09 18:23:04 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 18:23:23 ERROR TariffServlet:136 - C:\Programs\Java\internetProvider\src\webapp\tariff.txt (The system cannot find the path specified)
+2021-12-09 18:23:42 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 18:34:16 INFO  LoginFilter:69 - Incorrect data: no such user
+2021-12-09 18:35:51 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-09 18:36:06 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 18:36:11 INFO  AdminFilter:39 - Denied access: only ADMIN can get admin panel
+2021-12-09 18:36:18 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 18:36:46 INFO  LoginFilter:62 - ADMIN logged in
+2021-12-09 18:38:32 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-09 18:38:57 INFO  LoginFilter:62 - ADMIN logged in
+2021-12-09 18:39:00 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-09 18:39:02 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 18:39:33 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 18:43:08 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 18:43:11 INFO  AdminFilter:39 - Denied access: only ADMIN can get admin panel
+2021-12-09 20:16:16 ERROR TariffServlet:136 - C:\Programs\Java\internetProvider\src\webapp\tariff.txt (The system cannot find the path specified)
+2021-12-09 20:16:18 ERROR TariffServlet:136 - C:\Programs\Java\internetProvider\src\webapp\tariff.txt (The system cannot find the path specified)
+2021-12-09 20:16:36 ERROR TariffServlet:136 - C:\Programs\Java\internetProvider\src\webapp\tariff.txt (The system cannot find the path specified)
+2021-12-09 22:28:35 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 22:28:56 ERROR TariffServlet:136 - C:\Programs\Java\internetProvider\src\webapp\tariff.txt (The system cannot find the path specified)
+2021-12-09 22:29:10 INFO  LogoutServlet:25 - CLIENT logged out

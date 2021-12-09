@@ -13,21 +13,17 @@ import java.util.List;
 public class UserService extends AbstractService {
     private final static Logger logger = Logger.getLogger(UserService.class);
 
-
+//    Singleton pattern
     private static UserService instance;
-
     public static synchronized UserService getInstance(HttpServletRequest request) {
         if (instance == null) {
             instance = new UserService(request);
         }
         return instance;
     }
-    /**
-     * TODO: REMOVE entityDAO and make AbstractService with factory
-     */
-    private final UserDAOImpl entityDAO;
 
-    public UserService(HttpServletRequest request) {
+    private final UserDAOImpl entityDAO;
+    private UserService(HttpServletRequest request) {
         super(request);
         entityDAO = new UserDAOImpl(connection);
     }

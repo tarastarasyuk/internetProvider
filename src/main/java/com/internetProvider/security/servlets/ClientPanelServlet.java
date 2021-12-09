@@ -49,7 +49,7 @@ public class ClientPanelServlet extends HttpServlet {
     private void refreshSessionUser(HttpServletRequest request) {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        UserService userService = new UserService(request);
+        UserService userService = UserService.getInstance(request);
         user = userService.getUserByID(user.getId());
         TariffService tariffService = new TariffService(request);
         Tariff tariff = tariffService.getTariffById(user.getTariffId());
@@ -104,7 +104,7 @@ public class ClientPanelServlet extends HttpServlet {
 
 
         User user = (User) session.getAttribute("user");
-        UserService userService = new UserService(request);
+        UserService userService = UserService.getInstance(request);
         User updatedUser = userService.getUserByID(user.getId());
         session.removeAttribute("user");
         session.setAttribute("user", updatedUser);
@@ -113,7 +113,7 @@ public class ClientPanelServlet extends HttpServlet {
 
     private void deleteTariff(HttpServletRequest request, HttpSession session) {
         User sessionUser = (User) session.getAttribute("user");
-        UserService userService = new UserService(request);
+        UserService userService = UserService.getInstance(request);
         userService.deleteUserTariffById(sessionUser.getId());
     }
 
@@ -131,7 +131,7 @@ public class ClientPanelServlet extends HttpServlet {
         user.setEmail(email);
         user.setCityId(cityId);
 
-        UserService userService = new UserService(request);
+        UserService userService = UserService.getInstance(request);
         userService.updateUser(sessionUser.getId(), user);
 
         if (!password.isEmpty()) {

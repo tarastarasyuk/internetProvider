@@ -19,7 +19,7 @@ import static java.util.Objects.nonNull;
 public class ManageClientsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UserService userService = new UserService(request);
+        UserService userService = UserService.getInstance(request);
         List<User> clientList = userService.getAllUsers().stream().filter(user -> user.getRoleId() == 2).collect(Collectors.toList());
         request.setAttribute("clientList", clientList);
 
@@ -61,7 +61,7 @@ public class ManageClientsServlet extends HttpServlet {
         user.setCityId(cityId);
 
         if (nonNull(password)) {
-            UserService userService = new UserService(request);
+            UserService userService = UserService.getInstance(request);
             return userService.createNewUser(user);
         }
         return false;
@@ -70,7 +70,7 @@ public class ManageClientsServlet extends HttpServlet {
     private boolean changeUserStatus(HttpServletRequest request, HttpSession session) {
         Integer clientId = Integer.valueOf(request.getParameter("clientId"));
         User.Status clientStatus = User.Status.valueOf(request.getParameter("clientStatus"));
-        UserService userService = new UserService(request);
+        UserService userService = UserService.getInstance(request);
         if (clientStatus == User.Status.BLOCKED) {
             return userService.changeUserStatusByUserId(clientId, User.Status.INACTIVE);
         } else {

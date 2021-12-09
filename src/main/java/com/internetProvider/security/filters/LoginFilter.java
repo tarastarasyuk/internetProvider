@@ -33,7 +33,7 @@ public class LoginFilter implements Filter {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
-        UserService userService = new UserService(req);
+        UserService userService = UserService.getInstance(req);
 
         HttpSession session = req.getSession();
 

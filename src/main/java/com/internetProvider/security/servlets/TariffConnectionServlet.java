@@ -46,7 +46,7 @@ public class TariffConnectionServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UserService userService = new UserService(request);
+        UserService userService = UserService.getInstance(request);
 
         if (payAndConnect(request, userService)) {
             HttpSession session = request.getSession();
