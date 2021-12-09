@@ -1,7 +1,6 @@
 package com.internetProvider.security.servlets;
 
 import com.internetProvider.aservice.CityService;
-import com.internetProvider.aservice.OwnerService;
 import com.internetProvider.aservice.TariffService;
 import com.internetProvider.aservice.UserService;
 import com.internetProvider.model.City;
@@ -13,7 +12,6 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -36,9 +34,9 @@ public class ClientPanelServlet extends HttpServlet {
             refreshSessionUser(request);
             HttpSession session = request.getSession();
             User user = (User) session.getAttribute("user");
-            CityService cityService = new CityService(request);
+            CityService cityService = CityService.getInstance(request);
             List<City> cityList = cityService.getAllCities();
-            TariffService tariffService = new TariffService(request);
+            TariffService tariffService = TariffService.getInstance(request);
             Tariff tariff = tariffService.getTariffById(user.getTariffId());
             request.setAttribute("tariff", tariff);
             request.setAttribute("cityList", cityList);
@@ -51,7 +49,7 @@ public class ClientPanelServlet extends HttpServlet {
         User user = (User) session.getAttribute("user");
         UserService userService = UserService.getInstance(request);
         user = userService.getUserByID(user.getId());
-        TariffService tariffService = new TariffService(request);
+        TariffService tariffService = TariffService.getInstance(request);
         Tariff tariff = tariffService.getTariffById(user.getTariffId());
 
         if (tariff.getId() != 0) {

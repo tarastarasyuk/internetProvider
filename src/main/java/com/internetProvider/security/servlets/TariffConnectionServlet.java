@@ -1,6 +1,5 @@
 package com.internetProvider.security.servlets;
 
-import com.internetProvider.aservice.OwnerService;
 import com.internetProvider.aservice.TariffService;
 import com.internetProvider.aservice.UserService;
 import com.internetProvider.model.Tariff;
@@ -11,8 +10,6 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-import static java.util.Objects.nonNull;
-
 @WebServlet(name = "TariffConnectionServlet", urlPatterns = "/clientPanel/tariffConnection/*")
 public class TariffConnectionServlet extends HttpServlet {
     @Override
@@ -21,7 +18,7 @@ public class TariffConnectionServlet extends HttpServlet {
         User userSession = (User) session.getAttribute("user");
         if (userSession.getStatus() != User.Status.BLOCKED) {
             int newTariffId = Integer.parseInt(request.getParameter("newTariffId"));
-            TariffService tariffService = new TariffService(request);
+            TariffService tariffService = TariffService.getInstance(request);
             Tariff newTariff = tariffService.getTariffById(newTariffId);
             User user = (User) session.getAttribute("user");
 

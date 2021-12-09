@@ -27,7 +27,7 @@ public class AdminPanelServlet extends HttpServlet {
             default:
                 break;
         }
-        CityService cityService = new CityService(request);
+        CityService cityService = CityService.getInstance(request);
         List<City> cityList = cityService.getAllCities();
         request.setAttribute("cityList", cityList);
         request.getRequestDispatcher("WEB-INF/jsp/admin/admin.jsp").forward(request, response);

@@ -10,9 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public class CityService extends AbstractService {
-    private final CityDAOImpl entityDAO;
 
-    public CityService(HttpServletRequest request) {
+    //    Singleton pattern
+    private static CityService instance;
+    public static synchronized CityService getInstance(HttpServletRequest request) {
+        if (instance == null) {
+            instance = new CityService(request);
+        }
+        return instance;
+    }
+
+    private final CityDAOImpl entityDAO;
+    private CityService(HttpServletRequest request) {
         super(request);
         entityDAO = new CityDAOImpl(connection);
     }

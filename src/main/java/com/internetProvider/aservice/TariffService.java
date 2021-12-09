@@ -9,9 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public class TariffService extends AbstractService {
-    private TariffDAOImpl entityDAO;
 
-    public TariffService(HttpServletRequest request) {
+    //    Singleton pattern
+    private static TariffService instance;
+    public static synchronized TariffService getInstance(HttpServletRequest request) {
+        if (instance == null) {
+            instance = new TariffService(request);
+        }
+        return instance;
+    }
+
+    private TariffDAOImpl entityDAO;
+    private TariffService(HttpServletRequest request) {
         super(request);
         entityDAO = new TariffDAOImpl(connection);
     }
