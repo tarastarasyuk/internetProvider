@@ -20,7 +20,8 @@ public class QueriesSQL {
     public static final String SELECT_ALL_USERS = "SELECT * FROM " + userTable + "";
     public static final String DELETE_USER_BY_ID = "DELETE FROM " + userTable + " WHERE " + userId + " = ?";
     public static final String SELECT_USER_BY_ID = "SELECT * FROM " + userTable + " WHERE " + userId + " = ?";
-    public static final String UPDATE_USER_BY_ID = "UPDATE " + userTable + " SET " + userUsername + "=?, " + userPassword + "=?, " + userEmail + "=?, " + userCityId + "=? WHERE " + userId + "=?";
+    public static final String UPDATE_USER_BY_ID = "UPDATE " + userTable + " SET " + userUsername + "=?, " + userEmail + "=?, " + userCityId + "=? WHERE " + userId + "=?";
+    public static final String UPDATE_PASSWORD = "UPDATE " + userTable + " SET " + userPassword + "=? WHERE " + userId + "=?";
     public static final String UPDATE_USER_ACCOUNT_BY_ID = "UPDATE " + userTable + " SET " + userAccount + "=? WHERE " + userId + "=?";
     public static final String CREATE_USER = "INSERT INTO " + userTable + " (" + userUsername + ", " + userPassword + ", " + userEmail + ", " + userRoleId + ", " + userCityId + ") VALUES (?, ?, ?, " + USER_ROLE_ID + ", ?)";
     public static final String UPDATE_USER_TARIFF_ID_BY_ID = "UPDATE " + userTable + " SET " + userTariffId + "=?, " +userTariffBuyData + "=? " +" WHERE " + userId + "=?";
@@ -61,7 +62,8 @@ public class QueriesSQL {
     private static final String tariffHasServiceServiceId = "service_id";
     public static final String SELECT_SERVICE_ID_BY_TARIFF_ID = "SELECT "+tariffHasServiceServiceId+" FROM " + tariffHasServiceTable + " WHERE "+ tariffHasServiceTariffId + "= ?;";
     public static final String SELECT_SERVICE_NAME_BY_TARIFF_ID = "SELECT "+tariffName+" FROM "+ serviceTable+" WHERE ID IN (SELECT "+ tariffHasServiceServiceId+" FROM "+ tariffHasServiceTable+" WHERE "+ tariffHasServiceTariffId+" = ?);";
-
+    public static final String SET_SERVICES_FOR_TARIFF = "INSERT INTO "+tariffHasServiceTable+"("+tariffHasServiceTariffId+", "+tariffHasServiceServiceId+") VALUE (?, ?);";
+    public static final String DELETE_FROM_TARIFF_HAS_SERVICE = "DELETE FROM "+ tariffHasServiceTable+" WHERE "+ tariffHasServiceTariffId+" = ?;";
 
     //    getTariffsByServices
     public static final String SELECT_TARIFFS_BY_SERVICES = "SELECT * FROM " + tariffTable + " WHERE id in (SELECT " + tariffHasServiceTariffId + " FROM ( SELECT * FROM " + tariffHasServiceTable + " AS A GROUP BY " +tariffHasServiceTariffId+ " HAVING COUNT("+ tariffHasServiceTariffId+") = ?) AS B WHERE " +tariffHasServiceServiceId+" IN ($))";

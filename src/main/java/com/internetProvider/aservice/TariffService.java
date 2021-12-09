@@ -1,7 +1,7 @@
 package com.internetProvider.aservice;
 
+import com.internetProvider.dao.DBUtils;
 import com.internetProvider.dao.impl.TariffDAOImpl;
-import com.internetProvider.database.DBUtils;
 import com.internetProvider.model.Tariff;
 
 import javax.servlet.ServletRequest;

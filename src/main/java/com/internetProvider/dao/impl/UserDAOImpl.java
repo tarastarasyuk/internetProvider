@@ -6,17 +6,18 @@ import com.internetProvider.dao.UserDAO;
 import com.internetProvider.model.Role;
 import com.internetProvider.model.Tariff;
 import com.internetProvider.model.User;
+import org.apache.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.sql.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.internetProvider.database.DBUtils.rollback;
+import static com.internetProvider.dao.DBUtils.rollback;
 
 public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
+    private final static Logger logger = Logger.getLogger(UserDAOImpl.class);
 
     public UserDAOImpl(Connection connection) {
         super(connection);
@@ -33,7 +34,7 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
                 user = fillUserWithExistingData(resultSet);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return user;
@@ -68,7 +69,7 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
                 result = resultSet.getString(1);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return result;
@@ -84,7 +85,7 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
                 result = true;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return result;
@@ -99,7 +100,7 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return result;
@@ -122,7 +123,7 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return result;
@@ -142,10 +143,25 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
                 userOwner = fillUserWithExistingData(resultSet);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return userOwner;
+    }
+
+    @Override
+    public boolean updateUserPassword(int userId, String password) {
+        boolean result = false;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.UPDATE_PASSWORD)) {
+            preparedStatement.setString(1, password);
+            preparedStatement.setInt(2, userId);
+            preparedStatement.executeUpdate();
+            result = true;
+        } catch (SQLException e) {
+            logger.error(e.getMessage());
+            rollback(connection);
+        }
+        return result;
     }
 
     @Override
@@ -157,7 +173,7 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return result;
@@ -174,7 +190,7 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
                 userList.add(fillUserWithExistingData(resultSet));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return userList;
@@ -192,7 +208,7 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return result;
@@ -208,7 +224,7 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
                 user = fillUserWithExistingData(resultSet);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return user;
@@ -219,18 +235,19 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
         boolean result = false;
         try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.UPDATE_USER_BY_ID)) {
             preparedStatement.setString(1, newEntity.getUsername());
-            preparedStatement.setString(2, newEntity.getPassword());
-            preparedStatement.setString(3, newEntity.getEmail());
-            preparedStatement.setInt(4, newEntity.getCityId());
-            preparedStatement.setInt(5, entityId);
+            preparedStatement.setString(2, newEntity.getEmail());
+            preparedStatement.setInt(3, newEntity.getCityId());
+            preparedStatement.setInt(4, entityId);
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return result;
     }
+
+
 
     @Override
     public boolean delete(int entityId) {
@@ -240,7 +257,7 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return result;

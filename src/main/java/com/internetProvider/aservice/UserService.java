@@ -1,22 +1,29 @@
 package com.internetProvider.aservice;
 
 import com.internetProvider.dao.impl.UserDAOImpl;
-import com.internetProvider.database.DBUtils;
+import com.internetProvider.dao.DBUtils;
 import com.internetProvider.model.Tariff;
 import com.internetProvider.model.User;
+import org.apache.log4j.Logger;
 
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.util.List;
 
 public class UserService extends AbstractService {
-    /**
-     * TODO: REMOVE entityDAO and make AbstractService with factory
-     */
-    private final UserDAOImpl entityDAO;
+    private final static Logger logger = Logger.getLogger(UserService.class);
 
-    public UserService(HttpServletRequest request) {
+//    Singleton pattern
+    private static UserService instance;
+    public static synchronized UserService getInstance(HttpServletRequest request) {
+        if (instance == null) {
+            instance = new UserService(request);
+        }
+        return instance;
+    }
+
+    private final UserDAOImpl entityDAO;
+    private UserService(HttpServletRequest request) {
         super(request);
         entityDAO = new UserDAOImpl(connection);
     }
@@ -34,6 +41,7 @@ public class UserService extends AbstractService {
     public boolean createNewUser(User user) {
         boolean result = entityDAO.create(user);
         DBUtils.commit(connection);
+        logger.info("New USER was added to database");
         return result;
     }
 
@@ -71,6 +79,7 @@ public class UserService extends AbstractService {
 
     public boolean deleteUserTariffById(int userId) {
         boolean result = entityDAO.deleteUserTariffById(userId);
+        logger.info("CLIENT deleted his tariff");
         DBUtils.commit(connection);
         return result;
     }
@@ -101,8 +110,17 @@ public class UserService extends AbstractService {
         resultSettingTariff = entityDAO.setUserTariffById(user.getId(), tariff);
         if (resultMinusTariffPrice && resultPLusTariffPrice && resultSettingTariff) {
             DBUtils.commit(connection);
+            logger.info(user.getRole() + " paid the price and connected the tariff");
             return true;
         }
+        logger.error(user.getRole() + " could not connect the tariff");
         return false;
+    }
+
+
+    public boolean updateUserPassword(int userId, String password) {
+        boolean result = entityDAO.updateUserPassword(userId, password);
+        DBUtils.commit(connection);
+        return result;
     }
 }

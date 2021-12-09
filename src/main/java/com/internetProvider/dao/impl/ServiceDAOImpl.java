@@ -5,6 +5,7 @@ import com.internetProvider.dao.QueriesSQL;
 import com.internetProvider.dao.ServiceDAO;
 import com.internetProvider.model.Service;
 import com.internetProvider.model.Tariff;
+import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,9 +14,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.internetProvider.database.DBUtils.rollback;
+import static com.internetProvider.dao.DBUtils.rollback;
+
 
 public class ServiceDAOImpl extends ConnectionConstructor implements ServiceDAO {
+    private final static Logger logger = Logger.getLogger(ServiceDAOImpl.class);
 
     public ServiceDAOImpl(Connection connection) {
         super(connection);
@@ -30,7 +33,7 @@ public class ServiceDAOImpl extends ConnectionConstructor implements ServiceDAO 
                 serviceList.add(fillServiceWithExistingData(resultSet));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return serviceList;
@@ -56,7 +59,7 @@ public class ServiceDAOImpl extends ConnectionConstructor implements ServiceDAO 
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return result;
@@ -72,7 +75,7 @@ public class ServiceDAOImpl extends ConnectionConstructor implements ServiceDAO 
                 service = fillServiceWithExistingData(resultSet);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return service;
@@ -89,7 +92,7 @@ public class ServiceDAOImpl extends ConnectionConstructor implements ServiceDAO 
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return result;
@@ -103,7 +106,7 @@ public class ServiceDAOImpl extends ConnectionConstructor implements ServiceDAO 
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
             rollback(connection);
         }
         return result;

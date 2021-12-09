@@ -19,5 +19,7 @@ public interface UserDAO extends AbstractDAO<User> {
 
     User getUserOwner();
 
+    boolean updateUserPassword(int userId, String password);
+
     boolean changeUserStatusByUserId(int userId, User.Status status);
 }

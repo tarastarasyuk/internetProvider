@@ -40,8 +40,8 @@
                                                                  data-accept="\d" size="3" required> <span>CVV</span> </div>
                             </div>
 
-                            <form action="${pageContext.request.contextPath}/payment" method="POST">
-                                <div class="input-text"> <input type="text" placeholder="1000" required name="sum">
+                            <form action="${pageContext.request.contextPath}/clientPanel/payment" method="POST">
+                                <div class="input-text"> <input type="text" pattern="^[1-9][0-9]*$" placeholder="1000" required name="sum" title="Type only digits">
                                     <span>Sum</span>
                                 </div>
 
