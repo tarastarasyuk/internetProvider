@@ -4,6 +4,7 @@ import com.internetProvider.aservice.CityService;
 import com.internetProvider.aservice.UserService;
 import com.internetProvider.model.City;
 import com.internetProvider.model.User;
+import com.internetProvider.security.CryptoUtil;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -11,6 +12,8 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static java.util.Objects.nonNull;
 
 @WebServlet(name = "ManageUsersServlet", value = "/adminPanel/manageClients/*")
 public class ManageClientsServlet extends HttpServlet {
@@ -48,7 +51,7 @@ public class ManageClientsServlet extends HttpServlet {
 
     private boolean addNewClient(HttpServletRequest request, HttpSession session) {
         String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String password = CryptoUtil.getEncryptedPassword(request.getParameter("password"));
         String email = request.getParameter("email");
         Integer cityId = Integer.valueOf(request.getParameter("cityId"));
         User user = new User();
@@ -57,8 +60,11 @@ public class ManageClientsServlet extends HttpServlet {
         user.setEmail(email);
         user.setCityId(cityId);
 
-        UserService userService = new UserService(request);
-        return userService.createNewUser(user);
+        if (nonNull(password)) {
+            UserService userService = new UserService(request);
+            return userService.createNewUser(user);
+        }
+        return false;
     }
 
     private boolean changeUserStatus(HttpServletRequest request, HttpSession session) {

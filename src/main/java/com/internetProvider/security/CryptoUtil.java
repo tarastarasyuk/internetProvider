@@ -3,9 +3,18 @@ package com.internetProvider.security;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import static java.util.Objects.nonNull;
+
 public class CryptoUtil {
-    public static String getEncryptedPassword(String password) throws NoSuchAlgorithmException {
-        return hash(password, "MD5");
+    public static String getEncryptedPassword(String password) {
+        if (nonNull(password)) {
+            try {
+                return hash(password, "MD5");
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
 
     private static String hash(String input, String algorithm) throws NoSuchAlgorithmException {

@@ -1082,3 +1082,81 @@ The last packet successfully received from the server was 857 527 milliseconds a
 2021-12-09 11:56:41 INFO  UserService:78 - CLIENT deleted his tariff
 2021-12-09 11:57:20 INFO  LogoutServlet:25 - CLIENT logged out
 2021-12-09 11:57:23 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 12:08:52 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 12:08:56 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-09 12:09:02 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 12:09:19 INFO  UserService:40 - New USER was added to database
+2021-12-09 12:12:06 INFO  LoginFilter:64 - Incorrect data: password is incorrect
+2021-12-09 12:12:07 INFO  LoginFilter:64 - Incorrect data: password is incorrect
+2021-12-09 12:13:12 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 12:13:26 INFO  UserService:40 - New USER was added to database
+2021-12-09 12:13:28 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-09 12:13:33 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 12:13:37 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-09 12:13:42 INFO  LoginFilter:63 - Incorrect data: password is incorrect
+2021-12-09 12:14:18 INFO  LoginFilter:64 - Incorrect data: password is incorrect
+2021-12-09 12:14:25 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 12:18:04 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 12:18:12 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 12:28:00 INFO  LoginFilter:64 - Incorrect data: password is incorrect
+2021-12-09 12:28:01 INFO  LoginFilter:64 - Incorrect data: password is incorrect
+2021-12-09 12:28:10 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 12:29:33 INFO  LoginFilter:64 - Incorrect data: password is incorrect
+2021-12-09 12:29:42 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 12:30:34 INFO  LoginFilter:64 - Incorrect data: password is incorrect
+2021-12-09 12:30:42 INFO  LoginFilter:64 - Incorrect data: password is incorrect
+2021-12-09 12:30:54 INFO  LoginFilter:64 - Incorrect data: password is incorrect
+2021-12-09 12:31:25 INFO  LoginFilter:64 - Incorrect data: password is incorrect
+2021-12-09 12:31:27 INFO  LoginFilter:64 - Incorrect data: password is incorrect
+2021-12-09 12:35:37 INFO  LoginFilter:62 - ADMIN logged in
+2021-12-09 12:35:58 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-09 12:36:02 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 12:44:11 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 12:44:45 INFO  LoginFilter:64 - Incorrect data: password is incorrect
+2021-12-09 12:45:27 INFO  LoginFilter:64 - Incorrect data: password is incorrect
+2021-12-09 12:45:40 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 12:45:49 ERROR UserDAOImpl:163 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE id=0' at line 1
+2021-12-09 12:45:53 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 12:45:59 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 12:46:28 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 12:46:33 INFO  LoginFilter:64 - Incorrect data: password is incorrect
+2021-12-09 12:46:35 INFO  LoginFilter:64 - Incorrect data: password is incorrect
+2021-12-09 12:46:40 INFO  LoginFilter:64 - Incorrect data: password is incorrect
+2021-12-09 12:46:45 INFO  LoginFilter:64 - Incorrect data: password is incorrect
+2021-12-09 12:46:53 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 12:48:42 INFO  LoginFilter:64 - Incorrect data: password is incorrect
+2021-12-09 12:48:46 INFO  LoginFilter:64 - Incorrect data: password is incorrect
+2021-12-09 12:48:57 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 12:50:16 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 12:50:26 ERROR UserDAOImpl:163 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE id=0' at line 1
+2021-12-09 12:50:29 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 12:50:33 INFO  LoginFilter:64 - Incorrect data: password is incorrect
+2021-12-09 12:50:55 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 12:51:38 INFO  LoginFilter:64 - Incorrect data: password is incorrect
+2021-12-09 12:51:42 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 12:52:08 ERROR UserDAOImpl:163 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE id=0' at line 1
+2021-12-09 12:53:28 INFO  LoginFilter:64 - Incorrect data: password is incorrect
+2021-12-09 12:53:33 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 12:53:39 ERROR UserDAOImpl:163 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE id=2' at line 1
+2021-12-09 12:53:40 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 12:53:46 INFO  LoginFilter:64 - Incorrect data: password is incorrect
+2021-12-09 12:54:20 INFO  LoginFilter:64 - Incorrect data: password is incorrect
+2021-12-09 12:54:25 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 12:54:58 ERROR UserDAOImpl:163 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE id=2' at line 1
+2021-12-09 12:56:56 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 12:57:03 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 12:57:09 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 13:01:53 INFO  LoginFilter:69 - Incorrect data: no such user
+2021-12-09 13:01:58 INFO  LoginFilter:69 - Incorrect data: no such user
+2021-12-09 13:02:50 INFO  LoginFilter:69 - Incorrect data: no such user
+2021-12-09 13:03:30 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 13:03:33 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 13:03:53 INFO  LoginFilter:62 - ADMIN logged in
+2021-12-09 13:04:10 INFO  UserService:40 - New USER was added to database
+2021-12-09 13:04:12 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-09 13:04:17 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 13:04:26 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 13:04:30 INFO  LoginFilter:64 - Incorrect data: password is incorrect
+2021-12-09 13:04:35 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 13:04:42 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 13:05:47 INFO  LoginFilter:62 - ADMIN logged in

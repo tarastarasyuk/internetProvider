@@ -112,4 +112,11 @@ public class UserService extends AbstractService {
         logger.error(user.getRole() + " could not connect the tariff");
         return false;
     }
+
+
+    public boolean updateUserPassword(int userId, String password) {
+        boolean result = entityDAO.updateUserPassword(userId, password);
+        DBUtils.commit(connection);
+        return result;
+    }
 }

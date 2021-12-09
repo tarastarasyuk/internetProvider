@@ -152,6 +152,21 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
     }
 
     @Override
+    public boolean updateUserPassword(int userId, String password) {
+        boolean result = false;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.UPDATE_PASSWORD)) {
+            preparedStatement.setString(1, password);
+            preparedStatement.setInt(2, userId);
+            preparedStatement.executeUpdate();
+            result = true;
+        } catch (SQLException e) {
+            logger.error(e.getMessage());
+            rollback(connection);
+        }
+        return result;
+    }
+
+    @Override
     public boolean changeUserStatusByUserId(int userId, User.Status status) {
         boolean result = false;
         try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.UPDATE_USER_STATUS_BY_USER_ID)) {
@@ -222,10 +237,9 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
         boolean result = false;
         try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.UPDATE_USER_BY_ID)) {
             preparedStatement.setString(1, newEntity.getUsername());
-            preparedStatement.setString(2, newEntity.getPassword());
-            preparedStatement.setString(3, newEntity.getEmail());
-            preparedStatement.setInt(4, newEntity.getCityId());
-            preparedStatement.setInt(5, entityId);
+            preparedStatement.setString(2, newEntity.getEmail());
+            preparedStatement.setInt(3, newEntity.getCityId());
+            preparedStatement.setInt(4, entityId);
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
@@ -234,6 +248,8 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
         }
         return result;
     }
+
+
 
     @Override
     public boolean delete(int entityId) {

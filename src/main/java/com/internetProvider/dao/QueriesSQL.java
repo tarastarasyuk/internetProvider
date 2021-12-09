@@ -20,7 +20,8 @@ public class QueriesSQL {
     public static final String SELECT_ALL_USERS = "SELECT * FROM " + userTable + "";
     public static final String DELETE_USER_BY_ID = "DELETE FROM " + userTable + " WHERE " + userId + " = ?";
     public static final String SELECT_USER_BY_ID = "SELECT * FROM " + userTable + " WHERE " + userId + " = ?";
-    public static final String UPDATE_USER_BY_ID = "UPDATE " + userTable + " SET " + userUsername + "=?, " + userPassword + "=?, " + userEmail + "=?, " + userCityId + "=? WHERE " + userId + "=?";
+    public static final String UPDATE_USER_BY_ID = "UPDATE " + userTable + " SET " + userUsername + "=?, " + userEmail + "=?, " + userCityId + "=? WHERE " + userId + "=?";
+    public static final String UPDATE_PASSWORD = "UPDATE " + userTable + " SET " + userPassword + "=? WHERE " + userId + "=?";
     public static final String UPDATE_USER_ACCOUNT_BY_ID = "UPDATE " + userTable + " SET " + userAccount + "=? WHERE " + userId + "=?";
     public static final String CREATE_USER = "INSERT INTO " + userTable + " (" + userUsername + ", " + userPassword + ", " + userEmail + ", " + userRoleId + ", " + userCityId + ") VALUES (?, ?, ?, " + USER_ROLE_ID + ", ?)";
     public static final String UPDATE_USER_TARIFF_ID_BY_ID = "UPDATE " + userTable + " SET " + userTariffId + "=?, " +userTariffBuyData + "=? " +" WHERE " + userId + "=?";

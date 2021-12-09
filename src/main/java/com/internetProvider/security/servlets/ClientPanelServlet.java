@@ -7,6 +7,7 @@ import com.internetProvider.aservice.UserService;
 import com.internetProvider.model.City;
 import com.internetProvider.model.Tariff;
 import com.internetProvider.model.User;
+import com.internetProvider.security.CryptoUtil;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -120,8 +121,11 @@ public class ClientPanelServlet extends HttpServlet {
         user.setEmail(email);
         user.setCityId(cityId);
 
-
         UserService userService = new UserService(request);
         userService.updateUser(sessionUser.getId(), user);
+
+        if (!password.isEmpty()) {
+            userService.updateUserPassword(sessionUser.getId(), CryptoUtil.getEncryptedPassword(password));
+        }
     }
 }

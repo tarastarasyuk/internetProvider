@@ -68,7 +68,6 @@
                         <div class="info">
                             <span class="info-title">Your data:</span>
                             <span>Username: ${user.getUsername()}</span>
-                            <span>Password: ${user.getPassword()}</span>
                             <span>Email: ${user.getEmail()}</span>
                             <span>Town: ${user.getCityName()}</span>
                         </div>
@@ -179,7 +178,7 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="validationDefault04" class="form-label">Password</label>
-                                <input type="text" class="form-control" id="validationDefault04" value="${user.getPassword()}" name="password" required>
+                                <input type="text" class="form-control" id="validationDefault04" name="password" placeholder="********">
                             </div>
                             <div class="col-md-4"></div>
 

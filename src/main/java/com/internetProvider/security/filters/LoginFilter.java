@@ -2,6 +2,7 @@ package com.internetProvider.security.filters;
 
 import com.internetProvider.aservice.UserService;
 import com.internetProvider.model.User;
+import com.internetProvider.security.CryptoUtil;
 import org.apache.log4j.Logger;
 
 import javax.servlet.*;
@@ -47,7 +48,7 @@ public class LoginFilter implements Filter {
         } else if (nonNull(username) && nonNull(password)) {
 
             if (userService.checkUserExistenceByUsername(username)) {
-                User existingUser = userService.findUserByUsernameAndPassword(username, password);
+                User existingUser = userService.findUserByUsernameAndPassword(username, CryptoUtil.getEncryptedPassword(password));
                 if (existingUser != null) {
                     session.setAttribute("user", existingUser);
                     req.setAttribute("user", existingUser);
