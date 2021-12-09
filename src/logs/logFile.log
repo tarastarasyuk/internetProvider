@@ -1067,3 +1067,18 @@ The last packet successfully received from the server was 857 527 milliseconds a
 2021-12-09 03:24:48 INFO  LoginFilter:61 - ADMIN logged in
 2021-12-09 03:56:47 INFO  LoginFilter:61 - ADMIN logged in
 2021-12-09 04:01:24 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 05:31:15 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 05:37:28 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 05:41:01 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 05:48:26 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-09 05:48:31 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 05:51:26 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-09 11:54:36 INFO  LoginFilter:68 - Incorrect data: no such user
+2021-12-09 11:54:39 INFO  LoginFilter:68 - Incorrect data: no such user
+2021-12-09 11:55:14 INFO  LoginFilter:68 - Incorrect data: no such user
+2021-12-09 11:56:06 INFO  LoginFilter:61 - CLIENT logged in
+2021-12-09 11:56:19 INFO  PaymentServlet:42 - CLIENT topped up the balance by 3453
+2021-12-09 11:56:24 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 11:56:41 INFO  UserService:78 - CLIENT deleted his tariff
+2021-12-09 11:57:20 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 11:57:23 INFO  LoginFilter:61 - ADMIN logged in

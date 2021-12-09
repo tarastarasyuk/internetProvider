@@ -149,13 +149,14 @@
                                                     <div class="col-md-12 feature-input_${tariff.getId()}"><input type="text" class="form-control" placeholder="Feature" name="feature" value="${feature}" required></div>
                                                 </c:forEach>
                                             </div>
-                                            <div class="col-md-12 feature-buttons">
-                                                <a class="btn btn-success" onclick="addInput('newFeatures_${tariff.getId()}', 'feature-input_${tariff.getId()}')">+ add
-                                                    feature</a>
+                                                <%--                                TODO:  MAKE ADD AND DELETE FEATURES IN EDIT TARIFFS MODAL--%>
+<%--                                            <div class="col-md-12 feature-buttons">--%>
+<%--                                                <a class="btn btn-success" onclick="addInput('newFeatures_${tariff.getId()}', 'feature-input_${tariff.getId()}')">+ add--%>
+<%--                                                    feature</a>--%>
 
-                                                <a class="btn btn-danger" onclick="removeInput('feature-input_${tariff.getId()}')">- remove
-                                                    feature</a>
-                                            </div>
+<%--                                                <a class="btn btn-danger" onclick="removeInput('feature-input_${tariff.getId()}')">- remove--%>
+<%--                                                    feature</a>--%>
+<%--                                            </div>--%>
 
 
                                     <div class="col-md-4"></div>
@@ -164,7 +165,7 @@
 
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                        <button class="btn btn-primary" type="submit">Add tariff</button>
+                                        <button class="btn btn-primary" type="submit">Edit tariff</button>
                                     </div>
                                     </form>
                                 </div>
