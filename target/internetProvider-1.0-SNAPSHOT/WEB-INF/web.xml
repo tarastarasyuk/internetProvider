@@ -33,4 +33,9 @@
         <error-code>503</error-code>
         <location>/someError.jsp</location>
     </error-page>
+
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/someError.jsp</location>
+    </error-page>
 </web-app>

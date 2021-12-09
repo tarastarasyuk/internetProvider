@@ -13,6 +13,15 @@ import java.util.List;
 public class UserService extends AbstractService {
     private final static Logger logger = Logger.getLogger(UserService.class);
 
+
+    private static UserService instance;
+
+    public static synchronized UserService getInstance(HttpServletRequest request) {
+        if (instance == null) {
+            instance = new UserService(request);
+        }
+        return instance;
+    }
     /**
      * TODO: REMOVE entityDAO and make AbstractService with factory
      */

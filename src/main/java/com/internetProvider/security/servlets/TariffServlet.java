@@ -5,6 +5,7 @@ import com.internetProvider.aservice.TariffService;
 import com.internetProvider.model.Service;
 import com.internetProvider.model.Tariff;
 import com.internetProvider.model.User;
+import org.apache.log4j.Logger;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -12,6 +13,8 @@ import javax.servlet.annotation.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -19,6 +22,7 @@ import static java.util.Objects.nonNull;
 
 @WebServlet(name = "TariffServlet", value = "/tariffs/*")
 public class TariffServlet extends HttpServlet {
+    private final static Logger logger = Logger.getLogger(TariffServlet.class);
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getPathInfo();
@@ -26,6 +30,8 @@ public class TariffServlet extends HttpServlet {
             switch (action) {
                 case "/downloadTariff":
                     downloadTariff(request, response);
+                    response.setContentType("text/plain");
+                    response.setHeader("Content-Disposition", "attachment; filename = tariff.txt");
                     break;
                 default:
                     break;
@@ -125,13 +131,10 @@ public class TariffServlet extends HttpServlet {
             for (String feature : tariff.getFeaturesList()) {
                 myWriter.write("-" + feature+System.lineSeparator());
             }
-            System.out.println("Successfully wrote to the file.");
+            logger.info("Successfully wrote to the file.");
         } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
-        response.setContentType("text/plain");
-        response.setHeader("Content-Disposition", "attachment; filename = tariff.txt");
     }
 
     private List<Tariff> sortTariffBy(List<Tariff> tariffList, String sortBy) {
