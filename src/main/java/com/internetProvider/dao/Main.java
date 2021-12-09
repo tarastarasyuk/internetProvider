@@ -3,6 +3,8 @@ package com.internetProvider.dao;
 import com.internetProvider.model.User;
 import com.internetProvider.security.CryptoUtil;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -22,22 +24,15 @@ import java.util.Date;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException, NoSuchAlgorithmException {
-//        LocalDateTime l = LocalDateTime.of(2021, Month.DECEMBER, 5, 2, 4, 40);
-//
-//        Duration d = Duration.between(l, LocalDateTime.now());
-//        System.out.println(d.getSeconds());
-//        User.Status s = User.Status.BLOCKED;
-//        System.out.println(User.Status.BLOCKED == s);
-//
-//
-//        System.out.println(hash("worktaras", "MD5"));
-
-        System.out.println(CryptoUtil.getEncryptedPassword("petro"));
-        System.out.println(CryptoUtil.getEncryptedPassword("stas"));
-        System.out.println(CryptoUtil.getEncryptedPassword("vlad"));
-        System.out.println(CryptoUtil.getEncryptedPassword("katya"));
-        System.out.println(CryptoUtil.getEncryptedPassword("admin"));
-        System.out.println(CryptoUtil.getEncryptedPassword("owner"));
+        try {
+            FileWriter myWriter = new FileWriter("filename.txt");
+            myWriter.write("h!");
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
     }
 
     public static String hash(String input, String algorithm) throws NoSuchAlgorithmException {

@@ -1320,3 +1320,5 @@ The last packet successfully received from the server was 857 527 milliseconds a
 2021-12-09 15:37:40 INFO  LogoutServlet:25 - ADMIN logged out
 2021-12-09 15:37:56 INFO  LoginFilter:62 - CLIENT logged in
 2021-12-09 15:40:34 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 16:49:36 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 16:49:38 INFO  LogoutServlet:25 - CLIENT logged out

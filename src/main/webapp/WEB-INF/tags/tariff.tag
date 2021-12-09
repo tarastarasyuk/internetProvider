@@ -6,7 +6,11 @@
     <div class="card tariff-card" style="width: 18rem;">
 
         <div class="card-body tariff-content">
-            <h5 class="card-title tariff-title">"${tariff.getName()}"</h5>
+            <h5 class="card-title tariff-title">"${tariff.getName()}"
+                <form action="/tariffs/downloadTariff" method="get" style="position: absolute; right: 5px; top: 5px; border: none; color: blue;">
+                    <input value="${tariff.getId()}" name="tariff_id_download" hidden>
+                    <button type="submit"  style="background: none; border: none; color: green;"><i class="fas fa-file-download"></i></button>
+                </form></h5>
             <p class="card-text tariff-subtitle">${tariff.getDescription()}</p>
 
             <div class="tariff-price">
