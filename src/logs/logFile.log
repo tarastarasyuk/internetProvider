@@ -884,3 +884,185 @@
 2021-12-08 14:02:50 INFO  LoginFilter:61 - ADMIN logged in
 2021-12-08 14:13:49 INFO  LoginFilter:61 - ADMIN logged in
 2021-12-08 14:57:04 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 17:07:52 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 17:52:43 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 17:55:05 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 17:56:24 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 18:14:56 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 18:25:06 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 18:25:36 ERROR TariffDAOImpl:112 - Parameter index out of range (1 > number of parameters, which is 0).
+2021-12-08 18:25:36 ERROR TariffDAOImpl:112 - Parameter index out of range (1 > number of parameters, which is 0).
+2021-12-08 18:25:36 ERROR TariffDAOImpl:112 - Parameter index out of range (1 > number of parameters, which is 0).
+2021-12-08 18:26:03 ERROR TariffDAOImpl:112 - Parameter index out of range (1 > number of parameters, which is 0).
+2021-12-08 18:26:03 ERROR TariffDAOImpl:112 - Parameter index out of range (1 > number of parameters, which is 0).
+2021-12-08 18:26:03 ERROR TariffDAOImpl:112 - Parameter index out of range (1 > number of parameters, which is 0).
+2021-12-08 18:27:27 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 18:28:04 ERROR TariffDAOImpl:112 - Parameter index out of range (1 > number of parameters, which is 0).
+2021-12-08 18:28:04 ERROR TariffDAOImpl:112 - Parameter index out of range (1 > number of parameters, which is 0).
+2021-12-08 18:30:49 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 18:31:05 ERROR TariffDAOImpl:114 - Parameter index out of range (1 > number of parameters, which is 0).
+2021-12-08 18:31:56 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 18:34:38 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 18:35:25 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 18:36:37 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 18:45:19 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 18:51:15 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 18:51:40 ERROR TariffDAOImpl:117 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO tariff_has_service(tariff_id, service_id) VALUES (28, 1)' at line 1
+2021-12-08 18:51:40 ERROR TariffDAOImpl:117 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO tariff_has_service(tariff_id, service_id) VALUES (28, 2)' at line 1
+2021-12-08 18:51:40 ERROR TariffDAOImpl:117 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO tariff_has_service(tariff_id, service_id) VALUES (28, 3)' at line 1
+2021-12-08 18:51:40 ERROR TariffDAOImpl:117 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO tariff_has_service(tariff_id, service_id) VALUES (28, 4)' at line 1
+2021-12-08 18:52:25 ERROR TariffDAOImpl:117 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO tariff_has_service(tariff_id, service_id) VALUES (29, 1)' at line 1
+2021-12-08 18:52:25 ERROR TariffDAOImpl:117 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO tariff_has_service(tariff_id, service_id) VALUES (29, 2)' at line 1
+2021-12-08 18:54:22 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 18:55:23 ERROR TariffDAOImpl:117 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO tariff_has_service(tariff_id, service_id) VALUES (30, 1)' at line 1
+2021-12-08 19:02:17 ERROR TariffDAOImpl:117 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO tariff_has_service(tariff_id, service_id) VALUES (30, 2)' at line 1
+2021-12-08 19:02:17 ERROR TariffDAOImpl:117 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO tariff_has_service(tariff_id, service_id) VALUES (30, 3)' at line 1
+2021-12-08 19:02:17 ERROR TariffDAOImpl:117 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO tariff_has_service(tariff_id, service_id) VALUES (31, 1)' at line 1
+2021-12-08 19:02:17 ERROR TariffDAOImpl:117 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO tariff_has_service(tariff_id, service_id) VALUES (31, 2)' at line 1
+2021-12-08 19:02:17 ERROR TariffDAOImpl:117 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO tariff_has_service(tariff_id, service_id) VALUES (31, 3)' at line 1
+2021-12-08 19:02:43 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 19:02:57 ERROR TariffDAOImpl:117 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO tariff_has_service(tariff_id, service_id) VALUE (32, 2)' at line 1
+2021-12-08 19:02:57 ERROR TariffDAOImpl:117 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO tariff_has_service(tariff_id, service_id) VALUE (32, 3)' at line 1
+2021-12-08 19:04:01 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 19:04:14 ERROR TariffDAOImpl:117 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO tariff_has_service(tariff_id, service_id) VALUE (33, 2)' at line 1
+2021-12-08 19:04:14 ERROR TariffDAOImpl:117 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO tariff_has_service(tariff_id, service_id) VALUE (33, 3)' at line 1
+2021-12-08 19:06:14 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 19:06:26 ERROR TariffDAOImpl:117 - Parameter index out of range (3 > number of parameters, which is 2).
+2021-12-08 19:06:26 ERROR TariffDAOImpl:117 - Parameter index out of range (3 > number of parameters, which is 2).
+2021-12-08 19:06:26 ERROR TariffDAOImpl:117 - Parameter index out of range (3 > number of parameters, which is 2).
+2021-12-08 19:07:10 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 19:08:51 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 19:09:03 ERROR TariffDAOImpl:117 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DELETE FROM tariff_has_service WHERE tariff_id = 1' at line 1
+2021-12-08 19:09:03 ERROR TariffDAOImpl:117 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DELETE FROM tariff_has_service WHERE tariff_id = 2' at line 1
+2021-12-08 19:09:03 ERROR TariffDAOImpl:117 - You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DELETE FROM tariff_has_service WHERE tariff_id = 3' at line 1
+2021-12-08 19:10:57 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 19:11:08 ERROR TariffDAOImpl:117 - Parameter index out of range (3 > number of parameters, which is 2).
+2021-12-08 19:11:08 ERROR TariffDAOImpl:117 - Parameter index out of range (3 > number of parameters, which is 2).
+2021-12-08 19:12:02 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 19:29:02 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 19:31:09 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 19:33:31 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 19:33:59 ERROR TariffDAOImpl:116 - Duplicate entry '19-3' for key 'tariff_has_service.PRIMARY'
+2021-12-08 19:45:59 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 19:46:20 ERROR TariffDAOImpl:116 - Duplicate entry '16-3' for key 'tariff_has_service.PRIMARY'
+2021-12-08 19:46:20 ERROR TariffDAOImpl:155 - Column 'service_id' cannot be null
+2021-12-08 19:46:26 ERROR TariffDAOImpl:116 - Duplicate entry '16-3' for key 'tariff_has_service.PRIMARY'
+2021-12-08 19:46:26 ERROR TariffDAOImpl:155 - Column 'service_id' cannot be null
+2021-12-08 19:46:31 ERROR TariffDAOImpl:116 - Duplicate entry '16-2' for key 'tariff_has_service.PRIMARY'
+2021-12-08 19:46:31 ERROR TariffDAOImpl:116 - Duplicate entry '16-3' for key 'tariff_has_service.PRIMARY'
+2021-12-08 19:46:31 ERROR TariffDAOImpl:116 - Duplicate entry '16-4' for key 'tariff_has_service.PRIMARY'
+2021-12-08 19:46:31 ERROR TariffDAOImpl:155 - Column 'service_id' cannot be null
+2021-12-08 19:46:39 ERROR TariffDAOImpl:116 - Duplicate entry '16-2' for key 'tariff_has_service.PRIMARY'
+2021-12-08 19:46:39 ERROR TariffDAOImpl:116 - Duplicate entry '16-3' for key 'tariff_has_service.PRIMARY'
+2021-12-08 19:46:39 ERROR TariffDAOImpl:116 - Duplicate entry '16-4' for key 'tariff_has_service.PRIMARY'
+2021-12-08 19:46:39 ERROR TariffDAOImpl:155 - Column 'service_id' cannot be null
+2021-12-08 23:18:24 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-08 23:18:27 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-08 23:18:53 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-08 23:18:56 INFO  LoginFilter:61 - CLIENT logged in
+2021-12-08 23:19:06 INFO  PaymentServlet:42 - CLIENT topped up the balance by 8979
+2021-12-08 23:19:15 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-08 23:19:45 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-08 23:19:50 INFO  UserService:78 - CLIENT deleted his tariff
+2021-12-08 23:19:52 INFO  LogoutServlet:22 - CLIENT logged out
+2021-12-09 00:46:15 INFO  LoginFilter:61 - CLIENT logged in
+2021-12-09 00:46:17 INFO  LogoutServlet:22 - CLIENT logged out
+2021-12-09 00:46:19 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 00:46:23 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-09 00:46:28 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 00:46:33 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-09 00:46:36 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 00:48:49 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-09 00:49:29 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 00:49:37 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-09 00:50:27 INFO  LoginFilter:61 - CLIENT logged in
+2021-12-09 00:50:57 INFO  PaymentServlet:42 - CLIENT topped up the balance by 332
+2021-12-09 00:51:38 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 00:52:07 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 00:52:19 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 00:52:27 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 00:52:29 INFO  UserService:78 - CLIENT deleted his tariff
+2021-12-09 00:52:48 INFO  LogoutServlet:22 - CLIENT logged out
+2021-12-09 00:52:51 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 00:53:32 INFO  UserService:40 - New USER was added to database
+2021-12-09 00:53:41 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-09 00:53:45 INFO  LoginFilter:61 - CLIENT logged in
+2021-12-09 00:54:31 INFO  PaymentServlet:42 - CLIENT topped up the balance by 1231
+2021-12-09 00:55:17 INFO  LogoutServlet:22 - CLIENT logged out
+2021-12-09 00:55:18 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 00:56:18 ERROR TariffDAOImpl:155 - Column 'service_id' cannot be null
+2021-12-09 00:56:31 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-09 00:56:31 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-09 00:57:02 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 01:04:04 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-09 01:04:11 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 01:04:15 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-09 01:04:17 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 01:04:27 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-09 01:04:41 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 01:05:04 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-09 01:05:46 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 01:20:05 ERROR CityDAOImpl:35 - Communications link failure
+
+The last packet successfully received from the server was 857 527 milliseconds ago. The last packet sent successfully to the server was 857 535 milliseconds ago.
+2021-12-09 01:20:05 ERROR DBUtils:29 - No operations allowed after connection closed.
+2021-12-09 01:20:06 ERROR CityDAOImpl:35 - No operations allowed after connection closed.
+2021-12-09 01:20:06 ERROR DBUtils:29 - No operations allowed after connection closed.
+2021-12-09 01:20:06 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-09 01:20:08 ERROR UserDAOImpl:90 - No operations allowed after connection closed.
+2021-12-09 01:20:08 ERROR DBUtils:29 - No operations allowed after connection closed.
+2021-12-09 01:20:08 INFO  LoginFilter:68 - Incorrect data: no such user
+2021-12-09 01:20:12 ERROR UserDAOImpl:90 - No operations allowed after connection closed.
+2021-12-09 01:20:12 ERROR DBUtils:29 - No operations allowed after connection closed.
+2021-12-09 01:20:12 INFO  LoginFilter:68 - Incorrect data: no such user
+2021-12-09 01:20:16 ERROR UserDAOImpl:90 - No operations allowed after connection closed.
+2021-12-09 01:20:16 ERROR DBUtils:29 - No operations allowed after connection closed.
+2021-12-09 01:20:16 INFO  LoginFilter:68 - Incorrect data: no such user
+2021-12-09 01:20:48 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 01:20:57 ERROR TariffDAOImpl:116 - Duplicate entry '15-4' for key 'tariff_has_service.PRIMARY'
+2021-12-09 01:23:31 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 01:25:51 ERROR TariffDAOImpl:116 - Duplicate entry '14-4' for key 'tariff_has_service.PRIMARY'
+2021-12-09 01:30:47 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 01:33:59 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 01:42:21 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 01:42:39 ERROR TariffDAOImpl:116 - Duplicate entry '15-3' for key 'tariff_has_service.PRIMARY'
+2021-12-09 01:48:38 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 01:48:54 ERROR TariffDAOImpl:116 - Duplicate entry '15-3' for key 'tariff_has_service.PRIMARY'
+2021-12-09 01:50:32 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 01:50:40 ERROR TariffDAOImpl:116 - Duplicate entry '16-2' for key 'tariff_has_service.PRIMARY'
+2021-12-09 01:54:56 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 01:55:04 ERROR TariffDAOImpl:116 - Duplicate entry '16-2' for key 'tariff_has_service.PRIMARY'
+2021-12-09 01:56:03 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 01:56:10 ERROR TariffDAOImpl:116 - Duplicate entry '16-2' for key 'tariff_has_service.PRIMARY'
+2021-12-09 01:57:52 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 01:58:36 ERROR TariffDAOImpl:116 - Duplicate entry '16-3' for key 'tariff_has_service.PRIMARY'
+2021-12-09 01:58:57 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 02:00:53 INFO  LogoutServlet:22 - ADMIN logged out
+2021-12-09 02:02:34 INFO  LoginFilter:61 - CLIENT logged in
+2021-12-09 02:02:59 INFO  PaymentServlet:42 - CLIENT topped up the balance by 600
+2021-12-09 02:04:35 ERROR UserDAOImpl:105 - Data truncation: Out of range value for column 'account' at row 1
+2021-12-09 02:04:35 ERROR UserService:112 - CLIENT could not connect the tariff
+2021-12-09 02:07:33 INFO  LogoutServlet:22 - CLIENT logged out
+2021-12-09 02:07:35 INFO  LoginFilter:61 - CLIENT logged in
+2021-12-09 02:07:37 INFO  LogoutServlet:22 - CLIENT logged out
+2021-12-09 02:11:17 INFO  LoginFilter:61 - CLIENT logged in
+2021-12-09 02:11:29 INFO  UserService:78 - CLIENT deleted his tariff
+2021-12-09 02:11:35 INFO  PaymentServlet:42 - CLIENT topped up the balance by -600
+2021-12-09 02:12:00 INFO  PaymentServlet:42 - CLIENT topped up the balance by 670
+2021-12-09 02:13:02 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 02:15:25 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 02:16:19 INFO  UserService:78 - CLIENT deleted his tariff
+2021-12-09 02:16:22 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 02:16:23 INFO  LoginFilter:61 - CLIENT logged in
+2021-12-09 02:16:26 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 02:16:30 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 02:21:20 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 02:25:31 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 02:31:56 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 02:33:52 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 02:36:34 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 02:40:08 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 02:41:41 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 03:08:55 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 03:24:48 INFO  LoginFilter:61 - ADMIN logged in
+2021-12-09 03:56:47 INFO  LoginFilter:61 - ADMIN logged in

@@ -7,7 +7,7 @@
 
         <div class="container container-table">
             <section class="users-table">
-                <h1 class="users-table-title">Tariffs Managment</h1>
+                <h1 class="users-table-title">Tariffs Management</h1>
 
                 <div class="user-table-subtitle">
                     <!-- Button trigger modal -->
@@ -59,12 +59,40 @@
 
                                 </div>
                                 <div>
-                                    <form action="manageTariffs/deleteTariff" method="POST">
-                                        <button class="btn btn-danger connect-btn" type="submit">Delete</button>
-                                    </form>
+
+                                    <button type="button" class="btn btn-danger connect-btn" data-bs-toggle="modal"
+                                            data-bs-target="#deleteTariffModal-${tariff.getId()}">
+                                        Delete
+                                    </button>
+
                                 </div>
                             </td>
                         </tr>
+
+                    <!-- Modal Delete-->
+                    <div class="modal fade" id="deleteTariffModal-${tariff.getId()}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteTariffModalLabel">Do you really want to delete this tariff?</h5>
+<%--                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
+<%--                                        <span aria-hidden="true">&times;</span>--%>
+<%--                                    </button>--%>
+                                </div>
+                                <div class="modal-body">
+                                    All users that have this tariff will be INACTIVE if you delete current tariff                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+
+                                    <form action="manageTariffs/deleteTariff" method="POST">
+                                        <input name="deletedTariff" value="${tariff.getId()}" hidden>
+                                        <button class="btn btn-danger connect-btn" type="submit">Delete</button>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
                         <!-- Modal Tariff Editing -->
@@ -76,10 +104,11 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body edit-modal-body">
-                                        <form class="row g-3" method="post" action="manageTariffs/addNewTariff">
+                                        <form class="row g-3" method="post" action="manageTariffs/editCurrentTariff">
 
                                             <div class="col-md-6">
                                                 <label for="validationDefault023" class="form-label">Name</label>
+                                                <input value="${tariff.getId()}" name="tariffEditId" hidden>
                                                 <input type="text" class="form-control" id="validationDefault023" placeholder="Name" value="${tariff.getName()}"
                                                        name="name" required>
                                             </div>
@@ -127,7 +156,6 @@
                                                 <a class="btn btn-danger" onclick="removeInput('feature-input_${tariff.getId()}')">- remove
                                                     feature</a>
                                             </div>
-
 
 
                                     <div class="col-md-4"></div>
@@ -227,6 +255,7 @@
 
                     </div>
                 </div>
+        </div>
         </div>
     </main>
 
