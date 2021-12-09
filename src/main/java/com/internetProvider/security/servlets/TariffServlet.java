@@ -37,10 +37,10 @@ public class TariffServlet extends HttpServlet {
                     break;
             } else {
 
-            ServiceService serviceService = new ServiceService(request);
+            ServiceService serviceService = ServiceService.getInstance(request);
             List<Service> serviceList = serviceService.getAllServices();
             request.setAttribute("serviceList", serviceList);
-            TariffService tariffService = new TariffService(request);
+            TariffService tariffService = TariffService.getInstance(request);
 
 
             List<Tariff> tariffList = new ArrayList<>();
@@ -120,7 +120,7 @@ public class TariffServlet extends HttpServlet {
 
     private void downloadTariff(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Integer tariffId = Integer.valueOf(request.getParameter("tariff_id_download"));
-        TariffService tariffService = new TariffService(request);
+        TariffService tariffService = TariffService.getInstance(request);
         Tariff tariff = tariffService.getTariffById(tariffId);
         try(FileWriter myWriter = new FileWriter("C:/Programs/Java/internetProvider/src/webapp/tariff.txt")) {
             myWriter.write("Name:  " + tariff.getName()+System.lineSeparator());

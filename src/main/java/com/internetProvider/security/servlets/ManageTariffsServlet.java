@@ -19,12 +19,12 @@ import java.util.stream.Collectors;
 public class ManageTariffsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        TariffService tariffService = new TariffService(request);
+        TariffService tariffService = TariffService.getInstance(request);
         List<Tariff> tariffList = tariffService.getAllTariffs();
         Collections.reverse(tariffList);
         request.setAttribute("tariffList", tariffList);
 
-        ServiceService serviceService = new ServiceService(request);
+        ServiceService serviceService = ServiceService.getInstance(request);
         List<Service> serviceList = serviceService.getAllServices();
         request.setAttribute("serviceList", serviceList);
         request.getRequestDispatcher("../WEB-INF/jsp/admin/manageTariffs.jsp").forward(request, response);
@@ -54,7 +54,7 @@ public class ManageTariffsServlet extends HttpServlet {
 
     private boolean deleteTariff(HttpServletRequest request, HttpSession session) {
         Integer tariffId = Integer.valueOf(request.getParameter("deletedTariff"));
-        TariffService tariffService = new TariffService(request);
+        TariffService tariffService = TariffService.getInstance(request);
         return tariffService.deleteTariff(tariffId);
     }
 
@@ -80,7 +80,7 @@ public class ManageTariffsServlet extends HttpServlet {
             System.out.println(s);
         System.out.println("==");
         System.out.println(features);
-        TariffService tariffService = new TariffService(request);
+        TariffService tariffService = TariffService.getInstance(request);
         tariffService.updateTariff(tariffEditId, tariff);
         return true;
     }
@@ -99,7 +99,7 @@ public class ManageTariffsServlet extends HttpServlet {
         tariff.setDayDuration(dayDuration);
         tariff.setListOfServiceId(serviceIds);
         tariff.setFeatures(features);
-        TariffService tariffService = new TariffService(request);
+        TariffService tariffService = TariffService.getInstance(request);
         tariffService.createNewTariff(tariff);
         return true;
     }

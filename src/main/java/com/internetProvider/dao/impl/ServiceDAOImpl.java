@@ -40,12 +40,12 @@ public class ServiceDAOImpl extends ConnectionConstructor implements ServiceDAO 
     }
 
     private Service fillServiceWithExistingData(ResultSet resultSet) throws SQLException {
-        Service service = new Service();
         int k = 1;
-        service.setId(resultSet.getInt(k++));
-        service.setName(resultSet.getString(k++));
-        service.setDescription(resultSet.getString(k++));
-        service.setLogoLink(resultSet.getString(k));
+        Service service = new Service.Builder().withId(resultSet.getInt(k++))
+                .withName(resultSet.getString(k++))
+                .withDescription(resultSet.getString(k++))
+                .withLogoLink(resultSet.getString(k))
+                .buildService();
         return service;
     }
 

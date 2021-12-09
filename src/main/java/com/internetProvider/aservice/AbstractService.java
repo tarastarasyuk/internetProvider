@@ -8,8 +8,9 @@ import java.sql.Connection;
 public abstract class AbstractService {
     protected Connection connection;
 
-    AbstractService(HttpServletRequest request) {
+    public AbstractService(HttpServletRequest request) {
         ServletContext context = request.getServletContext();
         connection = (Connection) context.getAttribute("dbConnection");
     }
+
 }

@@ -13,9 +13,18 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ServiceService extends AbstractService {
-    private final ServiceDAOImpl entityDAO;
 
-    public ServiceService(HttpServletRequest request) {
+    //    Singleton pattern
+    private static ServiceService instance;
+    public static synchronized ServiceService getInstance(HttpServletRequest request) {
+        if (instance == null) {
+            instance = new ServiceService(request);
+        }
+        return instance;
+    }
+
+    private final ServiceDAOImpl entityDAO;
+    private ServiceService(HttpServletRequest request) {
         super(request);
         entityDAO = new ServiceDAOImpl(connection);
     }

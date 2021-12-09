@@ -3,6 +3,7 @@ package com.internetProvider.dao.impl;
 import com.internetProvider.dao.ConnectionConstructor;
 import com.internetProvider.dao.QueriesSQL;
 import com.internetProvider.dao.TariffDAO;
+import com.internetProvider.model.Service;
 import com.internetProvider.model.Tariff;
 import org.apache.log4j.Logger;
 
@@ -26,50 +27,34 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
     }
 
     private Tariff fillTariffWithExistingData(ResultSet resultSet) throws SQLException {
-        Tariff tariff = new Tariff();
+        int idK = 1;
         int k = 1;
-        tariff.setId(resultSet.getInt(k++));
-        tariff.setName(resultSet.getString(k++));
-        tariff.setDescription(resultSet.getString(k++));
-        tariff.setPrice(resultSet.getBigDecimal(k++));
-        tariff.setDayDuration(resultSet.getInt(k++));
-        tariff.setFeatures(resultSet.getString(k));
-        getListOfServiceIdOfCurrentTariff(tariff.getId());
-        tariff.setListOfServiceId(getListOfServiceIdOfCurrentTariff(tariff.getId()));
-        tariff.setListOfServiceName(getListOfServiceNameOfCurrentTariff(tariff.getId()));
+        Tariff tariff = new Tariff.Builder().withId(resultSet.getInt(k++))
+                .withName(resultSet.getString(k++))
+                .withDescription(resultSet.getString(k++))
+                .withPrice(resultSet.getBigDecimal(k++))
+                .withDayDuration(resultSet.getInt(k++))
+                .withFeatures(resultSet.getString(k))
+                .withServiceList(getListOfServicesOfCurrentTariff(resultSet.getInt(idK)))
+                .buildTariff();
         return tariff;
     }
 
-    private List<String> getListOfServiceNameOfCurrentTariff(int id) {
-        List<String> listOfServiceId = new ArrayList<>();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.SELECT_SERVICE_NAME_BY_TARIFF_ID)) {
-            preparedStatement.setInt(1, id);
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            while (resultSet.next()) {
-                listOfServiceId.add(resultSet.getString(1));
-            }
-        } catch (SQLException e) {
-            logger.error(e.getMessage());
-            rollback(connection);
-        }
-        return listOfServiceId;
-    }
-
-    private List<Integer> getListOfServiceIdOfCurrentTariff(int id) {
-        List<Integer> listOfServiceId = new ArrayList<>();
+    private List<Service> getListOfServicesOfCurrentTariff(int id) {
+        ServiceDAOImpl serviceDAO = new ServiceDAOImpl(connection);
+        List<Service> serviceList = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.SELECT_SERVICE_ID_BY_TARIFF_ID)) {
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                listOfServiceId.add(resultSet.getInt(1));
+                serviceList.add(serviceDAO.read(Integer.parseInt(resultSet.getString(1))));
             }
         } catch (SQLException e) {
             logger.error(e.getMessage());
             rollback(connection);
         }
-        return listOfServiceId;
+        return serviceList;
     }
 
     @Override

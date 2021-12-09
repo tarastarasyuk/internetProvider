@@ -23,7 +23,7 @@ public class ManageClientsServlet extends HttpServlet {
         List<User> clientList = userService.getAllUsers().stream().filter(user -> user.getRoleId() == 2).collect(Collectors.toList());
         request.setAttribute("clientList", clientList);
 
-        CityService cityService = new CityService(request);
+        CityService cityService = CityService.getInstance(request);
         List<City> cityList = cityService.getAllCities();
         request.setAttribute("cityList", cityList);
         request.getRequestDispatcher("../WEB-INF/jsp/admin/manageClients.jsp").forward(request, response);
