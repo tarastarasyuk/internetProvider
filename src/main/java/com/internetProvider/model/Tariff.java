@@ -12,33 +12,32 @@ public class Tariff {
     private BigDecimal price;
     private int dayDuration;
     private String features;
+    private List<Service> serviceList;
     private List<Integer> listOfServiceId;
-    private List<String> listOfServiceName;
 
     public Tariff() {
     }
 
-    public Tariff(int id, String name, String description, BigDecimal price, int dayDuration, String features, List<Integer> listOfServiceId, List<String> listOfServiceName) {
+    public Tariff(int id, String name, String description, BigDecimal price, int dayDuration, String features, List<Service> serviceList) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.dayDuration = dayDuration;
         this.features = features;
-        this.listOfServiceId = listOfServiceId;
-        this.listOfServiceName = listOfServiceName;
+        this.serviceList = serviceList;
     }
 
-    public List<String> getListOfServiceName() {
-        return listOfServiceName;
+    public List<Service> getServiceList() {
+        return serviceList;
     }
 
-    public void setListOfServiceName(List<String> listOfServiceName) {
-        this.listOfServiceName = listOfServiceName;
+    public void setServiceList(List<Service> serviceList) {
+        this.serviceList = serviceList;
     }
 
     public List<Integer> getListOfServiceId() {
-        return listOfServiceId;
+        return serviceList.stream().map(Service::getId).collect(Collectors.toList());
     }
 
     public void setListOfServiceId(List<Integer> listOfServiceId) {
@@ -102,6 +101,55 @@ public class Tariff {
 
         public Builder() {
             this.tariff = new Tariff();
+        }
+
+        private int id;
+        private String name;
+        private String description;
+        private BigDecimal price;
+        private int dayDuration;
+        private String features;
+        private List<Service> serviceList;
+        private List<Integer> listOfServiceId;
+
+        public Builder withId(int id) {
+            tariff.id = id;
+            return this;
+        }
+
+        public Builder withName(String name) {
+            tariff.name = name;
+            return this;
+        }
+
+        public Builder withDescription(String description) {
+            tariff.description = description;
+            return this;
+        }
+
+        public Builder withPrice(BigDecimal price) {
+            tariff.price = price;
+            return this;
+        }
+
+        public Builder withDayDuration(int dayDuration) {
+            tariff.dayDuration = dayDuration;
+            return this;
+        }
+
+        public Builder withFeatures(String features) {
+            tariff.features = features;
+            return this;
+        }
+
+        public Builder withServiceList(List<Service> serviceList) {
+            tariff.serviceList = serviceList;
+            return this;
+        }
+
+        public Builder withListOfServiceId(List<Integer> listOfServiceId) {
+            tariff.listOfServiceId = listOfServiceId;
+            return this;
         }
 
         public Tariff buildTariff() {
