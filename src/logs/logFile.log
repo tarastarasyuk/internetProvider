@@ -1307,3 +1307,16 @@ The last packet successfully received from the server was 857 527 milliseconds a
 2021-12-09 15:02:14 INFO  LogoutServlet:25 - ADMIN logged out
 2021-12-09 15:02:17 INFO  LoginFilter:62 - CLIENT logged in
 2021-12-09 15:03:16 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 15:16:40 INFO  PaymentServlet:42 - CLIENT topped up the balance by 234
+2021-12-09 15:16:50 INFO  PaymentServlet:42 - CLIENT topped up the balance by 23
+2021-12-09 15:17:25 INFO  PaymentServlet:42 - CLIENT topped up the balance by 23432
+2021-12-09 15:20:47 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 15:20:51 INFO  LoginFilter:62 - ADMIN logged in
+2021-12-09 15:21:31 INFO  LoginFilter:62 - ADMIN logged in
+2021-12-09 15:21:53 INFO  UserService:40 - New USER was added to database
+2021-12-09 15:27:50 INFO  UserService:40 - New USER was added to database
+2021-12-09 15:36:59 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-09 15:37:36 INFO  LoginFilter:62 - ADMIN logged in
+2021-12-09 15:37:40 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-09 15:37:56 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 15:40:34 INFO  LogoutServlet:25 - CLIENT logged out

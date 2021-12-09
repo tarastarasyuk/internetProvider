@@ -86,26 +86,25 @@
                           action="manageClients/addNewClient">
 
                         <div class="col-md-4">
-                            <label for="validationDefault03" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="validationDefault03" value="Otto"
+                            <label for="validationDefault03" class="form-label">Username <span style="color:red;">*</span></label>
+                            <input type="text" class="form-control" id="validationDefault03" placeholder="username"
                                    name="username" required>
                         </div>
                         <div class="col-md-4">
-                            <label for="validationDefault04" class="form-label">Password</label>
-                            <input type="text" class="form-control" id="validationDefault04" value="Otto"
+                            <label for="validationDefault04" class="form-label">Password <span style="color:red;">*</span></label>
+                            <input type="password" class="form-control" id="validationDefault04" placeholder="password"
                                    name="password" required>
                         </div>
                         <div class="col-md-4"></div>
 
                         <div class="col-md-8">
                             <label for="validationDefault05" class="form-label">Email</label>
-                            <input type="text" class="form-control" id="validationDefault05" value="Otto" name="email"
-                                   required>
+                            <input type="email" class="form-control" id="validationDefault05" placeholder="email" name="email">
                         </div>
                         <div class="col-md-4"></div>
 
                         <div class="col-md-3">
-                            <label for="cityId" class="form-label">City</label>
+                            <label for="cityId" class="form-label">City <span style="color:red;">*</span></label>
                             <select class="form-select" id="cityId" name="cityId" required>
                                 <option selected disabled value="">Choose your city</option>
                                 <c:forEach var="city" items="${cityList}">

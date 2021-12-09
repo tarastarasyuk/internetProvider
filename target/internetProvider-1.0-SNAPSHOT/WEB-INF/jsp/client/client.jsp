@@ -178,13 +178,13 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="validationDefault04" class="form-label">Password</label>
-                                <input type="text" class="form-control" id="validationDefault04" name="password" placeholder="********">
+                                <input type="text" class="form-control" id="validationDefault04" name="password" placeholder="********" title="Leave this field empty if you do not want to change you password">
                             </div>
                             <div class="col-md-4"></div>
 
                             <div class="col-md-8">
                                 <label for="validationDefault05" class="form-label">Email</label>
-                                <input type="text" class="form-control" id="validationDefault05" value="${user.getEmail()}" name="email" required>
+                                <input type="email" class="form-control" id="validationDefault05" value="${user.getEmail()}" name="email" required>
                             </div>
                             <div class="col-md-4"></div>
 

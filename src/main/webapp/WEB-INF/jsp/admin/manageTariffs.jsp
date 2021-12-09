@@ -107,29 +107,29 @@
                                         <form class="row g-3" method="post" action="manageTariffs/editCurrentTariff">
 
                                             <div class="col-md-6">
-                                                <label for="validationDefault023" class="form-label">Name</label>
+                                                <label for="validationDefault023" class="form-label">Name <span style="color:red;">*</span></label>
                                                 <input value="${tariff.getId()}" name="tariffEditId" hidden>
                                                 <input type="text" class="form-control" id="validationDefault023" placeholder="Name" value="${tariff.getName()}"
                                                        name="name" required>
                                             </div>
                                             <div class="col-md-6"></div>
                                             <div class="col-md-12">
-                                                <label for="1validationDefault04" class="form-label">Short Description</label>
+                                                <label for="1validationDefault04" class="form-label">Short Description <span style="color:red;">*</span></label>
                                                 <input type="text" class="form-control" id="1validationDefault04"
                                                        placeholder="Short Description" name="description" value="${tariff.getDescription()}" required>
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="2validationDefault052" class="form-label">Price</label>
+                                                <label for="2validationDefault052" class="form-label">Price <span style="color:red;">*</span></label>
                                                 <input type="text" class="form-control" id="2validationDefault052" placeholder="Price"
-                                                       name="price" value="${tariff.getPrice()}" required>
+                                                       name="price" value="${tariff.getPrice()}" pattern="^[1-9][0-9]*$" title="Type a number" required>
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="3validationDefault053" class="form-label">Days Duration</label>
+                                                <label for="3validationDefault053" class="form-label">Days Duration <span style="color:red;">*</span></label>
                                                 <input type="text" class="form-control" id="3validationDefault053" placeholder="Days Duration"
-                                                       name="dayDuration" value="${tariff.getDayDuration()}" required>
+                                                       name="dayDuration" pattern="^[1-9][0-9]*$" title="Type a number" value="${tariff.getDayDuration()}" required>
                                             </div>
                                             <div class="col-md-12">
-                                                <label for="serviceId" class="form-label">Services</label>
+                                                <label for="serviceId" class="form-label">Services <span style="color:red;">*</span></label>
                                                 <select class="form-select"  name="service" multiple required>
                                                     <c:forEach var="service" items="${serviceList}">
                                                         <option value="${service.getId()}" ${tariff.getListOfServiceName().contains(service.getName()) ? 'selected': ''}>${service.getName()}
@@ -143,7 +143,7 @@
                                             </div>
 
 
-                                            <label class="form-label">Features</label>
+                                            <label class="form-label">Features <span style="color:red;">*</span></label>
                                             <div class="newFeatures_${tariff.getId()}">
                                                 <c:forEach var="feature" items="${tariff.getFeaturesList()}">
                                                     <div class="col-md-12 feature-input_${tariff.getId()}"><input type="text" class="form-control" placeholder="Feature" name="feature" value="${feature}" required></div>
@@ -193,28 +193,28 @@
                             <form class="row g-3" method="post" action="manageTariffs/addNewTariff">
 
                                 <div class="col-md-6">
-                                    <label for="validationDefault03" class="form-label">Name</label>
+                                    <label for="validationDefault03" class="form-label">Name <span style="color:red;">*</span></label>
                                     <input type="text" class="form-control" id="validationDefault03" placeholder="Name"
                                            name="name" required>
                                 </div>
                                 <div class="col-md-6"></div>
                                 <div class="col-md-12">
-                                    <label for="validationDefault04" class="form-label">Short Description</label>
+                                    <label for="validationDefault04" class="form-label">Short Description <span style="color:red;">*</span></label>
                                     <input type="text" class="form-control" id="validationDefault04"
                                            placeholder="Short Description" name="description" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="validationDefault052" class="form-label">Price</label>
+                                    <label for="validationDefault052" class="form-label">Price <span style="color:red;">*</span></label>
                                     <input type="text" class="form-control" id="validationDefault052" placeholder="Price"
-                                           name="price" required>
+                                           name="price" required pattern="^[1-9][0-9]*$" title="Type a number">
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="validationDefault053" class="form-label">Days Duration</label>
+                                    <label for="validationDefault053" class="form-label">Days Duration <span style="color:red;">*</span></label>
                                     <input type="text" class="form-control" id="validationDefault053" placeholder="Days Duration"
-                                           name="dayDuration" required>
+                                           name="dayDuration" required pattern="^[1-9][0-9]*$" title="Type a number">
                                 </div>
                                 <div class="col-md-12">
-                                    <label for="serviceId" class="form-label">Services</label>
+                                    <label for="serviceId" class="form-label">Services <span style="color:red;">*</span></label>
                                     <select class="form-select" id="serviceId" name="service" multiple required>
                                         <c:forEach var="service" items="${serviceList}">
                                             <option value="${service.getId()}">${service.getName()}
@@ -228,7 +228,7 @@
                                 </div>
 
 
-                                <label class="form-label">Features</label>
+                                <label class="form-label">Features <span style="color:red;">*</span></label>
                                 <div class="newFeaturesCreate">
                                     <div class="col-md-12 feature-input-create"><input type="text" class="form-control" placeholder="Feature" name="feature" required></div>
                                 </div>
