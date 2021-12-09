@@ -144,6 +144,86 @@ public class User {
         ACTIVE, INACTIVE, BLOCKED
     }
 
+
+    // Builder pattern
+    public class Builder {
+        private final User user;
+
+        public Builder() {
+            this.user = new User();
+        }
+
+        public Builder withId(int id) {
+            user.id = id;
+            return this;
+        }
+
+        public Builder withUsername(String username) {
+            user.username = username;
+            return this;
+        }
+
+        public Builder withPassword(String password) {
+            user.password = password;
+            return this;
+        }
+
+        public Builder withAccount(BigDecimal account) {
+            user.account = account;
+            return this;
+        }
+
+        public Builder withEmail(String email) {
+            user.email = email;
+            return this;
+        }
+
+        public Builder withCreateTime(Date creatTime) {
+            user.creatTime = creatTime;
+            return this;
+        }
+
+        public Builder withTariffId(int tariffId) {
+            user.tariffId = tariffId;
+            return this;
+        }
+
+        public Builder withTariffBuyDate(LocalDateTime tariffBuyDate) {
+            user.tariffBuyDate = tariffBuyDate;
+            return this;
+        }
+
+        public Builder withTariffExpiration(int tariffExpiration) {
+            user.tariffExpiration = tariffExpiration;
+            return this;
+        }
+
+        public Builder withRoleId(int roleId) {
+            user.roleId = roleId;
+            return this;
+        }
+
+        public Builder withRole(Role role) {
+            user.role = role;
+            return this;
+        }
+
+        public Builder withCityId(int cityId) {
+            user.cityId = cityId;
+            return this;
+        }
+
+        public Builder withCityName(String cityName) {
+            user.cityName = cityName;
+            return this;
+        }
+
+        public User buildUser() {
+            return this.user;
+        }
+    }
+
+
     @Override
     public String toString() {
         return "User{" +

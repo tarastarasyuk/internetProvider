@@ -97,6 +97,18 @@ public class Tariff {
         return Arrays.stream(features.split(";")).map(String::trim).collect(Collectors.toList());
     }
 
+    public class Builder {
+        private final Tariff tariff;
+
+        public Builder() {
+            this.tariff = new Tariff();
+        }
+
+        public Tariff buildTariff() {
+            return this.tariff;
+        }
+    }
+
     @Override
     public String toString() {
         return "Tariff{" +

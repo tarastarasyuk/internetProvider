@@ -28,6 +28,27 @@ public class City {
         this.cityName = cityName;
     }
 
+    public class Builder {
+        private final City city;
+
+        public Builder() {
+            this.city = new City();
+        }
+
+        public Builder withId(int id) {
+            city.id = id;
+            return this;
+        }
+
+        public Builder withCityName(String cityName) {
+            city.cityName = cityName;
+            return this;
+        }
+
+        public City buildCity() {
+            return this.city;
+        }
+    }
     @Override
     public String toString() {
         return "City{" +
