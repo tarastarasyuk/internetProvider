@@ -1180,3 +1180,130 @@ The last packet successfully received from the server was 857 527 milliseconds a
 2021-12-09 13:17:18 INFO  LogoutServlet:25 - ADMIN logged out
 2021-12-09 13:46:19 INFO  LoginFilter:62 - ADMIN logged in
 2021-12-09 13:46:20 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-09 13:48:51 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 13:50:45 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 13:50:51 INFO  PaymentServlet:42 - CLIENT topped up the balance by 123
+2021-12-09 13:51:07 INFO  PaymentServlet:42 - CLIENT topped up the balance by 4234
+2021-12-09 13:51:12 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 13:53:50 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 13:53:50 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 13:54:41 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 13:54:41 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 13:55:54 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 13:55:54 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 13:59:57 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 13:59:57 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 14:01:27 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 14:01:27 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 14:06:06 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 14:06:06 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 14:07:03 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 14:07:03 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 14:11:44 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 14:11:44 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 14:12:32 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 14:12:32 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 14:13:06 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 14:14:18 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 14:14:18 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 14:15:55 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 14:15:55 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 14:16:44 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 14:16:44 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 14:16:47 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 14:18:16 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 14:19:06 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 14:19:09 INFO  PaymentServlet:42 - CLIENT topped up the balance by 213
+2021-12-09 14:19:09 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 14:19:13 INFO  PaymentServlet:42 - CLIENT topped up the balance by 12
+2021-12-09 14:19:16 INFO  PaymentServlet:42 - CLIENT topped up the balance by 4132
+2021-12-09 14:19:20 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 14:19:30 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 14:19:32 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 14:22:09 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 14:22:09 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 14:22:16 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 14:22:18 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 14:22:28 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 14:23:19 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 14:23:19 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 14:23:20 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 14:27:10 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 14:27:10 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 14:27:15 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 14:33:24 INFO  LoginFilter:62 - ADMIN logged in
+2021-12-09 14:33:27 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-09 14:33:30 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 14:33:30 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 14:34:32 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 14:34:32 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 14:34:33 INFO  UserService:78 - CLIENT deleted his tariff
+2021-12-09 14:34:50 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 14:34:52 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 14:35:00 INFO  PaymentServlet:42 - CLIENT topped up the balance by 34
+2021-12-09 14:36:17 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 14:36:23 INFO  PaymentServlet:42 - CLIENT topped up the balance by 12
+2021-12-09 14:37:25 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 14:37:28 INFO  PaymentServlet:42 - CLIENT topped up the balance by 333
+2021-12-09 14:38:11 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 14:38:15 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 14:38:33 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 14:38:38 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 14:38:46 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 14:38:47 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 14:38:47 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 14:40:43 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 14:40:43 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 14:41:24 INFO  PaymentServlet:42 - CLIENT topped up the balance by -170
+2021-12-09 14:41:24 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 14:41:28 INFO  PaymentServlet:42 - CLIENT topped up the balance by -1200
+2021-12-09 14:42:08 INFO  UserService:78 - CLIENT deleted his tariff
+2021-12-09 14:42:09 INFO  UserService:78 - CLIENT deleted his tariff
+2021-12-09 14:42:23 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 14:42:26 INFO  LoginFilter:62 - ADMIN logged in
+2021-12-09 14:42:32 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-09 14:42:42 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 14:42:54 INFO  PaymentServlet:42 - CLIENT topped up the balance by 23312
+2021-12-09 14:43:42 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 14:43:47 INFO  LoginFilter:62 - ADMIN logged in
+2021-12-09 14:43:50 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-09 14:43:58 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 14:44:06 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 14:44:35 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 14:47:46 INFO  LoginFilter:62 - ADMIN logged in
+2021-12-09 14:48:01 INFO  UserService:78 - CLIENT deleted his tariff
+2021-12-09 14:48:08 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-09 14:48:15 INFO  AdminFilter:32 - No user in session: redirecting to login.jsp
+2021-12-09 14:50:12 INFO  LoginFilter:62 - ADMIN logged in
+2021-12-09 14:50:17 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-09 14:50:20 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 14:50:21 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 14:50:24 INFO  LoginFilter:62 - ADMIN logged in
+2021-12-09 14:50:29 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-09 14:50:33 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 14:57:46 INFO  LoginFilter:62 - ADMIN logged in
+2021-12-09 14:57:51 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-09 14:57:54 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 15:01:18 INFO  LoginFilter:62 - ADMIN logged in
+2021-12-09 15:01:22 INFO  UserService:78 - CLIENT deleted his tariff
+2021-12-09 15:01:23 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-09 15:01:25 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 15:01:30 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 15:01:32 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 15:01:40 INFO  PaymentServlet:42 - CLIENT topped up the balance by 2321
+2021-12-09 15:01:43 INFO  UserService:109 - CLIENT paid the price and connected the tariff
+2021-12-09 15:01:44 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 15:01:46 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 15:01:47 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 15:01:49 INFO  LoginFilter:62 - ADMIN logged in
+2021-12-09 15:01:52 INFO  UserService:78 - CLIENT deleted his tariff
+2021-12-09 15:01:56 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-09 15:01:58 INFO  LoginFilter:62 - ADMIN logged in
+2021-12-09 15:01:59 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-09 15:02:02 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 15:02:08 INFO  LogoutServlet:25 - CLIENT logged out
+2021-12-09 15:02:10 INFO  LoginFilter:62 - ADMIN logged in
+2021-12-09 15:02:13 INFO  UserService:78 - CLIENT deleted his tariff
+2021-12-09 15:02:14 INFO  LogoutServlet:25 - ADMIN logged out
+2021-12-09 15:02:17 INFO  LoginFilter:62 - CLIENT logged in
+2021-12-09 15:03:16 INFO  LoginFilter:62 - CLIENT logged in

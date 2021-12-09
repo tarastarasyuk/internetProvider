@@ -24,16 +24,26 @@ import static java.util.Objects.nonNull;
 public class ClientPanelServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        refreshSessionUser(request);
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-        CityService cityService = new CityService(request);
-        List<City> cityList = cityService.getAllCities();
-        TariffService tariffService = new TariffService(request);
-        Tariff tariff = tariffService.getTariffById(user.getTariffId());
-        request.setAttribute("tariff", tariff);
-        request.setAttribute("cityList", cityList);
-        request.getRequestDispatcher("WEB-INF/jsp/client/client.jsp").forward(request, response);
+        String action = request.getPathInfo();
+        if (nonNull(action))
+            switch (action) {
+                case "/payment":
+                    response.sendRedirect("payment");
+                    break;
+                default:
+                    break;
+        } else {
+            refreshSessionUser(request);
+            HttpSession session = request.getSession();
+            User user = (User) session.getAttribute("user");
+            CityService cityService = new CityService(request);
+            List<City> cityList = cityService.getAllCities();
+            TariffService tariffService = new TariffService(request);
+            Tariff tariff = tariffService.getTariffById(user.getTariffId());
+            request.setAttribute("tariff", tariff);
+            request.setAttribute("cityList", cityList);
+            request.getRequestDispatcher("WEB-INF/jsp/client/client.jsp").forward(request, response);
+        }
     }
 
     private void refreshSessionUser(HttpServletRequest request) {

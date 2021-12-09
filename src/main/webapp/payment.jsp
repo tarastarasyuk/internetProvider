@@ -40,7 +40,7 @@
                                                                  data-accept="\d" size="3" required> <span>CVV</span> </div>
                             </div>
 
-                            <form action="${pageContext.request.contextPath}/payment" method="POST">
+                            <form action="${pageContext.request.contextPath}/clientPanel/payment" method="POST">
                                 <div class="input-text"> <input type="text" placeholder="1000" required name="sum">
                                     <span>Sum</span>
                                 </div>

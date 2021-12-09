@@ -10,7 +10,7 @@
             <div class="col-5">
                 <div class="info-field">
                     <span>${doPost}Account: ${user.getAccount()}$&nbsp;&nbsp;&nbsp;</span>
-                    <a href="/payment"><button type="button" class="btn btn-success top-up-account" >
+                    <a href="${pageContext.request.contextPath}/clientPanel/payment"><button type="button" class="btn btn-success top-up-account" >
                         Top up
                     </button>
                     </a>

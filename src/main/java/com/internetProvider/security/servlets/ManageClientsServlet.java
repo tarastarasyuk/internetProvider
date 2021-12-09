@@ -73,7 +73,9 @@ public class ManageClientsServlet extends HttpServlet {
         UserService userService = new UserService(request);
         if (clientStatus == User.Status.BLOCKED) {
             return userService.changeUserStatusByUserId(clientId, User.Status.INACTIVE);
+        } else {
+            userService.deleteUserTariffById(clientId);
+            return userService.changeUserStatusByUserId(clientId, User.Status.BLOCKED);
         }
-        return userService.changeUserStatusByUserId(clientId, User.Status.BLOCKED);
     }
 }

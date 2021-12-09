@@ -1,4 +1,4 @@
-package com.internetProvider.controller;
+package com.internetProvider.security.servlets;
 
 import com.internetProvider.aservice.UserService;
 import com.internetProvider.model.User;
@@ -10,13 +10,13 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.math.BigDecimal;
 
-@WebServlet(name = "PaymentServlet", value = "/payment")
+@WebServlet(name = "PaymentServlet", urlPatterns = "/clientPanel/payment")
 public class PaymentServlet extends HttpServlet {
     private final static Logger logger = Logger.getLogger(PaymentServlet.class);
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("payment.jsp").forward(request, response);
+        request.getRequestDispatcher("../payment.jsp").forward(request, response);
     }
 
     @Override

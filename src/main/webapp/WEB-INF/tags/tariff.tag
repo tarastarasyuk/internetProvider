@@ -46,43 +46,57 @@
                     </button>
                 </c:when>
                 <c:when test='${user != null}'>
+
+
                     <c:choose>
-                        <c:when test="${sessionScope.user.account.compareTo(tariff.getPrice()) >= 0}">
-                            <c:choose>
-                                <c:when test="${user.getTariffId() != 0}">
-                                    <%--                            TODO: MAKE MESSAGE FOR USERS THAT ALREADY HAVE TARIFF--%>
-                                    <%--                            <button type="submit" class="btn btn-primary"--%>
-                                    <%--                                    data-bs-toggle="modal" data-bs-target="#tariffExistence">--%>
-                                    <%--                                Connect--%>
-                                    <%--                            </button>--%>
-                                    <form action="${pageContext.request.contextPath}/tariff/tariffConnection"
-                                          method="GET">
-                                        <button type="submit" class="btn btn-primary" value="${tariff.getId()}"
-                                                name="newTariffId">
-                                            Connect
-                                        </button>
-                                    </form>
-                                </c:when>
-                                <c:when test="${user.getTariffId() == 0}">
-                                    <form action="${pageContext.request.contextPath}/tariff/tariffConnection"
-                                          method="GET">
-                                        <button type="submit" class="btn btn-primary" value="${tariff.getId()}"
-                                                name="newTariffId">
-                                            Connect
-                                        </button>
-                                    </form>
-                                </c:when>
-                            </c:choose>
-                        </c:when>
-                        <c:when test="${sessionScope.user.account.compareTo(tariff.getPrice()) == -1}">
+                        <c:when test='${sessionScope.user.status.toString().equals("BLOCKED")}'>
                             <button type="submit" class="btn btn-primary"
-                                    data-bs-toggle="modal" data-bs-target="#notEnoughMoney">
+                                    data-bs-toggle="modal" data-bs-target="#blockedClient">
                                 Connect
                             </button>
                         </c:when>
 
+                        <c:when test='${!sessionScope.user.status.toString().equals("BLOCKED")}'>
+
+                            <c:choose>
+                                <c:when test="${sessionScope.user.account.compareTo(tariff.getPrice()) >= 0}">
+                                    <c:choose>
+                                        <c:when test="${user.getTariffId() != 0}">
+                                            <%--                            TODO: MAKE MESSAGE FOR USERS THAT ALREADY HAVE TARIFF--%>
+                                            <%--                            <button type="submit" class="btn btn-primary"--%>
+                                            <%--                                    data-bs-toggle="modal" data-bs-target="#tariffExistence">--%>
+                                            <%--                                Connect--%>
+                                            <%--                            </button>--%>
+                                            <form action="${pageContext.request.contextPath}/clientPanel/tariffConnection"
+                                                  method="GET">
+                                                <button type="submit" class="btn btn-primary" value="${tariff.getId()}"
+                                                        name="newTariffId">
+                                                    Connect
+                                                </button>
+                                            </form>
+                                        </c:when>
+                                        <c:when test="${user.getTariffId() == 0}">
+                                            <form action="${pageContext.request.contextPath}/clientPanel/tariffConnection"
+                                                  method="GET">
+                                                <button type="submit" class="btn btn-primary" value="${tariff.getId()}"
+                                                        name="newTariffId">
+                                                    Connect
+                                                </button>
+                                            </form>
+                                        </c:when>
+                                    </c:choose>
+                                </c:when>
+                                <c:when test="${sessionScope.user.account.compareTo(tariff.getPrice()) == -1}">
+                                    <button type="submit" class="btn btn-primary"
+                                            data-bs-toggle="modal" data-bs-target="#notEnoughMoney">
+                                        Connect
+                                    </button>
+                                </c:when>
+                            </c:choose>
+                        </c:when>
 
                     </c:choose>
+
 
                 </c:when>
             </c:choose>
@@ -143,6 +157,23 @@
                             <button type="button" class="btn btn-primary">Register</button>
                         </a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal BLOCKED USER-->
+    <div class="modal fade" id="blockedClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="blockedUserTitle">Your status is BLOCKED! Try to connect support to solve problem!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>

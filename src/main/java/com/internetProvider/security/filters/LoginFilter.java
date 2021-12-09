@@ -15,7 +15,7 @@ import java.io.IOException;
 import static java.util.Objects.nonNull;
 
 
-@WebFilter(filterName = "LoginFilter", urlPatterns = {"/clientPanel"})
+@WebFilter(filterName = "LoginFilter", urlPatterns = {"/clientPanel/*"})
 public class LoginFilter implements Filter {
     private final static Logger logger = Logger.getLogger(LoginFilter.class);
 
@@ -72,7 +72,7 @@ public class LoginFilter implements Filter {
             }
 
         } else {
-            res.sendRedirect("login");
+            res.sendRedirect("/login");
         }
     }
 }
