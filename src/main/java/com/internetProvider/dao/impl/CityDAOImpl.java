@@ -14,7 +14,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.internetProvider.database.DBUtils.rollback;
+import static com.internetProvider.dao.DBUtils.rollback;
+
 
 public class CityDAOImpl extends ConnectionConstructor implements CityDAO {
     private final static Logger logger = Logger.getLogger(CityDAOImpl.class);

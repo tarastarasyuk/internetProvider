@@ -196,7 +196,7 @@
                 <div class="modal-body">
 
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <a href="${pageContext.request.contextPath}/payment" style="color: #fff;">
+                    <a href="${pageContext.request.contextPath}/clientPanel/payment" style="color: #fff;">
                         <button type="button" class="btn btn-success">Top up account</button>
                     </a>
                 </div>

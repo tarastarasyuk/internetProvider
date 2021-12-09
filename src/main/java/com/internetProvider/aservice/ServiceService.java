@@ -1,9 +1,9 @@
 package com.internetProvider.aservice;
 
+import com.internetProvider.dao.DBUtils;
 import com.internetProvider.dao.impl.ServiceDAOImpl;
 import com.internetProvider.dao.impl.TariffDAOImpl;
-import com.internetProvider.database.ConnectionPoolImpl;
-import com.internetProvider.database.DBUtils;
+
 import com.internetProvider.model.Service;
 import com.internetProvider.model.Tariff;
 

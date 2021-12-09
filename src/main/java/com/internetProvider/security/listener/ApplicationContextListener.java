@@ -1,12 +1,10 @@
-package com.internetProvider;
+package com.internetProvider.security.listener;
 
-import com.internetProvider.database.ConnectionPoolImpl;
+import com.internetProvider.dao.ConnectionPoolImpl;
 
 import javax.servlet.*;
-import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 @WebListener

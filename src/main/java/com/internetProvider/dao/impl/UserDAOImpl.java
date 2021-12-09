@@ -6,17 +6,15 @@ import com.internetProvider.dao.UserDAO;
 import com.internetProvider.model.Role;
 import com.internetProvider.model.Tariff;
 import com.internetProvider.model.User;
-import com.internetProvider.security.filters.LoginFilter;
 import org.apache.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.sql.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.internetProvider.database.DBUtils.rollback;
+import static com.internetProvider.dao.DBUtils.rollback;
 
 public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
     private final static Logger logger = Logger.getLogger(UserDAOImpl.class);

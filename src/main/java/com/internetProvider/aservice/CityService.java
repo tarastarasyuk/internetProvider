@@ -1,7 +1,8 @@
 package com.internetProvider.aservice;
 
+import com.internetProvider.dao.DBUtils;
 import com.internetProvider.dao.impl.CityDAOImpl;
-import com.internetProvider.database.DBUtils;
+
 import com.internetProvider.model.City;
 
 import javax.servlet.ServletRequest;

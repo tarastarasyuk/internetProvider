@@ -1,12 +1,11 @@
 package com.internetProvider.aservice;
 
 import com.internetProvider.dao.impl.UserDAOImpl;
-import com.internetProvider.database.DBUtils;
+import com.internetProvider.dao.DBUtils;
 import com.internetProvider.model.Tariff;
 import com.internetProvider.model.User;
 import org.apache.log4j.Logger;
 
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.util.List;

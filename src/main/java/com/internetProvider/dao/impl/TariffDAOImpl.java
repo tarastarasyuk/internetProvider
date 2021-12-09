@@ -3,10 +3,7 @@ package com.internetProvider.dao.impl;
 import com.internetProvider.dao.ConnectionConstructor;
 import com.internetProvider.dao.QueriesSQL;
 import com.internetProvider.dao.TariffDAO;
-import com.internetProvider.database.QueriesConstants;
-import com.internetProvider.model.Role;
 import com.internetProvider.model.Tariff;
-import com.internetProvider.model.User;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
@@ -14,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.internetProvider.database.DBUtils.rollback;
+import static com.internetProvider.dao.DBUtils.rollback;
 
 public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
     private final static Logger logger = Logger.getLogger(TariffDAOImpl.class);

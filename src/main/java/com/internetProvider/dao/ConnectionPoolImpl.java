@@ -1,4 +1,4 @@
-package com.internetProvider.database;
+package com.internetProvider.dao;
 
 import javax.sql.DataSource;
 import javax.naming.Context;

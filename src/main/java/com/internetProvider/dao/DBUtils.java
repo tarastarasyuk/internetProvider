@@ -1,4 +1,4 @@
-package com.internetProvider.database;
+package com.internetProvider.dao;
 
 import com.internetProvider.dao.impl.CityDAOImpl;
 import org.apache.log4j.Logger;
