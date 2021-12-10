@@ -4,6 +4,7 @@ import com.internetProvider.aservice.CityService;
 import com.internetProvider.aservice.UserService;
 import com.internetProvider.model.City;
 import com.internetProvider.model.User;
+import com.internetProvider.security.App;
 import com.internetProvider.security.CryptoUtil;
 
 import javax.servlet.*;
@@ -20,27 +21,25 @@ public class ManageClientsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         UserService userService = UserService.getInstance(request);
-        List<User> clientList = userService.getAllUsers().stream().filter(user -> user.getRoleId() == 2).collect(Collectors.toList());
+        List<User> clientList = userService.getAllUsers().stream().filter(user -> user.getRoleId() == App.Constants.USER_ROLE_ID).collect(Collectors.toList());
         request.setAttribute("clientList", clientList);
 
         CityService cityService = CityService.getInstance(request);
         List<City> cityList = cityService.getAllCities();
         request.setAttribute("cityList", cityList);
-        request.getRequestDispatcher("../WEB-INF/jsp/admin/manageClients.jsp").forward(request, response);
+        request.getRequestDispatcher("../"+App.Constants.MANAGE_CLIENT_JSP).forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
         String action = request.getPathInfo();
-        System.out.println(action);
         if (action != null) {
             switch (action) {
                 case "/changeUserStatus":
-                    changeUserStatus(request, session);
+                    changeUserStatus(request);
                     break;
                 case "/addNewClient":
-                    addNewClient(request, session);
+                    addNewClient(request);
                     break;
                 default:
                     break;
@@ -49,33 +48,36 @@ public class ManageClientsServlet extends HttpServlet {
         response.sendRedirect("/adminPanel/manageClients");
     }
 
-    private boolean addNewClient(HttpServletRequest request, HttpSession session) {
+    private boolean addNewClient(HttpServletRequest request) {
         String username = request.getParameter("username");
         String password = CryptoUtil.getEncryptedPassword(request.getParameter("password"));
         String email = request.getParameter("email");
-        Integer cityId = Integer.valueOf(request.getParameter("cityId"));
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
-        user.setEmail(email);
-        user.setCityId(cityId);
-
-        if (nonNull(password)) {
-            UserService userService = UserService.getInstance(request);
-            return userService.createNewUser(user);
-        }
-        return false;
+        int cityId = Integer.parseInt(request.getParameter("cityId"));
+        User user = new User.Builder().withCityName(username)
+                .withPassword(password)
+                .withEmail(email)
+                .withCityId(cityId)
+                .buildUser();
+        UserService userService = UserService.getInstance(request);
+        return userService.createNewUser(user);
     }
 
-    private boolean changeUserStatus(HttpServletRequest request, HttpSession session) {
+    /**
+     * Clients with statuses ACTIVE or INACTIVE will be blocked and their tariffs will be deleted
+     * Clients with status BLOCKED will UNBLOCKED (will get INACTIVE status)
+     */
+    private boolean changeUserStatus(HttpServletRequest request) {
+        boolean result;
         Integer clientId = Integer.valueOf(request.getParameter("clientId"));
         User.Status clientStatus = User.Status.valueOf(request.getParameter("clientStatus"));
         UserService userService = UserService.getInstance(request);
+
         if (clientStatus == User.Status.BLOCKED) {
-            return userService.changeUserStatusByUserId(clientId, User.Status.INACTIVE);
+            result = userService.changeUserStatusByUserId(clientId, User.Status.INACTIVE);
         } else {
             userService.deleteUserTariffById(clientId);
-            return userService.changeUserStatusByUserId(clientId, User.Status.BLOCKED);
+            result = userService.changeUserStatusByUserId(clientId, User.Status.BLOCKED);
         }
+        return result;
     }
 }

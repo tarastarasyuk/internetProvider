@@ -16,7 +16,7 @@ public class LoginServlet extends HttpServlet {
         if (nonNull(session) && nonNull(session.getAttribute(App.Constants.SESSION_USER))) {
             response.sendRedirect(session.getAttribute("pattern").toString());
         } else {
-            request.getRequestDispatcher("/"+ App.Constants.LOGIN).forward(request, response);
+            request.getRequestDispatcher(App.Constants.LOGIN_JSP).forward(request, response);
         }
     }
 

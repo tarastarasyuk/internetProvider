@@ -44,7 +44,7 @@ public class LoginFilter implements Filter {
 
             // checking users roles and then redirecting to central servlets of each entity
             if (user.getRoleId() == App.Constants.ADMIN_ROLE_ID) {
-                res.sendRedirect(App.Constants.ADMIN_PANEL);
+                res.sendRedirect(App.Constants.ADMIN_PANEL_URL);
             } else
                 chain.doFilter(req, res);
 
@@ -80,12 +80,12 @@ public class LoginFilter implements Filter {
         logger.info(existingUser.getRole() + " logged in");
         switch (existingUser.getRoleId()) {
             case 1:
-                session.setAttribute("pattern", App.Constants.ADMIN_PANEL);
-                res.sendRedirect("/"+App.Constants.ADMIN_PANEL);
+                session.setAttribute("pattern", App.Constants.ADMIN_PANEL_URL);
+                res.sendRedirect("/"+App.Constants.ADMIN_PANEL_URL);
                 break;
             case 2:
-                session.setAttribute("pattern", App.Constants.CLIENT_PANEL);
-                res.sendRedirect("/"+App.Constants.CLIENT_PANEL);
+                session.setAttribute("pattern", App.Constants.CLIENT_PANEL_URL);
+                res.sendRedirect("/"+App.Constants.CLIENT_PANEL_URL);
                 break;
             default:
                 break;

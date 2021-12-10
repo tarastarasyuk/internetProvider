@@ -2,6 +2,7 @@ package com.internetProvider.security.servlets;
 
 import com.internetProvider.aservice.CityService;
 import com.internetProvider.model.City;
+import com.internetProvider.security.App;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -30,7 +31,7 @@ public class AdminPanelServlet extends HttpServlet {
         CityService cityService = CityService.getInstance(request);
         List<City> cityList = cityService.getAllCities();
         request.setAttribute("cityList", cityList);
-        request.getRequestDispatcher("WEB-INF/jsp/admin/admin.jsp").forward(request, response);
+        request.getRequestDispatcher(App.Constants.ADMIN_JSP).forward(request, response);
     }
 
     @Override

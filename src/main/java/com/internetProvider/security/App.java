@@ -7,11 +7,18 @@ public class App {
 
         public static final String SESSION_USER = "user";
 
-        public static final String ADMIN_PANEL = "adminPanel";
-        public static final String CLIENT_PANEL = "clientPanel";
+        public static final String ADMIN_PANEL_URL = "adminPanel";
+        public static final String CLIENT_PANEL_URL = "clientPanel";
         public static final String LOGIN = "login";
 
         public static final String DONT_HAVE_ACCESS_JSP = "error.jsp";
+
+        public static final String SCE_INSTANCE_CONNECTION = "dbConnection";
+
+        public static final String ADMIN_JSP = "WEB-INF/jsp/admin/admin.jsp";
+        public static final String LOGIN_JSP = "login.jsp";
+        public static final String MANAGE_TARIFFS_JSP = "WEB-INF/jsp/admin/manageTariffs.jsp";
+        public static final String MANAGE_CLIENT_JSP = "WEB-INF/jsp/admin/manageClients.jsp";
     }
 
 }
