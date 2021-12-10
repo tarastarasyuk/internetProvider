@@ -1,0 +1,12 @@
+.client-creation {
+    width: 50%;
+    margin: 40px auto;
+}
+
+.client-creation-title {
+    text-align: center;
+}
+
+.modal-footer {
+    margin-top: 40px;
+}

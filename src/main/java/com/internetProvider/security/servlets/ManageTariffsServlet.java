@@ -27,11 +27,6 @@ public class ManageTariffsServlet extends HttpServlet {
             List<Tariff> tariffList = tariffService.getAllTariffs();
             Collections.reverse(tariffList);
             request.setAttribute("tariffList", tariffList);
-
-            ServiceService serviceService = ServiceService.getInstance(request);
-            List<Service> serviceList = serviceService.getAllServices();
-            request.setAttribute("serviceList", serviceList);
-
             request.getRequestDispatcher("../"+ App.Constants.MANAGE_TARIFFS_JSP).forward(request, response);
         }
 
@@ -39,7 +34,6 @@ public class ManageTariffsServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
         TariffService tariffService = TariffService.getInstance(request);
         String action = request.getPathInfo();
         if (action != null) {

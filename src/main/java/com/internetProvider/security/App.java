@@ -19,7 +19,8 @@ public class App {
         public static final String LOGIN_JSP = "login.jsp";
         public static final String MANAGE_TARIFFS_JSP = "WEB-INF/jsp/admin/manageTariffs.jsp";
         public static final String TARIFF_CREATION_FORM_JSP = "WEB-INF/jsp/admin/tariffCreationForm.jsp";
-        public static final String MANAGE_CLIENT_JSP = "WEB-INF/jsp/admin/manageClients.jsp";
+        public static final String MANAGE_CLIENTS_JSP = "WEB-INF/jsp/admin/manageClients.jsp";
+        public static final String CLIENT_CREATION_FORM_JSP = "WEB-INF/jsp/shared/clientCreationForm.jsp";
     }
 
 }
