@@ -53,7 +53,8 @@ public class ManageClientsServlet extends HttpServlet {
         String password = CryptoUtil.getEncryptedPassword(request.getParameter("password"));
         String email = request.getParameter("email");
         int cityId = Integer.parseInt(request.getParameter("cityId"));
-        User user = new User.Builder().withCityName(username)
+        User user = new User.Builder()
+                .withCityName(username)
                 .withPassword(password)
                 .withEmail(email)
                 .withCityId(cityId)

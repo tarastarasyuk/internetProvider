@@ -86,7 +86,8 @@ public class ManageTariffsServlet extends HttpServlet {
     }
 
     private Tariff fillTariffWithData(String name, String description, BigDecimal price, int dayDuration, List<Integer> serviceIds, String features) {
-        return new Tariff.Builder().withName(name)
+        return new Tariff.Builder()
+                .withName(name)
                 .withDescription(description)
                 .withPrice(price)
                 .withDayDuration(dayDuration)
