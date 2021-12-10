@@ -74,9 +74,15 @@
 
                     </div>
 
-                    <button type="button" class="btn edit-user-btn" data-bs-toggle="modal" data-bs-target="#editModal">
-                        Edit profile
-                    </button>
+<%--                    <button type="button" class="btn edit-user-btn" data-bs-toggle="modal" data-bs-target="#editModal">--%>
+<%--                        Edit profile--%>
+<%--                    </button>--%>
+
+                    <form action="clientPanel/editClientForm" method="GET">
+                        <button type="submit" class="btn edit-user-btn">
+                            Edit profile
+                        </button>
+                    </form>
 
 
 

@@ -38,12 +38,12 @@
                         <div class="col-md-6">
                             <label class="form-label">Price <span class="required-field">*</span></label>
                             <input type="text" class="form-control" placeholder="Price" name="price" required
-                                   pattern="^[1-9][0-9]*$" title="Type a number" value="${tariff.getPrice()}">
+                                   pattern="^[1-9][0-9]{1,3}$" title="Type a number" value="${tariff.getPrice()}">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Days Duration <span class="required-field">*</span></label>
                             <input type="text" class="form-control" placeholder="Days Duration" name="dayDuration"
-                                   required pattern="^[1-9][0-9]*$" title="Type a number" value="${tariff.getDayDuration()}">
+                                   required pattern="^[1-9][0-9]{1}$" title="Type a number" value="${tariff.getDayDuration()}">
                         </div>
                         <div class="col-md-12">
                             <label for="serviceId" class="form-label">Services <span

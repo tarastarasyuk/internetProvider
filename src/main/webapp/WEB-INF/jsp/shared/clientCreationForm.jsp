@@ -6,7 +6,7 @@
     <main>
         <div class="container">
 
-            <a href="/adminPanel/manageClients"><button class="back-to-btn btn btn-primary">
+            <a href="/clientPanel"><button class="back-to-btn btn btn-primary">
                 <i class="fas fa-arrow-left"></i>
                 Back
             </button></a>
@@ -14,21 +14,21 @@
             <section class="client-creation">
 
                 <div class="client-creation-title">
-                    <h3>User Create Form</h3>
+                    <h3>Client ${sessionScope.user.roleId == 2 ? 'Edit' : 'Create'} Form</h3>
                 </div>
 
                 <hr>
 
                 <div class="modal-body">
-                    <form class="row g-3" method="POST" action="${sessionScope.user.roleId == 2 ? '......change....' : 'clientCreationForm/addNewClient'}">
+                    <form class="row g-3" method="POST" action="${sessionScope.user.roleId == 2 ? 'editClientForm/editProfile' : 'clientCreationForm/addNewClient'}">
 
                         <div class="col-md-6">
                             <label class="form-label">Username<span style="color:red;">*</span></label>
                             <input type="text" class="form-control" placeholder="username" name="username" value="${sessionScope.user.roleId == 2 ? sessionScope.user.username : ''}" required>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label">Password <span style="color:red;">*</span></label>
-                            <input type="password" class="form-control" placeholder="********" name="password" required>
+                            <label class="form-label">Password <span style="color:red;">${sessionScope.user.roleId == 2 ? '?' : '*'}</span></label>
+                            <input type="password" class="form-control" placeholder="********" name="password" ${sessionScope.user.roleId == 2 ? '' : required}>
                         </div>
 
 
@@ -60,7 +60,9 @@
 
                         </div>
                         <div class="modal-footer ">
-                            <button class="btn btn-primary" type="submit">Register</button>
+                            <button class="btn btn-primary" type="submit">
+    ${sessionScope.user.roleId == 2 ? "Edit Client" : "Register Client"}
+                            </button>
                         </div>
                     </form>
                 </div>
