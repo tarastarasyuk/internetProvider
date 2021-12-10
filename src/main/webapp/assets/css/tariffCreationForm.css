@@ -1,0 +1,16 @@
+.tariff-creation {
+    width: 60%;
+    margin: 40px auto;
+}
+
+.tariff-creation-title {
+    text-align: center;
+}
+
+.feature-input-create:not(:first-child) {
+    margin-top: 10px;
+}
+
+.feature-buttons {
+    margin-top: 10px;
+}
