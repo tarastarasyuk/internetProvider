@@ -16,7 +16,7 @@ import java.util.List;
 public class ServicesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ServiceService serviceService = new ServiceService(request);
+        ServiceService serviceService = ServiceService.getInstance(request);
         List<Service> serviceList = serviceService.getAllServices();
         request.setAttribute("serviceList", serviceList);
         request.getRequestDispatcher("services.jsp").forward(request, response);

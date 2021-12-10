@@ -10,7 +10,7 @@
             <div class="col-5">
                 <div class="info-field">
                     <span>${doPost}Account: ${user.getAccount()}$&nbsp;&nbsp;&nbsp;</span>
-                    <a href="/payment"><button type="button" class="btn btn-success top-up-account" >
+                    <a href="${pageContext.request.contextPath}/clientPanel/payment"><button type="button" class="btn btn-success top-up-account" >
                         Top up
                     </button>
                     </a>
@@ -68,7 +68,6 @@
                         <div class="info">
                             <span class="info-title">Your data:</span>
                             <span>Username: ${user.getUsername()}</span>
-                            <span>Password: ${user.getPassword()}</span>
                             <span>Email: ${user.getEmail()}</span>
                             <span>Town: ${user.getCityName()}</span>
                         </div>
@@ -179,13 +178,13 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="validationDefault04" class="form-label">Password</label>
-                                <input type="text" class="form-control" id="validationDefault04" value="${user.getPassword()}" name="password" required>
+                                <input type="text" class="form-control" id="validationDefault04" name="password" placeholder="********" title="Leave this field empty if you do not want to change you password">
                             </div>
                             <div class="col-md-4"></div>
 
                             <div class="col-md-8">
                                 <label for="validationDefault05" class="form-label">Email</label>
-                                <input type="text" class="form-control" id="validationDefault05" value="${user.getEmail()}" name="email" required>
+                                <input type="email" class="form-control" id="validationDefault05" value="${user.getEmail()}" name="email" required>
                             </div>
                             <div class="col-md-4"></div>
 

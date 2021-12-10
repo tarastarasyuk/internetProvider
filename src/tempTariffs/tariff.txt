@@ -1,0 +1,7 @@
+Name:  Econom Pro
+Short description:  Avaible for everyone
+Price:  300
+Days Duration:  30
+Features:  
+-15 GB of internet
+-Unlimited calls

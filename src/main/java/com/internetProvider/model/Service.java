@@ -48,6 +48,38 @@ public class Service {
         this.description = description;
     }
 
+    public static class Builder {
+        private final Service service;
+
+        public Builder() {
+            this.service = new Service();
+        }
+
+        public Builder withId(int id) {
+            service.id = id;
+            return this;
+        }
+
+        public Builder withName(String name) {
+            service.name = name;
+            return this;
+        }
+
+        public Builder withDescription(String description) {
+            service.description = description;
+            return this;
+        }
+
+        public Builder withLogoLink(String logoLink) {
+            service.logoLink = logoLink;
+            return this;
+        }
+
+        public Service buildService() {
+            return this.service;
+        }
+    }
+
     @Override
     public String toString() {
         return "Service{" +

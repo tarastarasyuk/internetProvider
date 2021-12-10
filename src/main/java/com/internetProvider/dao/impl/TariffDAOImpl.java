@@ -3,17 +3,19 @@ package com.internetProvider.dao.impl;
 import com.internetProvider.dao.ConnectionConstructor;
 import com.internetProvider.dao.QueriesSQL;
 import com.internetProvider.dao.TariffDAO;
-import com.internetProvider.database.QueriesConstants;
-import com.internetProvider.model.Role;
+import com.internetProvider.model.Service;
 import com.internetProvider.model.Tariff;
-import com.internetProvider.model.User;
+import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.internetProvider.dao.DBUtils.rollback;
+
 public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
+    private final static Logger logger = Logger.getLogger(TariffDAOImpl.class);
 
     public TariffDAOImpl(Connection connection) {
         super(connection);
@@ -25,54 +27,40 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
     }
 
     private Tariff fillTariffWithExistingData(ResultSet resultSet) throws SQLException {
-        Tariff tariff = new Tariff();
+        int idK = 1;
         int k = 1;
-        tariff.setId(resultSet.getInt(k++));
-        tariff.setName(resultSet.getString(k++));
-        tariff.setDescription(resultSet.getString(k++));
-        tariff.setPrice(resultSet.getBigDecimal(k++));
-        tariff.setDayDuration(resultSet.getInt(k++));
-        tariff.setFeatures(resultSet.getString(k));
-        getListOfServiceIdOfCurrentTariff(tariff.getId());
-        tariff.setListOfServiceId(getListOfServiceIdOfCurrentTariff(tariff.getId()));
-        tariff.setListOfServiceName(getListOfServiceNameOfCurrentTariff(tariff.getId()));
+        Tariff tariff = new Tariff.Builder().withId(resultSet.getInt(k++))
+                .withName(resultSet.getString(k++))
+                .withDescription(resultSet.getString(k++))
+                .withPrice(resultSet.getBigDecimal(k++))
+                .withDayDuration(resultSet.getInt(k++))
+                .withFeatures(resultSet.getString(k))
+                .withServiceList(getListOfServicesOfCurrentTariff(resultSet.getInt(idK)))
+                .buildTariff();
         return tariff;
     }
 
-    private List<String> getListOfServiceNameOfCurrentTariff(int id) {
-        List<String> listOfServiceId = new ArrayList<>();
-        try( PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.SELECT_SERVICE_NAME_BY_TARIFF_ID)) {
+    private List<Service> getListOfServicesOfCurrentTariff(int id) {
+        ServiceDAOImpl serviceDAO = new ServiceDAOImpl(connection);
+        List<Service> serviceList = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.SELECT_SERVICE_ID_BY_TARIFF_ID)) {
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                listOfServiceId.add(resultSet.getString(1));
+                serviceList.add(serviceDAO.read(Integer.parseInt(resultSet.getString(1))));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
+            rollback(connection);
         }
-        return listOfServiceId;
-    }
-
-    private List<Integer> getListOfServiceIdOfCurrentTariff(int id) {
-        List<Integer> listOfServiceId = new ArrayList<>();
-        try( PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.SELECT_SERVICE_ID_BY_TARIFF_ID)) {
-            preparedStatement.setInt(1, id);
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            while (resultSet.next()) {
-                listOfServiceId.add(resultSet.getInt(1));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return listOfServiceId;
+        return serviceList;
     }
 
     @Override
     public boolean create(Tariff entity) {
         boolean result = false;
-        try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.CREATE_TARIFF)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.CREATE_TARIFF, Statement.RETURN_GENERATED_KEYS)) {
             // TODO Remove duplicates
             preparedStatement.setString(1, entity.getName());
             preparedStatement.setString(2, entity.getDescription());
@@ -80,10 +68,35 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
             preparedStatement.setInt(4, entity.getDayDuration());
             preparedStatement.setString(5, entity.getFeatures());
             // TODO: create tariffHasService
+
+            preparedStatement.executeUpdate();
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+            if (resultSet.next()) {
+                System.out.println(entity.getListOfServiceId());
+                for (Integer serviceId: entity.getListOfServiceId()) {
+                    setServiceForCurrentTariff(resultSet.getInt(1), serviceId);
+                }
+            }
+
+            result = true;
+        } catch (SQLException e) {
+            logger.error(e.getMessage());
+            rollback(connection);
+        }
+        return result;
+    }
+
+
+    private boolean setServiceForCurrentTariff(int tariffId, int serviceId) {
+        boolean result = false;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.SET_SERVICES_FOR_TARIFF)) {
+            preparedStatement.setInt(1, tariffId);
+            preparedStatement.setInt(2, serviceId);
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
+            rollback(connection);
         }
         return result;
     }
@@ -98,7 +111,8 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
                 tariff = fillTariffWithExistingData(resultSet);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
+            rollback(connection);
         }
         return tariff;
     }
@@ -113,7 +127,23 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
             preparedStatement.setInt(4, newEntity.getDayDuration());
             preparedStatement.setString(5, newEntity.getFeatures());
             preparedStatement.setInt(6, entityId);
-            // TODO: update tariffHasService
+            deleteAllServicesForCurrentTariff(entityId);
+            for (Integer serviceId: newEntity.getListOfServiceId()) {
+                setServiceForCurrentTariff(entityId, serviceId);
+            }
+            preparedStatement.executeUpdate();
+            result = true;
+        } catch (SQLException e) {
+            logger.error(e.getMessage());
+            rollback(connection);
+        }
+        return result;
+    }
+
+    private boolean deleteAllServicesForCurrentTariff(int entityId) {
+        boolean result = false;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.DELETE_FROM_TARIFF_HAS_SERVICE)) {
+            preparedStatement.setInt(1, entityId);
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
@@ -130,7 +160,8 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
             preparedStatement.executeUpdate();
             result = true;
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
+            rollback(connection);
         }
         return result;
     }
@@ -143,7 +174,7 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
 
     @Override
     public List<Tariff> getTariffsByServicesSortedBy(int[] services, String field, String order) {
-        String preparedStatement = QueriesSQL.SELECT_TARIFFS_BY_SERVICES_ORDER_BY.replace("1",field).replace("2", order);
+        String preparedStatement = QueriesSQL.SELECT_TARIFFS_BY_SERVICES_ORDER_BY.replace("1", field).replace("2", order);
         String statement = setArrayInPreparedStatement(services, preparedStatement);
         return getAllTariffsByServices(services, statement);
     }
@@ -154,7 +185,6 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
                 .replace("]", "");
         return preparedStatement.replace("$", servicesId);
     }
-
 
 
     private List<Tariff> getAllTariffsByServices(int[] services, String statement) {
@@ -169,16 +199,16 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
+            rollback(connection);
         }
         return tariffList;
     }
 
 
-
     @Override
     public List<Tariff> getTariffsSortedBy(String field, String order) {
-        String statement = QueriesSQL.SELECT_ALL_TARIFFS_ORDER_BY.replace("1",field).replace("2", order);
+        String statement = QueriesSQL.SELECT_ALL_TARIFFS_ORDER_BY.replace("1", field).replace("2", order);
         return getAllTariffs(statement);
     }
 
@@ -191,7 +221,8 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
                 tariffList.add(fillTariffWithExistingData(resultSet));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
+            rollback(connection);
         }
         return tariffList;
     }

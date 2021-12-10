@@ -1,18 +1,17 @@
 package com.internetProvider.security.servlets;
 
 import com.internetProvider.aservice.CityService;
-import com.internetProvider.aservice.OwnerService;
 import com.internetProvider.aservice.TariffService;
 import com.internetProvider.aservice.UserService;
 import com.internetProvider.model.City;
 import com.internetProvider.model.Tariff;
 import com.internetProvider.model.User;
+import com.internetProvider.security.CryptoUtil;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -23,35 +22,44 @@ import static java.util.Objects.nonNull;
 public class ClientPanelServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        refreshSessionUser(request);
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-        CityService cityService = new CityService(request);
-        List<City> cityList = cityService.getAllCities();
-        TariffService tariffService = new TariffService(request);
-        Tariff tariff = tariffService.getTariffById(user.getTariffId());
-        request.setAttribute("tariff", tariff);
-        request.setAttribute("cityList", cityList);
-        request.getRequestDispatcher("WEB-INF/jsp/client/client.jsp").forward(request, response);
+        String action = request.getPathInfo();
+        if (nonNull(action))
+            switch (action) {
+                case "/payment":
+                    response.sendRedirect("payment");
+                    break;
+                default:
+                    break;
+        } else {
+            refreshSessionUser(request);
+            HttpSession session = request.getSession();
+            User user = (User) session.getAttribute("user");
+            CityService cityService = CityService.getInstance(request);
+            List<City> cityList = cityService.getAllCities();
+            TariffService tariffService = TariffService.getInstance(request);
+            Tariff tariff = tariffService.getTariffById(user.getTariffId());
+            request.setAttribute("tariff", tariff);
+            request.setAttribute("cityList", cityList);
+            request.getRequestDispatcher("WEB-INF/jsp/client/client.jsp").forward(request, response);
+        }
     }
 
     private void refreshSessionUser(HttpServletRequest request) {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        UserService userService = new UserService(request);
+        UserService userService = UserService.getInstance(request);
         user = userService.getUserByID(user.getId());
-        TariffService tariffService = new TariffService(request);
+        TariffService tariffService = TariffService.getInstance(request);
         Tariff tariff = tariffService.getTariffById(user.getTariffId());
 
-        OwnerService ownerService = new OwnerService(request);
         if (tariff.getId() != 0) {
-            user = defineUserStatusAndTariffExpiration(user, tariff, userService, ownerService);
+            user = defineUserStatusAndTariffExpiration(user, tariff, userService);
         }
         session.removeAttribute("user");
         session.setAttribute("user", user);
     }
 
-    private User defineUserStatusAndTariffExpiration(User user, Tariff tariff, UserService userService, OwnerService ownerService) {
+    private User defineUserStatusAndTariffExpiration(User user, Tariff tariff, UserService userService) {
         Duration difference = Duration.between(LocalDateTime.now(), user.getTariffBuyDate());
         int duration = (int) difference.getSeconds();
         if (duration > 0) {
@@ -59,7 +67,7 @@ public class ClientPanelServlet extends HttpServlet {
         } else {
             // enough money
             if (user.getAccount().compareTo(tariff.getPrice()) >= 0) {
-                ownerService.getTariffPayment(user, tariff);
+                userService.connectTariff(user, tariff);
                 user.setStatus(User.Status.ACTIVE);
                 user.setAccount(user.getAccount().subtract(tariff.getPrice()));
                 user.setTariffExpiration(tariff.getDayDuration());
@@ -94,7 +102,7 @@ public class ClientPanelServlet extends HttpServlet {
 
 
         User user = (User) session.getAttribute("user");
-        UserService userService = new UserService(request);
+        UserService userService = UserService.getInstance(request);
         User updatedUser = userService.getUserByID(user.getId());
         session.removeAttribute("user");
         session.setAttribute("user", updatedUser);
@@ -103,7 +111,7 @@ public class ClientPanelServlet extends HttpServlet {
 
     private void deleteTariff(HttpServletRequest request, HttpSession session) {
         User sessionUser = (User) session.getAttribute("user");
-        UserService userService = new UserService(request);
+        UserService userService = UserService.getInstance(request);
         userService.deleteUserTariffById(sessionUser.getId());
     }
 
@@ -121,8 +129,11 @@ public class ClientPanelServlet extends HttpServlet {
         user.setEmail(email);
         user.setCityId(cityId);
 
-
-        UserService userService = new UserService(request);
+        UserService userService = UserService.getInstance(request);
         userService.updateUser(sessionUser.getId(), user);
+
+        if (!password.isEmpty()) {
+            userService.updateUserPassword(sessionUser.getId(), CryptoUtil.getEncryptedPassword(password));
+        }
     }
 }

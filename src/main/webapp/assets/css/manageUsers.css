@@ -1,0 +1,87 @@
+a {
+    text-decoration: none;
+}
+
+.users-table {
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.users-table-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.user-table-subtitle {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-filter{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: red; */
+}
+
+#myInput {
+    padding: 6px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+
+.container-table {
+    width: 1100px;
+    padding: 0;
+}
+
+.td-status {
+    display: flex;
+    justify-content: space-between;
+}
+
+.block-btn {
+    color: red;
+    font-weight: bold;
+}
+
+.block-btn:hover {
+    text-decoration: underline;;
+}
+
+.unblock-btn {
+    color: green;
+    font-weight: bold;
+}
+
+.unblock-btn:hover {
+    text-decoration: underline;;
+}
+
+td {
+    word-break: break-all;
+}
+
+.td-username {
+    width: 200px;
+}
+
+.td-email {
+    width: 350px;
+}
+
+.td-city {
+    width: 200px;
+}
+
+.td-status {
+    width: 175px;
+}
+
+.td-action {
+    width: 175px;
+}
