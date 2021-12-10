@@ -1,5 +1,7 @@
 package com.internetProvider.security.servlets;
 
+import com.internetProvider.security.App;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -11,10 +13,10 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        if (nonNull(session) && nonNull(session.getAttribute("user"))) {
+        if (nonNull(session) && nonNull(session.getAttribute(App.Constants.SESSION_USER))) {
             response.sendRedirect(session.getAttribute("pattern").toString());
         } else {
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            request.getRequestDispatcher("/"+ App.Constants.LOGIN).forward(request, response);
         }
     }
 

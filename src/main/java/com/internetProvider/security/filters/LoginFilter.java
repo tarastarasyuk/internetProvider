@@ -2,6 +2,7 @@ package com.internetProvider.security.filters;
 
 import com.internetProvider.aservice.UserService;
 import com.internetProvider.model.User;
+import com.internetProvider.security.App;
 import com.internetProvider.security.CryptoUtil;
 import org.apache.log4j.Logger;
 
@@ -30,49 +31,64 @@ public class LoginFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
+
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
         UserService userService = UserService.getInstance(req);
-
         HttpSession session = req.getSession();
 
-        if (nonNull(session) && nonNull(session.getAttribute("user"))) {
-            User user = (User) session.getAttribute("user");
-            if (user.getRoleId() == 1) {
-                res.sendRedirect("adminPanel");
-//                logger.info("Denied access: only CLIENT can get client panel");
-//                res.sendRedirect("error.jsp");
+        // checking user for existing in session
+        if (nonNull(session) && nonNull(session.getAttribute(App.Constants.SESSION_USER))) {
+            User user = (User) session.getAttribute(App.Constants.SESSION_USER);
+
+            // checking users roles and then redirecting to central servlets of each entity
+            if (user.getRoleId() == App.Constants.ADMIN_ROLE_ID) {
+                res.sendRedirect(App.Constants.ADMIN_PANEL);
             } else
                 chain.doFilter(req, res);
-        } else if (nonNull(username) && nonNull(password)) {
 
+        } else if (nonNull(username) && nonNull(password)) {
+            // checking user for existence
             if (userService.checkUserExistenceByUsername(username)) {
+                // checking existed user for correct password
                 User existingUser = userService.findUserByUsernameAndPassword(username, CryptoUtil.getEncryptedPassword(password));
+
                 if (existingUser != null) {
-                    session.setAttribute("user", existingUser);
-                    req.setAttribute("user", existingUser);
-                    if (existingUser.getRoleId() == 2) {
-                        session.setAttribute("pattern", "clientPanel");
-                        res.sendRedirect("clientPanel");
-                    } else if (existingUser.getRoleId() == 1) {
-                        session.setAttribute("pattern", "adminPanel");
-                        res.sendRedirect("adminPanel");
-                    }
-                    logger.info(existingUser.getRole() + " logged in");
+                    session.setAttribute(App.Constants.SESSION_USER, existingUser);
+                    // redirecting users by role id
+                    redirectUser(existingUser, session, res);
                 } else {
-                    logger.info("Incorrect data: password is incorrect");
-                    session.setAttribute("signInError", "password is incorrect...");
-                    res.sendRedirect("login");
+                    redirectToLoginWithMessage("Incorrect data: password is incorrect", session, res);
                 }
             } else {
-                logger.info("Incorrect data: no such user");
-                session.setAttribute("signInError", "no such user...");
-                res.sendRedirect("login");
+                redirectToLoginWithMessage("Incorrect data: no such user", session, res);
             }
 
         } else {
-            res.sendRedirect("/login");
+            res.sendRedirect("/"+App.Constants.LOGIN);
+        }
+    }
+
+    private void redirectToLoginWithMessage(String msg, HttpSession session, HttpServletResponse res) throws IOException {
+        logger.info(msg);
+        session.setAttribute("signInError", msg);
+        res.sendRedirect("/"+App.Constants.LOGIN);
+    }
+
+    private void redirectUser(User existingUser, HttpSession session, HttpServletResponse res) throws IOException {
+        logger.info(existingUser.getRole() + " logged in");
+        switch (existingUser.getRoleId()) {
+            case 1:
+                session.setAttribute("pattern", App.Constants.ADMIN_PANEL);
+                res.sendRedirect("/"+App.Constants.ADMIN_PANEL);
+                break;
+            case 2:
+                session.setAttribute("pattern", App.Constants.CLIENT_PANEL);
+                res.sendRedirect("/"+App.Constants.CLIENT_PANEL);
+                break;
+            default:
+                break;
         }
     }
 }
