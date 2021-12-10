@@ -20,10 +20,10 @@ public class AdminPanelServlet extends HttpServlet {
         if (nonNull(action))
         switch (action) {
             case "/manageClients":
-                response.sendRedirect("manageClients");
+                response.sendRedirect(App.Constants.MANAGE_CLIENTS_URL);
                 break;
             case "/manageTariffs":
-                response.sendRedirect("manageTariffs");
+                response.sendRedirect(App.Constants.MANAGE_TARIFFS_URL);
                 break;
             default:
                 break;

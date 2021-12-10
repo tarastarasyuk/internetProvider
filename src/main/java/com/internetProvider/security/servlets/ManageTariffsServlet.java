@@ -21,7 +21,7 @@ public class ManageTariffsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if ("/tariffCreationForm".equals(request.getPathInfo())) {
-            response.sendRedirect("tariffCreationForm");
+            response.sendRedirect(App.Constants.TARIFF_CREATION_FORM_URL);
         } else {
             TariffService tariffService = TariffService.getInstance(request);
             List<Tariff> tariffList = tariffService.getAllTariffs();

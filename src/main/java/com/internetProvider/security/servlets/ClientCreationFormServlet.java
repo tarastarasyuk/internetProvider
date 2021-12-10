@@ -39,10 +39,6 @@ public class ClientCreationFormServlet extends HttpServlet {
         String password = CryptoUtil.getEncryptedPassword(request.getParameter("password"));
         String email = request.getParameter("email");
         int cityId = Integer.parseInt(request.getParameter("cityId"));
-        System.out.println(username);
-        System.out.println(password);
-        System.out.println(email);
-        System.out.println(cityId);
         User user = new User.Builder()
                 .withUsername(username)
                 .withPassword(password)

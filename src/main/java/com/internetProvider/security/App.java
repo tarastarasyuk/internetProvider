@@ -21,6 +21,11 @@ public class App {
         public static final String TARIFF_CREATION_FORM_JSP = "WEB-INF/jsp/admin/tariffCreationForm.jsp";
         public static final String MANAGE_CLIENTS_JSP = "WEB-INF/jsp/admin/manageClients.jsp";
         public static final String CLIENT_CREATION_FORM_JSP = "WEB-INF/jsp/shared/clientCreationForm.jsp";
+
+        public static final String MANAGE_TARIFFS_URL = "manageTariffs";
+        public static final String MANAGE_CLIENTS_URL = "manageClients";
+        public static final String CLIENT_CREATION_FORM_URL = "clientCreationForm";
+        public static final String TARIFF_CREATION_FORM_URL = "tariffCreationForm";
     }
 
 }

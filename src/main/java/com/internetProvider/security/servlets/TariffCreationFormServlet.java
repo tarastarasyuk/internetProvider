@@ -49,7 +49,7 @@ public class TariffCreationFormServlet extends HttpServlet {
                     break;
             }
         }
-        response.sendRedirect("/adminPanel/manageTariffs");
+        response.sendRedirect("/"+App.Constants.ADMIN_PANEL_URL+"/"+App.Constants.MANAGE_TARIFFS_URL);
     }
 
     private boolean editCurrentTariff(HttpServletRequest request, TariffService tariffService) {

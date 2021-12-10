@@ -22,7 +22,7 @@ public class ManageClientsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if ("/clientCreationForm".equals(request.getPathInfo())) {
-            response.sendRedirect("clientCreationForm");
+            response.sendRedirect(App.Constants.CLIENT_CREATION_FORM_URL);
         } else {
             UserService userService = UserService.getInstance(request);
             List<User> clientList = userService.getAllUsers().stream().filter(user -> user.getRoleId() == App.Constants.USER_ROLE_ID).collect(Collectors.toList());
@@ -40,12 +40,8 @@ public class ManageClientsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getPathInfo();
         if (action != null) {
-            switch (action) {
-                case "/changeUserStatus":
-                    changeUserStatus(request);
-                    break;
-                default:
-                    break;
+            if ("/changeUserStatus".equals(action)) {
+                changeUserStatus(request);
             }
         }
         response.sendRedirect("/adminPanel/manageClients");
