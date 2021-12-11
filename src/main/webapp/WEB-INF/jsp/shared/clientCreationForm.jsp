@@ -6,7 +6,7 @@
     <main>
         <div class="container">
 
-            <a href="/clientPanel"><button class="back-to-btn btn btn-primary">
+            <a href="${sessionScope.user.roleId == 2 ? '/clientPanel' : '/adminPanel/manageClients'}"><button class="back-to-btn btn btn-primary">
                 <i class="fas fa-arrow-left"></i>
                 Back
             </button></a>
@@ -20,21 +20,25 @@
                 <hr>
 
                 <div class="modal-body">
-                    <form class="row g-3" method="POST" action="${sessionScope.user.roleId == 2 ? 'editClientForm/editProfile' : 'clientCreationForm/addNewClient'}">
+                    <form class="row g-3" method="POST">
+
 
                         <div class="col-md-6">
                             <label class="form-label">Username<span style="color:red;">*</span></label>
-                            <input type="text" class="form-control" placeholder="username" name="username" value="${sessionScope.user.roleId == 2 ? sessionScope.user.username : ''}" required>
+                            <input type="text" class="form-control" placeholder="username" name="username" value="${sessionScope.user.roleId == 2 ? sessionScope.user.username : requestScope.username}" required>
+                            <span class="required-field">${requestScope.notUniqueUsername}</span>
+
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Password <span style="color:red;">${sessionScope.user.roleId == 2 ? '?' : '*'}</span></label>
-                            <input type="password" class="form-control" placeholder="********" name="password" ${sessionScope.user.roleId == 2 ? '' : required}>
+                            <input type="password" class="form-control" placeholder="********" name="password" ${sessionScope.user.roleId == 2 ? '' : 'required'}>
                         </div>
 
 
                         <div class="col-md-12">
                             <label class="form-label">Email</label>
-                            <input type="email" class="form-control" placeholder="email" name="email" value="${sessionScope.user.roleId == 2 ? sessionScope.user.email : ''}">
+                            <input type="email" class="form-control" placeholder="email" name="email" value="${sessionScope.user.roleId == 2 ? sessionScope.user.email : requestScope.email}">
+                            <span class="required-field">${requestScope.notUniqueEmail}</span>
                         </div>
 
                         <div class="col-md-6">
@@ -50,7 +54,7 @@
                                     </c:when>
                                     <c:otherwise>
                                         <c:forEach var="city" items="${cityList}">
-                                            <option value="${city.getId()}">${city.getCityName()}
+                                            <option value="${city.getId()}" ${requestScope.cityId == city.getId() ? 'selected' : ''}>${city.getCityName()}
                                             </option>
                                         </c:forEach>
                                     </c:otherwise>

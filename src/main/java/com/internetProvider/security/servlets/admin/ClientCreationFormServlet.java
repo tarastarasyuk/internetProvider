@@ -6,6 +6,7 @@ import com.internetProvider.model.City;
 import com.internetProvider.model.User;
 import com.internetProvider.security.App;
 import com.internetProvider.security.CryptoUtil;
+import com.internetProvider.security.servlets.ClientExistsUtil;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -23,16 +24,26 @@ public class ClientCreationFormServlet extends HttpServlet {
         request.getRequestDispatcher("../../"+ App.Constants.CLIENT_CREATION_FORM_JSP).forward(request, response);
     }
 
+
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getPathInfo();
-        if (action != null) {
-            if ("/addNewClient".equals(action)) {
-                addNewClient(request);
-            }
+        String username = request.getParameter("username");
+        String email = request.getParameter("email");
+        int cityId = Integer.parseInt(request.getParameter("cityId"));
+        request.setAttribute("username", username);
+        request.setAttribute("email", email);
+        request.setAttribute("cityId", cityId);
+
+        if (ClientExistsUtil.usernameExists(request) | ClientExistsUtil.emailExists(request)) {
+            doGet(request,response);
+        } else {
+            addNewClient(request);
+            response.sendRedirect("/adminPanel/manageClients");
         }
-        response.sendRedirect("/adminPanel/manageClients");
     }
+
+
 
     private boolean addNewClient(HttpServletRequest request) {
         String username = request.getParameter("username");

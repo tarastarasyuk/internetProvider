@@ -32,6 +32,11 @@ public class UserService extends AbstractService {
         return entityDAO.checkUserExistenceByUsername(username);
     }
 
+    public boolean checkUserExistenceByEmail(String email) {
+        if (email.isEmpty()) return false;
+        return entityDAO.checkUserExistenceByEmail(email);
+    }
+
     public User findUserByUsernameAndPassword(String username, String password) {
         User user = entityDAO.findUserByUsernameAndPassword(username, password);
         DBUtils.commit(connection);

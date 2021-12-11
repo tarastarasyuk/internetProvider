@@ -17,6 +17,7 @@ public class QueriesSQL {
 
     public static final String SELECT_USER_BY_PASSWORD_AND_USERNAME = "SELECT * FROM " + userTable + " WHERE " + userUsername + " = ? AND " + userPassword + " = ?";
     public static final String SELECT_USER_BY_USERNAME = "SELECT * FROM " + userTable + " WHERE " + userUsername + " = ?";
+    public static final String SELECT_USER_BY_EMAIL = "SELECT * FROM " + userTable + " WHERE " + userEmail + " = ?";
     public static final String SELECT_ALL_USERS = "SELECT * FROM " + userTable + "";
     public static final String DELETE_USER_BY_ID = "DELETE FROM " + userTable + " WHERE " + userId + " = ?";
     public static final String SELECT_USER_BY_ID = "SELECT * FROM " + userTable + " WHERE " + userId + " = ?";

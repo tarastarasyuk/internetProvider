@@ -96,6 +96,22 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
     }
 
     @Override
+    public boolean checkUserExistenceByEmail(String email) {
+        boolean result = false;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.SELECT_USER_BY_EMAIL)) {
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                result = true;
+            }
+        } catch (SQLException e) {
+            logger.error(e.getMessage());
+            rollback(connection);
+        }
+        return result;
+    }
+
+    @Override
     public boolean changeUserAccountById(int id, BigDecimal newAccount) {
         boolean result = false;
         try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.UPDATE_USER_ACCOUNT_BY_ID)) {
