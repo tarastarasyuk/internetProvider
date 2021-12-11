@@ -32,7 +32,7 @@ public class EditClientFormServlet extends HttpServlet {
                 editProfile(request, session);
             }
         }
-        response.sendRedirect("/clientPanel");
+        response.sendRedirect("/"+App.Constants.CLIENT_PANEL_URL);
     }
 
     private void editProfile(HttpServletRequest request, HttpSession session) {

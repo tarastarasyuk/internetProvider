@@ -33,7 +33,7 @@ public class AdminFilter implements Filter {
         // checking user for existing in session
         if (!nonNull(session.getAttribute(App.Constants.SESSION_USER))) {
             logger.info("No user in session: redirecting to login.jsp");
-            res.sendRedirect("/"+App.Constants.LOGIN);
+            res.sendRedirect("/"+App.Constants.LOGIN_URL);
         } else {
             User userAdmin = (User) session.getAttribute(App.Constants.SESSION_USER);
             if (userAdmin.getRoleId() == App.Constants.ADMIN_ROLE_ID) {

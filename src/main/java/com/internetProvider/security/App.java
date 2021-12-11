@@ -9,7 +9,8 @@ public class App {
 
         public static final String ADMIN_PANEL_URL = "adminPanel";
         public static final String CLIENT_PANEL_URL = "clientPanel";
-        public static final String LOGIN = "login";
+        public static final String LOGIN_URL = "login";
+        public static final String TARIFFS_URL = "tariffs";
 
         public static final String DONT_HAVE_ACCESS_JSP = "error.jsp";
 
@@ -26,6 +27,10 @@ public class App {
         public static final String MANAGE_CLIENTS_URL = "manageClients";
         public static final String CLIENT_CREATION_FORM_URL = "clientCreationForm";
         public static final String TARIFF_CREATION_FORM_URL = "tariffCreationForm";
+
+        public static final String EDIT_CLIENT_FORM_URL = "editClientForm";
+        public static final String PAYMENT_URL = "payment";
+
     }
 
 }

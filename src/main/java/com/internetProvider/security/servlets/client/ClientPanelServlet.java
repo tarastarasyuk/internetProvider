@@ -6,6 +6,7 @@ import com.internetProvider.aservice.UserService;
 import com.internetProvider.model.City;
 import com.internetProvider.model.Tariff;
 import com.internetProvider.model.User;
+import com.internetProvider.security.App;
 import com.internetProvider.security.CryptoUtil;
 
 import javax.servlet.*;
@@ -30,7 +31,7 @@ public class ClientPanelServlet extends HttpServlet {
                     response.sendRedirect("payment");
                     break;
                 case "/editClientForm":
-                    response.sendRedirect("editClientForm");
+                    response.sendRedirect(App.Constants.EDIT_CLIENT_FORM_URL);
                     break;
                 default:
                     break;
@@ -89,12 +90,8 @@ public class ClientPanelServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String action = request.getPathInfo();
         if (action != null) {
-            switch (action) {
-                case "/deleteTariff":
-                    deleteTariff(request, session);
-                    break;
-                default:
-                    break;
+            if ("/deleteTariff".equals(action)) {
+                deleteTariff(request, session);
             }
         } else {
             doGet(request, response);
@@ -104,7 +101,7 @@ public class ClientPanelServlet extends HttpServlet {
         User updatedUser = userService.getUserByID(user.getId());
         session.removeAttribute("user");
         session.setAttribute("user", updatedUser);
-        response.sendRedirect("/clientPanel");
+        response.sendRedirect("/"+App.Constants.CLIENT_PANEL_URL);
     }
 
     private void deleteTariff(HttpServletRequest request, HttpSession session) {
