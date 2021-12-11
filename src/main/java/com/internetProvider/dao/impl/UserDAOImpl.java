@@ -207,7 +207,11 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
             // TODO Remove duplicates
             preparedStatement.setString(1, entity.getUsername());
             preparedStatement.setString(2, entity.getPassword());
-            preparedStatement.setString(3, entity.getEmail());
+            if (entity.getEmail().isEmpty()) {
+                preparedStatement.setNull(3, 0);
+            } else {
+                preparedStatement.setString(3, entity.getEmail());
+            }
             preparedStatement.setInt(4, entity.getCityId());
             preparedStatement.executeUpdate();
             result = true;
@@ -239,7 +243,11 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
         boolean result = false;
         try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.UPDATE_USER_BY_ID)) {
             preparedStatement.setString(1, newEntity.getUsername());
-            preparedStatement.setString(2, newEntity.getEmail());
+            if (newEntity.getEmail().isEmpty()) {
+                preparedStatement.setNull(2, 0);
+            } else {
+                preparedStatement.setString(2, newEntity.getEmail());
+            }
             preparedStatement.setInt(3, newEntity.getCityId());
             preparedStatement.setInt(4, entityId);
             preparedStatement.executeUpdate();
