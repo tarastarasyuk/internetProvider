@@ -1,4 +1,4 @@
-package com.internetProvider.security.servlets;
+package com.internetProvider.security.servlets.client;
 
 import com.internetProvider.aservice.CityService;
 import com.internetProvider.aservice.UserService;
@@ -13,39 +13,46 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "ClientCreationFormServlet", urlPatterns = "/adminPanel/manageClients/clientCreationForm/*")
-public class ClientCreationFormServlet extends HttpServlet {
+@WebServlet(name = "EditClientServlet", value = "/clientPanel/editClientForm/*")
+public class EditClientFormServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CityService cityService = CityService.getInstance(request);
         List<City> cityList = cityService.getAllCities();
         request.setAttribute("cityList", cityList);
-        request.getRequestDispatcher("../../"+ App.Constants.CLIENT_CREATION_FORM_JSP).forward(request, response);
+        request.getRequestDispatcher("../"+ App.Constants.CLIENT_CREATION_FORM_JSP).forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getPathInfo();
+        HttpSession session = request.getSession();
         if (action != null) {
-            if ("/addNewClient".equals(action)) {
-                addNewClient(request);
+            if ("/editProfile".equals(action)) {
+                editProfile(request, session);
             }
         }
-        response.sendRedirect("/adminPanel/manageClients");
+        response.sendRedirect("/clientPanel");
     }
 
-    private boolean addNewClient(HttpServletRequest request) {
+    private void editProfile(HttpServletRequest request, HttpSession session) {
+        User sessionUser = (User) session.getAttribute("user");
+
         String username = request.getParameter("username");
-        String password = CryptoUtil.getEncryptedPassword(request.getParameter("password"));
+        String password = request.getParameter("password");
         String email = request.getParameter("email");
-        int cityId = Integer.parseInt(request.getParameter("cityId"));
-        User user = new User.Builder()
-                .withUsername(username)
-                .withPassword(password)
-                .withEmail(email)
-                .withCityId(cityId)
-                .buildUser();
+        Integer cityId = Integer.valueOf(request.getParameter("cityId"));
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setEmail(email);
+        user.setCityId(cityId);
+
         UserService userService = UserService.getInstance(request);
-        return userService.createNewUser(user);
+        userService.updateUser(sessionUser.getId(), user);
+
+        if (!password.isEmpty()) {
+            userService.updateUserPassword(sessionUser.getId(), CryptoUtil.getEncryptedPassword(password));
+        }
     }
 }

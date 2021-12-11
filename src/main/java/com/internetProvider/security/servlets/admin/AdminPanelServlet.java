@@ -1,4 +1,4 @@
-package com.internetProvider.security.servlets;
+package com.internetProvider.security.servlets.admin;
 
 import com.internetProvider.aservice.CityService;
 import com.internetProvider.model.City;

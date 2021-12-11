@@ -1,4 +1,4 @@
-package com.internetProvider.security.servlets;
+package com.internetProvider.security.servlets.admin;
 
 import com.internetProvider.aservice.ServiceService;
 import com.internetProvider.aservice.TariffService;

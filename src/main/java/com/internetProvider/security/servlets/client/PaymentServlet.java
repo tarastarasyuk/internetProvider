@@ -1,4 +1,4 @@
-package com.internetProvider.security.servlets;
+package com.internetProvider.security.servlets.client;
 
 import com.internetProvider.aservice.UserService;
 import com.internetProvider.model.User;
