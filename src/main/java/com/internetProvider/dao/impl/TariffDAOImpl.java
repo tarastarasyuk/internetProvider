@@ -212,6 +212,22 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
         return getAllTariffs(statement);
     }
 
+    @Override
+    public boolean checkTariffExistenceByName(String name) {
+        boolean result = false;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.SELECT_TARIFF_BY_NAME)) {
+            preparedStatement.setString(1, name);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                result = true;
+            }
+        } catch (SQLException e) {
+            logger.error(e.getMessage());
+            rollback(connection);
+        }
+        return result;
+    }
+
     private List<Tariff> getAllTariffs(String statement) {
         List<Tariff> tariffList = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.prepareStatement(statement)) {

@@ -44,7 +44,7 @@ public class QueriesSQL {
     public static final String SELECT_TARIFF_BY_ID = "SELECT * FROM " + tariffTable + " WHERE " + tariffId + " = ?";
     public static final String DELETE_TARIFF_BY_ID = "DELETE FROM " + tariffTable + " WHERE " + tariffId + " = ?";
     public static final String UPDATE_TARIFF_BY_ID = "UPDATE " + tariffTable + " SET " + tariffName + " = ?, " + tariffDescription + " = ?, " + tariffPrice + " = ?,  " + tariffDaysDuration + " = ?, " + tariffFeatures + " = ?" + "WHERE " + tariffId + " = ?";
-
+    public static final String SELECT_TARIFF_BY_NAME = "SELECT * FROM " + tariffTable + " WHERE " + tariffName + " = ?";
 
     private static final String serviceTable = "service";
     private static final String serviceName = "name";

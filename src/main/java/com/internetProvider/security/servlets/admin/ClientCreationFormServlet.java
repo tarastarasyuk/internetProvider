@@ -43,8 +43,6 @@ public class ClientCreationFormServlet extends HttpServlet {
         }
     }
 
-
-
     private boolean addNewClient(HttpServletRequest request) {
         String username = request.getParameter("username");
         String password = CryptoUtil.getEncryptedPassword(request.getParameter("password"));

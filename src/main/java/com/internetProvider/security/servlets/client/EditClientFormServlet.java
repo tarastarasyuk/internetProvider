@@ -6,6 +6,7 @@ import com.internetProvider.model.City;
 import com.internetProvider.model.User;
 import com.internetProvider.security.App;
 import com.internetProvider.security.CryptoUtil;
+import com.internetProvider.security.servlets.ClientExistsUtil;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -25,19 +26,18 @@ public class EditClientFormServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getPathInfo();
         HttpSession session = request.getSession();
-        if (action != null) {
-            if ("/editProfile".equals(action)) {
-                editProfile(request, session);
-            }
+        User sessionUser = (User) session.getAttribute("user");
+        if (ClientExistsUtil.usernameExists(request, sessionUser.getUsername()) | ClientExistsUtil.emailExists(request, sessionUser.getEmail())) {
+            doGet(request,response);
+        } else {
+            editProfile(request, session);
+            response.sendRedirect("/"+App.Constants.CLIENT_PANEL_URL);
         }
-        response.sendRedirect("/"+App.Constants.CLIENT_PANEL_URL);
     }
 
     private void editProfile(HttpServletRequest request, HttpSession session) {
         User sessionUser = (User) session.getAttribute("user");
-
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
