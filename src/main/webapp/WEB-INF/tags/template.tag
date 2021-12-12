@@ -1,8 +1,8 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@tag description="Overall Page template" pageEncoding="UTF-8" %>
 <%@attribute name="header" fragment="true"%>
 <%@attribute name="footer" fragment="true" %>
 <%@attribute name="css" fragment="true"  required="false"  %>
-
 <html>
 <head>
     <jsp:invoke fragment="css"/>

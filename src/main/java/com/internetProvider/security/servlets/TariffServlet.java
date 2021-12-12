@@ -19,23 +19,21 @@ import static java.util.Objects.nonNull;
 @WebServlet(name = "TariffServlet", value = "/tariffs/*")
 public class TariffServlet extends HttpServlet {
     private final static Logger logger = Logger.getLogger(TariffServlet.class);
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getPathInfo();
-            if ("/downloadTariff".equals(action)) {
-                response.setContentType("application/pdf");
-                response.setHeader("Content-Disposition", "attachment; filename = tariff.pdf");
-                downloadTariff(request, response);
-                fillResponseWithFileStream(response, "C:/Programs/Java/internetProvider/src/main/webapp/tariff.pdf");
-            }
-        else {
+        if ("/downloadTariff".equals(action)) {
+            response.setContentType("application/pdf");
+            response.setHeader("Content-Disposition", "attachment; filename = tariff.pdf");
+            downloadTariff(request, response);
+            fillResponseWithFileStream(response, "C:/Programs/Java/internetProvider/src/main/webapp/tariff.pdf");
+        } else {
 
             ServiceService serviceService = ServiceService.getInstance(request);
             List<Service> serviceList = serviceService.getAllServices();
             request.setAttribute("serviceList", serviceList);
-            TariffService tariffService = TariffService.getInstance(request);
             List<Tariff> tariffList = getRequestedTariffList(request);
-
 // --------------SORTING BY SQL
 //        if (request.getQueryString() != null) {
 //            String service = request.getParameter("service");
@@ -69,7 +67,9 @@ public class TariffServlet extends HttpServlet {
             } else {
                 request.setAttribute("noSuchTariffs", "Sorry, there are no such tariffs");
             }
+//            Cookie cookie1 = Arrays.stream(request.getCookies()).filter(cookie -> cookie.getName().equals("locale")).findAny().get();
 
+            Locale.setDefault(new Locale("ua", "UA"));
             request.getRequestDispatcher("tariffs.jsp").forward(request, response);
         }
 
@@ -98,6 +98,10 @@ public class TariffServlet extends HttpServlet {
             }
         }
         return tariffService.getAllTariffs();
+    }
+
+    private int[] parseServicesIdFromString(String[] values) {
+        return Arrays.stream(values).mapToInt(Integer::parseInt).toArray();
     }
 
     private void fillResponseWithFileStream(HttpServletResponse response, String fileName) {
@@ -148,9 +152,5 @@ public class TariffServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    }
-
-    private int[] parseServicesIdFromString(String[] values) {
-        return Arrays.stream(values).mapToInt(Integer::parseInt).toArray();
     }
 }

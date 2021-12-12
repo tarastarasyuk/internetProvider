@@ -1,3 +1,5 @@
+<%@ page import="java.util.Arrays" %>
+<%@ page import="java.util.Locale" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <header class="site-header fixed-top py-0">
@@ -59,16 +61,35 @@
         <button class="nav-item dropdown language-btn">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                aria-expanded="false">
-                UA <i class="fas fa-globe"></i>
+                ${cookie.country.value} <i class="fas fa-globe"></i>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="#"><span
+                <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="#" id="ua"><span
                         class="d-inline-block bg-primary rounded-circle"
                         style="width: .5em; height: .5em;"></span>Українська</a></li>
-                <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="#"><span
+                <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="#" id="en"><span
                         class="d-inline-block bg-primary rounded-circle"
                         style="width: .5em; height: .5em;"></span>English</a></li>
             </ul>
         </button>
     </nav>
+
+    <script>
+        function changeLocale() {
+            console.log("works")
+
+        }
+        console.log("wokrrrsss")
+        document.getElementById("ua").addEventListener("click",function(e){
+            console.log("wokrrrsss1")
+            <%response.setLocale(new Locale("en","US"));%>
+<%--            <% Locale.setDefault(new Locale("ua", "UA"));%>--%>
+        },false);
+
+        document.getElementById("en").addEventListener("click",function(e){
+            console.log("wokrrrsss2")
+            <%response.setLocale(new Locale("en","US"));%>
+<%--            <% Locale.setDefault(new Locale("en", "US"));%>--%>
+        },false);
+    </script>
 </header>
