@@ -8,24 +8,45 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
-@WebFilter(filterName = "LocaleFilter", urlPatterns = "/fefe")
+@WebFilter(filterName = "LocaleFilter", urlPatterns = "/*")
 public class LocaleFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
         System.out.println("filter locale works");
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
+        clearPageCache(res);
+        Locale currentLocale = res.getLocale();
 
-//        Locale currentLocale = res.getLocale();
-        Locale currentLocale = new Locale("uk","UA");
-        Arrays.stream(req.getCookies()).filter(innerCookie -> innerCookie.getName().equals("country")).findAny().get();
+        boolean localeExistsInCookie = checkCookieExistence("locale", req);
 
-        Cookie cookieCountry = new Cookie("country", currentLocale.getCountry());
-        Cookie cookie = new Cookie("locale", currentLocale.getLanguage()+"_"+currentLocale.getCountry());
-        res.addCookie(cookie);
-        res.addCookie(cookieCountry);
+        if (!localeExistsInCookie) {
+            Cookie cookieCountry = new Cookie("country", currentLocale.getCountry());
+            Cookie cookie = new Cookie("locale", currentLocale.getLanguage() + "_" + currentLocale.getCountry());
+            res.addCookie(cookie);
+            res.addCookie(cookieCountry);
+        }
         chain.doFilter(req, res);
+    }
+
+    private void clearPageCache(HttpServletResponse res) {
+        res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+        res.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+        res.setDateHeader("Expires", 0); // Proxies.
+    }
+
+    private boolean checkCookieExistence(String cookieName, HttpServletRequest req) {
+        Cookie[] cookies = req.getCookies();
+        if (cookies != null) {
+            for (int i = 0; i < cookies.length; i++) {
+                if (cookies[i].getName().equals("locale")) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     private void deleteCookie(String cookieName, HttpServletRequest req) {
