@@ -10,9 +10,7 @@ import org.apache.log4j.Logger;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -29,9 +27,17 @@ public class TariffServlet extends HttpServlet {
         if (nonNull(action))
             switch (action) {
                 case "/downloadTariff":
+                    response.setContentType("application/pdf");
+                    response.setHeader("Content-Disposition", "attachment; filename = tariff.pdf");
                     downloadTariff(request, response);
-                    response.setContentType("text/plain");
-                    response.setHeader("Content-Disposition", "attachment; filename = tariff.txt");
+                    try(InputStream in = new FileInputStream("C:/Programs/Java/internetProvider/src/main/webapp/tariff.pdf");
+                        OutputStream out = response.getOutputStream()) {
+                        byte[] buffer = new byte[1024];
+                        int numBytesRead;
+                        while ((numBytesRead = in.read(buffer)) > 0) {
+                            out.write(buffer, 0, numBytesRead);
+                        }
+                    }
                     break;
                 default:
                     break;
@@ -122,19 +128,10 @@ public class TariffServlet extends HttpServlet {
         Integer tariffId = Integer.valueOf(request.getParameter("tariff_id_download"));
         TariffService tariffService = TariffService.getInstance(request);
         Tariff tariff = tariffService.getTariffById(tariffId);
-        try(FileWriter myWriter = new FileWriter("C:/Programs/Java/internetProvider/src/webapp/tariff.txt")) {
-            myWriter.write("Name:  " + tariff.getName()+System.lineSeparator());
-            myWriter.write("Short description:  " + tariff.getDescription()+System.lineSeparator());
-            myWriter.write("Price:  " + tariff.getPrice()+System.lineSeparator());
-            myWriter.write("Days Duration:  " + tariff.getDayDuration()+System.lineSeparator());
-            myWriter.write("Features:  "+System.lineSeparator());
-            for (String feature : tariff.getFeaturesList()) {
-                myWriter.write("-" + feature+System.lineSeparator());
-            }
-            logger.info("Successfully wrote to the file.");
-        } catch (IOException e) {
-            logger.error(e.getMessage());
-        }
+        System.out.println(getServletConfig());
+        System.out.println(getServletContext());
+        System.out.println("===");
+        PDFCreatorUtil.createTariff(tariff);
     }
 
     private List<Tariff> sortTariffBy(List<Tariff> tariffList, String sortBy) {
