@@ -43,13 +43,13 @@
 
         <div class="card-body tariffs-connection">
             <c:choose>
-                <c:when test='${user == null}'>
+                <c:when test='${sessionScope.user == null}'>
                     <button type="submit" class="btn btn-primary"
                             data-bs-toggle="modal" data-bs-target="#noAccount">
                         Connect
                     </button>
                 </c:when>
-                <c:when test='${user != null}'>
+                <c:when test='${sessionScope.user.roleId == 2}'>
 
 
                     <c:choose>
@@ -65,7 +65,7 @@
                             <c:choose>
                                 <c:when test="${sessionScope.user.account.compareTo(tariff.getPrice()) >= 0}">
                                     <c:choose>
-                                        <c:when test="${user.getTariffId() != 0}">
+                                        <c:when test="${sessionScope.user.tariffId != 0}">
                                             <%--                            TODO: MAKE MESSAGE FOR USERS THAT ALREADY HAVE TARIFF--%>
                                             <%--                            <button type="submit" class="btn btn-primary"--%>
                                             <%--                                    data-bs-toggle="modal" data-bs-target="#tariffExistence">--%>
@@ -79,7 +79,7 @@
                                                 </button>
                                             </form>
                                         </c:when>
-                                        <c:when test="${user.getTariffId() == 0}">
+                                        <c:when test="${sessionScope.user.tariffId == 0}">
                                             <form action="${pageContext.request.contextPath}/clientPanel/tariffConnection"
                                                   method="GET">
                                                 <button type="submit" class="btn btn-primary" value="${tariff.getId()}"
@@ -103,38 +103,17 @@
 
 
                 </c:when>
+                <c:when test="${sessionScope.user.roleId != 2}">
+                    <button type="submit" class="btn btn-primary"
+                            data-bs-toggle="modal" data-bs-target="#adminCantConnectTariff">
+                        Connect
+                    </button>
+                </c:when>
             </c:choose>
 
         </div>
 
     </div>
-
-
-    <%--    <!-- Modal DON'T HAVE AN ACCOUNT-->--%>
-    <%--    <div  class="modal fade" id="tariffExistence" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"--%>
-    <%--         aria-hidden="true">--%>
-    <%--        <div class="modal-dialog modal-dialog-centered" role="document">--%>
-    <%--            <div class="modal-content">--%>
-    <%--                <div class="modal-header">--%>
-    <%--                    <h5 class="modal-title" id="exampleModalCenterTitle">You already have a tariff:</h5>--%>
-    <%--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--%>
-    <%--                </div>--%>
-    <%--                <div class="modal-body">--%>
-    <%--                    You can only have one tariff for one account. <br>--%>
-    <%--                    If you want to change your current tariff - just continue.--%>
-    <%--                </div>--%>
-    <%--                <div class="modal-footer" style="justify-content: space-between;">--%>
-    <%--                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>--%>
-    <%--                    <form action="${pageContext.request.contextPath}/tariff/tariffConnection" method="GET">--%>
-    <%--                        <button type="submit" class="btn btn-primary" value="${tariff.getId()}" name="newTariffId">--%>
-    <%--                            Connect--%>
-    <%--                        </button>--%>
-    <%--                    </form>--%>
-    <%--                </div>--%>
-    <%--            </div>--%>
-    <%--        </div>--%>
-
-    <%--    </div>--%>
 
 
     <!-- Modal DON'T HAVE AN ACCOUNT-->
@@ -173,6 +152,23 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="blockedUserTitle">Your status is BLOCKED! Try to connect support to solve problem!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal CANT CONNECT TARIFF -->
+    <div class="modal fade" id="adminCantConnectTariff" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="adminCantConnectTariffTitle">You are not CLIENT! You can not connect the tariff!</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">

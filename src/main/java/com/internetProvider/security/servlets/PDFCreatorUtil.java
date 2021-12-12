@@ -26,19 +26,21 @@ public class PDFCreatorUtil {
             File file = new File("C:/Programs/Java/internetProvider/src/main/webapp/tariff.pdf");
             PdfWriter.getInstance(document, new FileOutputStream(file));
             document.open();
+            // adding title
             Paragraph p = new Paragraph();
             p.add("Tariff Information");
             p.setAlignment(Element.ALIGN_CENTER);
             document.add(p);
             document.add(new Paragraph(" "));
             PdfPTable table = createDefaultTariffTable();
+            // filling the table with data
             table.addCell(tariff.getName());
             table.addCell(tariff.getDescription());
             table.addCell(String.valueOf(tariff.getPrice()));
             table.addCell(String.valueOf(tariff.getDayDuration()));
             table.addCell(tariff.getFeatures().replace(";",";\n"));
             table.addCell(String.join(";\n", tariff.getListOfServiceName()));
-
+            // adding table to pdf
             document.add(table);
         } catch (DocumentException | IOException e) {
             logger.error(e.getMessage());
@@ -46,9 +48,15 @@ public class PDFCreatorUtil {
         } finally {
             document.close();
         }
+        logger.info("tariff.pdf was generated");
         return true;
     }
 
+
+    /**
+     * Creating a default columns for every tariff
+     * @return PdfPTable with columns
+     */
     private static PdfPTable createDefaultTariffTable() {
         PdfPTable table = new PdfPTable(6);
         PdfPCell nameCell = new PdfPCell(new Paragraph("Name"));

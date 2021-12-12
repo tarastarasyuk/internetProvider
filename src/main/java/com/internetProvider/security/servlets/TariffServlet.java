@@ -11,8 +11,6 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -24,57 +22,19 @@ public class TariffServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getPathInfo();
-        if (nonNull(action))
-            switch (action) {
-                case "/downloadTariff":
-                    response.setContentType("application/pdf");
-                    response.setHeader("Content-Disposition", "attachment; filename = tariff.pdf");
-                    downloadTariff(request, response);
-                    try(InputStream in = new FileInputStream("C:/Programs/Java/internetProvider/src/main/webapp/tariff.pdf");
-                        OutputStream out = response.getOutputStream()) {
-                        byte[] buffer = new byte[1024];
-                        int numBytesRead;
-                        while ((numBytesRead = in.read(buffer)) > 0) {
-                            out.write(buffer, 0, numBytesRead);
-                        }
-                    }
-                    break;
-                default:
-                    break;
-            } else {
+            if ("/downloadTariff".equals(action)) {
+                response.setContentType("application/pdf");
+                response.setHeader("Content-Disposition", "attachment; filename = tariff.pdf");
+                downloadTariff(request, response);
+                fillResponseWithFileStream(response, "C:/Programs/Java/internetProvider/src/main/webapp/tariff.pdf");
+            }
+        else {
 
             ServiceService serviceService = ServiceService.getInstance(request);
             List<Service> serviceList = serviceService.getAllServices();
             request.setAttribute("serviceList", serviceList);
             TariffService tariffService = TariffService.getInstance(request);
-
-
-            List<Tariff> tariffList = new ArrayList<>();
-
-            if (request.getQueryString() != null) {
-                String service = request.getParameter("service");
-                String sortBy = request.getParameter("sortBy");
-
-                if (service != null && sortBy != null) {
-                    int[] services = getServicesId(request.getParameterValues("service"));
-                    tariffList = tariffService.getTariffsByServices(services);
-                    tariffList = sortTariffBy(tariffList, sortBy);
-                    request.setAttribute("selectedServices", Arrays.toString(services));
-                    request.setAttribute("selectedSortBy", sortBy);
-                } else if (service != null) {
-                    int[] services = getServicesId(request.getParameterValues("service"));
-                    tariffList = tariffService.getTariffsByServices(services);
-                    request.setAttribute("selectedServices", Arrays.toString(services));
-                } else if (sortBy != null) {
-                    tariffList = tariffService.getAllTariffs();
-                    tariffList = sortTariffBy(tariffList, sortBy);
-                    request.setAttribute("selectedSortBy", sortBy);
-                }
-
-            } else {
-                tariffList = tariffService.getAllTariffs();
-            }
-
+            List<Tariff> tariffList = getRequestedTariffList(request);
 
 // --------------SORTING BY SQL
 //        if (request.getQueryString() != null) {
@@ -104,52 +64,80 @@ public class TariffServlet extends HttpServlet {
 ////            // for not to be in permanent order after refresh
 ////            Collections.shuffle(tariffList);
 //        }
-
-
             if (!tariffList.isEmpty()) {
                 request.setAttribute("tariffList", tariffList);
             } else {
                 request.setAttribute("noSuchTariffs", "Sorry, there are no such tariffs");
             }
 
-
-            HttpSession session = request.getSession();
-            User user = new User();
-            if (nonNull(session)) {
-                user = (User) session.getAttribute("user");
-            }
-            request.setAttribute("user", user);
             request.getRequestDispatcher("tariffs.jsp").forward(request, response);
         }
 
     }
 
+    private List<Tariff> getRequestedTariffList(HttpServletRequest request) {
+        List<Tariff> tariffList;
+        TariffService tariffService = TariffService.getInstance(request);
+        if (request.getQueryString() != null) {
+            String service = request.getParameter("service");
+            String sortBy = request.getParameter("sortBy");
+            if (service != null && sortBy != null) {
+                int[] services = parseServicesIdFromString(request.getParameterValues("service"));
+                request.setAttribute("selectedServices", Arrays.toString(services));
+                request.setAttribute("selectedSortBy", sortBy);
+                tariffList = tariffService.getTariffsByServices(services);
+                return sortTariffBy(tariffList, sortBy);
+            } else if (service != null) {
+                int[] services = parseServicesIdFromString(request.getParameterValues("service"));
+                request.setAttribute("selectedServices", Arrays.toString(services));
+                return tariffService.getTariffsByServices(services);
+            } else if (sortBy != null) {
+                tariffList = tariffService.getAllTariffs();
+                request.setAttribute("selectedSortBy", sortBy);
+                return sortTariffBy(tariffList, sortBy);
+            }
+        }
+        return tariffService.getAllTariffs();
+    }
+
+    private void fillResponseWithFileStream(HttpServletResponse response, String fileName) {
+        try (InputStream in = new FileInputStream(fileName);
+             OutputStream out = response.getOutputStream()) {
+            byte[] buffer = new byte[1024];
+            int numBytesRead;
+            while ((numBytesRead = in.read(buffer)) > 0) {
+                out.write(buffer, 0, numBytesRead);
+            }
+        } catch (IOException e) {
+            logger.error(e.getMessage());
+        }
+    }
+
     private void downloadTariff(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        Integer tariffId = Integer.valueOf(request.getParameter("tariff_id_download"));
+        // getting current tariff from request
+        int tariffId = Integer.parseInt(request.getParameter("tariff_id_download"));
         TariffService tariffService = TariffService.getInstance(request);
         Tariff tariff = tariffService.getTariffById(tariffId);
-        System.out.println(getServletConfig());
-        System.out.println(getServletContext());
-        System.out.println("===");
+        // creating tariff via util
         PDFCreatorUtil.createTariff(tariff);
     }
 
     private List<Tariff> sortTariffBy(List<Tariff> tariffList, String sortBy) {
         switch (sortBy) {
             case "price_asc":
-                return tariffList = tariffList.stream()
+                return tariffList.stream()
                         .sorted(Comparator.comparing(Tariff::getPrice))
                         .collect(Collectors.toList());
             case "price_desc":
-                return tariffList = tariffList.stream()
+                return tariffList.stream()
                         .sorted(Comparator.comparing(Tariff::getPrice).reversed())
                         .collect(Collectors.toList());
             case "abc_asc":
-                return tariffList = tariffList.stream()
+                return tariffList.stream()
                         .sorted(Comparator.comparing(Tariff::getName))
                         .collect(Collectors.toList());
             case "abc_desc":
-                return tariffList = tariffList.stream()
+                return tariffList.stream()
                         .sorted(Comparator.comparing(Tariff::getName).reversed())
                         .collect(Collectors.toList());
             default:
@@ -162,7 +150,7 @@ public class TariffServlet extends HttpServlet {
 
     }
 
-    private int[] getServicesId(String[] values) {
+    private int[] parseServicesIdFromString(String[] values) {
         return Arrays.stream(values).mapToInt(Integer::parseInt).toArray();
     }
 }
