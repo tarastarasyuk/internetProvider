@@ -11,21 +11,18 @@
             <div>
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.jsp">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="coverage.html">Coverage</a>
+                        <a class="nav-link active" href="${pageContext.request.contextPath}/">About</a>
                     </li>
                     <li class=" nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle" href="#" role="button"
                            data-bs-toggle="dropdown" aria-expanded="false">
                             Service
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item d-flex align-items-center gap-2 py-2"
-                                   href="services"><span class="d-inline-block bg-primary rounded-circle"
+                                   href="${pageContext.request.contextPath}/services"><span class="d-inline-block bg-primary rounded-circle"
                                                               style="width: .5em; height: .5em;"></span>Services</a></li>
-                            <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="tariffs"><span
+                            <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="${pageContext.request.contextPath}/tariffs"><span
                                     class="d-inline-block bg-primary rounded-circle"
                                     style="width: .5em; height: .5em;"></span>Tariffs</a></li>
                         </ul>
