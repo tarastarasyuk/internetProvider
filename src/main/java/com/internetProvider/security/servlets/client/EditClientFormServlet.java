@@ -41,12 +41,13 @@ public class EditClientFormServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
-        Integer cityId = Integer.valueOf(request.getParameter("cityId"));
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
-        user.setEmail(email);
-        user.setCityId(cityId);
+        int cityId = Integer.parseInt(request.getParameter("cityId"));
+        User user = new User.Builder()
+                .withUsername(username)
+                .withPassword(password)
+                .withEmail(email)
+                .withCityId(cityId)
+                .buildUser();
 
         UserService userService = UserService.getInstance(request);
         userService.updateUser(sessionUser.getId(), user);

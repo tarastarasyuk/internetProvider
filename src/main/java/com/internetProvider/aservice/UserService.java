@@ -81,6 +81,7 @@ public class UserService extends AbstractService {
     public boolean changeUserAccountById(int id, BigDecimal account) {
         boolean result = entityDAO.changeUserAccountById(id, account);
         DBUtils.commit(connection);
+        logger.info("USER changed the balance database");
         return result;
     }
 
@@ -92,8 +93,8 @@ public class UserService extends AbstractService {
 
     public boolean deleteUserTariffById(int userId) {
         boolean result = entityDAO.deleteUserTariffById(userId);
-        logger.info("CLIENT deleted his tariff");
         DBUtils.commit(connection);
+        logger.info("CLIENT deleted his tariff");
         return result;
     }
 
@@ -104,6 +105,7 @@ public class UserService extends AbstractService {
     public boolean changeUserStatusByUserId(int userId, User.Status status) {
         boolean result = entityDAO.changeUserStatusByUserId(userId, status);
         DBUtils.commit(connection);
+        logger.info("CLIENT status was changed");
         return result;
     }
 

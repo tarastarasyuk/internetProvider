@@ -67,8 +67,6 @@ public class TariffServlet extends HttpServlet {
             } else {
                 request.setAttribute("noSuchTariffs", "Sorry, there are no such tariffs");
             }
-//            Cookie cookie1 = Arrays.stream(request.getCookies()).filter(cookie -> cookie.getName().equals("locale")).findAny().get();
-
             Locale.setDefault(new Locale("ua", "UA"));
             request.getRequestDispatcher("tariffs.jsp").forward(request, response);
         }

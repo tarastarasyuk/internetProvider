@@ -3,13 +3,14 @@ package com.internetProvider.aservice;
 import com.internetProvider.dao.DBUtils;
 import com.internetProvider.dao.impl.TariffDAOImpl;
 import com.internetProvider.model.Tariff;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public class TariffService extends AbstractService {
-
+    private final static Logger logger = Logger.getLogger(TariffService.class);
     //    Singleton pattern
     private static TariffService instance;
     public static synchronized TariffService getInstance(HttpServletRequest request) {
@@ -28,6 +29,7 @@ public class TariffService extends AbstractService {
     public boolean createNewTariff(Tariff tariff) {
         boolean result = entityDAO.create(tariff);
         DBUtils.commit(connection);
+        logger.info("New tariff was added");
         return result;
     }
 
@@ -38,12 +40,14 @@ public class TariffService extends AbstractService {
     public boolean updateTariff(int id, Tariff tariff) {
         boolean result = entityDAO.update(id, tariff);
         DBUtils.commit(connection);
+        logger.info("Tariff was updated");
         return result;
     }
 
     public boolean deleteTariff(int id) {
         boolean result = entityDAO.delete(id);
         DBUtils.commit(connection);
+        logger.info("Tariff was deleted");
         return result;
     }
 
