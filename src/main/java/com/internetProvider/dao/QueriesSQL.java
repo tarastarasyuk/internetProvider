@@ -40,6 +40,8 @@ public class QueriesSQL {
     private static final String tariffId = "id";
 
     public static final String SELECT_ALL_TARIFFS = "SELECT * FROM " + tariffTable;
+    public static final String SELECT_ALL_TARIFFS_LIMITED_BY = "SELECT * FROM (SELECT * FROM "+tariffTable+" ORDER BY ID DESC) AS A LIMIT ?, ?;";
+    public static final String COUNT_ALL_TARIFFS = "SELECT COUNT("+userId+") FROM "+tariffTable+";";
     public static final String SELECT_ALL_TARIFFS_ORDER_BY = "SELECT * FROM " + tariffTable + " ORDER BY " + " 1 " + " 2;";
 
     public static final String CREATE_TARIFF = "INSERT INTO " + tariffTable + " (" + tariffName + ", " + tariffDescription + ", " + tariffPrice + ", " + tariffDaysDuration + ", " + tariffFeatures + ") VALUES (?, ?, ?, ?, ?)";

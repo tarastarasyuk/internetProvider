@@ -107,6 +107,7 @@
 
                     </tbody>
                 </table>
+                <t:pagination link="/adminPanel/manageTariffs"></t:pagination>
             </section>
         </div>
     </main>
