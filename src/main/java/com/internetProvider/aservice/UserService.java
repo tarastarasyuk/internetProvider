@@ -70,6 +70,14 @@ public class UserService extends AbstractService {
         return entityDAO.getAll();
     }
 
+    public List<User> getAllClientsLimitedBy(int offset, int noOfRecords) {
+        return entityDAO.getAllClientsLimitedBy(offset, noOfRecords);
+    }
+
+    public int getNumberOfClients() {
+        return entityDAO.getNumberOfClients();
+    }
+
     public boolean changeUserAccountById(int id, BigDecimal account) {
         boolean result = entityDAO.changeUserAccountById(id, account);
         DBUtils.commit(connection);

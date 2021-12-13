@@ -19,6 +19,8 @@ public class QueriesSQL {
     public static final String SELECT_USER_BY_USERNAME = "SELECT * FROM " + userTable + " WHERE " + userUsername + " = ?";
     public static final String SELECT_USER_BY_EMAIL = "SELECT * FROM " + userTable + " WHERE " + userEmail + " = ?";
     public static final String SELECT_ALL_USERS = "SELECT * FROM " + userTable + "";
+    public static final String SELECT_ALL_CLIENTS_LIMITED_BY = "SELECT * FROM ( SELECT * FROM "+userTable+" ORDER BY "+userId+" DESC) AS A WHERE "+userRoleId+" = 2 LIMIT ?, ?;";
+    public static final String COUNT_ALL_CLIENTS = "SELECT COUNT("+userId+") FROM "+userTable+" WHERE "+userRoleId+" = 2;";
     public static final String DELETE_USER_BY_ID = "DELETE FROM " + userTable + " WHERE " + userId + " = ?";
     public static final String SELECT_USER_BY_ID = "SELECT * FROM " + userTable + " WHERE " + userId + " = ?";
     public static final String UPDATE_USER_BY_ID = "UPDATE " + userTable + " SET " + userUsername + "=?, " + userEmail + "=?, " + userCityId + "=? WHERE " + userId + "=?";

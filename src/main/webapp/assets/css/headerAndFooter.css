@@ -92,3 +92,9 @@ li {
 .required-field {
     color: red;
 }
+
+a.disabled {
+    pointer-events: none;
+    cursor: default;
+    color: gray;
+}

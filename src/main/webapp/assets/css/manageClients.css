@@ -85,3 +85,9 @@ td {
 .td-action {
     width: 175px;
 }
+
+.pagination-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

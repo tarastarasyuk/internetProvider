@@ -216,6 +216,36 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
         return userList;
     }
 
+    public List<User> getAllClientsLimitedBy(int offset, int noOfRecords) {
+        List<User> userList = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.SELECT_ALL_CLIENTS_LIMITED_BY)) {
+            preparedStatement.setInt(1, offset);
+            preparedStatement.setInt(2, noOfRecords);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                userList.add(fillUserWithExistingData(resultSet));
+            }
+        } catch (SQLException e) {
+            logger.error(e.getMessage());
+            rollback(connection);
+        }
+        return userList;
+    }
+
+    public int getNumberOfClients() {
+        int numberOfClients = 0;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.COUNT_ALL_CLIENTS)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                numberOfClients = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            logger.error(e.getMessage());
+            rollback(connection);
+        }
+        return numberOfClients;
+    }
+
     @Override
     public boolean create(User entity) {
         boolean result = false;
