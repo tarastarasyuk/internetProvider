@@ -1,4 +1,4 @@
-package com.internetProvider.security.servlets;
+package com.internetProvider.security.servlets.admin;
 
 import com.internetProvider.aservice.ServiceService;
 import com.internetProvider.aservice.TariffService;
@@ -12,29 +12,29 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@WebServlet(name = "ManageTariffsServlet", value = "/adminPanel/manageTariffs/*")
-public class ManageTariffsServlet extends HttpServlet {
+import static java.util.Objects.nonNull;
+
+@WebServlet(name = "TariffCreationFormServlet", urlPatterns = "/adminPanel/manageTariffs/tariffCreationForm/*")
+public class TariffCreationFormServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        TariffService tariffService = TariffService.getInstance(request);
-        List<Tariff> tariffList = tariffService.getAllTariffs();
-        Collections.reverse(tariffList);
-        request.setAttribute("tariffList", tariffList);
-
+        if (nonNull(request.getParameter("editedTariffId"))) {
+            int editedTariffId = Integer.parseInt(request.getParameter("editedTariffId"));
+            TariffService tariffService = TariffService.getInstance(request);
+            Tariff tariff = tariffService.getTariffById(editedTariffId);
+            request.setAttribute("tariff", tariff);
+        }
         ServiceService serviceService = ServiceService.getInstance(request);
         List<Service> serviceList = serviceService.getAllServices();
         request.setAttribute("serviceList", serviceList);
-
-        request.getRequestDispatcher("../"+ App.Constants.MANAGE_TARIFFS_JSP).forward(request, response);
+        request.getRequestDispatcher("../../"+ App.Constants.TARIFF_CREATION_FORM_JSP).forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
         TariffService tariffService = TariffService.getInstance(request);
         String action = request.getPathInfo();
         if (action != null) {
@@ -45,19 +45,11 @@ public class ManageTariffsServlet extends HttpServlet {
                 case "/editCurrentTariff":
                     editCurrentTariff(request, tariffService);
                     break;
-                case "/deleteTariff":
-                    deleteTariff(request, tariffService);
-                    break;
                 default:
                     break;
             }
         }
-        response.sendRedirect("/adminPanel/manageTariffs");
-    }
-
-    private boolean deleteTariff(HttpServletRequest request, TariffService tariffService) {
-        Integer tariffId = Integer.valueOf(request.getParameter("deletedTariff"));
-        return tariffService.deleteTariff(tariffId);
+        response.sendRedirect("/"+App.Constants.ADMIN_PANEL_URL+"/"+App.Constants.MANAGE_TARIFFS_URL);
     }
 
     private boolean editCurrentTariff(HttpServletRequest request, TariffService tariffService) {
@@ -95,6 +87,4 @@ public class ManageTariffsServlet extends HttpServlet {
                 .withFeatures(features)
                 .buildTariff();
     }
-
-
 }

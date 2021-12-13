@@ -127,3 +127,9 @@ td {
 .form-control {
     margin-top: 10px;
 }
+
+.pagination-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

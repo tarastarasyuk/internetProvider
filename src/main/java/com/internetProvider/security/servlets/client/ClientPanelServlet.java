@@ -1,4 +1,4 @@
-package com.internetProvider.security.servlets;
+package com.internetProvider.security.servlets.client;
 
 import com.internetProvider.aservice.CityService;
 import com.internetProvider.aservice.TariffService;
@@ -6,6 +6,7 @@ import com.internetProvider.aservice.UserService;
 import com.internetProvider.model.City;
 import com.internetProvider.model.Tariff;
 import com.internetProvider.model.User;
+import com.internetProvider.security.App;
 import com.internetProvider.security.CryptoUtil;
 
 import javax.servlet.*;
@@ -23,16 +24,19 @@ public class ClientPanelServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getPathInfo();
+        HttpSession session = request.getSession();
         if (nonNull(action))
             switch (action) {
                 case "/payment":
                     response.sendRedirect("payment");
                     break;
+                case "/editClientForm":
+                    response.sendRedirect(App.Constants.EDIT_CLIENT_FORM_URL);
+                    break;
                 default:
                     break;
         } else {
             refreshSessionUser(request);
-            HttpSession session = request.getSession();
             User user = (User) session.getAttribute("user");
             CityService cityService = CityService.getInstance(request);
             List<City> cityList = cityService.getAllCities();
@@ -86,27 +90,18 @@ public class ClientPanelServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String action = request.getPathInfo();
         if (action != null) {
-            switch (action) {
-                case "/editProfile":
-                    editClientProfile(request, session);
-                    break;
-                case "/deleteTariff":
-                    deleteTariff(request, session);
-                    break;
-                default:
-                    break;
+            if ("/deleteTariff".equals(action)) {
+                deleteTariff(request, session);
             }
         } else {
             doGet(request, response);
         }
-
-
         User user = (User) session.getAttribute("user");
         UserService userService = UserService.getInstance(request);
         User updatedUser = userService.getUserByID(user.getId());
         session.removeAttribute("user");
         session.setAttribute("user", updatedUser);
-        response.sendRedirect("/clientPanel");
+        response.sendRedirect("/"+App.Constants.CLIENT_PANEL_URL);
     }
 
     private void deleteTariff(HttpServletRequest request, HttpSession session) {
@@ -115,25 +110,4 @@ public class ClientPanelServlet extends HttpServlet {
         userService.deleteUserTariffById(sessionUser.getId());
     }
 
-
-    private void editClientProfile(HttpServletRequest request, HttpSession session) {
-        User sessionUser = (User) session.getAttribute("user");
-
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String email = request.getParameter("email");
-        Integer cityId = Integer.valueOf(request.getParameter("cityId"));
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
-        user.setEmail(email);
-        user.setCityId(cityId);
-
-        UserService userService = UserService.getInstance(request);
-        userService.updateUser(sessionUser.getId(), user);
-
-        if (!password.isEmpty()) {
-            userService.updateUserPassword(sessionUser.getId(), CryptoUtil.getEncryptedPassword(password));
-        }
-    }
 }

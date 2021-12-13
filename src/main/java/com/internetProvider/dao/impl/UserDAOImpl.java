@@ -96,6 +96,22 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
     }
 
     @Override
+    public boolean checkUserExistenceByEmail(String email) {
+        boolean result = false;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.SELECT_USER_BY_EMAIL)) {
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                result = true;
+            }
+        } catch (SQLException e) {
+            logger.error(e.getMessage());
+            rollback(connection);
+        }
+        return result;
+    }
+
+    @Override
     public boolean changeUserAccountById(int id, BigDecimal newAccount) {
         boolean result = false;
         try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.UPDATE_USER_ACCOUNT_BY_ID)) {
@@ -200,6 +216,36 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
         return userList;
     }
 
+    public List<User> getAllClientsLimitedBy(int offset, int noOfRecords) {
+        List<User> userList = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.SELECT_ALL_CLIENTS_LIMITED_BY)) {
+            preparedStatement.setInt(1, offset);
+            preparedStatement.setInt(2, noOfRecords);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                userList.add(fillUserWithExistingData(resultSet));
+            }
+        } catch (SQLException e) {
+            logger.error(e.getMessage());
+            rollback(connection);
+        }
+        return userList;
+    }
+
+    public int getNumberOfClients() {
+        int numberOfClients = 0;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.COUNT_ALL_CLIENTS)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                numberOfClients = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            logger.error(e.getMessage());
+            rollback(connection);
+        }
+        return numberOfClients;
+    }
+
     @Override
     public boolean create(User entity) {
         boolean result = false;
@@ -207,7 +253,11 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
             // TODO Remove duplicates
             preparedStatement.setString(1, entity.getUsername());
             preparedStatement.setString(2, entity.getPassword());
-            preparedStatement.setString(3, entity.getEmail());
+            if (entity.getEmail().isEmpty()) {
+                preparedStatement.setNull(3, 0);
+            } else {
+                preparedStatement.setString(3, entity.getEmail());
+            }
             preparedStatement.setInt(4, entity.getCityId());
             preparedStatement.executeUpdate();
             result = true;
@@ -239,7 +289,11 @@ public class UserDAOImpl extends ConnectionConstructor implements UserDAO {
         boolean result = false;
         try (PreparedStatement preparedStatement = connection.prepareStatement(QueriesSQL.UPDATE_USER_BY_ID)) {
             preparedStatement.setString(1, newEntity.getUsername());
-            preparedStatement.setString(2, newEntity.getEmail());
+            if (newEntity.getEmail().isEmpty()) {
+                preparedStatement.setNull(2, 0);
+            } else {
+                preparedStatement.setString(2, newEntity.getEmail());
+            }
             preparedStatement.setInt(3, newEntity.getCityId());
             preparedStatement.setInt(4, entityId);
             preparedStatement.executeUpdate();

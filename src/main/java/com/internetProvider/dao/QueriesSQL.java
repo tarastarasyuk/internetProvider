@@ -17,7 +17,10 @@ public class QueriesSQL {
 
     public static final String SELECT_USER_BY_PASSWORD_AND_USERNAME = "SELECT * FROM " + userTable + " WHERE " + userUsername + " = ? AND " + userPassword + " = ?";
     public static final String SELECT_USER_BY_USERNAME = "SELECT * FROM " + userTable + " WHERE " + userUsername + " = ?";
+    public static final String SELECT_USER_BY_EMAIL = "SELECT * FROM " + userTable + " WHERE " + userEmail + " = ?";
     public static final String SELECT_ALL_USERS = "SELECT * FROM " + userTable + "";
+    public static final String SELECT_ALL_CLIENTS_LIMITED_BY = "SELECT * FROM ( SELECT * FROM "+userTable+" ORDER BY "+userId+" DESC) AS A WHERE "+userRoleId+" = 2 LIMIT ?, ?;";
+    public static final String COUNT_ALL_CLIENTS = "SELECT COUNT("+userId+") FROM "+userTable+" WHERE "+userRoleId+" = 2;";
     public static final String DELETE_USER_BY_ID = "DELETE FROM " + userTable + " WHERE " + userId + " = ?";
     public static final String SELECT_USER_BY_ID = "SELECT * FROM " + userTable + " WHERE " + userId + " = ?";
     public static final String UPDATE_USER_BY_ID = "UPDATE " + userTable + " SET " + userUsername + "=?, " + userEmail + "=?, " + userCityId + "=? WHERE " + userId + "=?";
@@ -37,13 +40,15 @@ public class QueriesSQL {
     private static final String tariffId = "id";
 
     public static final String SELECT_ALL_TARIFFS = "SELECT * FROM " + tariffTable;
+    public static final String SELECT_ALL_TARIFFS_LIMITED_BY = "SELECT * FROM (SELECT * FROM "+tariffTable+" ORDER BY ID DESC) AS A LIMIT ?, ?;";
+    public static final String COUNT_ALL_TARIFFS = "SELECT COUNT("+userId+") FROM "+tariffTable+";";
     public static final String SELECT_ALL_TARIFFS_ORDER_BY = "SELECT * FROM " + tariffTable + " ORDER BY " + " 1 " + " 2;";
 
     public static final String CREATE_TARIFF = "INSERT INTO " + tariffTable + " (" + tariffName + ", " + tariffDescription + ", " + tariffPrice + ", " + tariffDaysDuration + ", " + tariffFeatures + ") VALUES (?, ?, ?, ?, ?)";
     public static final String SELECT_TARIFF_BY_ID = "SELECT * FROM " + tariffTable + " WHERE " + tariffId + " = ?";
     public static final String DELETE_TARIFF_BY_ID = "DELETE FROM " + tariffTable + " WHERE " + tariffId + " = ?";
     public static final String UPDATE_TARIFF_BY_ID = "UPDATE " + tariffTable + " SET " + tariffName + " = ?, " + tariffDescription + " = ?, " + tariffPrice + " = ?,  " + tariffDaysDuration + " = ?, " + tariffFeatures + " = ?" + "WHERE " + tariffId + " = ?";
-
+    public static final String SELECT_TARIFF_BY_NAME = "SELECT * FROM " + tariffTable + " WHERE " + tariffName + " = ?";
 
     private static final String serviceTable = "service";
     private static final String serviceName = "name";

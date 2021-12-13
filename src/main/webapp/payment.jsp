@@ -41,7 +41,7 @@
                             </div>
 
                             <form action="${pageContext.request.contextPath}/clientPanel/payment" method="POST">
-                                <div class="input-text"> <input type="text" pattern="^[1-9][0-9]*$" placeholder="1000" required name="sum" title="Type only digits">
+                                <div class="input-text"> <input type="text" pattern="^[1-9][0-9]{0,4}$" placeholder="1000" required name="sum" title="Type only digits">
                                     <span>Sum</span>
                                 </div>
 

@@ -1,6 +1,8 @@
 <%@ tag import="com.internetProvider.model.Tariff" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${cookie.locale.value}"/>
+<fmt:setBundle basename="titles"/>
 <c:forEach var="tariff" items="${tariffList}">
 
     <div class="card tariff-card" style="width: 18rem;">
@@ -43,20 +45,20 @@
 
         <div class="card-body tariffs-connection">
             <c:choose>
-                <c:when test='${user == null}'>
+                <c:when test='${sessionScope.user == null}'>
                     <button type="submit" class="btn btn-primary"
                             data-bs-toggle="modal" data-bs-target="#noAccount">
-                        Connect
+                        <fmt:message key="action.connect"/>
                     </button>
                 </c:when>
-                <c:when test='${user != null}'>
+                <c:when test='${sessionScope.user.roleId == 2}'>
 
 
                     <c:choose>
                         <c:when test='${sessionScope.user.status.toString().equals("BLOCKED")}'>
                             <button type="submit" class="btn btn-primary"
                                     data-bs-toggle="modal" data-bs-target="#blockedClient">
-                                Connect
+                                <fmt:message key="action.connect"/>
                             </button>
                         </c:when>
 
@@ -65,7 +67,7 @@
                             <c:choose>
                                 <c:when test="${sessionScope.user.account.compareTo(tariff.getPrice()) >= 0}">
                                     <c:choose>
-                                        <c:when test="${user.getTariffId() != 0}">
+                                        <c:when test="${sessionScope.user.tariffId != 0}">
                                             <%--                            TODO: MAKE MESSAGE FOR USERS THAT ALREADY HAVE TARIFF--%>
                                             <%--                            <button type="submit" class="btn btn-primary"--%>
                                             <%--                                    data-bs-toggle="modal" data-bs-target="#tariffExistence">--%>
@@ -79,7 +81,7 @@
                                                 </button>
                                             </form>
                                         </c:when>
-                                        <c:when test="${user.getTariffId() == 0}">
+                                        <c:when test="${sessionScope.user.tariffId == 0}">
                                             <form action="${pageContext.request.contextPath}/clientPanel/tariffConnection"
                                                   method="GET">
                                                 <button type="submit" class="btn btn-primary" value="${tariff.getId()}"
@@ -103,38 +105,17 @@
 
 
                 </c:when>
+                <c:when test="${sessionScope.user.roleId != 2}">
+                    <button type="submit" class="btn btn-primary"
+                            data-bs-toggle="modal" data-bs-target="#adminCantConnectTariff">
+                        <fmt:message key="action.connect"/>
+                    </button>
+                </c:when>
             </c:choose>
 
         </div>
 
     </div>
-
-
-    <%--    <!-- Modal DON'T HAVE AN ACCOUNT-->--%>
-    <%--    <div  class="modal fade" id="tariffExistence" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"--%>
-    <%--         aria-hidden="true">--%>
-    <%--        <div class="modal-dialog modal-dialog-centered" role="document">--%>
-    <%--            <div class="modal-content">--%>
-    <%--                <div class="modal-header">--%>
-    <%--                    <h5 class="modal-title" id="exampleModalCenterTitle">You already have a tariff:</h5>--%>
-    <%--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--%>
-    <%--                </div>--%>
-    <%--                <div class="modal-body">--%>
-    <%--                    You can only have one tariff for one account. <br>--%>
-    <%--                    If you want to change your current tariff - just continue.--%>
-    <%--                </div>--%>
-    <%--                <div class="modal-footer" style="justify-content: space-between;">--%>
-    <%--                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>--%>
-    <%--                    <form action="${pageContext.request.contextPath}/tariff/tariffConnection" method="GET">--%>
-    <%--                        <button type="submit" class="btn btn-primary" value="${tariff.getId()}" name="newTariffId">--%>
-    <%--                            Connect--%>
-    <%--                        </button>--%>
-    <%--                    </form>--%>
-    <%--                </div>--%>
-    <%--            </div>--%>
-    <%--        </div>--%>
-
-    <%--    </div>--%>
 
 
     <!-- Modal DON'T HAVE AN ACCOUNT-->
@@ -152,7 +133,7 @@
                     If you have an account you need to just login and then connect the tariff.
                 </div>
                 <div class="modal-footer" style="justify-content: space-between;">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><fmt:message key="action.cancel"/></button>
                     <div class="action-buttons">
                         <a href="${pageContext.request.contextPath}/login" style="color: #fff;">
                             <button type="button" class="btn login-btn">Login</button>
@@ -177,7 +158,24 @@
                 </div>
                 <div class="modal-body">
 
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><fmt:message key="action.cancel"/></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal CANT CONNECT TARIFF -->
+    <div class="modal fade" id="adminCantConnectTariff" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="adminCantConnectTariffTitle">You are not CLIENT! You can not connect the tariff!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><fmt:message key="action.cancel"/></button>
                 </div>
             </div>
         </div>
@@ -195,7 +193,7 @@
                 </div>
                 <div class="modal-body">
 
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><fmt:message key="action.cancel"/></button>
                     <a href="${pageContext.request.contextPath}/clientPanel/payment" style="color: #fff;">
                         <button type="button" class="btn btn-success">Top up account</button>
                     </a>

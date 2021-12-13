@@ -32,6 +32,11 @@ public class UserService extends AbstractService {
         return entityDAO.checkUserExistenceByUsername(username);
     }
 
+    public boolean checkUserExistenceByEmail(String email) {
+        if (email.isEmpty()) return false;
+        return entityDAO.checkUserExistenceByEmail(email);
+    }
+
     public User findUserByUsernameAndPassword(String username, String password) {
         User user = entityDAO.findUserByUsernameAndPassword(username, password);
         DBUtils.commit(connection);
@@ -63,6 +68,14 @@ public class UserService extends AbstractService {
 
     public List<User> getAllUsers() {
         return entityDAO.getAll();
+    }
+
+    public List<User> getAllClientsLimitedBy(int offset, int noOfRecords) {
+        return entityDAO.getAllClientsLimitedBy(offset, noOfRecords);
+    }
+
+    public int getNumberOfClients() {
+        return entityDAO.getNumberOfClients();
     }
 
     public boolean changeUserAccountById(int id, BigDecimal account) {

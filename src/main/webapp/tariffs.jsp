@@ -1,7 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${cookie.locale.value}"/>
+<fmt:setBundle basename="titles"/>
 <t:page title="Login" cssLink="../../assets/css/tariffs.css">
     <main>
         <div class="container">
@@ -28,18 +30,18 @@
                                     </c:forEach>
                                 </select>
                                 <select class="form-select" name="sortBy" id="by-price">
-                                    <option value="" ${selectedSortBy == null ? 'selected':''} disabled hidden>Sort by</option>
-                                    <option value="price_desc" ${selectedSortBy.equals("price_desc")? 'selected': ''}>Price High To Low</option>
-                                    <option value="price_asc" ${selectedSortBy.equals("price_asc")? 'selected': ''}>Price Low To High</option>
-                                    <option value="name_asc" ${selectedSortBy.equals("name_asc")? 'selected': ''}>A-Z</option>
-                                    <option value="name_desc" ${selectedSortBy.equals("name_desc")? 'selected': ''}>Z-A</option>
+                                    <option value="" ${selectedSortBy == null ? 'selected':''} disabled hidden><fmt:message key="action.sort_by"/></option>
+                                    <option value="price_desc" ${selectedSortBy.equals("price_desc")? 'selected': ''}><fmt:message key="action.sort_by_price_high_to_low"/></option>
+                                    <option value="price_asc" ${selectedSortBy.equals("price_asc")? 'selected': ''}><fmt:message key="action.sort_by_price_low_to_high"/></option>
+                                    <option value="name_asc" ${selectedSortBy.equals("name_asc")? 'selected': ''}><fmt:message key="action.sort_by_a_z"/></option>
+                                    <option value="name_desc" ${selectedSortBy.equals("name_desc")? 'selected': ''}><fmt:message key="action.sort_by_z_a"/></option>
                                 </select>
                             </div>
 
                             <div class="filter-apply">
-                                <a href="#" >
+                            <a href="#" >
                                     <button type="submit"
-                                            class="btn btn-primary">Apply
+                                            class="btn btn-primary"><fmt:message key="action.apply"/>
                                     </button>
                                 </a>
                             </div>
@@ -51,7 +53,7 @@
                     <div class="filter-clear-btn">
                         <a href="tariffs">
                             <button type="button" class="btn btn-secondary clear-btn"
-                                    onClick="window.location.reload();">Clear &#x2717
+                                    onClick="window.location.reload();"><fmt:message key="action.clear"/> &#x2717
                             </button>
                         </a>
                     </div>
@@ -65,52 +67,6 @@
                 ${noSuchTariffs}
                 <t:tariff></t:tariff>
 <%--                    TODO: .TLD--%>
-
-<%--                    <c:forEach var="tariff" items="${tariffList}">--%>
-
-
-<%--                        <div class="card tariff-card" style="width: 18rem;">--%>
-
-<%--                            <div class="card-body tariff-content">--%>
-<%--                                <h5 class="card-title tariff-title">"${tariff.getName()}"</h5>--%>
-<%--                                <p class="card-text tariff-subtitle">${tariff.getDescription()}</p>--%>
-
-<%--                                <div class="tariff-price">--%>
-<%--                                    <div class="tariff-price-box">--%>
-<%--                                        <span>Price:</span>--%>
-<%--                                        <span>${tariff.getPrice()}$/${tariff.getDayDuration()}days</span>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-
-<%--                                <div class="tariff-service-list">--%>
-<%--                                    Services:--%>
-<%--                                    <c:forEach var="service" items="${tariff.getListOfServiceName()}"><span><strong>*${service} </strong></span></c:forEach>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-
-
-<%--                            <ul class="list-group list-group-flush list-of-features">--%>
-<%--                                <!-- TODO: MOVE INNER CSS IN  tariffs.css -->--%>
-
-<%--                                <c:forEach var="feature" items="${tariff.getFeaturesList()}">--%>
-<%--                                    <li class="list-group-item">--%>
-<%--                                    <span class="d-inline-block bg-primary rounded-circle"--%>
-<%--                                          style="width: .5em; height: .5em;"></span>--%>
-<%--                                            ${feature}--%>
-<%--                                    </li>--%>
-<%--                                </c:forEach>--%>
-
-<%--                            </ul>--%>
-
-<%--                            <div class="card-body tariffs-connection">--%>
-<%--                                <a href="#" method="GET">--%>
-<%--                                    <button type="button" class="btn btn-primary">Connect</button>--%>
-<%--                                </a>--%>
-<%--                            </div>--%>
-
-<%--                        </div>--%>
-
-<%--                    </c:forEach>--%>
             </section>
         </div>
     </main>

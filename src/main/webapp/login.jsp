@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${cookie.locale.value}"/>
+<fmt:setBundle basename="titles"/>
 <t:page title="Login" cssLink="../../assets/css/login.css">
     <main>
         <div class="container d-flex flex-column justify-content-center align-items-center " style="height: 80vh;">
@@ -17,7 +19,7 @@
                     <div class="mb-3">
                         <input name="password" placeholder="Password" type="password" class="form-control" id="exampleInputPassword1" required>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;"><fmt:message key="nav.login"/></button>
 
                     <p style="color: #DC3545; text-align: center; position: relative;"><br>${signInError}</p>
                     <p style="color: #DC3545; text-align: center; position: relative;"><br>${session.getAttribute("signInError")}</p>

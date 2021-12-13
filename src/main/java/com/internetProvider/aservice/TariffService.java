@@ -62,4 +62,16 @@ public class TariffService extends AbstractService {
     public List<Tariff> getTariffsByServicesSortedBy(int[] services, String field, String order) {
         return entityDAO.getTariffsByServicesSortedBy(services, field, order);
     }
+
+    public boolean checkTariffExistenceByName(String name) {
+        return entityDAO.checkTariffExistenceByName(name);
+    }
+
+    public List<Tariff> getAllTariffsLimitedBy(int offset, int noOfRecords) {
+        return entityDAO.getAllTariffsLimitedBy(offset, noOfRecords);
+    }
+
+    public int getNumberOfTariffs() {
+        return entityDAO.getNumberOfTariffs();
+    }
 }

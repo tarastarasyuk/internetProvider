@@ -1,7 +1,8 @@
-package com.internetProvider.security.servlets;
+package com.internetProvider.security.servlets.client;
 
 import com.internetProvider.aservice.UserService;
 import com.internetProvider.model.User;
+import com.internetProvider.security.App;
 import org.apache.log4j.Logger;
 
 import javax.servlet.*;
@@ -29,7 +30,7 @@ public class PaymentServlet extends HttpServlet {
         User updatedUser = userService.getUserByID(user.getId());
         session.removeAttribute("user");
         session.setAttribute("user", updatedUser);
-        response.sendRedirect("/clientPanel");
+        response.sendRedirect("/"+ App.Constants.CLIENT_PANEL_URL);
     }
 
     private void topUpAccount(HttpServletRequest request, User sessionUser) {

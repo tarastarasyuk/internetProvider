@@ -1,9 +1,10 @@
-package com.internetProvider.security.servlets;
+package com.internetProvider.security.servlets.client;
 
 import com.internetProvider.aservice.TariffService;
 import com.internetProvider.aservice.UserService;
 import com.internetProvider.model.Tariff;
 import com.internetProvider.model.User;
+import com.internetProvider.security.App;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -36,7 +37,7 @@ public class TariffConnectionServlet extends HttpServlet {
 
             request.getRequestDispatcher("../tariffConnection.jsp").forward(request, response);
         } else {
-            response.sendRedirect("/tariffs");
+            response.sendRedirect("/"+ App.Constants.TARIFFS_URL);
         }
 
     }

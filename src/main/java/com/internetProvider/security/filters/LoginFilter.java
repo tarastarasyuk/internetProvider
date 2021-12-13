@@ -66,14 +66,14 @@ public class LoginFilter implements Filter {
             }
 
         } else {
-            res.sendRedirect("/"+App.Constants.LOGIN);
+            res.sendRedirect("/"+App.Constants.LOGIN_URL);
         }
     }
 
     private void redirectToLoginWithMessage(String msg, HttpSession session, HttpServletResponse res) throws IOException {
         logger.info(msg);
         session.setAttribute("signInError", msg);
-        res.sendRedirect("/"+App.Constants.LOGIN);
+        res.sendRedirect("/"+App.Constants.LOGIN_URL);
     }
 
     private void redirectUser(User existingUser, HttpSession session, HttpServletResponse res) throws IOException {
