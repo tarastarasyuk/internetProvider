@@ -16,7 +16,8 @@
             <div>
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link active" href="${pageContext.request.contextPath}/"><fmt:message key="nav.about"/></a>
+                        <a class="nav-link active" href="${pageContext.request.contextPath}/"><fmt:message
+                                key="nav.about"/></a>
                     </li>
                     <li class=" nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button"
@@ -25,9 +26,11 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item d-flex align-items-center gap-2 py-2"
-                                   href="${pageContext.request.contextPath}/services"><span class="d-inline-block bg-primary rounded-circle"
-                                                              style="width: .5em; height: .5em;"></span><fmt:message key="nav.services"/></a></li>
-                            <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="${pageContext.request.contextPath}/tariffs"><span
+                                   href="${pageContext.request.contextPath}/services"><span
+                                    class="d-inline-block bg-primary rounded-circle"
+                                    style="width: .5em; height: .5em;"></span><fmt:message key="nav.services"/></a></li>
+                            <li><a class="dropdown-item d-flex align-items-center gap-2 py-2"
+                                   href="${pageContext.request.contextPath}/tariffs"><span
                                     class="d-inline-block bg-primary rounded-circle"
                                     style="width: .5em; height: .5em;"></span><fmt:message key="nav.tariffs"/></a></li>
                         </ul>
@@ -41,19 +44,30 @@
             <div>
                 <c:choose>
                     <c:when test="${sessionScope.user == null}">
-                        <a href="${pageContext.request.contextPath}/login"><button class="btn login-btn" type="submit"><fmt:message key="nav.login"/></button></a>
-                        <button class="btn btn-primary connect-btn" type="submit"><fmt:message key="nav.register"/></button>
+                        <a href="${pageContext.request.contextPath}/login">
+                            <button class="btn login-btn" type="submit"><fmt:message key="nav.login"/></button>
+                        </a>
+                        <button class="btn btn-primary connect-btn" type="submit"><fmt:message
+                                key="nav.register"/></button>
                     </c:when>
                     <c:when test="${sessionScope.user != null}">
                         <c:choose>
                             <c:when test="${sessionScope.user.roleId == 2}">
-                                <a href="${pageContext.request.contextPath}/login"><button class="btn login-btn" type="submit"><fmt:message key="nav.profile"/>: <strong>${sessionScope.user.account}$</strong></button></a>
+                                <a href="${pageContext.request.contextPath}/login">
+                                    <button class="btn login-btn" type="submit"><fmt:message key="nav.profile"/>:
+                                        <strong>${sessionScope.user.account}$</strong></button>
+                                </a>
                             </c:when>
                             <c:when test="${sessionScope.user.roleId == 1}">
-                                <a href="${pageContext.request.contextPath}/login"><button class="btn login-btn" type="submit"><fmt:message key="nav.admin"/></button></a>
+                                <a href="${pageContext.request.contextPath}/login">
+                                    <button class="btn login-btn" type="submit"><fmt:message key="nav.admin"/></button>
+                                </a>
                             </c:when>
                         </c:choose>
-                        <a href="${pageContext.request.contextPath}/logout"><button class="btn btn-primary connect-btn" type="submit"><fmt:message key="nav.logout"/></button></a>
+                        <a href="${pageContext.request.contextPath}/logout">
+                            <button class="btn btn-primary connect-btn" type="submit"><fmt:message
+                                    key="nav.logout"/></button>
+                        </a>
                     </c:when>
                 </c:choose>
 
@@ -64,8 +78,8 @@
         <button class="nav-item dropdown language-btn">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                aria-expanded="false">
-<%--                TODO: put in properties--%>
-                ${cookie.country.value} <i class="fas fa-globe"></i>
+                <%--                TODO: put in properties--%>
+                <fmt:message key="country"/> <i class="fas fa-globe"></i>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item d-flex align-items-center gap-2 py-2" href="#" id="ua"><span
@@ -79,19 +93,41 @@
     </nav>
 
     <script>
-        document.getElementById("ua").addEventListener("click",function(e){
+        document.getElementById("ua").addEventListener("click", function (e) {
             console.log("ua")
-            document.cookie = "locale=uk_UA";
-            document.cookie = "country=UA";
+            document.cookie = "locale=uk_UA; path=/";
+            document.cookie = "locale=uk_UA; path=../";
+            document.cookie = "locale=uk_UA; path=/adminPanel";
+            document.cookie = "locale=uk_UA; path=/manageTariffs";
+            document.cookie = "locale=uk_UA; path=/manageClients";
+            document.cookie = "locale=uk_UA; path=/adminPanel/manageTariffs";
+            document.cookie = "locale=uk_UA; path=/adminPanel/manageClients";
+            document.cookie = "locale=uk_UA; path=/adminPanel/manageTariffs/tariffCreationForm";
+            document.cookie = "locale=uk_UA; path=/adminPanel/manageClients/clientCreationForm";
+            document.cookie = "locale=uk_UA; path=/clientPanel";
+            document.cookie = "locale=uk_UA; path=/clientPanel/payment";
+            document.cookie = "locale=uk_UA; path=/clientPanel/editClientForm";
+            document.cookie = "locale=uk_UA; path=/clientPanel/tariffConnection";
             document.location.reload(true);
-        },false);
+        }, false);
 
-        document.getElementById("en").addEventListener("click",function(e){
+        document.getElementById("en").addEventListener("click", function (e) {
             console.log("en")
-            document.cookie = "locale=en_US";
-            document.cookie = "country=US";
+            document.cookie = "locale=en_US; path=/";
+            document.cookie = "locale=en_US; path=../";
+            document.cookie = "locale=en_US; path=/adminPanel";
+            document.cookie = "locale=en_US; path=/manageTariffs";
+            document.cookie = "locale=en_US; path=/manageClients";
+            document.cookie = "locale=en_US; path=/adminPanel/manageTariffs";
+            document.cookie = "locale=en_US; path=/adminPanel/manageClients";
+            document.cookie = "locale=en_US; path=/adminPanel/manageTariffs/tariffCreationForm";
+            document.cookie = "locale=en_US; path=/adminPanel/manageClients/clientCreationForm";
+            document.cookie = "locale=en_US; path=/clientPanel";
+            document.cookie = "locale=en_US; path=/clientPanel/payment";
+            document.cookie = "locale=en_US; path=/clientPanel/editClientForm";
+            document.cookie = "locale=en_US; path=/clientPanel/tariffConnection";
             document.location.reload(true);
 
-        },false);
+        }, false);
     </script>
 </header>

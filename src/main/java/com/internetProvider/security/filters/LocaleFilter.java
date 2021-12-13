@@ -18,15 +18,13 @@ public class LocaleFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         clearPageCache(res);
-        Locale currentLocale = res.getLocale();
+        Locale currentLocale = new Locale("fr","FR");
 
         boolean localeExistsInCookie = checkCookieExistence("locale", req);
 
         if (!localeExistsInCookie) {
-            Cookie cookieCountry = new Cookie("country", currentLocale.getCountry());
             Cookie cookie = new Cookie("locale", currentLocale.getLanguage() + "_" + currentLocale.getCountry());
             res.addCookie(cookie);
-            res.addCookie(cookieCountry);
         }
         chain.doFilter(req, res);
     }
