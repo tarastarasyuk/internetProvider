@@ -66,6 +66,7 @@ public class TariffDAOImpl extends ConnectionConstructor implements TariffDAO {
             preparedStatement.setString(2, entity.getDescription());
             preparedStatement.setBigDecimal(3, entity.getPrice());
             preparedStatement.setInt(4, entity.getDayDuration());
+            preparedStatement.setString(5, entity.getFeatures());
             preparedStatement.executeUpdate();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             if (resultSet.next()) {

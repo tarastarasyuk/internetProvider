@@ -26,7 +26,6 @@ public class ManageTariffsServlet extends HttpServlet {
             response.sendRedirect(App.Constants.TARIFF_CREATION_FORM_URL);
         } else {
             List<Tariff> tariffList = getPaginatedClients(request);
-            Collections.reverse(tariffList);
             request.setAttribute("tariffList", tariffList);
             request.getRequestDispatcher("../"+ App.Constants.MANAGE_TARIFFS_JSP).forward(request, response);
         }
