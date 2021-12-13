@@ -1,4 +1,4 @@
-package com.internetProvider.security.servlets;
+package com.internetProvider.security.filters;
 
 import javax.servlet.*;
 import javax.servlet.annotation.*;
@@ -41,7 +41,7 @@ public class LocaleFilter implements Filter {
         Cookie[] cookies = req.getCookies();
         if (cookies != null) {
             for (int i = 0; i < cookies.length; i++) {
-                if (cookies[i].getName().equals("locale")) {
+                if (cookies[i].getName().equals(cookieName)) {
                     return true;
                 }
             }

@@ -1,6 +1,8 @@
 <%@ tag import="com.internetProvider.model.Tariff" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${cookie.locale.value}"/>
+<fmt:setBundle basename="titles"/>
 <c:forEach var="tariff" items="${tariffList}">
 
     <div class="card tariff-card" style="width: 18rem;">
@@ -46,7 +48,7 @@
                 <c:when test='${sessionScope.user == null}'>
                     <button type="submit" class="btn btn-primary"
                             data-bs-toggle="modal" data-bs-target="#noAccount">
-                        Connect
+                        <fmt:message key="action.connect"/>
                     </button>
                 </c:when>
                 <c:when test='${sessionScope.user.roleId == 2}'>
@@ -56,7 +58,7 @@
                         <c:when test='${sessionScope.user.status.toString().equals("BLOCKED")}'>
                             <button type="submit" class="btn btn-primary"
                                     data-bs-toggle="modal" data-bs-target="#blockedClient">
-                                Connect
+                                <fmt:message key="action.connect"/>
                             </button>
                         </c:when>
 
@@ -106,7 +108,7 @@
                 <c:when test="${sessionScope.user.roleId != 2}">
                     <button type="submit" class="btn btn-primary"
                             data-bs-toggle="modal" data-bs-target="#adminCantConnectTariff">
-                        Connect
+                        <fmt:message key="action.connect"/>
                     </button>
                 </c:when>
             </c:choose>
@@ -131,7 +133,7 @@
                     If you have an account you need to just login and then connect the tariff.
                 </div>
                 <div class="modal-footer" style="justify-content: space-between;">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><fmt:message key="action.cancel"/></button>
                     <div class="action-buttons">
                         <a href="${pageContext.request.contextPath}/login" style="color: #fff;">
                             <button type="button" class="btn login-btn">Login</button>
@@ -156,7 +158,7 @@
                 </div>
                 <div class="modal-body">
 
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><fmt:message key="action.cancel"/></button>
                 </div>
             </div>
         </div>
@@ -173,7 +175,7 @@
                 </div>
                 <div class="modal-body">
 
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><fmt:message key="action.cancel"/></button>
                 </div>
             </div>
         </div>
@@ -191,7 +193,7 @@
                 </div>
                 <div class="modal-body">
 
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><fmt:message key="action.cancel"/></button>
                     <a href="${pageContext.request.contextPath}/clientPanel/payment" style="color: #fff;">
                         <button type="button" class="btn btn-success">Top up account</button>
                     </a>
