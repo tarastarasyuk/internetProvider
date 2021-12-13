@@ -18,7 +18,7 @@ public class LocaleFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         clearPageCache(res);
-        Locale currentLocale = new Locale("fr","FR");
+        Locale currentLocale = Locale.getDefault();
 
         boolean localeExistsInCookie = checkCookieExistence("locale", req);
 
